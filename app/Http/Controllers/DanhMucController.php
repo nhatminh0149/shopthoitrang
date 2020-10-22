@@ -89,7 +89,7 @@ class DanhMucController extends Controller
     public function edit($dm_id)
     {
         $ds_danhmuc = danhmuc::where("dm_id",  $dm_id)->first();
-        $ds_ncc = nhacungcap::all();
+        $ds_ncc = nhacungcap::where('ncc_trangthai','=','1')->get();
     
         return view('admin.danhmuc.sua_danhmuc')
             ->with('ds_danhmuc', $ds_danhmuc)

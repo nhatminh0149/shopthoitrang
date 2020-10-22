@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Auth;
 Route::get('/', function () {
     return view('welcome');
 });
+// Route::get('/', 'HomeController@welcome');
 
 Auth::routes();
 Route::get('/users/logout', 'Auth\LoginController@userLogout')->name('user.logout');
@@ -126,6 +127,32 @@ Route::prefix('admin')->group(function()
 	Route::get('/sp_edit{sp_id}', 'SanPhamController@edit')->name('admin.sp.edit');
 	Route::post('/sp_update/{sp_id}', 'SanPhamController@update')->name('admin.sp.update');
 	Route::get('/sp_delete/{sp_id}', 'SanPhamController@destroy')->name('admin.sp.destroy');
+
+	//QUẢN LÝ PHIẾU NHẬP KHO
+	Route::get('/pnk', 'PhieuNhapKhoController@index')->name('admin.pnk');
+	Route::get('/chitietphieunhapkho/{pnk_id}','PhieuNhapKhoController@chitietphieunhapkho')->name('admin.pnk.chitiet');
+	Route::get('/pnk_create', 'PhieuNhapKhoController@create')->name('admin.pnk.create');
+	Route::post('/pnk_store', 'PhieuNhapKhoController@store')->name('admin.pnk.store');
+	Route::get('/danhmuc_theoncc','PhieuNhapKhoController@danhmuc_theoncc');
+	Route::get('/loaisanpham_theodanhmuc','PhieuNhapKhoController@loaisanpham_theodanhmuc');
+	Route::get('/sanpham_theoloaisanpham','PhieuNhapKhoController@sanpham_theoloaisanpham');
+	Route::get('/size_ctpn','PhieuNhapKhoController@size');
+	Route::post('/dynamic-field/insert', 'PhieuNhapKhoController@insert')->name('admin.dynamic-field.insert');
+
+	//QUẢN LÝ HÌNH ẢNH SẢN PHẨM
+	Route::get('/hinhanh', 'HinhAnhController@index')->name('admin.hinhanh');
+	Route::get('/hinhanh_create', 'HinhAnhController@create')->name('admin.hinhanh.create');
+	Route::post('/hinhanh_store', 'HinhAnhController@store')->name('admin.hinhanh.store');
+	Route::get('/hinhanh_edit{ha_id}', 'HinhAnhController@edit')->name('admin.hinhanh.edit');
+	Route::post('/hinhanh_update/{ha_id}', 'HinhAnhController@update')->name('admin.hinhanh.update');
+	
+	//QUẢN LÝ CHI TIẾT SẢN PHẨM
+	Route::get('/ctsp', 'ChiTietSanPhamController@index')->name('admin.ctsp');
+	Route::get('/ctsp_create', 'ChiTietSanPhamController@create')->name('admin.ctsp.create');
+	Route::post('/ctsp_store', 'ChiTietSanPhamController@store')->name('admin.ctsp.store');
 	
 });
+
+//Thực hiện tạo giao diện trang chủ Frontend
+Route::get('/', 'FrontendController@index')->name('frontend.home');
 

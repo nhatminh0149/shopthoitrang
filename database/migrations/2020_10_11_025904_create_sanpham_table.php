@@ -16,8 +16,8 @@ class CreateSanphamTable extends Migration
         Schema::create('sanpham', function (Blueprint $table) {
             $table->increments('sp_id');
             $table->string('sp_ten', 255);
-            $table->string('sp_hinh', 255)->nullable();
-            $table->integer('sp_soluong');
+            //$table->string('sp_hinh', 255)->nullable();
+            //$table->integer('sp_soluong');
             $table->string('sp_mota', 255);
             // $table->date('sp_ngaytaomoi');
             // $table->date('sp_ngaycapnhat');

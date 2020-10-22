@@ -26,4 +26,16 @@ class SanPham extends Model
     public function kho(){
         return $this->belongsTo('App\kho', 'kho_id', 'kho_id');
     }
+    public function hinhanh(){
+        return $this->hasMany('App\hinhanh', 'sp_id', 'sp_id');
+    }
+    public function chitietphieunhap(){
+        return $this->hasMany('App\chitietphieunhap', 'sp_id', 'sp_id');
+    }
+    public function chitietsanpham(){
+        return $this->hasMany('App\chitietsanpham', 'sp_id', 'sp_id');
+    }
+    public function gia(){
+        return $this->hasMany('App\gia', 'sp_id', 'sp_id');
+    }
 }

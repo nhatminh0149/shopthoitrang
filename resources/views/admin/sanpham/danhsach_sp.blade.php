@@ -260,8 +260,7 @@
                                     <th>Kho</th>
                                     <th>Loại SP</th>
                                     <th>Khuyến mãi</th>
-                                    <th>Hình SP</th>
-                                    <th>Số lượng</th>
+                                    <th>Giá bán</th>
                                     <th>Trạng thái</th>
                                     <th>Hành động</th>
                                 </thead>
@@ -271,17 +270,16 @@
                                     <tr>
                                         <td>{{ $ds_sp->sp_id }}</td>
                                         <td>{{ $ds_sp->sp_ten }}</td>
-                                        <td>{{ $ds_sp->kho->kho_ten }}</td>
-                                        <td style="width: 100px;">{{ $ds_sp->loaisanpham->lsp_ten }}</td>
+                                        <td>{{ $ds_sp->kho_ten }}</td>
+                                        <td style="width: 100px;">{{ $ds_sp->lsp_ten }}</td>
                                         <td class="text-center">
                                             @if (($ds_sp->km_id) == NULL)
                                                 {{ '' }}
                                             @else 
-                                                {{ $ds_sp->khuyenmai->km_giatriphantram }} %
+                                                {{ $ds_sp->km_giatriphantram }} %
                                             @endif
                                         </td>
-                                        <td class="text-center"><img src="{{ asset('storage/photos/' . $ds_sp->sp_hinh) }}" class="img-list" style="width: 70px; height: 100px;" /></td>
-                                        <td class="text-center">{{ $ds_sp->sp_soluong }}</td>
+                                        <td class="text-center">{{ number_format($ds_sp->giaban, 0, ',' , ',') }} đ</td>
                                         <td class="text-center">
                                             @if (($ds_sp->sp_trangthai) == 1)
                                                 <div class="badge badge-info">

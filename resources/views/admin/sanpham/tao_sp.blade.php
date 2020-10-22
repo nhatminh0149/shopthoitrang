@@ -294,6 +294,17 @@
 
                             <div class="row mb-4">
                                 <div class="col">
+                                    Giá bán:<input type="number" class="form-control" id="giaban" name="giaban" value="{{ old('giaban') }}" min="0">
+                                    @if($errors->has("giaban"))
+                                        <div class="a" style="color: red; font-style: italic; font-size: 14px;">
+                                            {{$errors->first("giaban")}}
+                                        </div>                 
+                                    @endif
+                                </div>
+                            </div>
+
+                            <div class="row mb-4">
+                                <div class="col">
                                     Tên sản phẩm:<input type="text" class="form-control" id="sp_ten" name="sp_ten" value="{{ old('sp_ten') }}">
                                     @if($errors->has("sp_ten"))
                                         <div class="a" style="color: red; font-style: italic; font-size: 14px;">
@@ -303,25 +314,7 @@
                                 </div>
                             </div>
 
-                            <!-- <div class="row mb-4">
-                                <div class="col">
-                                    Hình sản phẩm:
-                                    <div class="file-loading"> 
-                                        <input id="sp_hinh" type="file" name="sp_hinh">
-                                    </div>
-                                </div>
-                            </div> -->
-                            <div class="form-group">
-                                <label for="sp_hinh">Hình đại diện</label>
-                                <div class="file-loading"> 
-                                    <input id="sp_hinh" type="file" name="sp_hinh">
-                                </div>
-                                    @if($errors->has("sp_hinh"))
-                                        <div class="a" style="color: red; font-style: italic; font-size: 14px;">
-                                            {{$errors->first("sp_hinh")}}
-                                        </div>                 
-                                    @endif
-                            </div>
+                            
                             
                             
                             <div class="row mb-4">
@@ -336,8 +329,7 @@
                             </div>
 
                             
-                            
-
+   
                             <input type="hidden" class="form-control" id="sp_trangthai" name="sp_trangthai" value="1">
 
                             <button type="submit" class="btn btn-outline-primary">Thêm sản phẩm mới</button>
@@ -359,17 +351,7 @@
     <script src="{{ asset('vendor/bootstrap-fileinput/themes/fas/theme.js') }}" type="text/javascript"></script>
     <script src="{{ asset('vendor/bootstrap-fileinput/themes/explorer-fas/theme.js') }}" type="text/javascript"></script>
     <script>
-        $(document).ready(function() {
-            $("#sp_hinh").fileinput({
-                theme: 'fas',
-                showUpload: false,
-                showCaption: false,
-                browseClass: "btn btn-outline-primary btn-md",
-                fileType: "any",
-                previewFileIcon: "<i class='glyphicon glyphicon-king'></i>",
-                overwriteInitial: false
-            });
-        });
+        
     </script>
 
 @endsection

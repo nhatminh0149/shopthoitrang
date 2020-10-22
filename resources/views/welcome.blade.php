@@ -1,127 +1,130 @@
 <!doctype html>
 <html lang="{{ app()->getLocale() }}">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+    <title>Laravel</title>
 
-        <!-- Styles -->
-        <!-- <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Raleway', sans-serif;
-                font-weight: 100;
-                height: 100vh;
-                margin: 0;
-            }
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
 
-            .full-height {
-                height: 100vh;
-            }
+    <!-- Styles -->
+    <style>
+    html,
+    body {
+        background-color: #fff;
+        color: #636b6f;
+        font-family: 'Raleway', sans-serif;
+        font-weight: 100;
+        height: 100vh;
+        margin: 0;
+    }
 
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
+    .full-height {
+        height: 100vh;
+    }
 
-            .position-ref {
-                position: relative;
-            }
+    .flex-center {
+        align-items: center;
+        display: flex;
+        justify-content: center;
+    }
 
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
+    .position-ref {
+        position: relative;
+    }
 
-            .content {
-                text-align: center;
-            }
+    .top-right {
+        position: absolute;
+        right: 10px;
+        top: 18px;
+    }
 
-            .title {
-                font-size: 84px;
-            }
+    .content {
+        text-align: center;
+    }
 
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 12px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
+    .title {
+        font-size: 84px;
+    }
 
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style> -->
+    .links>a {
+        color: #636b6f;
+        padding: 0 25px;
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: .1rem;
+        text-decoration: none;
+        text-transform: uppercase;
+    }
+
+    .m-b-md {
+        margin-bottom: 30px;
+    }
+    </style>
 
 
-        <!-- Tự thêm -->
-        <meta charset="UTF-8">
-                <meta name="description" content="Ashion Template">
-                <meta name="keywords" content="Ashion, unica, creative, html">
-                <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Tự thêm -->
+    <!-- <meta charset="UTF-8">
+            <meta name="description" content="Ashion Template">
+            <meta name="keywords" content="Ashion, unica, creative, html">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <meta http-equiv="X-UA-Compatible" content="ie=edge"> -->
 
-                <!-- Google Font -->
-                <link href="https://fonts.googleapis.com/css2?family=Cookie&display=swap" rel="stylesheet">
-                <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap"
-                rel="stylesheet">
+    <!-- Google Font -->
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Cookie&display=swap" rel="stylesheet">
+            <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap"
+            rel="stylesheet"> -->
 
-                <!-- Css Styles -->
-                <link rel="stylesheet" href="{{ asset('ashion/css/bootstrap.min.css') }}" type="text/css">
-                <link rel="stylesheet" href="{{ asset('ashion/css/font-awesome.min.css') }}" type="text/css">
-                <link rel="stylesheet" href="{{ asset('ashion/css/elegant-icons.css') }}" type="text/css">
-                <link rel="stylesheet" href="{{ asset('ashion/css/jquery-ui.min.css') }}" type="text/css">
-                <link rel="stylesheet" href="{{ asset('ashion/css/magnific-popup.css') }}" type="text/css">
-                <link rel="stylesheet" href="{{ asset('ashion/css/owl.carousel.min.css') }}" type="text/css">
-                <link rel="stylesheet" href="{{ asset('ashion/css/slicknav.min.css') }}" type="text/css">
-                <link rel="stylesheet" href="{{ asset('ashion/css/style.css') }}" type="text/css">
-            <!-- End Tự thêm -->
-    </head>
-    <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-                        <a href="{{ route('register') }}">Register</a>
-                    @endauth
-                </div>
-            @endif
+    <!-- Css Styles -->
+    <!-- <link rel="stylesheet" href="{{ asset('ashion/css/bootstrap.min.css') }}" type="text/css">
+            <link rel="stylesheet" href="{{ asset('ashion/css/font-awesome.min.css') }}" type="text/css">
+            <link rel="stylesheet" href="{{ asset('ashion/css/elegant-icons.css') }}" type="text/css">
+            <link rel="stylesheet" href="{{ asset('ashion/css/jquery-ui.min.css') }}" type="text/css">
+            <link rel="stylesheet" href="{{ asset('ashion/css/magnific-popup.css') }}" type="text/css">
+            <link rel="stylesheet" href="{{ asset('ashion/css/owl.carousel.min.css') }}" type="text/css">
+            <link rel="stylesheet" href="{{ asset('ashion/css/slicknav.min.css') }}" type="text/css">
+            <link rel="stylesheet" href="{{ asset('ashion/css/style.css') }}" type="text/css"> -->
+    <!-- End Tự thêm -->
+</head>
 
-            <div class="content">
-                <!-- <div class="title m-b-md">
-                    Laravel
-                </div>
+<body>
+    <div class="flex-center position-ref full-height">
+        @if (Route::has('login'))
+        <div class="top-right links">
+            @auth
+            <a href="{{ url('/home') }}">Home</a>
+            @else
+            <a href="{{ route('login') }}">Login</a>
+            <a href="{{ route('register') }}">Register</a>
+            @endauth
+        </div>
+        @endif
 
-                <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>
-            </div> -->
+        <div class="content">
+            <div class="title m-b-md">
+                Laravel
+            </div>
 
-            <!-- Page Preloder -->
-<div id="preloder">
+            <div class="links">
+                <a href="https://laravel.com/docs">Documentation</a>
+                <a href="https://laracasts.com">Laracasts</a>
+                <a href="https://laravel-news.com">News</a>
+                <a href="https://forge.laravel.com">Forge</a>
+                <a href="https://github.com/laravel/laravel">GitHub</a>
+            </div>
+        </div>
+
+        <!-- Page Preloder -->
+        <!-- <div id="preloder">
         <div class="loader"></div>
-    </div>
+    </div>-->
 
-    <!-- Offcanvas Menu Begin -->
-    <div class="offcanvas-menu-overlay"></div>
+        <!-- Offcanvas Menu Begin -->
+        <!-- <div class="offcanvas-menu-overlay"></div>
     <div class="offcanvas-menu-wrapper">
         <div class="offcanvas__close">+</div>
         <ul class="offcanvas__widget">
@@ -141,11 +144,11 @@
             <a href="#">Login</a>
             <a href="#">Register</a>
         </div>
-    </div>
-    <!-- Offcanvas Menu End -->
+    </div>  -->
+        <!-- Offcanvas Menu End -->
 
-    <!-- Header Section Begin -->
-    <header class="header">
+        <!-- Header Section Begin -->
+        <!-- <header class="header">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-xl-3 col-lg-2">
@@ -156,8 +159,14 @@
                 <div class="col-xl-6 col-lg-7">
                     <nav class="header__menu">
                         <ul>
-                            <li class="active"><a href="./index.html">Home</a></li>
-                            <li><a href="#">Women’s</a></li>
+                            <li class="active"><a href="./index.html">TRANG CHỦ</a></li>
+                            <li><a href="#">SẢN PHẨM</a>
+                                <ul class="dropdown">
+                                    <li><a href="./product-details.html">ĐỒ NAM</a></li>
+                                    <li><a href="./shop-cart.html">ĐỒ NỮ</a></li>
+                                    <li><a href="./checkout.html">ĐỒ ĐÔI</a></li>
+                                </ul>
+                            </li>
                             <li><a href="#">Men’s</a></li>
                             <li><a href="./shop.html">Shop</a></li>
                             <li><a href="#">Pages</a>
@@ -195,11 +204,11 @@
                 <i class="fa fa-bars"></i>
             </div>
         </div>
-    </header>
-    <!-- Header Section End -->
+    </header> -->
+        <!-- Header Section End -->
 
-    <!-- Categories Section Begin -->
-    <section class="categories">
+        <!-- Categories Section Begin -->
+        <!-- <section class="categories">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-6 p-0">
@@ -255,11 +264,11 @@
             </div>
         </div>
     </div>
-</section>
-<!-- Categories Section End -->
+</section> -->
+        <!-- Categories Section End -->
 
-<!-- Product Section Begin -->
-<section class="product spad">
+        <!-- Product Section Begin -->
+        <!-- <section class="product spad">
     <div class="container">
         <div class="row">
             <div class="col-lg-4 col-md-4">
@@ -270,9 +279,9 @@
             <div class="col-lg-8 col-md-8">
                 <ul class="filter__controls">
                     <li class="active" data-filter="*">All</li>
-                    <li data-filter=".women">Women’s</li>
-                    <li data-filter=".men">Men’s</li>
-                    <li data-filter=".kid">Kid’s</li>
+                    <li data-filter=".women">Đồ nam</li>
+                    <li data-filter=".men">Đồ nữ</li>
+                    <li data-filter=".kid">Đồ nam</li>
                     <li data-filter=".accessories">Accessories</li>
                     <li data-filter=".cosmetic">Cosmetics</li>
                 </ul>
@@ -461,11 +470,11 @@
             </div>
         </div>
     </div>
-</section>
-<!-- Product Section End -->
+</section> -->
+        <!-- Product Section End -->
 
-<!-- Banner Section Begin -->
-<section class="banner set-bg" data-setbg="{{ asset('ashion/img/banner/banner-1.jpg') }}">
+        <!-- Banner Section Begin -->
+        <!-- <section class="banner set-bg" data-setbg="{{ asset('ashion/img/banner/banner-1.jpg') }}">
     <div class="container">
         <div class="row">
             <div class="col-xl-7 col-lg-8 m-auto">
@@ -495,11 +504,11 @@
             </div>
         </div>
     </div>
-</section>
-<!-- Banner Section End -->
+</section> -->
+        <!-- Banner Section End -->
 
-<!-- Trend Section Begin -->
-<section class="trend spad">
+        <!-- Trend Section Begin -->
+        <!-- <section class="trend spad">
     <div class="container">
         <div class="row">
             <div class="col-lg-4 col-md-4 col-sm-6">
@@ -669,11 +678,11 @@
             </div>
         </div>
     </div>
-</section>
-<!-- Trend Section End -->
+</section> -->
+        <!-- Trend Section End -->
 
-<!-- Discount Section Begin -->
-<section class="discount">
+        <!-- Discount Section Begin -->
+        <!-- <section class="discount">
     <div class="container">
         <div class="row">
             <div class="col-lg-6 p-0">
@@ -711,11 +720,11 @@
             </div>
         </div>
     </div>
-</section>
-<!-- Discount Section End -->
+</section> -->
+        <!-- Discount Section End -->
 
-<!-- Services Section Begin -->
-<section class="services spad">
+        <!-- Services Section Begin -->
+        <!-- <section class="services spad">
     <div class="container">
         <div class="row">
             <div class="col-lg-3 col-md-4 col-sm-6">
@@ -748,11 +757,11 @@
             </div>
         </div>
     </div>
-</section>
-<!-- Services Section End -->
+</section> -->
+        <!-- Services Section End -->
 
-<!-- Instagram Begin -->
-<div class="instagram">
+        <!-- Instagram Begin -->
+        <!-- <div class="instagram">
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-2 col-md-4 col-sm-4 p-0">
@@ -805,11 +814,11 @@
             </div>
         </div>
     </div>
-</div>
-<!-- Instagram End -->
+</div> -->
+        <!-- Instagram End -->
 
-<!-- Footer Section Begin -->
-<footer class="footer">
+        <!-- Footer Section Begin -->
+        <!-- <footer class="footer">
     <div class="container">
         <div class="row">
             <div class="col-lg-4 col-md-6 col-sm-7">
@@ -868,43 +877,44 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-12">
-                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                <div class="footer__copyright__text">
+            <div class="col-lg-12"> -->
+        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+        <!-- <div class="footer__copyright__text">
                     <p>Copyright &copy; <script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a></p>
-                </div>
-                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-            </div>
+                </div> -->
+        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+        <!-- </div>
         </div>
     </div>
-</footer>
-<!-- Footer Section End -->
+</footer> -->
+        <!-- Footer Section End -->
 
-<!-- Search Begin -->
-<div class="search-model">
+        <!-- Search Begin -->
+        <!-- <div class="search-model">
     <div class="h-100 d-flex align-items-center justify-content-center">
         <div class="search-close-switch">+</div>
         <form class="search-model-form">
             <input type="text" id="search-input" placeholder="Search here.....">
         </form>
     </div>
-</div>
-<!-- Search End -->
-        </div>
+</div> -->
+        <!-- Search End -->
+    </div>
 
 
-         <!-- Tự thêm -->
-            <!-- Js Plugins -->
-            <script src="{{ asset('ashion/js/jquery-3.3.1.min.js') }}"></script>
-        <script src="{{ asset('ashion/js/bootstrap.min.js') }}"></script>
-        <script src="{{ asset('ashion/js/jquery.magnific-popup.min.js') }}"></script>
-        <script src="{{ asset('ashion/js/jquery-ui.min.js') }}"></script>
-        <script src="{{ asset('ashion/js/mixitup.min.js') }}"></script>
-        <script src="{{ asset('ashion/js/jquery.countdown.min.js') }}"></script>
-        <script src="{{ asset('ashion/js/jquery.slicknav.js') }}"></script>
-        <script src="{{ asset('ashion/js/owl.carousel.min.js') }}"></script>
-        <script src="{{ asset('ashion/js/jquery.nicescroll.min.js') }}"></script>
-        <script src="{{ asset('ashion/js/main.js') }}"></script>
+    <!-- Tự thêm -->
+    <!-- Js Plugins -->
+    <!-- <script src="{{ asset('ashion/js/jquery-3.3.1.min.js') }}"></script>
+            <script src="{{ asset('ashion/js/bootstrap.min.js') }}"></script>
+            <script src="{{ asset('ashion/js/jquery.magnific-popup.min.js') }}"></script>
+            <script src="{{ asset('ashion/js/jquery-ui.min.js') }}"></script>
+            <script src="{{ asset('ashion/js/mixitup.min.js') }}"></script>
+            <script src="{{ asset('ashion/js/jquery.countdown.min.js') }}"></script>
+            <script src="{{ asset('ashion/js/jquery.slicknav.js') }}"></script>
+            <script src="{{ asset('ashion/js/owl.carousel.min.js') }}"></script>
+            <script src="{{ asset('ashion/js/jquery.nicescroll.min.js') }}"></script>
+            <script src="{{ asset('ashion/js/main.js') }}"></script> -->
     <!-- End Tự thêm -->
-    </body>
+</body>
+
 </html>

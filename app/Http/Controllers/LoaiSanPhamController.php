@@ -88,7 +88,7 @@ class LoaiSanPhamController extends Controller
     public function edit($lsp_id)
     {
         $ds_lsp = loaisanpham::where("lsp_id",  $lsp_id)->first();
-        $ds_danhmuc = danhmuc::all();
+        $ds_danhmuc = danhmuc::where('dm_trangthai','=','1')->get();
     
         return view('admin.loaisanpham.sua_lsp')
             ->with('ds_lsp', $ds_lsp)
