@@ -29,7 +29,7 @@ class GiaTableSeeder extends Seeder
             [
                 'id_gia'      => '3',
                 'ngay'        => '2020-10-18 00:10:05',
-                'giaban'      => '200000',        
+                'giaban'      => '210000',        
                 'sp_id'       => '3',        
             ],
             [

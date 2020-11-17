@@ -25,7 +25,7 @@ class SanPhamTableSeeder extends Seeder
                 // 'sp_ngaycapnhat'    => '2020-10-06',    
                 'sp_trangthai'      => '1',    
                 'lsp_id'            => '1',    
-                'km_id'             => NULL,    
+                'km_id'             => '1',    
                 'kho_id'            => '1',    
             ],
             [
@@ -109,7 +109,7 @@ class SanPhamTableSeeder extends Seeder
                 // 'sp_ngaycapnhat'    => '2020-10-06',    
                 'sp_trangthai'      => '1',    
                 'lsp_id'            => '2',    
-                'km_id'             => NULL,    
+                'km_id'             => '1',    
                 'kho_id'            => '1',    
             ],
             [
@@ -165,7 +165,7 @@ class SanPhamTableSeeder extends Seeder
                 // 'sp_ngaycapnhat'    => '2020-10-06',    
                 'sp_trangthai'      => '1',    
                 'lsp_id'            => '3',    
-                'km_id'             => NULL,    
+                'km_id'             => '2',    
                 'kho_id'            => '1',    
             ],
             [
@@ -207,7 +207,7 @@ class SanPhamTableSeeder extends Seeder
                 // 'sp_ngaycapnhat'    => '2020-10-06',    
                 'sp_trangthai'      => '1',    
                 'lsp_id'            => '4',    
-                'km_id'             => NULL,    
+                'km_id'             => '2',    
                 'kho_id'            => '1',    
             ],
             [
@@ -558,7 +558,7 @@ class SanPhamTableSeeder extends Seeder
                 // 'sp_ngaycapnhat'    => '2020-10-06',    
                 'sp_trangthai'      => '1',    
                 'lsp_id'            => '10',    
-                'km_id'             => NULL,    
+                'km_id'             => '1',    
                 'kho_id'            => '3',    
             ],
             [

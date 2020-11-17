@@ -4,40 +4,35 @@
             <div class="row">
                 <div class="col-xl-3 col-lg-2">
                     <div class="header__logo">
-                        <a href="./index.html"><img src="{{ asset('ashion/img/logo.png') }}" alt=""></a>
+                        <a href="{{ route('frontend.home') }}"><img src="{{ asset('ashion/img/logo.png') }}" alt="" ></a>
                     </div>
                 </div>
                 <div class="col-xl-6 col-lg-7">
                     <nav class="header__menu">
                         <ul>
-                            <li class="active"><a href="./index.html">TRANG CHỦ</a></li>
-                            <li><a href="#">SẢN PHẨM</a>
+                            <li class="{{ Request::is('/') ? 'active' : '' }}"><a href="{{ route('frontend.home') }}">TRANG CHỦ</a></li>
+                            <li class="{{ Request::is('sanpham') ? 'active' : '' }}"><a href="{{ route('frontend.sanpham') }}">SẢN PHẨM</a>
                                 <ul class="dropdown">
-                                    <li><a href="./product-details.html">ĐỒ NAM</a></li>
-                                    <li><a href="./shop-cart.html">ĐỒ NỮ</a></li>
-                                    <li><a href="./checkout.html">ĐỒ ĐÔI</a></li>
+                                    <li><a href="{{ route('frontend.donam') }}">ĐỒ NAM</a></li>
+                                    <li><a href="{{ route('frontend.donu') }}">ĐỒ NỮ</a></li>
+                                    <li><a href="{{ route('frontend.dodoi') }}">ĐỒ ĐÔI</a></li>
                                 </ul>
                             </li>
-                            <li><a href="#">Men’s</a></li>
-                            <li><a href="./shop.html">Shop</a></li>
-                            <li><a href="#">Pages</a>
-                                <ul class="dropdown">
-                                    <li><a href="./product-details.html">Product Details</a></li>
-                                    <li><a href="./shop-cart.html">Shop Cart</a></li>
-                                    <li><a href="./checkout.html">Checkout</a></li>
-                                    <li><a href="./blog-details.html">Blog Details</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="./blog.html">Blog</a></li>
-                            <li><a href="./contact.html">Contact</a></li>
+                            <li><a href="./contact.html">GIỚI THIỆU</a></li>
+                            <li class="{{ Request::is('lienhe') ? 'active' : '' }}"><a href="{{ route('frontend.lienhe') }}">LIÊN HỆ</a></li>
                         </ul>
                     </nav>
                 </div>
                 <div class="col-lg-3">
                     <div class="header__right">
-                        <div class="header__right__auth">
-                            <a href="#">Login</a>
-                            <a href="#">Register</a>
+                        <div class="header__right__auth" style="margin-left: -60px;">
+                            @if(Session::has('kh_email'))
+                                <a href="">{{ Session::get('kh_hoten') }}</a>
+                                <a href="{{ route('frontend.dangxuat') }}">Đăng xuất</a>
+                            @else
+                                <a href="{{ route('frontend.dangnhap') }}">Đăng nhập</a>
+                                <a href="{{ route('frontend.dangky') }}">Đăng ký</a>
+                            @endif
                         </div>
                         <ul class="header__right__widget">
                             <li><span class="icon_search search-switch"></span></li>
@@ -45,8 +40,8 @@
                                     <div class="tip">2</div>
                                 </a>
                             </li>
-                            <li><a href="#"><span class="icon_bag_alt"></span>
-                                    <div class="tip">2</div>
+                            <li><a href="{{ route('frontend.giohang') }}"><span class="icon_cart_alt"></span>
+                                    <div class="tip">{{ Cart::count() }}</div>
                                 </a>
                             </li>
                         </ul>

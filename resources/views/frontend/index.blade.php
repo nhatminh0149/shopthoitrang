@@ -14,15 +14,15 @@ A S H I O N
 @section('content')
 <!-- Categories Section Begin -->
 <section class="categories">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-6 p-0">
-                    <div class="categories__item categories__large__item set-bg"
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-6 p-0">
+                <div class="categories__item categories__large__item set-bg"
                     data-setbg="{{ asset('ashion/img/categories/category-1.jpg') }}">
                     <div class="categories__text">
                         <h1>Women’s fashion</h1>
                         <p>Sitamet, consectetur adipiscing elit, sed do eiusmod tempor incidid-unt labore
-                        edolore magna aliquapendisse ultrices gravida.</p>
+                            edolore magna aliquapendisse ultrices gravida.</p>
                         <a href="#">Shop now</a>
                     </div>
                 </div>
@@ -30,7 +30,8 @@ A S H I O N
             <div class="col-lg-6">
                 <div class="row">
                     <div class="col-lg-6 col-md-6 col-sm-6 p-0">
-                        <div class="categories__item set-bg" data-setbg="{{ asset('ashion/img/categories/category-2.jpg') }}">
+                        <div class="categories__item set-bg"
+                            data-setbg="{{ asset('ashion/img/categories/category-2.jpg') }}">
                             <div class="categories__text">
                                 <h4>Men’s fashion</h4>
                                 <p>358 items</p>
@@ -39,7 +40,8 @@ A S H I O N
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-6 p-0">
-                        <div class="categories__item set-bg" data-setbg="{{ asset('ashion/img/categories/category-3.jpg') }}">
+                        <div class="categories__item set-bg"
+                            data-setbg="{{ asset('ashion/img/categories/category-3.jpg') }}">
                             <div class="categories__text">
                                 <h4>Kid’s fashion</h4>
                                 <p>273 items</p>
@@ -48,7 +50,8 @@ A S H I O N
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-6 p-0">
-                        <div class="categories__item set-bg" data-setbg="{{ asset('ashion/img/categories/category-4.jpg') }}">
+                        <div class="categories__item set-bg"
+                            data-setbg="{{ asset('ashion/img/categories/category-4.jpg') }}">
                             <div class="categories__text">
                                 <h4>Cosmetics</h4>
                                 <p>159 items</p>
@@ -57,7 +60,8 @@ A S H I O N
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-6 p-0">
-                        <div class="categories__item set-bg" data-setbg="{{ asset('ashion/img/categories/category-5.jpg') }}">
+                        <div class="categories__item set-bg"
+                            data-setbg="{{ asset('ashion/img/categories/category-5.jpg') }}">
                             <div class="categories__text">
                                 <h4>Accessories</h4>
                                 <p>792 items</p>
@@ -78,7 +82,7 @@ A S H I O N
         <div class="row">
             <div class="col-lg-4 col-md-4">
                 <div class="section-title">
-                    <h4>New product</h4>
+                    <h4>Sản phẩm bán chạy</h4>
                 </div>
             </div>
             <div class="col-lg-8 col-md-8">
@@ -90,86 +94,171 @@ A S H I O N
                 </ul>
             </div>
         </div>
+
         <div class="row property__gallery">
 
             @foreach($loc_hinh1 as $loc_hinh1)
             <div class="col-lg-3 col-md-4 col-sm-6 mix women">
-                <div class="product__item">
-                   
-                    <div class="product__item__pic set-bg" data-setbg="{{ asset('storage/photos/' . $loc_hinh1->ha_ten) }}">
+                @if($loc_hinh1->km_giatriphantram == 0)
+                <div class="product__item" style="border: solid 1px whitesmoke;">
+                    <div class="product__item__pic set-bg"
+                        data-setbg="{{ asset('storage/photos/' . $loc_hinh1->ha_ten) }}">
                         <ul class="product__hover">
-                            <li><a href="{{ asset('storage/photos/' . $loc_hinh1->ha_ten) }}" class="image-popup"><span class="arrow_expand"></span></a></li>
+                            <li><a href="{{ asset('storage/photos/' . $loc_hinh1->ha_ten) }}" class="image-popup"><span
+                                        class="arrow_expand"></span></a></li>
                             <li><a href="#"><span class="icon_heart_alt"></span></a></li>
-                            <li><a href="#"><span class="icon_bag_alt"></span></a></li>
+                            <li><a href="{{ route('frontend.sanpham.xemchitiet', ['sp_id' => $loc_hinh1->sp_id]) }}"><span class="icon_search"></span></a></li>
                         </ul>
                     </div>
                     <div class="product__item__text">
                         <h6><a href="#">{{ $loc_hinh1->sp_ten }}</a></h6>
-                        <div class="rating">
+                        <!-- <div class="rating">
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
-                        </div>
-                        <div class="product__price">{{ number_format($loc_hinh1->giaban, 0, ',' , ',') }} đ</div>
+                        </div> -->
+                        <div class="product__price mt-1">{{ number_format($loc_hinh1->giaban, 0, ',' , ',') }} đ</div>
                     </div>
-                   
                 </div>
+                @else
+                <div class="product__item sale" style="border: solid 1px whitesmoke;">
+                    <div class="product__item__pic set-bg"
+                        data-setbg="{{ asset('storage/photos/' . $loc_hinh1->ha_ten) }}">
+                        <div class="label">Sale</div>
+                        <ul class="product__hover">
+                            <li><a href="{{ asset('storage/photos/' . $loc_hinh1->ha_ten) }}" class="image-popup"><span
+                                        class="arrow_expand"></span></a></li>
+                            <li><a href="#"><span class="icon_heart_alt"></span></a></li>
+                            <li><a href="{{ route('frontend.sanpham.xemchitiet', ['sp_id' => $loc_hinh1->sp_id]) }}"><span class="icon_search"></span></a></li>
+                        </ul>
+                    </div>
+                    <div class="product__item__text">
+                        <h6><a href="#">{{ $loc_hinh1->sp_ten }}</a></h6>
+                        <!-- <div class="rating">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                        </div> -->
+                        <div class="product__price mt-1">{{ number_format($loc_hinh1->giaban - ($loc_hinh1->giaban * $loc_hinh1->km_giatriphantram/100),0, ',' , ',') }} đ&nbsp;<span>{{ number_format($loc_hinh1->giaban, 0, ',' , ',') }} đ</span></div>
+                    </div>
+                </div>
+                @endif
             </div>
             @endforeach
 
             @foreach($loc_hinh as $loc_hinh)
             <div class="col-lg-3 col-md-4 col-sm-6 mix men">
-                <div class="product__item">
-                   
-                    <div class="product__item__pic set-bg" data-setbg="{{ asset('storage/photos/' . $loc_hinh->ha_ten) }}">
+                @if($loc_hinh->km_giatriphantram == 0)
+                <div class="product__item" style="border: solid 1px whitesmoke;">
+                    <div class="product__item__pic set-bg"
+                        data-setbg="{{ asset('storage/photos/' . $loc_hinh->ha_ten) }}">
                         <ul class="product__hover">
-                            <li><a href="{{ asset('storage/photos/' . $loc_hinh->ha_ten) }}" class="image-popup"><span class="arrow_expand"></span></a></li>
+                            <li><a href="{{ asset('storage/photos/' . $loc_hinh->ha_ten) }}" class="image-popup"><span
+                                        class="arrow_expand"></span></a></li>
                             <li><a href="#"><span class="icon_heart_alt"></span></a></li>
-                            <li><a href="#"><span class="icon_bag_alt"></span></a></li>
+                            <li><a href="{{ route('frontend.sanpham.xemchitiet', ['sp_id' => $loc_hinh->sp_id]) }}"><span class="icon_search"></span></a></li>
                         </ul>
                     </div>
                     <div class="product__item__text">
                         <h6><a href="#">{{ $loc_hinh->sp_ten }}</a></h6>
-                        <div class="rating">
+                        <!-- <div class="rating">
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
-                        </div>
-                        <div class="product__price">{{ number_format($loc_hinh->giaban, 0, ',' , ',') }} đ</div>
+                        </div> -->
+                        <div class="product__price mt-1">{{ number_format($loc_hinh->giaban, 0, ',' , ',') }} đ</div>
                     </div>
-                   
                 </div>
+                @else
+                <div class="product__item sale" style="border: solid 1px whitesmoke;">
+                    <div class="product__item__pic set-bg"
+                        data-setbg="{{ asset('storage/photos/' . $loc_hinh->ha_ten) }}">
+                        <div class="label">Sale</div>
+                        <ul class="product__hover">
+                            <li><a href="{{ asset('storage/photos/' . $loc_hinh->ha_ten) }}" class="image-popup"><span
+                                        class="arrow_expand"></span></a></li>
+                            <li><a href="#"><span class="icon_heart_alt"></span></a></li>
+                            <li><a href="{{ route('frontend.sanpham.xemchitiet', ['sp_id' => $loc_hinh->sp_id]) }}"><span class="icon_search"></span></a></li>
+                        </ul>
+                    </div>
+                    <div class="product__item__text">
+                        <h6><a href="#">{{ $loc_hinh->sp_ten }}</a></h6>
+                        <!-- <div class="rating">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                        </div> -->
+                        <div class="product__price mt-1">{{ number_format($loc_hinh->giaban - ($loc_hinh->giaban * $loc_hinh->km_giatriphantram/100),0, ',' , ',') }} đ&nbsp;<span>{{ number_format($loc_hinh->giaban, 0, ',' , ',') }} đ</span></div>
+                    </div>
+                </div>
+                @endif
             </div>
             @endforeach
 
             @foreach($loc_hinh2 as $loc_hinh2)
             <div class="col-lg-3 col-md-4 col-sm-6 mix couple">
-                <div class="product__item">
-                   
-                    <div class="product__item__pic set-bg" data-setbg="{{ asset('storage/photos/' . $loc_hinh2->ha_ten) }}">
+                @if($loc_hinh2->km_giatriphantram == 0) 
+                <div class="product__item" style="border: solid 1px whitesmoke;">
+                    <div class="product__item__pic set-bg"
+                        data-setbg="{{ asset('storage/photos/' . $loc_hinh2->ha_ten) }}">
                         <ul class="product__hover">
-                            <li><a href="{{ asset('storage/photos/' . $loc_hinh->ha_ten) }}" class="image-popup"><span class="arrow_expand"></span></a></li>
+                            <li>
+                                <a href="{{ asset('storage/photos/' . $loc_hinh->ha_ten) }}" class="image-popup">
+                                    <span class="arrow_expand"></span>
+                                </a>
+                            </li>
                             <li><a href="#"><span class="icon_heart_alt"></span></a></li>
-                            <li><a href="#"><span class="icon_bag_alt"></span></a></li>
+                            <li><a href="{{ route('frontend.sanpham.xemchitiet', ['sp_id' => $loc_hinh2->sp_id]) }}"><span class="icon_search"></span></a></li>
                         </ul>
                     </div>
                     <div class="product__item__text">
                         <h6><a href="#">{{ $loc_hinh2->sp_ten }}</a></h6>
-                        <div class="rating">
+                        <!-- <div class="rating">
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
-                        </div>
-                        <div class="product__price">{{ number_format($loc_hinh2->giaban, 0, ',' , ',') }} đ</div>
+                        </div> -->
+                        <div class="product__price mt-1">{{ number_format($loc_hinh2->giaban, 0, ',' , ',') }} đ</div>
                     </div>
-                   
                 </div>
+                @else
+                <div class="product__item sale" style="border: solid 1px whitesmoke;">
+                    <div class="product__item__pic set-bg"
+                        data-setbg="{{ asset('storage/photos/' . $loc_hinh2->ha_ten) }}">
+                        <div class="label">Sale</div>
+                        <ul class="product__hover">
+                            <li>
+                                <a href="{{ asset('storage/photos/' . $loc_hinh->ha_ten) }}" class="image-popup">
+                                    <span class="arrow_expand"></span>
+                                </a>
+                            </li>
+                            <li><a href="#"><span class="icon_heart_alt"></span></a></li>
+                            <li><a href="{{ route('frontend.sanpham.xemchitiet', ['sp_id' => $loc_hinh2->sp_id]) }}"><span class="icon_search"></span></a></li>
+                        </ul>
+                    </div>
+                    <div class="product__item__text">
+                        <h6><a href="#">{{ $loc_hinh2->sp_ten }}</a></h6>
+                        <!-- <div class="rating">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                        </div> -->
+                        <div class="product__price mt-1">{{ number_format($loc_hinh2->giaban - ($loc_hinh2->giaban * $loc_hinh2->km_giatriphantram/100),0, ',' , ',') }} đ&nbsp;<span>{{ number_format($loc_hinh2->giaban, 0, ',' , ',') }} đ</span></div>
+                    </div>
+                </div>
+                @endif
             </div>
             @endforeach
         </div>
@@ -464,62 +553,6 @@ A S H I O N
 </section>
 <!-- Services Section End -->
 
-<!-- Instagram Begin -->
-<div class="instagram">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-lg-2 col-md-4 col-sm-4 p-0">
-                <div class="instagram__item set-bg" data-setbg="{{ asset('ashion/img/instagram/insta-1.jpg') }}">
-                    <div class="instagram__text">
-                        <i class="fa fa-instagram"></i>
-                        <a href="#">@ ashion_shop</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-2 col-md-4 col-sm-4 p-0">
-                <div class="instagram__item set-bg" data-setbg="{{ asset('ashion/img/instagram/insta-2.jpg') }}">
-                    <div class="instagram__text">
-                        <i class="fa fa-instagram"></i>
-                        <a href="#">@ ashion_shop</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-2 col-md-4 col-sm-4 p-0">
-                <div class="instagram__item set-bg" data-setbg="{{ asset('ashion/img/instagram/insta-3.jpg') }}">
-                    <div class="instagram__text">
-                        <i class="fa fa-instagram"></i>
-                        <a href="#">@ ashion_shop</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-2 col-md-4 col-sm-4 p-0">
-                <div class="instagram__item set-bg" data-setbg="{{ asset('ashion/img/instagram/insta-4.jpg') }}">
-                    <div class="instagram__text">
-                        <i class="fa fa-instagram"></i>
-                        <a href="#">@ ashion_shop</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-2 col-md-4 col-sm-4 p-0">
-                <div class="instagram__item set-bg" data-setbg="{{ asset('ashion/img/instagram/insta-5.jpg') }}">
-                    <div class="instagram__text">
-                        <i class="fa fa-instagram"></i>
-                        <a href="#">@ ashion_shop</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-2 col-md-4 col-sm-4 p-0">
-                <div class="instagram__item set-bg" data-setbg="{{ asset('ashion/img/instagram/insta-6.jpg') }}">
-                    <div class="instagram__text">
-                        <i class="fa fa-instagram"></i>
-                        <a href="#">@ ashion_shop</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Instagram End -->
 @endsection
 
 {{-- Thay thế nội dung vào Placeholder `custom-scripts` của view `frontend.layouts.master` --}}

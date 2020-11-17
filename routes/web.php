@@ -39,7 +39,7 @@ Route::prefix('admin')->group(function()
 	// Route::post('/users/{user}', 'AdminController@update')->name('admin.user.update');
 	Route::get('/users_create', 'AdminController@create')->name('admin.user.create');
 	Route::post('/users_store', 'AdminController@store')->name('admin.user.store');
-	Route::post('/users/{id}', 'AdminController@update')->name('admin.user.update');
+	Route::post('/users/{id_users}', 'AdminController@update')->name('admin.user.update');
 	Route::get('/users_delete/{id}', 'AdminController@destroy')->name('admin.user.destroy');
 
 	//QUẢN LÝ KHO
@@ -105,12 +105,12 @@ Route::prefix('admin')->group(function()
 	Route::get('/httt_delete/{httt_id}', 'HinhThucThanhToanController@destroy')->name('admin.httt.destroy');
 
 	//QUẢN LÝ KHÁCH HÀNG
-	// Route::get('/kh', 'KhachHangController@index')->name('admin.kh');
-	// Route::get('/kh_create', 'KhachHangController@create')->name('admin.kh.create');
-	// Route::post('/kh_store', 'KhachHangController@store')->name('admin.kh.store');
-	// Route::get('/kh_edit{kh_id}', 'KhachHangController@edit')->name('admin.kh.edit');
-	// Route::post('/kh_update/{kh_id}', 'KhachHangController@update')->name('admin.kh.update');
-	// Route::get('/kh_delete/{kh_id}', 'KhachHangController@destroy')->name('admin.kh.destroy');
+	Route::get('/kh', 'KhachHangController@index')->name('admin.kh');
+	Route::get('/kh_create', 'KhachHangController@create')->name('admin.kh.create');
+	Route::post('/kh_store', 'KhachHangController@store')->name('admin.kh.store');
+	Route::get('/kh_edit{kh_id}', 'KhachHangController@edit')->name('admin.kh.edit');
+	Route::post('/kh_update/{kh_id}', 'KhachHangController@update')->name('admin.kh.update');
+	Route::get('/kh_delete/{kh_id}', 'KhachHangController@destroy')->name('admin.kh.destroy');
 
 	//QUẢN LÝ KHUYẾN MÃI
 	Route::get('/km', 'KhuyenMaiController@index')->name('admin.km');
@@ -150,9 +150,65 @@ Route::prefix('admin')->group(function()
 	Route::get('/ctsp', 'ChiTietSanPhamController@index')->name('admin.ctsp');
 	Route::get('/ctsp_create', 'ChiTietSanPhamController@create')->name('admin.ctsp.create');
 	Route::post('/ctsp_store', 'ChiTietSanPhamController@store')->name('admin.ctsp.store');
-	
+
+	//QUẢN LÝ ĐƠN ĐẶT HÀNG
+	Route::get('/ddh', 'DonDatHangController@index')->name('admin.ddh');
+	Route::get('/chitietdonhang/{ddh_id}','DonDatHangController@chitietdonhang')->name('admin.ddh.chitiet');
+	Route::get('/ddh_active/{ddh_id}', 'DonDatHangController@active')->name('admin.ddh.active');
+
 });
 
-//Thực hiện tạo giao diện trang chủ Frontend
-Route::get('/', 'FrontendController@index')->name('frontend.home');
+//FRONTEND
 
+	//Trang chủ
+	Route::get('/', 'FrontendController@index')->name('frontend.home');
+
+	//Trang sản phẩm
+	Route::get('/sanpham', 'FrontendController@sanpham')->name('frontend.sanpham');
+
+	//Trang chi tiết sản phẩm
+	Route::get('/sanpham{sp_id}', 'FrontendController@chitietsanpham')->name('frontend.sanpham.xemchitiet');
+		
+		//đồ nam
+		Route::get('/donam', 'FrontendController@sanpham_donam')->name('frontend.donam');
+		Route::get('/aothunnam', 'FrontendController@sanpham_donam_aothunnam')->name('frontend.aothunnam');
+		Route::get('/aosominam', 'FrontendController@sanpham_donam_aosominam')->name('frontend.aosominam');
+		Route::get('/quanjeannam', 'FrontendController@sanpham_donam_quanjeannam')->name('frontend.quanjeannam');
+		Route::get('/quankakinam', 'FrontendController@sanpham_donam_quankakinam')->name('frontend.quankakinam');
+
+		//đồ nữ
+		Route::get('/donu', 'FrontendController@sanpham_donu')->name('frontend.donu');
+		Route::get('/aothunnu', 'FrontendController@sanpham_donu_aothunnu')->name('frontend.aothunnu');
+		Route::get('/aosominu', 'FrontendController@sanpham_donu_aosominu')->name('frontend.aosominu');
+		Route::get('/quanshortnu', 'FrontendController@sanpham_donu_quanshortnu')->name('frontend.quanshortnu');
+		Route::get('/quanjeannu', 'FrontendController@sanpham_donu_quanjeannu')->name('frontend.quanjeannu');
+
+		//đồ đôi
+		Route::get('/dodoi', 'FrontendController@sanpham_dodoi')->name('frontend.dodoi');
+		Route::get('/aothundoi', 'FrontendController@sanpham_dodoi_aothundoi')->name('frontend.aothundoi');
+		Route::get('/aokhoacdoi', 'FrontendController@sanpham_dodoi_aokhoacdoi')->name('frontend.aokhoacdoi');
+
+	//Trang liên hệ
+	Route::get('/lienhe', 'FrontendController@lienhe')->name('frontend.lienhe');
+
+	//Trang giỏ hàng
+	Route::post('/themvaogiohang','FrontendController@themvaogiohang')->name('frontend.themvaogiohang');
+	Route::get('/giohang','FrontendController@giohang')->name('frontend.giohang');
+	Route::get('/xoasptronggiohang/{rowId}','FrontendController@xoasptronggiohang')->name('frontend.xoasptronggiohang');
+	Route::post('/capnhatsoluongsptronggiohang','FrontendController@capnhatsoluongsptronggiohang')->name('frontend.capnhatsoluongsptronggiohang');
+	Route::get('/thutucthanhtoan','FrontendController@thutucthanhtoan')->name('frontend.thutucthanhtoan');
+	Route::post('/chonthanhpho','FrontendController@chonthanhpho');
+	Route::post('/tinhphivanchuyen','FrontendController@tinhphivanchuyen');
+	Route::post('/dathang','FrontendController@dathang');
+	Route::get('/dathang_thanhcong','FrontendController@dathang_thanhcong');
+	
+	//Khách hàng đăng nhập tài khoản
+	Route::get('/dangnhap', 'FrontendController@getDangnhap')->name('frontend.dangnhap');
+	Route::post('/dangnhap', 'FrontendController@postDangnhap')->name('frontend.dangnhap');
+
+	//Khách hàng đăng ký tài khoản
+	Route::get('/dangky', 'FrontendController@getDangky')->name('frontend.dangky');
+	Route::post('/dangky', 'FrontendController@postDangky')->name('frontend.dangky');
+
+	//Thực hiện Đăng xuất
+	Route::get('/dangxuat', 'FrontendController@postDangxuat')->name('frontend.dangxuat');

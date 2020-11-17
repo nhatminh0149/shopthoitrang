@@ -169,15 +169,15 @@
                                     </a>
                                 </li>
 
-                                <li class="nav-item {{ Request::is('admin/users*') ? 'active' : '' }}">
-                                    <a class="nav-link" href="{{ route('admin.users') }}">
+                                <li class="nav-item {{ Request::is('admin/kh*') ? 'active' : '' }}">
+                                    <a class="nav-link" href="{{ route('admin.kh') }}">
                                         <i class="material-icons">person_add_alt_1</i>
                                         <p>Quản lý khách hàng</p>
                                     </a>
                                 </li>
 
-                                <li class="nav-item ">
-                                    <a class="nav-link" href="{{ route('admin.kho') }}">
+                                <li class="nav-item {{ Request::is('admin/ddh*') ? 'active' : '' }}">
+                                    <a class="nav-link" href="{{ route('admin.ddh') }}">
                                         <i class="material-icons">phone_in_talk</i>
                                         <p>Quản lý đơn đặt hàng</p>
                                     </a>
@@ -319,8 +319,8 @@
                                     </a>
                                 </li>
 
-                                <li class="nav-item ">
-                                    <a class="nav-link" href="{{ route('admin.kho') }}">
+                                <li class="nav-item {{ Request::is('admin/ddh*') ? 'active' : '' }}">
+                                    <a class="nav-link" href="{{ route('admin.ddh') }}">
                                         <i class="material-icons">phone_in_talk</i>
                                         <p>Quản lý đơn đặt hàng</p>
                                     </a>

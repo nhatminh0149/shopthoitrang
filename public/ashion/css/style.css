@@ -168,10 +168,32 @@ ol {
 	background: #ca1515;
 }
 
+.primary-btn:hover{
+	display: inline-block;
+	font-size: 14px;
+	text-transform: uppercase;
+	font-weight: 600;
+	padding: 12px 30px 10px;
+	color: #ffffff;
+	background: #0a0a0a;
+}
+
 .site-btn {
 	font-size: 14px;
 	color: #ffffff;
 	background: #ca1515;
+	font-weight: 600;
+	border: none;
+	text-transform: uppercase;
+	display: inline-block;
+	padding: 12px 30px;
+	border-radius: 50px;
+}
+
+.site-btn:hover {
+	font-size: 14px;
+	color: #ffffff;
+	background: #0a0a0a;
 	font-weight: 600;
 	border: none;
 	text-transform: uppercase;
@@ -1760,8 +1782,8 @@ ol {
 }
 
 .pro-qty .qtybtn {
-	font-size: 14px;
-	color: #666666;
+	font-size: 18px;
+	color: #0c0c0c;
 	cursor: pointer;
 	float: left;
 	width: 12px;
@@ -1770,7 +1792,8 @@ ol {
 
 .pro-qty input {
 	font-size: 14px;
-	color: #666666;
+	/* color: #666666; */
+	color: #0a0a0a;
 	font-weight: 500;
 	border: none;
 	float: left;
@@ -1792,6 +1815,21 @@ ol {
 	font-weight: 600;
 	text-transform: uppercase;
 	padding: 14px 30px 15px;
+
+	border-radius: 50px;
+	float: left;
+	margin-right: 10px;
+	margin-bottom: 10px;
+}
+.product__details__button .cart-btn:hover {
+	display: inline-block;
+	font-size: 14px;
+	color: #ffffff;
+	background: #080808;
+	font-weight: 600;
+	text-transform: uppercase;
+	padding: 14px 30px 15px;
+
 	border-radius: 50px;
 	float: left;
 	margin-right: 10px;
@@ -1942,6 +1980,16 @@ ol {
 
 .product__details__widget ul li .color__checkbox label .checkmark.black-bg {
 	background: #111111;
+}
+.product__details__widget ul li .color__checkbox label .checkmark.white-bg {
+	background: #f5f1f1;
+	border: solid 1px #000;
+}
+.product__details__widget ul li .color__checkbox label .checkmark.yellow-bg {
+	background: #fdf916;
+}
+.product__details__widget ul li .color__checkbox label .checkmark.blue-bg {
+	background: #4f44ec;
 }
 
 .product__details__widget ul li .color__checkbox label .checkmark.grey-bg {

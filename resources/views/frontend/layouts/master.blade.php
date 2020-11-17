@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
     <title>@yield('title')</title>
 
     <meta charset="UTF-8">
@@ -25,6 +25,8 @@
     <link rel="stylesheet" href="{{ asset('ashion/css/owl.carousel.min.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('ashion/css/slicknav.min.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('ashion/css/style.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('ashion/css/sweetalert.css') }}" type="text/css">
+    @yield('custom-css')
 </head>
 <body>
     <!-- Header -->
@@ -47,6 +49,7 @@
     <script src="{{ asset('ashion/js/owl.carousel.min.js') }}"></script>
     <script src="{{ asset('ashion/js/jquery.nicescroll.min.js') }}"></script>
     <script src="{{ asset('ashion/js/main.js') }}"></script>
+    <script src="{{ asset('ashion/js/sweetalert.min.js') }}"></script>
 
     <!-- Các custom script dành riêng cho từng view -->
     @yield('custom-scripts')

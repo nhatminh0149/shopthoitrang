@@ -426,35 +426,35 @@ class HinhAnhTableSeeder extends Seeder
             [
                 'ha_id'       => '83',
                 'sp_id'       => '41',
-                'ha_ten'      => 'khoacdoiC3_den.jpg'
+                'ha_ten'      => 'khoacdoiC3_trang.jpg'
             ],
+            // [
+            //     'ha_id'       => '84',
+            //     'sp_id'       => '41',
+            //     'ha_ten'      => 'khoacdoiC3_vang.jpg'
+            // ],
             [
                 'ha_id'       => '84',
-                'sp_id'       => '41',
-                'ha_ten'      => 'khoacdoiC3_vang.jpg'
-            ],
-            [
-                'ha_id'       => '85',
                 'sp_id'       => '41',
                 'ha_ten'      => 'khoacdoiC3_xanh.jpg'
             ],
             [
-                'ha_id'       => '86',
+                'ha_id'       => '85',
                 'sp_id'       => '42',
                 'ha_ten'      => 'khoacdoiC4_vang.jpg'
             ],
             [
-                'ha_id'       => '87',
+                'ha_id'       => '86',
                 'sp_id'       => '42',
-                'ha_ten'      => 'khoacdoiC4_xanh.jpg'
+                'ha_ten'      => 'khoacdoiC4_den.jpg'
             ],
             [
-                'ha_id'       => '88',
+                'ha_id'       => '87',
                 'sp_id'       => '43',
                 'ha_ten'      => 'khoacdoiC5_vang.jpg'
             ],
             [
-                'ha_id'       => '89',
+                'ha_id'       => '88',
                 'sp_id'       => '43',
                 'ha_ten'      => 'khoacdoiC5_xanh.jpg'
             ],

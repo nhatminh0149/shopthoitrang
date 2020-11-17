@@ -33,6 +33,11 @@ class DatabaseSeeder extends Seeder
         	ChiTietPhieuNhapTableSeeder::class,
         	GiaTableSeeder::class,
         	ChiTietSanPhamTableSeeder::class,
+        	TinhThanhPhoTableSeeder::class,
+        	QuanHuyenTableSeeder::class,
+        	PhuongXaTableSeeder::class,
+        	DonDatHangTableSeeder::class,
+        	ChiTietDonHangTableSeeder::class,
         ]);
 
     }

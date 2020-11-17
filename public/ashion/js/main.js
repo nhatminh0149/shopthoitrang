@@ -228,8 +228,30 @@ Created: Colorib
 		Radio Btn
 	--------------------- */
     $(".size__btn label").on('click', function () {
+        
         $(".size__btn label").removeClass('active');
         $(this).addClass('active');
+
+        var id_size = $(this).attr('id'); 
+        $("#"+id_size+"-size").prop("checked", true);
+    });
+
+    $(".color__checkbox label").on('click', function () {
+        
+        // $(".color__checkbox label").removeClass('active');
+        // $(this).addClass('active');
+        
+        var id = $(this).attr('id'); 
+        $("#"+id+"-mau").prop("checked", true);
+        
+        //var id_ha = "#ha"+id+"-mau";
+
+        $('.pt').removeClass('active');
+        $("#ha"+id+"-mau").addClass('active');
+        $("#ha"+id+"-mau").click();
+
+        // $('.owl-item').removeClass('active');
+        // $('')
     });
 
 })(jQuery);
