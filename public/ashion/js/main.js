@@ -246,7 +246,7 @@ Created: Colorib
         
         //var id_ha = "#ha"+id+"-mau";
 
-        $('.pt').removeClass('active');
+        $('.product-image-thumb').removeClass('active');
         $("#ha"+id+"-mau").addClass('active');
         $("#ha"+id+"-mau").click();
 

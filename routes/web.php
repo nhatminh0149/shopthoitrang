@@ -188,6 +188,12 @@ Route::prefix('admin')->group(function()
 		Route::get('/aothundoi', 'FrontendController@sanpham_dodoi_aothundoi')->name('frontend.aothundoi');
 		Route::get('/aokhoacdoi', 'FrontendController@sanpham_dodoi_aokhoacdoi')->name('frontend.aokhoacdoi');
 
+	//Lọc giá
+	Route::get('/duoi250', 'FrontendController@duoi250')->name('frontend.duoi250');
+	Route::get('/g2535', 'FrontendController@g2535')->name('frontend.g2535');
+	Route::get('/g3550', 'FrontendController@g3550')->name('frontend.g3550');
+	Route::get('/tren500', 'FrontendController@tren500')->name('frontend.tren500');
+
 	//Trang liên hệ
 	Route::get('/lienhe', 'FrontendController@lienhe')->name('frontend.lienhe');
 

@@ -92,16 +92,16 @@ A S H I O N
                         <a href="{{ route('frontend.duoi250') }}" style="color: black;">- Dưới 250,000 đ</a><br>
                         <a href="{{ route('frontend.g2535') }}" style="color: black;">- 250,000 ₫ - 350,000 ₫</a><br>
                         <a href="{{ route('frontend.g3550') }}" style="color: black;">- 350,000 ₫ - 500,000 ₫</a><br>
-                        <a href="{{ route('frontend.tren500') }}" style="color: black;">- 500,000 đ trở lên</a><br>        
+                        <a href="{{ route('frontend.tren500') }}" style="color: black;">- 500,000 đ trở lên</a><br>    
                     </div>
                     <div class="sidebar__sizes">
                         <div class="section-title">
                             <h4>Lọc size</h4>
                         </div>
                         <div class="size__list">
-                        <a href="" style="color: black;">S</a><br>
-                        <a href="" style="color: black;">M</a><br>
-                        <a href="" style="color: black;">L</a><br>     
+                            <a href="" style="color: black;">S</a><br>
+                            <a href="" style="color: black;">M</a><br>
+                            <a href="" style="color: black;">L</a><br>
                             <!-- <label for="s">
                                 S
                                 <input type="checkbox" id="s">
@@ -156,19 +156,19 @@ A S H I O N
             <div class="col-lg-9 col-md-9">
                 <div class="row">
                     
-                    @foreach($ds_sp as $dssp)
+                    @foreach($duoi250 as $duoi250)
                     <div class="col-lg-4 col-md-6"> 
-                        @if($dssp->km_giatriphantram == 0)
+                        @if($duoi250->km_giatriphantram == 0)
                         <div class="product__item" style="border: solid 1px whitesmoke;">
-                            <div class="product__item__pic set-bg" data-setbg="{{ asset('storage/photos/' . $dssp->ha_ten) }}">
+                            <div class="product__item__pic set-bg" data-setbg="{{ asset('storage/photos/' . $duoi250->ha_ten) }}">
                                 <ul class="product__hover">
-                                    <li><a href="{{ asset('storage/photos/' . $dssp->ha_ten) }}" class="image-popup"><span class="arrow_expand"></span></a></li>
+                                    <li><a href="{{ asset('storage/photos/' . $duoi250->ha_ten) }}" class="image-popup"><span class="arrow_expand"></span></a></li>
                                     <li><a href="#"><span class="icon_heart_alt"></span></a></li>
-                                    <li><a href="{{ route('frontend.sanpham.xemchitiet', ['sp_id' => $dssp->sp_id]) }}"><span class="icon_search"></span></a></li>
+                                    <li><a href="{{ route('frontend.sanpham.xemchitiet', ['sp_id' => $duoi250->sp_id]) }}"><span class="icon_search"></span></a></li>
                                 </ul>
                             </div>
                             <div class="product__item__text">
-                                <h6><a href="{{ route('frontend.sanpham.xemchitiet', ['sp_id' => $dssp->sp_id]) }}">{{ $dssp->sp_ten }}</a></h6>
+                                <h6><a href="{{ route('frontend.sanpham.xemchitiet', ['sp_id' => $duoi250->sp_id]) }}">{{ $duoi250->sp_ten }}</a></h6>
                                 <!-- <div class="rating">
                                     <i class="fa fa-star"></i>
                                     <i class="fa fa-star"></i>
@@ -176,21 +176,21 @@ A S H I O N
                                     <i class="fa fa-star"></i>
                                     <i class="fa fa-star"></i>
                                 </div> -->
-                                <div class="product__price mt-1">{{ number_format($dssp->giaban, 0, ',' , ',') }} đ</div>
+                                <div class="product__price mt-1">{{ number_format($duoi250->giaban, 0, ',' , ',') }} đ</div>
                             </div>
                         </div>
                         @else
                         <div class="product__item sale" style="border: solid 1px whitesmoke;">
-                            <div class="product__item__pic set-bg" data-setbg="{{ asset('storage/photos/' . $dssp->ha_ten) }}">
+                            <div class="product__item__pic set-bg" data-setbg="{{ asset('storage/photos/' . $duoi250->ha_ten) }}">
                                 <div class="label">Sale</div>
                                 <ul class="product__hover">
-                                    <li><a href="{{ asset('storage/photos/' . $dssp->ha_ten) }}" class="image-popup"><span class="arrow_expand"></span></a></li>
+                                    <li><a href="{{ asset('storage/photos/' . $duoi250->ha_ten) }}" class="image-popup"><span class="arrow_expand"></span></a></li>
                                     <li><a href="#"><span class="icon_heart_alt"></span></a></li>
-                                    <li><a href="{{ route('frontend.sanpham.xemchitiet', ['sp_id' => $dssp->sp_id]) }}"><span class="icon_search"></span></a></li>
+                                    <li><a href="{{ route('frontend.sanpham.xemchitiet', ['sp_id' => $duoi250->sp_id]) }}"><span class="icon_search"></span></a></li>
                                 </ul>
                             </div>
                             <div class="product__item__text">
-                                <h6><a href="{{ route('frontend.sanpham.xemchitiet', ['sp_id' => $dssp->sp_id]) }}">{{ $dssp->sp_ten }}</a></h6>
+                                <h6><a href="{{ route('frontend.sanpham.xemchitiet', ['sp_id' => $duoi250->sp_id]) }}">{{ $duoi250->sp_ten }}</a></h6>
                                 <!-- <div class="rating">
                                     <i class="fa fa-star"></i>
                                     <i class="fa fa-star"></i>
@@ -198,7 +198,7 @@ A S H I O N
                                     <i class="fa fa-star"></i>
                                     <i class="fa fa-star"></i>
                                 </div> -->
-                                <div class="product__price mt-1">{{ number_format($dssp->giaban - ($dssp->giaban * $dssp->km_giatriphantram/100),0, ',' , ',') }} đ&nbsp;<span>{{ number_format($dssp->giaban, 0, ',' , ',') }} đ</span></div>
+                                <div class="product__price mt-1">{{ number_format($duoi250->giaban - ($duoi250->giaban * $duoi250->km_giatriphantram/100),0, ',' , ',') }} đ&nbsp;<span>{{ number_format($duoi250->giaban, 0, ',' , ',') }} đ</span></div>
                             </div>
                         </div>
                         @endif

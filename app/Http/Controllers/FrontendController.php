@@ -35,6 +35,8 @@ use App\user;
 use App\admin;
 use Cart;
 use Auth;
+use Mail;
+use App\Mail\OrderMailer;
 session_start();
 class FrontendController extends Controller
 {
@@ -504,6 +506,98 @@ class FrontendController extends Controller
                 ->with('hinhanh1', $hinhanh1);
     }
 
+    //Lọc giá dưới 250,000 đ
+    public function duoi250(Request $request){
+        $duoi250 = DB::select(
+            ' SELECT *
+            FROM 
+                (SELECT g1.*
+                FROM gia g1 
+                LEFT JOIN gia g2 ON (g1.sp_id = g2.sp_id AND g1.id_gia < g2.id_gia)
+                WHERE g2.id_gia IS NULL) AS abc
+            right JOIN sanpham sp ON abc.sp_id = sp.sp_id
+            left JOIN khuyenmai km ON km.km_id = sp.km_id
+            JOIN chitietsanpham ctsp ON sp.sp_id = ctsp.sp_id
+            JOIN hinhanh ha ON ha.ha_id = ctsp.ha_id
+            JOIN loaisanpham lsp ON lsp.lsp_id = sp.lsp_id
+            WHERE sp.sp_trangthai = 1 AND abc.giaban < 250000
+            GROUP BY sp.sp_ten
+            '
+        );
+        return view('frontend.pages.sanpham.locgia')
+                ->with('duoi250', $duoi250); 
+                
+    }
+
+    //Lọc giá từ 250,000 đến dưới 350,000
+    public function g2535(Request $request){
+        $duoi250 = DB::select(
+            ' SELECT *
+            FROM 
+                (SELECT g1.*
+                FROM gia g1 
+                LEFT JOIN gia g2 ON (g1.sp_id = g2.sp_id AND g1.id_gia < g2.id_gia)
+                WHERE g2.id_gia IS NULL) AS abc
+            right JOIN sanpham sp ON abc.sp_id = sp.sp_id
+            left JOIN khuyenmai km ON km.km_id = sp.km_id
+            JOIN chitietsanpham ctsp ON sp.sp_id = ctsp.sp_id
+            JOIN hinhanh ha ON ha.ha_id = ctsp.ha_id
+            JOIN loaisanpham lsp ON lsp.lsp_id = sp.lsp_id
+            WHERE sp.sp_trangthai = 1 AND abc.giaban BETWEEN 250000 AND 349999
+            GROUP BY sp.sp_ten 
+            '
+        );
+        return view('frontend.pages.sanpham.locgia')
+                ->with('duoi250', $duoi250); 
+                
+    }
+
+    //Lọc giá từ 350,000 đến dưới 500,000
+    public function g3550(Request $request){
+        $duoi250 = DB::select(
+            ' SELECT *
+            FROM 
+                (SELECT g1.*
+                FROM gia g1 
+                LEFT JOIN gia g2 ON (g1.sp_id = g2.sp_id AND g1.id_gia < g2.id_gia)
+                WHERE g2.id_gia IS NULL) AS abc
+            right JOIN sanpham sp ON abc.sp_id = sp.sp_id
+            left JOIN khuyenmai km ON km.km_id = sp.km_id
+            JOIN chitietsanpham ctsp ON sp.sp_id = ctsp.sp_id
+            JOIN hinhanh ha ON ha.ha_id = ctsp.ha_id
+            JOIN loaisanpham lsp ON lsp.lsp_id = sp.lsp_id
+            WHERE sp.sp_trangthai = 1 AND abc.giaban BETWEEN 350000 AND 499999
+            GROUP BY sp.sp_ten 
+            '
+        );
+        return view('frontend.pages.sanpham.locgia')
+                ->with('duoi250', $duoi250); 
+                
+    }
+
+    //Lọc giá từ 500 trở lên
+    public function tren500(Request $request){
+        $duoi250 = DB::select(
+            ' SELECT *
+            FROM 
+                (SELECT g1.*
+                FROM gia g1 
+                LEFT JOIN gia g2 ON (g1.sp_id = g2.sp_id AND g1.id_gia < g2.id_gia)
+                WHERE g2.id_gia IS NULL) AS abc
+            right JOIN sanpham sp ON abc.sp_id = sp.sp_id
+            left JOIN khuyenmai km ON km.km_id = sp.km_id
+            JOIN chitietsanpham ctsp ON sp.sp_id = ctsp.sp_id
+            JOIN hinhanh ha ON ha.ha_id = ctsp.ha_id
+            JOIN loaisanpham lsp ON lsp.lsp_id = sp.lsp_id
+            WHERE sp.sp_trangthai = 1 AND abc.giaban >= 500000
+            GROUP BY sp.sp_ten 
+            '
+        );
+        return view('frontend.pages.sanpham.locgia')
+                ->with('duoi250', $duoi250); 
+                
+    }
+
     /** * Action hiển thị view Liên hệ * GET /lienhe */ 
     public function lienhe()
     {
@@ -691,64 +785,106 @@ class FrontendController extends Controller
 
     public function dathang(Request $request){
     
-        $ddh = new Dondathang();
-        $ddh->ddh_ngaylap = Carbon::now('Asia/Ho_Chi_Minh');
-        $ddh->ddh_diachigiaohang = $request->ddh_diachigiaohang;
-        $ddh->ddh_trangthai = 0;
-        $ddh->id = NULL;
-        $ddh->kh_id = Session::get('kh_id');
-        $ddh->htvc_id = $request->htvc_id;
-        $ddh->httt_id = $request->httt_id;
-        $ddh->px_id = $request->px_id;
-        $ddh->save();
-        //Cart::destroy();       
+        $dataMail = [];
 
-        $content = Cart::content();
-        $content1 = Cart::content();
+        try {
 
-        if (count($content) > 0) {
-            foreach ($content as $key => $item) {
-                $ctdh = new Chitietdonhang();
-                $ctdh->ddh_id = $ddh->ddh_id;
-                $ctdh->sp_id = $item->id;
+            $ddh = new Dondathang();
+            $ddh->ddh_ngaylap = Carbon::now('Asia/Ho_Chi_Minh');
+            $ddh->ddh_diachigiaohang = $request->ddh_diachigiaohang;
+            $ddh->ddh_trangthai = 0;
+            $ddh->id = NULL;
+            $ddh->kh_id = Session::get('kh_id');
+
+            $khachhang = khachhang::find($ddh->kh_id);
+
+            $dataMail['khachhang'] = $khachhang->toArray();
+
+            $ddh->htvc_id = $request->htvc_id;
+            $ddh->httt_id = $request->httt_id;
+            $ddh->px_id = $request->px_id;
+
+            // $px = phuongxa::where('px_id', '=', $request->px_id)->first();
+            // $px_ten = $px
+            // $qh = quanhuyen::where('qh_id', '=', $px->qh_id);
+            // $tp = tinhthanhpho::where('tinhtp_id', '=', $qh->tinhtp_id);
+
+            $ddh->save();
+            $dataMail['dondathang'] = $ddh->toArray();
+            // $dataMail['px_ten'][] = $px->px_ten;
+            //$dataMail['tinhthanhpho'][] = $tp->tinhtp_ten;
+            //Cart::destroy();       
+    
+            $content = Cart::content();
+            $content1 = Cart::content();
+    
+            if (count($content) > 0) {
+                foreach ($content as $key => $item) {
+                    $ctdh = new Chitietdonhang();
+                    $ctdh->ddh_id = $ddh->ddh_id;
+                    $ctdh->sp_id = $item->id;
+                        
+                    $size = size::where('size_ten', '=', $item->options->size)->first();
+                    $ctdh->size_id = $size->size_id;
+    
+                    $color = mau::where('m_ten', '=', $item->options->color)->first();
+                    $ctdh->m_id = $color->m_id;
+    
+                    $ctdh->ctdh_soluong = $item->qty;
+                    $ctdh->ctdh_dongia = $item->price;
+                    $ctdh->save();
+                    $dataMail['dondathang']['chitiet'][] = $ctdh->toArray();
+                    $dataMail['sp_ten'][] = $item->name;
                     
-                $size = size::where('size_ten', '=', $item->options->size)->first();
-                $ctdh->size_id = $size->size_id;
-
-                $color = mau::where('m_ten', '=', $item->options->color)->first();
-                $ctdh->m_id = $color->m_id;
-
-                $ctdh->ctdh_soluong = $item->qty;
-                $ctdh->ctdh_dongia = $item->price;
-                $ctdh->save();
-            }
-        }
-
-        if (count($content1) > 0) {
-            foreach ($content1 as $key => $item1) {
-                $id = $item1->id;
-                $qty = $item1->qty;
-
-                $size = size::where('size_ten', '=', $item1->options->size)->first();
-                $size_id = $size->size_id;
-
-                $color = mau::where('m_ten', '=', $item1->options->color)->first();
-                $m_id = $color->m_id;
-
-                $product = DB::table('chitietsanpham')->where('sp_id',$id)->where('m_id', $m_id)->where('size_id', $size_id)->get();
-
-                foreach ($product as $key => $value) {
-                    $value = $value->ctsp_soluong-$qty;
-        
-                    $data = array();
-                    $data['ctsp_soluong'] = $value;
-                    
-                    DB::table('chitietsanpham')->where('sp_id', $id)->where('m_id', $m_id)->where('size_id', $size_id)->update($data);  
+                    //$dataMail['dondathang']['giohang'][] = $item;
                 }
             }
-        }
 
-        Cart::destroy();
+            Mail::to($khachhang->kh_email)
+                ->send(new OrderMailer($dataMail));
+    
+            if (count($content1) > 0) {
+                foreach ($content1 as $key => $item1) {
+                    $id = $item1->id;
+                    $qty = $item1->qty;
+    
+                    $size = size::where('size_ten', '=', $item1->options->size)->first();
+                    $size_id = $size->size_id;
+    
+                    $color = mau::where('m_ten', '=', $item1->options->color)->first();
+                    $m_id = $color->m_id;
+    
+                    $product = DB::table('chitietsanpham')->where('sp_id',$id)->where('m_id', $m_id)->where('size_id', $size_id)->get();
+    
+                    foreach ($product as $key => $value) {
+                        $value = $value->ctsp_soluong-$qty;
+            
+                        $data = array();
+                        $data['ctsp_soluong'] = $value;
+                        
+                        DB::table('chitietsanpham')->where('sp_id', $id)->where('m_id', $m_id)->where('size_id', $size_id)->update($data);  
+                    }
+                }
+            }
+    
+            Cart::destroy();
+        }
+        catch(ValidationException $e) {
+            return response()->json(array(
+                'code'  => 500,
+                'message' => $e,
+                'redirectUrl' => route('frontend.home')
+            ));
+        } 
+        catch(Exception $e) {
+            throw $e;
+        }
+        // return response()->json(array(
+        //     'code'  => 200,
+        //     'message' => 'Tạo đơn hàng thành công!',
+        //     'redirectUrl' => route('frontend.orderFinish')
+        // ));
+       
     }
 
     public function dathang_thanhcong(Request $request){

@@ -341,6 +341,7 @@ class ComposerStaticInit25e0dd03bcc45f47c7fd532151bb6285
         'App\\Http\\Controllers\\ChiTietSanPhamController' => __DIR__ . '/../..' . '/app/Http/Controllers/ChiTietSanPhamController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\DanhMucController' => __DIR__ . '/../..' . '/app/Http/Controllers/DanhMucController.php',
+        'App\\Http\\Controllers\\DonDatHangController' => __DIR__ . '/../..' . '/app/Http/Controllers/DonDatHangController.php',
         'App\\Http\\Controllers\\FrontendController' => __DIR__ . '/../..' . '/app/Http/Controllers/FrontendController.php',
         'App\\Http\\Controllers\\HinhAnhController' => __DIR__ . '/../..' . '/app/Http/Controllers/HinhAnhController.php',
         'App\\Http\\Controllers\\HinhThucThanhToanController' => __DIR__ . '/../..' . '/app/Http/Controllers/HinhThucThanhToanController.php',

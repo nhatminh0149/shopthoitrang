@@ -41,9 +41,13 @@ A S H I O N
                 <div class="product__details__pic">
                     <div class="product__details__pic__left product__thumb nice-scroll">
                         @foreach($hinhanh as $hinhanh)
-                        <a class="pt" href="#{{ $hinhanh->ha_id }}" id="ha{{ $hinhanh->m_id }}-mau">
+                        <div class="col-12 product-image-thumbs">
+                            <div class="product-image-thumb"  id="ha{{ $hinhanh->m_id }}-mau"><img src="{{ asset('storage/photos/' . $hinhanh->ha_ten) }}" alt="Product Image"></div>
+                        </div>
+
+                        <!-- <a class="pt" href="#{{ $hinhanh->ha_id }}" id="ha{{ $hinhanh->m_id }}-mau">
                             <img src="{{ asset('storage/photos/' . $hinhanh->ha_ten) }}" alt="">
-                        </a>
+                        </a> -->
                         @endforeach
                         <!-- <a class="pt active" href="#product-1">
                             <img src="img/product/details/product-1.jpg" alt="">
@@ -62,10 +66,13 @@ A S H I O N
                     <!-- Hình ngay giữa -->
                     <div class="product__details__slider__content">
                         <div class="product__details__pic__slider owl-carousel">
-                            @foreach($hinhanh1 as $ha)
+                        
+                            <img src="{{ asset('storage/photos/' . $hinhanh1[0]->ha_ten) }}" class="product-image product__big__img" alt="Product Image">
+                    
+                            <!-- @foreach($hinhanh1 as $ha)
                             <img data-hash="{{ $ha->ha_id }}" class="product__big__img"
                                 src="{{ asset('storage/photos/' . $ha->ha_ten) }}" alt="">
-                            @endforeach
+                            @endforeach -->
                             <!-- <img data-hash="product-1" class="product__big__img" src="img/product/details/product-1.jpg"
                                 alt="">
                             <img data-hash="product-2" class="product__big__img" src="img/product/details/product-2.jpg"
@@ -385,6 +392,10 @@ A S H I O N
 
 {{-- Thay thế nội dung vào Placeholder `custom-scripts` của view `frontend.layouts.master` --}}
 @section('custom-scripts')
+<!-- <script src="{{ asset('ashion/js/aaa.js') }}"></script>
+<script src="{{ asset('ashion/js/bbb.bundle.min.js') }}"></script>
+<script src="{{ asset('ashion/js/ccc.min.js') }}"></script> -->
+<script src="{{ asset('ashion/js/ddd.js') }}"></script>
 <script>
 // $('input[type=radio][name=color__radio]').click(function() {
 //     var id = this.value;

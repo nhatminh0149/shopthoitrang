@@ -28,6 +28,7 @@ return array(
     'App\\Http\\Controllers\\ChiTietSanPhamController' => $baseDir . '/app/Http/Controllers/ChiTietSanPhamController.php',
     'App\\Http\\Controllers\\Controller' => $baseDir . '/app/Http/Controllers/Controller.php',
     'App\\Http\\Controllers\\DanhMucController' => $baseDir . '/app/Http/Controllers/DanhMucController.php',
+    'App\\Http\\Controllers\\DonDatHangController' => $baseDir . '/app/Http/Controllers/DonDatHangController.php',
     'App\\Http\\Controllers\\FrontendController' => $baseDir . '/app/Http/Controllers/FrontendController.php',
     'App\\Http\\Controllers\\HinhAnhController' => $baseDir . '/app/Http/Controllers/HinhAnhController.php',
     'App\\Http\\Controllers\\HinhThucThanhToanController' => $baseDir . '/app/Http/Controllers/HinhThucThanhToanController.php',
