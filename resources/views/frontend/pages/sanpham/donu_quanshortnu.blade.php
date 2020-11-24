@@ -8,6 +8,78 @@ A S H I O N
 
 {{-- Thay thế nội dung vào Placeholder `custom-css` của view `frontend.layouts.master` --}}
 @section('custom-css')
+<style>
+    .discount__content form {
+        position: relative;
+        width: 250px;
+        display: inline-block;
+    }
+
+    .discount__content form input {
+        /* height: 52px; */
+        height: 40px;
+        width: 100%;
+        /* border: 1px solid #444444; */
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        padding-left: 10px;
+        padding-right: 115px;
+        font-size: 14px;
+        color: #444444;
+    }
+
+    .discount__content form input::-webkit-input-placeholder {
+        /* color: #444444; */
+        color: #ccc;
+    }
+
+    .discount__content form input::-moz-placeholder {
+        color: #444444;
+    }
+
+    .discount__content form input:-ms-input-placeholder {
+        color: #444444;
+    }
+
+    .discount__content form input::-ms-input-placeholder {
+        color: #444444;
+    }
+
+    .discount__content form input::placeholder {
+        color: #444444;
+    }
+
+    .discount__content form button {
+        position: absolute;
+        /* right: 4px;
+        top: 4px; */
+    } 
+    .site-btn {
+        font-size: 12px;
+        color: #ffffff;
+        background: #ca1515;
+        font-weight: 300;
+        border: none;
+        /* text-transform: uppercase; */
+        display: inline-block;
+        padding: 5px 10px;
+        border-radius: 10px;
+        height: 32px;
+    }
+
+    .site-btn:hover {
+        font-size: 12px;
+        color: #ffffff;
+        background: #0a0a0a;
+        font-weight: 300;
+        border: none;
+        /* text-transform: uppercase; */
+        display: inline-block;
+        padding: 5px 10px;
+        border-radius: 10px;
+        height: 32px;
+    }
+</style>
 @endsection
 
 {{-- Thay thế nội dung vào Placeholder `main-content` của view `frontend.layouts.master` --}}
@@ -33,6 +105,20 @@ A S H I O N
         <div class="row">
             <div class="col-lg-3 col-md-3">
                 <div class="shop__sidebar">
+
+                    <div class="sidebar__sizes">
+                        <div class="section-title">
+                            <h4>TÌM KIẾM SẢN PHẨM</h4>
+                        </div>
+                        <div class="discount__content">
+                            <form action="{{ route('frontend.timkiemsp') }}" method="post">
+                            {{ csrf_field() }}
+                                <input type="text" name ="search" id="search" placeholder="Tên sản phẩm...">
+                                <button type="submit" class="site-btn">Tìm kiếm</button>
+                            </form>
+                        </div>
+                    </div>
+
                     <div class="sidebar__categories">
                         <div class="section-title">
                             <h4>Danh mục</h4>
@@ -85,22 +171,14 @@ A S H I O N
                             </div>
                         </div>
                     </div>
-                    <div class="sidebar__filter">
+                    <div class="sidebar__sizes">
                         <div class="section-title">
                             <h4>LỌC GIÁ</h4>
                         </div>
-                        <div class="filter-range-wrap">
-                            <div class="price-range ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content"
-                                data-min="33" data-max="99"></div>
-                            <div class="range-slider">
-                                <div class="price-input">
-                                    <p>Giá:</p>
-                                    <input type="text" id="minamount">
-                                    <input type="text" id="maxamount">
-                                </div>
-                            </div>
-                        </div>
-                        <a href="#">LỌC</a>
+                        <a href="{{ route('frontend.duoi250') }}" style="color: black;">- Dưới 250,000 đ</a><br>
+                        <a href="{{ route('frontend.g2535') }}" style="color: black;">- 250,000 ₫ - 350,000 ₫</a><br>
+                        <a href="{{ route('frontend.g3550') }}" style="color: black;">- 350,000 ₫ - 500,000 ₫</a><br>
+                        <a href="{{ route('frontend.tren500') }}" style="color: black;">- 500,000 đ trở lên</a><br>        
                     </div>
                     <div class="sidebar__sizes">
                         <div class="section-title">

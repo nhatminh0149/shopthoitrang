@@ -31,7 +31,7 @@ A S H I O N
 <!-- Checkout Section Begin -->
 <section class="checkout spad">
     <div class="container">
-        <form action="#" class="checkout__form">
+        <form action="/dathang" class="checkout__form" method="post">
             {{ csrf_field() }}
             <div class="row">
                 <div class="col-lg-7">
@@ -300,9 +300,9 @@ A S H I O N
                             window.location.href = "{{ url('/dathang_thanhcong') }}";
                         }
                     });
-                    window.setTimeout(function(){ 
-                        location.reload();
-                    } ,3000);  
+                    // window.setTimeout(function(){ 
+                    //     location.reload();
+                    // } ,3000);  
                 } 
                 else{
                     swal("Đóng", "Đơn hàng chưa được gửi!", "error");

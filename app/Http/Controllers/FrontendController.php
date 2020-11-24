@@ -789,6 +789,59 @@ class FrontendController extends Controller
 
         try {
 
+        //     session(['cost_id' => $request->id]);
+        // session(['url_prev' => url()->previous()]);
+        // $vnp_TmnCode = "76ONYK81"; //Mã website tại VNPAY 
+        // $vnp_HashSecret = "TAJVGPYXDKRVLSIYFDTFYLPXVFKREZSE"; //Chuỗi bí mật
+        // $vnp_Url = "http://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
+        // $vnp_Returnurl = route('frontend.home');
+        // $vnp_TxnRef = date("YmdHis"); //Mã đơn hàng. Trong thực tế Merchant cần insert đơn hàng vào DB và gửi mã này sang VNPAY
+        // $vnp_OrderInfo = "Thanh toán hóa đơn phí dich vụ";
+        // $vnp_OrderType = 'billpayment';
+        // $vnp_Amount = $request->input('amount') * 100;
+        // $vnp_Locale = 'vn';
+        // $vnp_IpAddr = request()->ip();
+
+        // $inputData = array(
+        //     "vnp_Version" => "2.0.0",
+        //     "vnp_TmnCode" => $vnp_TmnCode,
+        //     "vnp_Amount" => $vnp_Amount,
+        //     "vnp_Command" => "pay",
+        //     "vnp_CreateDate" => date('YmdHis'),
+        //     "vnp_CurrCode" => "VND",
+        //     "vnp_IpAddr" => $vnp_IpAddr,
+        //     "vnp_Locale" => $vnp_Locale,
+        //     "vnp_OrderInfo" => $vnp_OrderInfo,
+        //     "vnp_OrderType" => $vnp_OrderType,
+        //     "vnp_ReturnUrl" => $vnp_Returnurl,
+        //     "vnp_TxnRef" => $vnp_TxnRef,
+        // );
+
+        // if (isset($vnp_BankCode) && $vnp_BankCode != "") {
+        //     $inputData['vnp_BankCode'] = $vnp_BankCode;
+        // }
+        // ksort($inputData);
+        // $query = "";
+        // $i = 0;
+        // $hashdata = "";
+        // foreach ($inputData as $key => $value) {
+        //     if ($i == 1) {
+        //         $hashdata .= '&' . $key . "=" . $value;
+        //     } else {
+        //         $hashdata .= $key . "=" . $value;
+        //         $i = 1;
+        //     }
+        //     $query .= urlencode($key) . "=" . urlencode($value) . '&';
+        // }
+
+        // $vnp_Url = $vnp_Url . "?" . $query;
+        // if (isset($vnp_HashSecret)) {
+        //    // $vnpSecureHash = md5($vnp_HashSecret . $hashdata);
+        //     $vnpSecureHash = hash('sha256', $vnp_HashSecret . $hashdata);
+        //     $vnp_Url .= 'vnp_SecureHashType=SHA256&vnp_SecureHash=' . $vnpSecureHash;
+        // }
+        
+
             $ddh = new Dondathang();
             $ddh->ddh_ngaylap = Carbon::now('Asia/Ho_Chi_Minh');
             $ddh->ddh_diachigiaohang = $request->ddh_diachigiaohang;
@@ -839,7 +892,8 @@ class FrontendController extends Controller
                     //$dataMail['dondathang']['giohang'][] = $item;
                 }
             }
-
+            
+            // dd($aaa);
             Mail::to($khachhang->kh_email)
                 ->send(new OrderMailer($dataMail));
     
@@ -868,6 +922,7 @@ class FrontendController extends Controller
             }
     
             Cart::destroy();
+            
         }
         catch(ValidationException $e) {
             return response()->json(array(
@@ -884,6 +939,8 @@ class FrontendController extends Controller
         //     'message' => 'Tạo đơn hàng thành công!',
         //     'redirectUrl' => route('frontend.orderFinish')
         // ));
+
+        // return redirect($vnp_Url);
        
     }
 
@@ -998,5 +1055,31 @@ class FrontendController extends Controller
         catch (Exception $ex){
             return response(['error'=>true, 'message'=>$ex->getMessage()], 200);
         }
+    }
+
+    public function timkiemsp(Request $request)
+    {
+        //$search = $request->search;
+        $search = '%'.$request->q.'%';
+        //dd($search);
+        $timkiem = DB::select(
+            ' SELECT *
+            FROM 
+                (SELECT g1.*
+                FROM gia g1 
+                LEFT JOIN gia g2 ON (g1.sp_id = g2.sp_id AND g1.id_gia < g2.id_gia)
+                WHERE g2.id_gia IS NULL) AS abc
+            right JOIN sanpham sp ON abc.sp_id = sp.sp_id
+            left JOIN khuyenmai km ON km.km_id = sp.km_id
+            JOIN chitietsanpham ctsp ON sp.sp_id = ctsp.sp_id
+            JOIN hinhanh ha ON ha.ha_id = ctsp.ha_id
+            JOIN loaisanpham lsp ON lsp.lsp_id = sp.lsp_id
+            WHERE sp.sp_trangthai = 1 AND sp.sp_ten LIKE "'.$search.'"
+            GROUP BY sp.sp_ten 
+            '
+        ); 
+
+        return view('frontend.pages.sanpham.sanpham')
+                ->with('ds_sp', $timkiem);
     }
 }

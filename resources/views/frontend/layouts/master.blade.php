@@ -49,7 +49,11 @@
     <script src="{{ asset('ashion/js/owl.carousel.min.js') }}"></script>
     <script src="{{ asset('ashion/js/jquery.nicescroll.min.js') }}"></script>
     <script src="{{ asset('ashion/js/main.js') }}"></script>
-    <script src="{{ asset('ashion/js/sweetalert.min.js') }}"></script>
+    <script src="{{ asset('ashion/js/sweetalert.min.js') }}"></script>    
+
+    <div class="zalo-chat-widget" data-oaid="1625171934518864675" data-welcome-message="Rất vui khi được hỗ trợ bạn!" data-autopopup="0" data-width="350" data-height="420"></div>
+
+    <script src="https://sp.zalo.me/plugins/sdk.js"></script>
 
     <!-- Các custom script dành riêng cho từng view -->
     @yield('custom-scripts')

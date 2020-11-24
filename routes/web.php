@@ -188,6 +188,9 @@ Route::prefix('admin')->group(function()
 		Route::get('/aothundoi', 'FrontendController@sanpham_dodoi_aothundoi')->name('frontend.aothundoi');
 		Route::get('/aokhoacdoi', 'FrontendController@sanpham_dodoi_aokhoacdoi')->name('frontend.aokhoacdoi');
 
+	//Tìm kiếm sản phẩm
+	Route::get('/timkiemsp', 'FrontendController@timkiemsp')->name('frontend.timkiemsp');
+
 	//Lọc giá
 	Route::get('/duoi250', 'FrontendController@duoi250')->name('frontend.duoi250');
 	Route::get('/g2535', 'FrontendController@g2535')->name('frontend.g2535');
