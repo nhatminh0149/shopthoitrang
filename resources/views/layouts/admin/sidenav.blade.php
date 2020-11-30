@@ -17,6 +17,12 @@
                             <p>Dashboard</p>
                         </a>
                     </li>
+                    <li class="nav-item {{ Request::is('admin/doanhthu*') ? 'active' : '' }} ">
+                        <a class="nav-link" href="{{ route('admin.doanhthu') }}">
+                            <i class="material-icons">dashboard</i>
+                            <p>Thống kê</p>
+                        </a>
+                    </li>
 
                     <!-- <li class="nav-item">
                         <a class="nav-link" href="{{ route('admin.users') }}">
@@ -180,6 +186,13 @@
                                     <a class="nav-link" href="{{ route('admin.ddh') }}">
                                         <i class="material-icons">phone_in_talk</i>
                                         <p>Quản lý đơn đặt hàng</p>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item {{ Request::is('admin/danhgia*') ? 'active' : '' }}">
+                                    <a class="nav-link" href="{{ route('admin.danhgia') }}">
+                                        <i class="material-icons">phone_in_talk</i>
+                                        <p>Quản lý đánh giá</p>
                                     </a>
                                 </li>
 

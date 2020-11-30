@@ -262,7 +262,7 @@ A S H I O N
                                     <i class="fa fa-star"></i>
                                     <i class="fa fa-star"></i>
                                 </div> -->
-                                <div class="product__price mt-1">{{ number_format($ds_aothunnam->giaban, 0, ',' , ',') }} đ</div>
+                                <div class="product__price mt-1">{{ number_format($ds_aothunnam->sp_giaban, 0, ',' , ',') }} đ</div>
                             </div>
                         </div>
                         @else
@@ -285,7 +285,7 @@ A S H I O N
                                     <i class="fa fa-star"></i>
                                     <i class="fa fa-star"></i>
                                 </div> -->
-                                <div class="product__price mt-1">{{ number_format($ds_aothunnam->giaban - ($ds_aothunnam->giaban * $ds_aothunnam->km_giatriphantram/100),0, ',' , ',') }} đ&nbsp;<span>{{ number_format($ds_aothunnam->giaban, 0, ',' , ',') }} đ</span></div>
+                                <div class="product__price mt-1">{{ number_format($ds_aothunnam->sp_giaban - ($ds_aothunnam->sp_giaban * $ds_aothunnam->km_giatriphantram/100),0, ',' , ',') }} đ&nbsp;<span>{{ number_format($ds_aothunnam->sp_giaban, 0, ',' , ',') }} đ</span></div>
                             </div>
                         </div>
                         @endif

@@ -1,16 +1,7 @@
 @extends('layouts.admin.master')
 
 @section('title')
-    Cập nhật khách hàng
-@endsection
-
-@section('custom-css')
-    <!-- Các css dành cho thư viện bootstrap-fileinput -->
-    <link href="{{ asset('vendor/bootstrap-fileinput/css/fileinput.css') }}" media="all" rel="stylesheet" type="text/css"/>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" crossorigin="anonymous">
-    <link rel="stylesheet" href="{{ asset('vendor/font-awesome-4.7.0/css/font-awesome.min.css') }}">
-    <link href="{{ asset('vendor/bootstrap-fileinput/themes/explorer-fas/theme.css') }}" media="all" rel="stylesheet" type="text/css"/>
-    
+    Danh sách đánh giá
 @endsection
 
 @section('content')
@@ -22,7 +13,7 @@
             <nav class="navbar navbar-expand-lg navbar-transparent  navbar-absolute fixed-top">
                 <div class="container-fluid">
                     <div class="navbar-wrapper">
-                        <a class="navbar-brand" href="#pablo">QUẢN LÝ KHÁCH HÀNG</a>
+                        <a class="navbar-brand" href="#pablo">QUẢN LÝ BÌNH LUẬN - ĐÁNH GIÁ</a>
                     </div>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="sr-only">Toggle navigation</span>
@@ -244,111 +235,83 @@
                 <div class="container-fluid">
                     <div class="card">
                         <div class="card-header card-header-primary">
-                            <h4 class="card-title ">CẬP NHẬT KHÁCH HÀNG</h4>
+                            <h4 class="card-title ">DANH SÁCH BÌNH LUẬN - ĐÁNH GIÁ</h4>
                             <!-- <p class="card-category"> Here is a subtitle for this table</p> -->
                         </div>
 
-                        <form class="mt-4 ml-5 mr-5 mb-5" role="form" action="{{ route('admin.kh.update', ['kh_id' => $ds_kh->kh_id]) }}" method="post" enctype="multipart/form-data">
-                            {{ csrf_field() }}
-                            <div class="row mb-4">
-                                <div class="col">
-                                    Mã khách hàng:<input type="text" class="form-control" id="kh_id" name="kh_id" value="{{ $ds_kh->kh_id }}" readonly>
+                        <div class="card-body table-responsive">
+                            <table class="table" id="order-listing">
+
+                                <div class="flash-message">
+                                    @foreach (['danger', 'warning', 'success', 'info', 'dark'] as $msg)
+                                        @if(Session::has('alert-' . $msg))
+                                        <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }} <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a></p>
+                                        @endif
+                                    @endforeach
                                 </div>
-                            </div>
 
-                            <div class="row mb-4">
-                                <div class="col">
-                                    Tài khoản khách hàng:<input type="text" class="form-control" id="kh_taikhoan" name="kh_taikhoan" value="{{ old('kh_taikhoan', $ds_kh->kh_taikhoan) }}">
-                                    @if($errors->has("kh_taikhoan"))
-                                        <div class="a" style="color: red; font-style: italic; font-size: 14px;">
-                                            {{$errors->first("kh_taikhoan")}}
-                                        </div>                 
-                                    @endif
-                                </div>
-                            </div>
+                                <a href="{{ route('admin.danhmuc.create') }}">
+                                    <button type="button" class="btn btn-outline-primary">Thêm mới</button>
+                                </a>
 
-                            <div class="row mb-4">
-                                <div class="col">
-                                    Mật khẩu:<input type="password" class="form-control" id="kh_matkhau" name="kh_matkhau">
-                                    @if($errors->has("kh_matkhau"))
-                                        <div class="a" style="color: red; font-style: italic; font-size: 14px;">
-                                            {{$errors->first("kh_matkhau")}}
-                                        </div>                 
-                                    @endif
-                                </div>
-                            </div>
-                           
-                            <div class="row mb-4">
-                                <div class="col">
-                                    Nhập lại mật khẩu:<input type="password" class="form-control" id="re_kh_matkhau" name="re_kh_matkhau" value="{{ old('re_kh_matkhau', $ds_kh->re_kh_matkhau) }}">
-                                    @if($errors->has("re_kh_matkhau"))
-                                        <div class="a" style="color: red; font-style: italic; font-size: 14px;">
-                                            {{$errors->first("re_kh_matkhau")}}
-                                        </div>                 
-                                    @endif
-                                </div>
-                            </div>
+                                <div id="notify_comment"></div>
 
-                            <div class="row mb-4">
-                                <div class="col">
-                                    Họ tên khách hàng:<input type="text" class="form-control" id="kh_hoten" name="kh_hoten" value="{{ old('kh_hoten', $ds_kh->kh_hoten) }}">
-                                    @if($errors->has("kh_hoten"))
-                                        <div class="a" style="color: red; font-style: italic; font-size: 14px;">
-                                            {{$errors->first("kh_hoten")}}
-                                        </div>                 
-                                    @endif
-                                </div>
-                            </div>
+                                <thead class=" text-primary text-center"> 
+                                    <th>Mã</th>
+                                    <th>Khách hàng</th>
+                                    <th>Sản phẩm</th>
+                                    <th>Nội dung</th>
+                                    <th>Ngày đánh giá</th>
+                                    <th>Trạng thái</th>
+                                    <th>Hành động</th>
+                                </thead>
 
-                            <div class="row mb-4">
-                                <div class="col">
-                                    Email:<input type="text" class="form-control" id="kh_email" name="kh_email" value="{{ old('kh_email', $ds_kh->kh_email) }}">
-                                    @if($errors->has("kh_email"))
-                                        <div class="a" style="color: red; font-style: italic; font-size: 14px;">
-                                            {{$errors->first("kh_email")}}
-                                        </div>                 
-                                    @endif
-                                </div>
-                            </div>
-
-                            <div class="row mb-4">
-                                <div class="col">
-                                    Số điện thoại:<input type="text" class="form-control" id="kh_sdt" name="kh_sdt" value="{{ old('kh_sdt', $ds_kh->kh_sdt) }}">
-                                    @if($errors->has("kh_sdt"))
-                                        <div class="a" style="color: red; font-style: italic; font-size: 14px;">
-                                            {{$errors->first("kh_sdt")}}
-                                        </div>                 
-                                    @endif
-                                </div>
-                            </div>
-
-                            <div class="row mb-4">
-                                <div class="col">
-                                    Trạng thái 
-                                    <select name="kh_trangthai"  class="form-control">
-                                        <option value="1" {{ old('kh_trangthai', $ds_kh->kh_trangthai) == 1 ? "selected" : "" }}>Kích hoạt</option>
-                                        <option value="0" {{ old('kh_trangthai', $ds_kh->kh_trangthai) == 0 ? "selected" : "" }}>Vô hiệu hóa</option>
-                                    </select> 
-                                </div> 
-                            </div>
-
-                            <div class="row mb-4">
-                                <div class="col">
-                                    Hình đại diện của khách hàng:
-                                    <div class="file-loading"> 
-                                        <input id="kh_hinhdaidien" type="file" name="kh_hinhdaidien">
-                                    </div>
-                                    @if($errors->has("kh_hinhdaidien"))
-                                        <div class="a" style="color: red; font-style: italic; font-size: 14px;">
-                                            {{$errors->first("kh_hinhdaidien")}}
-                                        </div>                 
-                                    @endif
-                                </div>   
-                            </div>
-
-                            <button type="submit" class="btn btn-outline-primary">Cập nhật khách hàng</button>
-                        </form>
-
+                                <tbody>
+                                    @foreach ($ds_danhgia as $key => $ds_danhgia)
+                                    <form action="" method="post">
+                                    {{ csrf_field() }}
+                                        <?php
+                                                $dg_ngaydanhgia=date("d/m/Y H:i:s", strtotime($ds_danhgia->dg_ngaydanhgia));
+                                        ?>
+                                        <tr>
+                                            <td>{{ $ds_danhgia->dg_id }}</td>
+                                            <td>{{ $ds_danhgia->khachhang->kh_taikhoan }}</td>
+                                            <td>{{ $ds_danhgia->sanpham->sp_ten }}</td>
+                                            <td>{{ $ds_danhgia->dg_noidung }}
+                                                @if (($ds_danhgia->dg_trangthai) == 1)
+                                                    <br><textarea class="reply_comment{{$ds_danhgia->dg_id}}" cols="15" rows="3" style="resize: none;"></textarea><br>
+                                                    <button class="btn btn-outline-default btn-sm btn-reply-comment" id="{{ $ds_danhgia->sp_id }}" data-dg_id="{{ $ds_danhgia->dg_id }}" data-kh_id="{{ $ds_danhgia->kh_id }}">Trả lời bình luận</button>
+                                                @endif
+                                            </td>
+                                            <td>{{ $dg_ngaydanhgia }}</td>
+                                            <td style="text-align: center;">
+                                                @if (($ds_danhgia->dg_trangthai) == 1)
+                                                    <div class="badge badge-primary">
+                                                        {{ 'Đã duyệt' }}
+                                                    </div>
+                                                @else 
+                                                    <div class="badge badge-danger">
+                                                        <a style="color: white;" href="{{ route('admin.danhgia.active', ['dg_id' => $ds_danhgia->dg_id]) }}">{{ 'Chưa duyệt' }}</a>
+                                                    </div>
+                                                @endif
+                                            </td>
+                                    </form>    
+                                            <td class="text-primary">
+                                            <a href="">
+                                                <button type="button" class="btn btn-outline-info"><i class="fa fa-pencil" aria-hidden="true" title="Trả lời bình luận"></i></button>
+                                            </a>
+                                            <a href="" onclick="return confirm('Bạn có muốn xóa bình luận này không?')">
+                                                <button type="button" class="btn btn-outline-danger"><i class="fa fa-trash-o" aria-hidden="true" title="Xóa bình luận"></i></button>
+                                            </a>
+                                            </td>
+                                        </tr>
+                                    
+                                    @endforeach
+                                </tbody>
+                            </table>
+                            
+                        </div>
+                        
                     </div>
                 </div>
             </div>
@@ -359,43 +322,37 @@
 @endsection
 
 @section('custom-scripts')
-    <!-- Các script dành cho thư viện bootstrap-fileinput -->
-    <script src="{{ asset('vendor/bootstrap-fileinput/js/plugins/sortable.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('vendor/bootstrap-fileinput/js/fileinput.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('vendor/bootstrap-fileinput/js/locales/fr.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('vendor/bootstrap-fileinput/themes/fas/theme.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('vendor/bootstrap-fileinput/themes/explorer-fas/theme.js') }}" type="text/javascript"></script>
-    <script>
-        $(document).ready(function() {
-            $("#kh_hinhdaidien").fileinput({
-                theme: 'fas',
-                showUpload: false,
-                showCaption: false,
-                browseClass: "btn btn-outline-primary btn-md",
-                fileType: "any",
-                append: false,
-                showRemove: false,
-                autoReplace: true,
-                previewFileIcon: "<i class='glyphicon glyphicon-king'></i>",
-                overwriteInitial: false,
-                initialPreviewShowDelete: false,
-                initialPreviewAsData: true,
-                initialPreview: [
-                    "{{ asset('/storage/photos/' . $ds_kh->kh_hinhdaidien) }}" //asset mặc định vào thư mục public
-                ],
-                initialPreviewConfig: [
-                    {
-                        caption: "{{ $ds_kh->kh_hinhdaidien }}", 
-                        size: {{ Storage::exists('public/photos/' . $ds_kh->kh_hinhdaidien) ? Storage::size('public/photos/' . $ds_kh->kh_hinhdaidien) : 0 }},  
-                        width: "120px", 
-                        url: "{$url}", 
-                        key: 1
-                    },
-                ]
-            });
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('.btn-reply-comment').click(function(){
+               
+                var dg_id = $(this).data('dg_id');
+                var dg_noidung = $('.reply_comment'+dg_id).val();
+                var sp_id = $(this).attr('id')
+                var kh_id = $(this).data('kh_id')
 
+                //alert(dg_id);
+                //alert(dg_noidung);
+                //alert(sp_id);
+               // alert(kh_id);
+                $.ajax({
+                    url: '{{url('/reply-comment')}}',
+                    method: 'POST',
+                    headers:{
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    data: {
+                        dg_id: dg_id,
+                        dg_noidung: dg_noidung,
+                        sp_id: sp_id,
+                        kh_id: kh_id
+                    },
+                    success:function(data){
+                        $('#notify_comment').html('<br><br><p class="text text-success">Trả lời bình luận thành công!</p>');
+                    },
+                });
+            });
         });
     </script>
-
 
 @endsection

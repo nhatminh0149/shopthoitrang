@@ -260,6 +260,7 @@
                                     <th>Họ tên</th>
                                     <th>Email</th>
                                     <th>SĐT</th>
+                                    <th>Ảnh đại diện</th>
                                     <th>Trạng thái</th>
                                     <th>Hành động</th>
                                 </thead>
@@ -272,6 +273,7 @@
                                         <td>{{ $ds_kh->kh_hoten }}</td>
                                         <td>{{ $ds_kh->kh_email}}</td>
                                         <td>{{ $ds_kh->kh_sdt}}</td>
+                                        <td><img src="{{ asset('storage/photos/' . $ds_kh->kh_hinhdaidien) }}" class="img-list" style="width: 90px; height: 90px;" /></td>
                                         <td>
                                             @if (($ds_kh->kh_trangthai) == 1)
                                                 <div class="badge badge-info">

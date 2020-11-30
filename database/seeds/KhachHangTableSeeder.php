@@ -19,7 +19,8 @@ class KhachHangTableSeeder extends Seeder
                 'kh_matkhau'    => md5('letanphuc'),       
                 'kh_hoten'    => 'Lê Tấn Phúc',       
                 'kh_email'    => 'Phucxautrai114@gmail.com',       
-                'kh_sdt'    => '0916112233',       
+                'kh_sdt'    => '0916112233', 
+                'kh_hinhdaidien'  => 'phucle.jpg',
                 'kh_trangthai'    => '1',       
             ],
             [
@@ -28,7 +29,8 @@ class KhachHangTableSeeder extends Seeder
                 'kh_matkhau'    => md5('queanh'),       
                 'kh_hoten'    => 'Đường Quế Anh',       
                 'kh_email'    => 'queanhst98@gmail.com',       
-                'kh_sdt'    => '0916334455',       
+                'kh_sdt'    => '0916334455',     
+                'kh_hinhdaidien'  => 'queanh.jpg', 
                 'kh_trangthai'    => '1',       
             ],
             [
@@ -37,7 +39,8 @@ class KhachHangTableSeeder extends Seeder
                 'kh_matkhau'    => md5('didididi'),       
                 'kh_hoten'    => 'Nguyễn Phước Duy',       
                 'kh_email'    => 'nguyenduy171298@gmail.com',       
-                'kh_sdt'    => '0916667788',       
+                'kh_sdt'    => '0916667788', 
+                'kh_hinhdaidien'  => 'meomeo.jpg',      
                 'kh_trangthai'    => '1',       
             ],
         ];

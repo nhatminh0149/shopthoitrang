@@ -156,6 +156,17 @@ Route::prefix('admin')->group(function()
 	Route::get('/chitietdonhang/{ddh_id}','DonDatHangController@chitietdonhang')->name('admin.ddh.chitiet');
 	Route::get('/ddh_active/{ddh_id}', 'DonDatHangController@active')->name('admin.ddh.active');
 
+	//QUẢN LÝ BÌNH LUẬN - ĐÁNH GIÁ
+	Route::get('/danhgia', 'DanhGiaController@index')->name('admin.danhgia');
+	Route::get('/danhgia_active/{dg_id}', 'DanhGiaController@active')->name('admin.danhgia.active');
+	Route::post('/reply-comment','DanhGiaController@reply_comment');
+
+	//BIẾN ĐỘNG GIÁ
+	Route::get('/doanhthu', 'ThongKeController@doanhthu')->name('admin.doanhthu');
+	Route::post('/doanhthu/biendong_gia', 'ThongKeController@biendong_gia')->name('admin.doanhthu.biendong_gia');
+	//Route::get('/biendong_gia', 'ThongKeController@biendong_gia')->name('admin.biendong_gia');
+	//Route::resource('/biendong_gia', 'ThongKeController');
+
 });
 
 //FRONTEND
@@ -191,11 +202,18 @@ Route::prefix('admin')->group(function()
 	//Tìm kiếm sản phẩm
 	Route::get('/timkiemsp', 'FrontendController@timkiemsp')->name('frontend.timkiemsp');
 
+	//Đánh giá sản phẩm
+	Route::post('/load-comment','FrontendController@load_comment');
+	Route::post('/send-comment','FrontendController@send_comment');
+
 	//Lọc giá
 	Route::get('/duoi250', 'FrontendController@duoi250')->name('frontend.duoi250');
 	Route::get('/g2535', 'FrontendController@g2535')->name('frontend.g2535');
 	Route::get('/g3550', 'FrontendController@g3550')->name('frontend.g3550');
 	Route::get('/tren500', 'FrontendController@tren500')->name('frontend.tren500');
+
+	//Lọc size
+	Route::get('/sizeS', 'FrontendController@sizeS')->name('frontend.sizeS');
 
 	//Trang liên hệ
 	Route::get('/lienhe', 'FrontendController@lienhe')->name('frontend.lienhe');
@@ -208,8 +226,8 @@ Route::prefix('admin')->group(function()
 	Route::get('/thutucthanhtoan','FrontendController@thutucthanhtoan')->name('frontend.thutucthanhtoan');
 	Route::post('/chonthanhpho','FrontendController@chonthanhpho');
 	Route::post('/tinhphivanchuyen','FrontendController@tinhphivanchuyen');
-	Route::post('/dathang','FrontendController@dathang');
-	Route::get('/dathang_thanhcong','FrontendController@dathang_thanhcong');
+	Route::post('/dathang','FrontendController@dathang')->name('frontend.dathang');
+	Route::get('/dathang_thanhcong','FrontendController@dathang_thanhcong')->name('frontend.orderFinish');
 	
 	//Khách hàng đăng nhập tài khoản
 	Route::get('/dangnhap', 'FrontendController@getDangnhap')->name('frontend.dangnhap');

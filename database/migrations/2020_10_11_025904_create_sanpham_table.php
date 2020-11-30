@@ -21,6 +21,7 @@ class CreateSanphamTable extends Migration
             $table->string('sp_mota', 255);
             // $table->date('sp_ngaytaomoi');
             // $table->date('sp_ngaycapnhat');
+            $table->integer('sp_giaban');
             $table->integer('sp_trangthai')->comment('0: Vô hiệu hóa, 1: Kích hoạt');
             $table->unsignedInteger('lsp_id')->nullable();
             $table->unsignedInteger('km_id')->nullable();

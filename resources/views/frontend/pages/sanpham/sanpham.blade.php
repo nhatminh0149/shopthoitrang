@@ -73,7 +73,7 @@ A S H I O N
         height: 32px;
     } */
 
-    @import url('https://fonts.googleapis.com/css?family=Montserrat');
+    /* @import url('https://fonts.googleapis.com/css?family=Montserrat'); */
 
 /* * {
   margin: 0;
@@ -95,11 +95,13 @@ body {
 }
 #search-form input {
   width: 100%;
-  font-size: 1.5rem;
-  padding: 10px 15px;
-  border: 2px solid #ccc;
-  border-radius: 2px;
+  font-size: 14px;
+  padding: 0px 10px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  height: 45px;
 }
+
 #search-form button {
   position: absolute;
   top: 0;
@@ -110,7 +112,7 @@ body {
   border: none;
   width: 3rem;
   text-align: center;
-  font-size: 1.75rem;
+  font-size: 1.5rem;
   cursor: pointer;
   color: #333;
 }
@@ -167,8 +169,8 @@ body {
                             </form> -->
 
                             <form action="{{ route('frontend.timkiemsp') }}" method="get" id="search-form">
-                            {{ csrf_field() }}
-                                <input name="q" type="text" placeholder="Search Google..." autocomplete="off" autofocus>
+                               
+                                <input name="q" type="text" placeholder="Tên sản phẩm..." autocomplete="off" autofocus>
                                 <!-- <button type="button"><i class="fas fa-microphone"></i></button> -->
                             </form>
                             <!-- <p class="info"></p> -->
@@ -321,7 +323,7 @@ body {
                                     <i class="fa fa-star"></i>
                                     <i class="fa fa-star"></i>
                                 </div> -->
-                                <div class="product__price mt-1">{{ number_format($dssp->giaban, 0, ',' , ',') }} đ</div>
+                                <div class="product__price mt-1">{{ number_format($dssp->sp_giaban, 0, ',' , ',') }} đ</div>
                             </div>
                         </div>
                         @else
@@ -343,7 +345,7 @@ body {
                                     <i class="fa fa-star"></i>
                                     <i class="fa fa-star"></i>
                                 </div> -->
-                                <div class="product__price mt-1">{{ number_format($dssp->giaban - ($dssp->giaban * $dssp->km_giatriphantram/100),0, ',' , ',') }} đ&nbsp;<span>{{ number_format($dssp->giaban, 0, ',' , ',') }} đ</span></div>
+                                <div class="product__price mt-1">{{ number_format($dssp->sp_giaban - ($dssp->sp_giaban * $dssp->km_giatriphantram/100),0, ',' , ',') }} đ&nbsp;<span>{{ number_format($dssp->sp_giaban, 0, ',' , ',') }} đ</span></div>
                             </div>
                         </div>
                         @endif

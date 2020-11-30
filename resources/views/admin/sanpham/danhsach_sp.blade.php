@@ -279,7 +279,7 @@
                                                 {{ $ds_sp->km_giatriphantram }} %
                                             @endif
                                         </td>
-                                        <td class="text-center">{{ number_format($ds_sp->giaban, 0, ',' , ',') }} đ</td>
+                                        <td class="text-center">{{ number_format($ds_sp->sp_giaban, 0, ',' , ',') }} đ</td>
                                         <td class="text-center">
                                             @if (($ds_sp->sp_trangthai) == 1)
                                                 <div class="badge badge-info">

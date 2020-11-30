@@ -33,7 +33,7 @@ class OrderMailer extends Mailable
      */
     public function build(){
         $ddh_id = $this->data['dondathang']['ddh_id'];
-        return $this->from(env('MAIL_FROM_ADDRESS', 'tranlenhatminh97@gmail.com'), env('MAIL_FROM_NAME', 'AshionShop'))
+        return $this->from(env('MAIL_FROM_ADDRESS', 'tranlenhatminh97@gmail.com'), env('MAIL_FROM_NAME', 'ToToShop'))
             ->subject("Đơn hàng [$ddh_id] hoàn tất")
             ->view('frontend.pages.emails.order-email')
             ->with('data', $this->data);

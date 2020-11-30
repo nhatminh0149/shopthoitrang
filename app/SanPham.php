@@ -38,4 +38,7 @@ class SanPham extends Model
     public function gia(){
         return $this->hasMany('App\gia', 'sp_id', 'sp_id');
     }
+    public function danhgia(){
+        return $this->hasMany('App\danhgia', 'sp_id', 'sp_id');
+    }
 }

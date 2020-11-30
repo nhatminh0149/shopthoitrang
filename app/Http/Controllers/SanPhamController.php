@@ -44,12 +44,7 @@ class SanPhamController extends Controller
     //    JOIN chitietphieunhap ctpn ON sp.sp_id = ctpn.sp_id');
         //$ds_ctpn = chitietphieunhap::all()
         $ds_sp = DB::select('SELECT *
-            FROM 
-                (SELECT g1.*
-                FROM gia g1 
-                LEFT JOIN gia g2 ON (g1.sp_id = g2.sp_id AND g1.id_gia < g2.id_gia)
-                WHERE g2.id_gia IS NULL) AS abc
-            RIGHT JOIN sanpham sp ON abc.sp_id = sp.sp_id
+            FROM sanpham sp
             JOIN loaisanpham lsp ON lsp.lsp_id = sp.lsp_id
             JOIN kho k ON k.kho_id = sp.kho_id
             LEFT JOIN khuyenmai km ON km.km_id = sp.km_id');
@@ -107,6 +102,7 @@ class SanPhamController extends Controller
         $sp->lsp_id = $request->lsp_id;
         $sp->km_id = $request->km_id;
         $sp->kho_id = $request->kho_id;
+        $sp->sp_giaban = $request->giaban;
         $sp->save();
         // if($request->hasFile('sp_hinh')){
             
@@ -211,6 +207,7 @@ class SanPhamController extends Controller
         $sp->sp_ten = $request->sp_ten;
         //$sp->sp_soluong = $request->sp_soluong;
         $sp->sp_mota = $request->sp_mota;
+        $sp->sp_giaban = $request->giaban;
         $sp->sp_trangthai = $request->sp_trangthai;
         $sp->lsp_id = $request->lsp_id;
         $sp->km_id = $request->km_id;

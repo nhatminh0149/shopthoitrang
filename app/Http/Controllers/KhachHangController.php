@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 use App\khachhang;
 
 class KhachHangController extends Controller
@@ -53,6 +55,7 @@ class KhachHangController extends Controller
             'kh_hoten' => 'required',
             'kh_email' => 'required|email|unique:khachhang,kh_email',
             'kh_sdt' => 'required|digits:10',
+            'kh_hinhdaidien' => 'file|image|mimes:jpeg,png,gif,webp|max:2048',
         ],[
             'kh_taikhoan.required' => "Tài khoản khách hàng không được để trống",
             'kh_matkhau.required' => "Mật khẩu khách hàng không được để trống",
@@ -72,7 +75,19 @@ class KhachHangController extends Controller
         $kh->kh_matkhau = md5($request->kh_matkhau);
         $kh->kh_hoten = $request->kh_hoten;
         $kh->kh_email = $request->kh_email;
-        $kh->kh_sdt = $request->kh_sdt;
+        $kh->kh_sdt = $request->kh_sdt;       
+
+        if($request->hasFile('kh_hinhdaidien')){
+            
+            $file = $request->kh_hinhdaidien;
+    
+            // Lưu tên hình vào column ha_ten
+            $kh->kh_hinhdaidien = $file->getClientOriginalName();
+            
+            // Chép file vào thư mục "photos"
+            $fileSaved = $file->storeAs('public/photos', $kh->kh_hinhdaidien);
+        }
+
         $kh->kh_trangthai = 1;
 
         $kh->save();
@@ -123,6 +138,7 @@ class KhachHangController extends Controller
             'kh_hoten' => 'required',
             'kh_email' => 'required|email',
             'kh_sdt' => 'required|digits:10',
+            'kh_hinhdaidien' => 'file|image|mimes:jpeg,png,gif,webp|max:2048',
         ],[
             'kh_taikhoan.required' => "Tài khoản khách hàng không được để trống",
             'kh_matkhau.required' => "Mật khẩu khách hàng không được để trống",
@@ -144,6 +160,21 @@ class KhachHangController extends Controller
         $kh->kh_email = $request->kh_email;
         $kh->kh_sdt = $request->kh_sdt;
         $kh->kh_trangthai = $request->kh_trangthai;
+
+        if($request->hasFile('kh_hinhdaidien')){
+
+            // Xóa hình cũ để tránh rác
+            Storage::delete('public/photos/' . $kh->kh_hinhdaidien);
+
+            // Upload hình mới
+            $file = $request->kh_hinhdaidien;
+    
+            // Lưu tên hình vào column ha_ten
+            $kh->kh_hinhdaidien = $file->getClientOriginalName();
+            
+            // Chép file vào thư mục "photos"
+            $fileSaved = $file->storeAs('public/photos', $kh->kh_hinhdaidien);
+        }
 
         $kh->save();
 

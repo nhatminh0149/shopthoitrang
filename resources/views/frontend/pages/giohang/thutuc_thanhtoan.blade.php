@@ -31,7 +31,7 @@ A S H I O N
 <!-- Checkout Section Begin -->
 <section class="checkout spad">
     <div class="container">
-        <form action="/dathang" class="checkout__form" method="post">
+        <form action="{{ route('frontend.dathang') }}" class="checkout__form" method="post">
             {{ csrf_field() }}
             <div class="row">
                 <div class="col-lg-7">
@@ -172,8 +172,8 @@ A S H I O N
                             </ul>
                         </div>
 
-                        <!-- <button type="submit" class="site-btn">Đặt hàng</button> -->
-                        <input type="button" value="Đặt hàng" name="send_order" class="site-btn send_order">
+                        <button type="submit" class="site-btn">Đặt hàng</button>
+                        <!-- <input type="button" value="Đặt hàng" name="send_order" class="site-btn send_order"> -->
                     </div>
                 </div>
             </div>
@@ -262,55 +262,29 @@ A S H I O N
     });
 
 
-    $(document).ready(function() {
-        $('.send_order').click(function(){
-            swal({
-                title: "Xác nhận đặt hàng",
-                text: "Đơn hàng sẽ không hoàn trả sau khi đặt, bạn có muốn đặt hàng không?",
-                type: "info",
-                showCancelButton: true,
-                confirmButtonClass: "btn-info",
-                confirmButtonText: "OK!",
-                cancelButtonText: "Chưa mua",
-                closeOnConfirm: false,
-                closeOnCancel: false
-            },
-            function(isConfirm){
-                if (isConfirm){
-                    var ddh_diachigiaohang = $('.ddh_diachigiaohang').val();
-                    var htvc_id = $('.htvc_id').val();
-                    var httt_id = $('.httt_id').val();
-                    var px_id = $('.px_id').val();
-                    var _token = $('input[name="_token"]').val();
-
-                    $.ajax({
-                        url: '{{url('/dathang')}}',
-                        method: 'POST',
-                        data: {
-                            ddh_diachigiaohang: ddh_diachigiaohang,
-                            htvc_id: htvc_id,
-                            httt_id: httt_id,
-                            px_id: px_id,
-                            _token: _token,
-                        },
-                        success: function() {
-                            // alert("Đặt hàng thành công");
-                            // swal("Xác nhận!", "Đơn hàng của bạn đã được gửi thành công", "success");
-                            swal("Xác nhận!", "Đơn hàng của bạn đã được gửi thành công", "success");
-                            window.location.href = "{{ url('/dathang_thanhcong') }}";
-                        }
-                    });
-                    // window.setTimeout(function(){ 
-                    //     location.reload();
-                    // } ,3000);  
-                } 
-                else{
-                    swal("Đóng", "Đơn hàng chưa được gửi!", "error");
-                }
-            });
+    // $(document).ready(function() {
+    //     $('.send_order').click(function(){
+    //         swal({
+    //             title: "Xác nhận đặt hàng",
+    //             text: "Đơn hàng sẽ không hoàn trả sau khi đặt, bạn có muốn đặt hàng không?",
+    //             type: "info",
+    //             showCancelButton: true,
+    //             confirmButtonClass: "btn-info",
+    //             confirmButtonText: "OK!",
+    //             cancelButtonText: "Chưa mua",
+    //             closeOnConfirm: false,
+    //             closeOnCancel: false
+    //         },
+    //         function(isConfirm){
+    //             if (isConfirm){  
+    //             } 
+    //             else{
+    //                 swal("Đóng", "Đơn hàng chưa được gửi!", "error");
+    //             }
+    //         });
 
             
-        });
-    });
+    //     });
+    // });
 </script>
 @endsection

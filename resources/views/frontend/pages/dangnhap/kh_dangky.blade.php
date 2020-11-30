@@ -8,7 +8,11 @@ A S H I O N
 
 {{-- Thay thế nội dung vào Placeholder `custom-css` của view `frontend.layouts.master` --}}
 @section('custom-css')
-
+    <!-- Các css dành cho thư viện bootstrap-fileinput -->
+    <link href="{{ asset('vendor/bootstrap-fileinput/css/fileinput.css') }}" media="all" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ asset('vendor/font-awesome-4.7.0/css/font-awesome.min.css') }}">
+    <link href="{{ asset('vendor/bootstrap-fileinput/themes/explorer-fas/theme.css') }}" media="all" rel="stylesheet" type="text/css"/>
 @endsection
 
 {{-- Thay thế nội dung vào Placeholder `main-content` của view `frontend.layouts.master` --}}
@@ -32,7 +36,7 @@ A S H I O N
 <div class="container">
     <div class="content mt-5">
         <h3><center>ĐĂNG KÝ</center></h3>
-        <form action="{{ route('frontend.dangky') }}" method="post" style="margin: 20px auto; width: 450px; border: 1px solid #ccc; padding: 30px;">
+        <form action="{{ route('frontend.dangky') }}" enctype="multipart/form-data" method="post" style="margin: 20px auto; width: 450px; border: 1px solid #ccc; padding: 30px;">
             {{ csrf_field() }}
             
             @if(Session::has('thanhcong'))
@@ -99,6 +103,18 @@ A S H I O N
                     </div>                 
                 @endif
             </div>
+
+            <div class="form-group">
+                <label for="kh_hinhdaidien">Hình đại diện của khách hàng:</label>
+                <div class="file-loading"> 
+                    <input id="kh_hinhdaidien" type="file" name="kh_hinhdaidien">
+                </div>
+                @if($errors->has("kh_hinhdaidien"))
+                    <div class="a" style="color: red; font-style: italic; font-size: 14px;">
+                        {{$errors->first("kh_hinhdaidien")}}
+                    </div>                 
+                @endif
+            </div>
             
             <input type="hidden" class="form-control" id="kh_trangthai" name="kh_trangthai" value="1">
             
@@ -116,4 +132,24 @@ A S H I O N
 
 {{-- Thay thế nội dung vào Placeholder `custom-scripts` của view `frontend.layouts.master` --}}
 @section('custom-scripts')
+<!-- Các script dành cho thư viện bootstrap-fileinput -->
+    <script src="{{ asset('vendor/bootstrap-fileinput/js/plugins/sortable.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('vendor/bootstrap-fileinput/js/fileinput.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('vendor/bootstrap-fileinput/js/locales/fr.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('vendor/bootstrap-fileinput/themes/fas/theme.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('vendor/bootstrap-fileinput/themes/explorer-fas/theme.js') }}" type="text/javascript"></script>
+    <script>
+        $(document).ready(function() {
+            $("#kh_hinhdaidien").fileinput({
+                theme: 'fas',
+                showUpload: false,
+                showCaption: false,
+                browseClass: "btn btn-outline-primary btn-md",
+                fileType: "any",
+                previewFileIcon: "<i class='glyphicon glyphicon-king'></i>",
+                overwriteInitial: false
+            });
+
+        });
+    </script>
 @endsection

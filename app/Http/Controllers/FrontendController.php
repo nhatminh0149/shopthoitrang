@@ -33,6 +33,7 @@ use App\quanhuyen;
 use App\phuongxa;
 use App\user;
 use App\admin;
+use App\danhgia;
 use Cart;
 use Auth;
 use Mail;
@@ -93,23 +94,17 @@ class FrontendController extends Controller
      */
     public function sanpham(Request $request){
         $ds_sp = DB::select(
-            'SELECT sp.sp_id ,sp.sp_ten, ha.ha_ten, abc.giaban, km.km_giatriphantram
-            FROM 
-                (SELECT g1.*
-                FROM gia g1 
-                LEFT JOIN gia g2 ON (g1.sp_id = g2.sp_id AND g1.id_gia < g2.id_gia)
-                WHERE g2.id_gia IS NULL) AS abc
-            right JOIN sanpham sp ON abc.sp_id = sp.sp_id
+            'SELECT sp.sp_id ,sp.sp_ten, ha.ha_ten, sp.sp_giaban, km.km_giatriphantram
+            FROM sanpham sp
             left JOIN khuyenmai km ON km.km_id = sp.km_id
             JOIN chitietsanpham ctsp ON sp.sp_id = ctsp.sp_id
             JOIN hinhanh ha ON ha.ha_id = ctsp.ha_id
             WHERE sp.sp_trangthai = 1
             GROUP BY sp.sp_ten ');
         // $ds_sp = DB::table('sanpham')
-        //     ->select('sanpham.sp_ten', 'hinhanh.ha_ten', 'gia.giaban', 'sanpham.sp_id', 'khuyenmai.km_giatriphantram')
+        //     ->select('sanpham.sp_ten', 'hinhanh.ha_ten', 'sanpham.sp_giaban', 'sanpham.sp_id', 'khuyenmai.km_giatriphantram')
         //     ->join('chitietsanpham', 'chitietsanpham.sp_id', '=', 'sanpham.sp_id')
         //     ->join('hinhanh', 'hinhanh.ha_id', '=', 'chitietsanpham.ha_id')
-        //     ->join('gia', 'gia.sp_id', '=', 'sanpham.sp_id')
         //     ->leftjoin('khuyenmai', 'khuyenmai.km_id', '=', 'sanpham.km_id')
         //     ->where('sanpham.sp_trangthai', '=', '1')
         //     ->groupBy('sanpham.sp_ten')
@@ -123,11 +118,10 @@ class FrontendController extends Controller
     //Lọc sản phẩm theo đồ nam
     public function sanpham_donam(Request $request){
         // $ds_donam = DB::table('danhmuc')
-        //     ->select('sanpham.sp_ten', 'hinhanh.ha_ten', 'gia.giaban', 'sanpham.sp_id', 'khuyenmai.km_giatriphantram')
+        //     ->select('sanpham.sp_ten', 'hinhanh.ha_ten', 'sanpham.sp_giaban', 'sanpham.sp_id', 'khuyenmai.km_giatriphantram')
         //     ->join('loaisanpham', 'loaisanpham.dm_id', '=', 'danhmuc.dm_id')
         //     ->join('sanpham', 'sanpham.lsp_id', '=', 'loaisanpham.lsp_id')
         //     ->join('hinhanh', 'hinhanh.sp_id', '=', 'sanpham.sp_id')
-        //     ->join('gia', 'gia.sp_id', '=', 'sanpham.sp_id')
         //     ->leftjoin('khuyenmai', 'khuyenmai.km_id', '=', 'sanpham.km_id')
         //     ->where('sanpham.sp_trangthai', '=', '1')
         //     ->where('danhmuc.dm_id', '=', '1')
@@ -135,13 +129,8 @@ class FrontendController extends Controller
         //     ->paginate(9);
 
         $ds_donam = DB::select(
-            'SELECT sp.sp_id ,sp.sp_ten, ha.ha_ten, abc.giaban, km.km_giatriphantram, lsp.lsp_id, dm.dm_id
-            FROM 
-                (SELECT g1.*
-                FROM gia g1 
-                LEFT JOIN gia g2 ON (g1.sp_id = g2.sp_id AND g1.id_gia < g2.id_gia)
-                WHERE g2.id_gia IS NULL) AS abc
-            right JOIN sanpham sp ON abc.sp_id = sp.sp_id
+            'SELECT sp.sp_id ,sp.sp_ten, ha.ha_ten, sp.sp_giaban, km.km_giatriphantram, lsp.lsp_id, dm.dm_id
+            FROM sanpham sp
             left JOIN khuyenmai km ON km.km_id = sp.km_id
             JOIN chitietsanpham ctsp ON sp.sp_id = ctsp.sp_id
             JOIN hinhanh ha ON ha.ha_id = ctsp.ha_id
@@ -157,13 +146,8 @@ class FrontendController extends Controller
     //Lọc sản phẩm theo đồ nam -> áo thun nam
     public function sanpham_donam_aothunnam(Request $request){
         $ds_aothunnam = DB::select(
-            'SELECT sp.sp_id ,sp.sp_ten, ha.ha_ten, abc.giaban, km.km_giatriphantram, lsp.lsp_id
-            FROM 
-                (SELECT g1.*
-                FROM gia g1 
-                LEFT JOIN gia g2 ON (g1.sp_id = g2.sp_id AND g1.id_gia < g2.id_gia)
-                WHERE g2.id_gia IS NULL) AS abc
-            right JOIN sanpham sp ON abc.sp_id = sp.sp_id
+            'SELECT sp.sp_id ,sp.sp_ten, ha.ha_ten, sp.sp_giaban, km.km_giatriphantram, lsp.lsp_id
+            FROM sanpham sp
             left JOIN khuyenmai km ON km.km_id = sp.km_id
             JOIN chitietsanpham ctsp ON sp.sp_id = ctsp.sp_id
             JOIN hinhanh ha ON ha.ha_id = ctsp.ha_id
@@ -180,13 +164,8 @@ class FrontendController extends Controller
     //Lọc sản phẩm theo đồ nam -> áo sơ mi nam
     public function sanpham_donam_aosominam(Request $request){
         $ds_aosominam = DB::select(
-            'SELECT sp.sp_id ,sp.sp_ten, ha.ha_ten, abc.giaban, km.km_giatriphantram, lsp.lsp_id
-            FROM 
-                (SELECT g1.*
-                FROM gia g1 
-                LEFT JOIN gia g2 ON (g1.sp_id = g2.sp_id AND g1.id_gia < g2.id_gia)
-                WHERE g2.id_gia IS NULL) AS abc
-            right JOIN sanpham sp ON abc.sp_id = sp.sp_id
+            'SELECT sp.sp_id ,sp.sp_ten, ha.ha_ten, sp.sp_giaban, km.km_giatriphantram, lsp.lsp_id
+            FROM sanpham sp
             left JOIN khuyenmai km ON km.km_id = sp.km_id
             JOIN chitietsanpham ctsp ON sp.sp_id = ctsp.sp_id
             JOIN hinhanh ha ON ha.ha_id = ctsp.ha_id
@@ -202,13 +181,8 @@ class FrontendController extends Controller
     //Lọc sản phẩm theo đồ nam -> quần jean nam
     public function sanpham_donam_quanjeannam(Request $request){
         $ds_quanjeannam = DB::select(
-            'SELECT sp.sp_id ,sp.sp_ten, ha.ha_ten, abc.giaban, km.km_giatriphantram, lsp.lsp_id
-            FROM 
-                (SELECT g1.*
-                FROM gia g1 
-                LEFT JOIN gia g2 ON (g1.sp_id = g2.sp_id AND g1.id_gia < g2.id_gia)
-                WHERE g2.id_gia IS NULL) AS abc
-            right JOIN sanpham sp ON abc.sp_id = sp.sp_id
+            'SELECT sp.sp_id ,sp.sp_ten, ha.ha_ten, sp.sp_giaban, km.km_giatriphantram, lsp.lsp_id
+            FROM sanpham sp
             left JOIN khuyenmai km ON km.km_id = sp.km_id
             JOIN chitietsanpham ctsp ON sp.sp_id = ctsp.sp_id
             JOIN hinhanh ha ON ha.ha_id = ctsp.ha_id
@@ -225,13 +199,8 @@ class FrontendController extends Controller
     //Lọc sản phẩm theo đồ nam -> quần kaki nam
     public function sanpham_donam_quankakinam(Request $request){
         $ds_quankakinam = DB::select(
-            'SELECT sp.sp_id ,sp.sp_ten, ha.ha_ten, abc.giaban, km.km_giatriphantram, lsp.lsp_id
-            FROM 
-                (SELECT g1.*
-                FROM gia g1 
-                LEFT JOIN gia g2 ON (g1.sp_id = g2.sp_id AND g1.id_gia < g2.id_gia)
-                WHERE g2.id_gia IS NULL) AS abc
-            right JOIN sanpham sp ON abc.sp_id = sp.sp_id
+            'SELECT sp.sp_id ,sp.sp_ten, ha.ha_ten, sp.sp_giaban, km.km_giatriphantram, lsp.lsp_id
+            FROM sanpham sp
             left JOIN khuyenmai km ON km.km_id = sp.km_id
             JOIN chitietsanpham ctsp ON sp.sp_id = ctsp.sp_id
             JOIN hinhanh ha ON ha.ha_id = ctsp.ha_id
@@ -248,11 +217,10 @@ class FrontendController extends Controller
     //Lọc sản phẩm theo đồ nữ
     public function sanpham_donu(Request $request){
         // $ds_donu = DB::table('danhmuc')
-        //     ->select('sanpham.sp_ten', 'hinhanh.ha_ten', 'gia.giaban', 'sanpham.sp_id', 'khuyenmai.km_giatriphantram')
+        //     ->select('sanpham.sp_ten', 'hinhanh.ha_ten', 'sanpham.sp_giaban', 'sanpham.sp_id', 'khuyenmai.km_giatriphantram')
         //     ->join('loaisanpham', 'loaisanpham.dm_id', '=', 'danhmuc.dm_id')
         //     ->join('sanpham', 'sanpham.lsp_id', '=', 'loaisanpham.lsp_id')
         //     ->join('hinhanh', 'hinhanh.sp_id', '=', 'sanpham.sp_id')
-        //     ->join('gia', 'gia.sp_id', '=', 'sanpham.sp_id')
         //     ->leftjoin('khuyenmai', 'khuyenmai.km_id', '=', 'sanpham.km_id')
         //     ->where('sanpham.sp_trangthai', '=', '1')
         //     ->where('danhmuc.dm_id', '=', '2')
@@ -260,13 +228,8 @@ class FrontendController extends Controller
         //     ->paginate(9);
 
         $ds_donu = DB::select(
-            'SELECT sp.sp_id ,sp.sp_ten, ha.ha_ten, abc.giaban, km.km_giatriphantram, lsp.lsp_id, dm.dm_id
-            FROM 
-                (SELECT g1.*
-                FROM gia g1 
-                LEFT JOIN gia g2 ON (g1.sp_id = g2.sp_id AND g1.id_gia < g2.id_gia)
-                WHERE g2.id_gia IS NULL) AS abc
-            right JOIN sanpham sp ON abc.sp_id = sp.sp_id
+            'SELECT sp.sp_id ,sp.sp_ten, ha.ha_ten, sp.sp_giaban, km.km_giatriphantram, lsp.lsp_id, dm.dm_id
+            FROM sanpham sp
             left JOIN khuyenmai km ON km.km_id = sp.km_id
             JOIN chitietsanpham ctsp ON sp.sp_id = ctsp.sp_id
             JOIN hinhanh ha ON ha.ha_id = ctsp.ha_id
@@ -282,13 +245,8 @@ class FrontendController extends Controller
     //Lọc sản phẩm theo đồ nữ -> áo thun nữ
     public function sanpham_donu_aothunnu(Request $request){
         $ds_aothunnu = DB::select(
-            'SELECT sp.sp_id ,sp.sp_ten, ha.ha_ten, abc.giaban, km.km_giatriphantram, lsp.lsp_id
-            FROM 
-                (SELECT g1.*
-                FROM gia g1 
-                LEFT JOIN gia g2 ON (g1.sp_id = g2.sp_id AND g1.id_gia < g2.id_gia)
-                WHERE g2.id_gia IS NULL) AS abc
-            right JOIN sanpham sp ON abc.sp_id = sp.sp_id
+            'SELECT sp.sp_id ,sp.sp_ten, ha.ha_ten, sp.sp_giaban, km.km_giatriphantram, lsp.lsp_id
+            FROM sanpham sp
             left JOIN khuyenmai km ON km.km_id = sp.km_id
             JOIN chitietsanpham ctsp ON sp.sp_id = ctsp.sp_id
             JOIN hinhanh ha ON ha.ha_id = ctsp.ha_id
@@ -305,13 +263,8 @@ class FrontendController extends Controller
     //Lọc sản phẩm theo đồ nữ -> áo sơ mi nữ
     public function sanpham_donu_aosominu(Request $request){
         $ds_aosominu = DB::select(
-            'SELECT sp.sp_id ,sp.sp_ten, ha.ha_ten, abc.giaban, km.km_giatriphantram, lsp.lsp_id
-            FROM 
-                (SELECT g1.*
-                FROM gia g1 
-                LEFT JOIN gia g2 ON (g1.sp_id = g2.sp_id AND g1.id_gia < g2.id_gia)
-                WHERE g2.id_gia IS NULL) AS abc
-            right JOIN sanpham sp ON abc.sp_id = sp.sp_id
+            'SELECT sp.sp_id ,sp.sp_ten, ha.ha_ten, sp.sp_giaban, km.km_giatriphantram, lsp.lsp_id
+            FROM sanpham sp
             left JOIN khuyenmai km ON km.km_id = sp.km_id
             JOIN chitietsanpham ctsp ON sp.sp_id = ctsp.sp_id
             JOIN hinhanh ha ON ha.ha_id = ctsp.ha_id
@@ -328,13 +281,8 @@ class FrontendController extends Controller
     //Lọc sản phẩm theo đồ nữ -> quần short nữ
     public function sanpham_donu_quanshortnu(Request $request){
         $ds_quanshortnu = DB::select(
-            'SELECT sp.sp_id ,sp.sp_ten, ha.ha_ten, abc.giaban, km.km_giatriphantram, lsp.lsp_id
-            FROM 
-                (SELECT g1.*
-                FROM gia g1 
-                LEFT JOIN gia g2 ON (g1.sp_id = g2.sp_id AND g1.id_gia < g2.id_gia)
-                WHERE g2.id_gia IS NULL) AS abc
-            right JOIN sanpham sp ON abc.sp_id = sp.sp_id
+            'SELECT sp.sp_id ,sp.sp_ten, ha.ha_ten, sp.sp_giaban, km.km_giatriphantram, lsp.lsp_id
+            FROM sanpham sp
             left JOIN khuyenmai km ON km.km_id = sp.km_id
             JOIN chitietsanpham ctsp ON sp.sp_id = ctsp.sp_id
             JOIN hinhanh ha ON ha.ha_id = ctsp.ha_id
@@ -351,13 +299,8 @@ class FrontendController extends Controller
     //Lọc sản phẩm theo đồ nữ -> quần jean nữ
     public function sanpham_donu_quanjeannu(Request $request){
         $ds_quanjeannu = DB::select(
-            'SELECT sp.sp_id ,sp.sp_ten, ha.ha_ten, abc.giaban, km.km_giatriphantram, lsp.lsp_id
-            FROM 
-                (SELECT g1.*
-                FROM gia g1 
-                LEFT JOIN gia g2 ON (g1.sp_id = g2.sp_id AND g1.id_gia < g2.id_gia)
-                WHERE g2.id_gia IS NULL) AS abc
-            right JOIN sanpham sp ON abc.sp_id = sp.sp_id
+            'SELECT sp.sp_id ,sp.sp_ten, ha.ha_ten, sp.sp_giaban, km.km_giatriphantram, lsp.lsp_id
+            FROM sanpham sp
             left JOIN khuyenmai km ON km.km_id = sp.km_id
             JOIN chitietsanpham ctsp ON sp.sp_id = ctsp.sp_id
             JOIN hinhanh ha ON ha.ha_id = ctsp.ha_id
@@ -374,11 +317,10 @@ class FrontendController extends Controller
     //Lọc sản phẩm theo đồ đôi
     public function sanpham_dodoi(Request $request){
         // $ds_dodoi = DB::table('danhmuc')
-        //     ->select('sanpham.sp_ten', 'hinhanh.ha_ten', 'gia.giaban', 'sanpham.sp_id', 'khuyenmai.km_giatriphantram')
+        //     ->select('sanpham.sp_ten', 'hinhanh.ha_ten', 'sanpham.sp_giaban', 'sanpham.sp_id', 'khuyenmai.km_giatriphantram')
         //     ->join('loaisanpham', 'loaisanpham.dm_id', '=', 'danhmuc.dm_id')
         //     ->join('sanpham', 'sanpham.lsp_id', '=', 'loaisanpham.lsp_id')
         //     ->join('hinhanh', 'hinhanh.sp_id', '=', 'sanpham.sp_id')
-        //     ->join('gia', 'gia.sp_id', '=', 'sanpham.sp_id')
         //     ->leftjoin('khuyenmai', 'khuyenmai.km_id', '=', 'sanpham.km_id')
         //     ->where('sanpham.sp_trangthai', '=', '1')
         //     ->where('danhmuc.dm_id', '=', '3')
@@ -386,13 +328,8 @@ class FrontendController extends Controller
         //     ->paginate(9);
 
         $ds_dodoi = DB::select(
-            'SELECT sp.sp_id ,sp.sp_ten, ha.ha_ten, abc.giaban, km.km_giatriphantram, lsp.lsp_id, dm.dm_id
-            FROM 
-                (SELECT g1.*
-                FROM gia g1 
-                LEFT JOIN gia g2 ON (g1.sp_id = g2.sp_id AND g1.id_gia < g2.id_gia)
-                WHERE g2.id_gia IS NULL) AS abc
-            right JOIN sanpham sp ON abc.sp_id = sp.sp_id
+            'SELECT sp.sp_id ,sp.sp_ten, ha.ha_ten, sp.sp_giaban, km.km_giatriphantram, lsp.lsp_id, dm.dm_id
+            FROM sanpham sp
             left JOIN khuyenmai km ON km.km_id = sp.km_id
             JOIN chitietsanpham ctsp ON sp.sp_id = ctsp.sp_id
             JOIN hinhanh ha ON ha.ha_id = ctsp.ha_id
@@ -408,13 +345,8 @@ class FrontendController extends Controller
     //Lọc sản phẩm theo đồ đôi -> áo thun đôi
     public function sanpham_dodoi_aothundoi(Request $request){
         $ds_aothundoi = DB::select(
-            'SELECT sp.sp_id ,sp.sp_ten, ha.ha_ten, abc.giaban, km.km_giatriphantram, lsp.lsp_id
-            FROM 
-                (SELECT g1.*
-                FROM gia g1 
-                LEFT JOIN gia g2 ON (g1.sp_id = g2.sp_id AND g1.id_gia < g2.id_gia)
-                WHERE g2.id_gia IS NULL) AS abc
-            right JOIN sanpham sp ON abc.sp_id = sp.sp_id
+            'SELECT sp.sp_id ,sp.sp_ten, ha.ha_ten, sp.sp_giaban, km.km_giatriphantram, lsp.lsp_id
+            FROM sanpham sp
             left JOIN khuyenmai km ON km.km_id = sp.km_id
             JOIN chitietsanpham ctsp ON sp.sp_id = ctsp.sp_id
             JOIN hinhanh ha ON ha.ha_id = ctsp.ha_id
@@ -431,13 +363,8 @@ class FrontendController extends Controller
     //Lọc sản phẩm theo đồ đôi -> áo khoác đôi
     public function sanpham_dodoi_aokhoacdoi(Request $request){
         $ds_aokhoacdoi = DB::select(
-            'SELECT sp.sp_id ,sp.sp_ten, ha.ha_ten, abc.giaban, km.km_giatriphantram, lsp.lsp_id
-            FROM 
-                (SELECT g1.*
-                FROM gia g1 
-                LEFT JOIN gia g2 ON (g1.sp_id = g2.sp_id AND g1.id_gia < g2.id_gia)
-                WHERE g2.id_gia IS NULL) AS abc
-            right JOIN sanpham sp ON abc.sp_id = sp.sp_id
+            'SELECT sp.sp_id ,sp.sp_ten, ha.ha_ten, sp.sp_giaban, km.km_giatriphantram, lsp.lsp_id
+            FROM sanpham sp
             left JOIN khuyenmai km ON km.km_id = sp.km_id
             JOIN chitietsanpham ctsp ON sp.sp_id = ctsp.sp_id
             JOIN hinhanh ha ON ha.ha_id = ctsp.ha_id
@@ -510,17 +437,12 @@ class FrontendController extends Controller
     public function duoi250(Request $request){
         $duoi250 = DB::select(
             ' SELECT *
-            FROM 
-                (SELECT g1.*
-                FROM gia g1 
-                LEFT JOIN gia g2 ON (g1.sp_id = g2.sp_id AND g1.id_gia < g2.id_gia)
-                WHERE g2.id_gia IS NULL) AS abc
-            right JOIN sanpham sp ON abc.sp_id = sp.sp_id
+            FROM sanpham sp
             left JOIN khuyenmai km ON km.km_id = sp.km_id
             JOIN chitietsanpham ctsp ON sp.sp_id = ctsp.sp_id
             JOIN hinhanh ha ON ha.ha_id = ctsp.ha_id
             JOIN loaisanpham lsp ON lsp.lsp_id = sp.lsp_id
-            WHERE sp.sp_trangthai = 1 AND abc.giaban < 250000
+            WHERE sp.sp_trangthai = 1 AND sp.sp_giaban < 250000
             GROUP BY sp.sp_ten
             '
         );
@@ -533,17 +455,12 @@ class FrontendController extends Controller
     public function g2535(Request $request){
         $duoi250 = DB::select(
             ' SELECT *
-            FROM 
-                (SELECT g1.*
-                FROM gia g1 
-                LEFT JOIN gia g2 ON (g1.sp_id = g2.sp_id AND g1.id_gia < g2.id_gia)
-                WHERE g2.id_gia IS NULL) AS abc
-            right JOIN sanpham sp ON abc.sp_id = sp.sp_id
+            FROM sanpham sp
             left JOIN khuyenmai km ON km.km_id = sp.km_id
             JOIN chitietsanpham ctsp ON sp.sp_id = ctsp.sp_id
             JOIN hinhanh ha ON ha.ha_id = ctsp.ha_id
             JOIN loaisanpham lsp ON lsp.lsp_id = sp.lsp_id
-            WHERE sp.sp_trangthai = 1 AND abc.giaban BETWEEN 250000 AND 349999
+            WHERE sp.sp_trangthai = 1 AND sp.sp_giaban BETWEEN 250000 AND 349999
             GROUP BY sp.sp_ten 
             '
         );
@@ -556,17 +473,12 @@ class FrontendController extends Controller
     public function g3550(Request $request){
         $duoi250 = DB::select(
             ' SELECT *
-            FROM 
-                (SELECT g1.*
-                FROM gia g1 
-                LEFT JOIN gia g2 ON (g1.sp_id = g2.sp_id AND g1.id_gia < g2.id_gia)
-                WHERE g2.id_gia IS NULL) AS abc
-            right JOIN sanpham sp ON abc.sp_id = sp.sp_id
+            FROM sanpham sp
             left JOIN khuyenmai km ON km.km_id = sp.km_id
             JOIN chitietsanpham ctsp ON sp.sp_id = ctsp.sp_id
             JOIN hinhanh ha ON ha.ha_id = ctsp.ha_id
             JOIN loaisanpham lsp ON lsp.lsp_id = sp.lsp_id
-            WHERE sp.sp_trangthai = 1 AND abc.giaban BETWEEN 350000 AND 499999
+            WHERE sp.sp_trangthai = 1 AND sp.sp_giaban BETWEEN 350000 AND 499999
             GROUP BY sp.sp_ten 
             '
         );
@@ -579,17 +491,12 @@ class FrontendController extends Controller
     public function tren500(Request $request){
         $duoi250 = DB::select(
             ' SELECT *
-            FROM 
-                (SELECT g1.*
-                FROM gia g1 
-                LEFT JOIN gia g2 ON (g1.sp_id = g2.sp_id AND g1.id_gia < g2.id_gia)
-                WHERE g2.id_gia IS NULL) AS abc
-            right JOIN sanpham sp ON abc.sp_id = sp.sp_id
+            FROM sanpham sp
             left JOIN khuyenmai km ON km.km_id = sp.km_id
             JOIN chitietsanpham ctsp ON sp.sp_id = ctsp.sp_id
             JOIN hinhanh ha ON ha.ha_id = ctsp.ha_id
             JOIN loaisanpham lsp ON lsp.lsp_id = sp.lsp_id
-            WHERE sp.sp_trangthai = 1 AND abc.giaban >= 500000
+            WHERE sp.sp_trangthai = 1 AND sp.sp_giaban >= 500000
             GROUP BY sp.sp_ten 
             '
         );
@@ -783,64 +690,161 @@ class FrontendController extends Controller
         echo $output;
     }
 
-    public function dathang(Request $request){
-    
+    public function thanhtoankhinhanhang($request){
+        $dataMail = [];
+        try {
+            $ddh = new Dondathang();
+            $ddh->ddh_ngaylap = Carbon::now('Asia/Ho_Chi_Minh');
+            $ddh->ddh_diachigiaohang = $request->ddh_diachigiaohang;
+            $ddh->ddh_trangthai = 0;
+            $ddh->id = NULL;
+            $ddh->kh_id = Session::get('kh_id');
+
+            $khachhang = khachhang::find($ddh->kh_id);
+
+            $dataMail['khachhang'] = $khachhang->toArray();
+
+            $ddh->htvc_id = $request->htvc_id;
+
+            $vanchuyen = hinhthucvanchuyen::find($request->htvc_id);
+
+            $ddh->httt_id = $request->httt_id;
+            $ddh->px_id = $request->px_id;
+
+            $ddh->save();
+            $dataMail['dondathang'] = $ddh->toArray();       
+
+            $content = Cart::content();
+            $content1 = Cart::content();
+
+            $tongtien = 0;
+            if (count($content) > 0) {
+                foreach ($content as $key => $item) {
+                    $ctdh = new Chitietdonhang();
+                    $ctdh->ddh_id = $ddh->ddh_id;
+                    $ctdh->sp_id = $item->id;
+                        
+                    $size = size::where('size_ten', '=', $item->options->size)->first();
+                    $ctdh->size_id = $size->size_id;
+
+                    $color = mau::where('m_ten', '=', $item->options->color)->first();
+                    $ctdh->m_id = $color->m_id;
+
+                    $ctdh->ctdh_soluong = $item->qty;
+                    $ctdh->ctdh_dongia = $item->price;
+                    $ctdh->save();
+                    $dataMail['dondathang']['chitiet'][] = $ctdh->toArray();
+                    $dataMail['sp_ten'][] = $item->name;
+                    
+                    // $tongtien += $item->qty * $item->price;
+                }
+            }
+            Mail::to($khachhang->kh_email)
+                ->send(new OrderMailer($dataMail));
+
+            if (count($content1) > 0) {
+                foreach ($content1 as $key => $item1) {
+                    $id = $item1->id;
+                    $qty = $item1->qty;
+
+                    $size = size::where('size_ten', '=', $item1->options->size)->first();
+                    $size_id = $size->size_id;
+
+                    $color = mau::where('m_ten', '=', $item1->options->color)->first();
+                    $m_id = $color->m_id;
+
+                    $product = DB::table('chitietsanpham')->where('sp_id',$id)->where('m_id', $m_id)->where('size_id', $size_id)->get();
+
+                    foreach ($product as $key => $value) {
+                        $value = $value->ctsp_soluong-$qty;
+            
+                        $data = array();
+                        $data['ctsp_soluong'] = $value;
+                        
+                        DB::table('chitietsanpham')->where('sp_id', $id)->where('m_id', $m_id)->where('size_id', $size_id)->update($data);  
+                    }
+                }
+            }  
+        
+        }
+        catch(ValidationException $e) {
+            return response()->json(array(
+                'code'  => 500,
+                'message' => $e,
+                'redirectUrl' => route('frontend.home')
+            ));
+        } 
+        catch(Exception $e) {
+            throw $e;
+        }
+        
+        Cart::destroy();
+
+        // return response()->json(array(
+        //     'code'  => 200,
+        //     'message' => 'Tạo đơn hàng thành công!',
+        //     'redirectUrl' => route('frontend.orderFinish')
+        // ));
+        return redirect()->route('frontend.orderFinish');
+    }
+
+    public function thanhtoanvnpay($request){
         $dataMail = [];
 
         try {
+            session(['cost_id' => $request->id]);
+            session(['url_prev' => url()->previous()]);
+            $vnp_TmnCode = "76ONYK81"; //Mã website tại VNPAY 
+            $vnp_HashSecret = "TAJVGPYXDKRVLSIYFDTFYLPXVFKREZSE"; //Chuỗi bí mật
+            $vnp_Url = "http://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
+            $vnp_Returnurl = route('frontend.orderFinish');
+            $vnp_TxnRef = date("YmdHis"); //Mã đơn hàng. Trong thực tế Merchant cần insert đơn hàng vào DB và gửi mã này sang VNPAY
+            $vnp_OrderInfo = "Thanh toán hóa đơn phí dich vụ";
+            $vnp_OrderType = 'billpayment';
+            // $vnp_Amount = $tongtien * 100;
+            $vnp_Amount = ($request->tongcong_hidden + $request->phivc_hidden) * 100;
+            $vnp_Locale = 'vn';
+            $vnp_IpAddr = request()->ip();
 
-        //     session(['cost_id' => $request->id]);
-        // session(['url_prev' => url()->previous()]);
-        // $vnp_TmnCode = "76ONYK81"; //Mã website tại VNPAY 
-        // $vnp_HashSecret = "TAJVGPYXDKRVLSIYFDTFYLPXVFKREZSE"; //Chuỗi bí mật
-        // $vnp_Url = "http://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
-        // $vnp_Returnurl = route('frontend.home');
-        // $vnp_TxnRef = date("YmdHis"); //Mã đơn hàng. Trong thực tế Merchant cần insert đơn hàng vào DB và gửi mã này sang VNPAY
-        // $vnp_OrderInfo = "Thanh toán hóa đơn phí dich vụ";
-        // $vnp_OrderType = 'billpayment';
-        // $vnp_Amount = $request->input('amount') * 100;
-        // $vnp_Locale = 'vn';
-        // $vnp_IpAddr = request()->ip();
+            $inputData = array(
+                "vnp_Version" => "2.0.0",
+                "vnp_TmnCode" => $vnp_TmnCode,
+                "vnp_Amount" => $vnp_Amount,
+                "vnp_Command" => "pay",
+                "vnp_CreateDate" => date('YmdHis'),
+                "vnp_CurrCode" => "VND",
+                "vnp_IpAddr" => $vnp_IpAddr,
+                "vnp_Locale" => $vnp_Locale,
+                "vnp_OrderInfo" => $vnp_OrderInfo,
+                "vnp_OrderType" => $vnp_OrderType,
+                "vnp_ReturnUrl" => $vnp_Returnurl,
+                "vnp_TxnRef" => $vnp_TxnRef,
+            );
 
-        // $inputData = array(
-        //     "vnp_Version" => "2.0.0",
-        //     "vnp_TmnCode" => $vnp_TmnCode,
-        //     "vnp_Amount" => $vnp_Amount,
-        //     "vnp_Command" => "pay",
-        //     "vnp_CreateDate" => date('YmdHis'),
-        //     "vnp_CurrCode" => "VND",
-        //     "vnp_IpAddr" => $vnp_IpAddr,
-        //     "vnp_Locale" => $vnp_Locale,
-        //     "vnp_OrderInfo" => $vnp_OrderInfo,
-        //     "vnp_OrderType" => $vnp_OrderType,
-        //     "vnp_ReturnUrl" => $vnp_Returnurl,
-        //     "vnp_TxnRef" => $vnp_TxnRef,
-        // );
+            if (isset($vnp_BankCode) && $vnp_BankCode != "") {
+                $inputData['vnp_BankCode'] = $vnp_BankCode;
+            }
+            ksort($inputData);
+            $query = "";
+            $i = 0;
+            $hashdata = "";
+            foreach ($inputData as $key => $value) {
+                if ($i == 1) {
+                    $hashdata .= '&' . $key . "=" . $value;
+                } else {
+                    $hashdata .= $key . "=" . $value;
+                    $i = 1;
+                }
+                $query .= urlencode($key) . "=" . urlencode($value) . '&';
+            }
 
-        // if (isset($vnp_BankCode) && $vnp_BankCode != "") {
-        //     $inputData['vnp_BankCode'] = $vnp_BankCode;
-        // }
-        // ksort($inputData);
-        // $query = "";
-        // $i = 0;
-        // $hashdata = "";
-        // foreach ($inputData as $key => $value) {
-        //     if ($i == 1) {
-        //         $hashdata .= '&' . $key . "=" . $value;
-        //     } else {
-        //         $hashdata .= $key . "=" . $value;
-        //         $i = 1;
-        //     }
-        //     $query .= urlencode($key) . "=" . urlencode($value) . '&';
-        // }
-
-        // $vnp_Url = $vnp_Url . "?" . $query;
-        // if (isset($vnp_HashSecret)) {
-        //    // $vnpSecureHash = md5($vnp_HashSecret . $hashdata);
-        //     $vnpSecureHash = hash('sha256', $vnp_HashSecret . $hashdata);
-        //     $vnp_Url .= 'vnp_SecureHashType=SHA256&vnp_SecureHash=' . $vnpSecureHash;
-        // }
-        
+            $vnp_Url = $vnp_Url . "?" . $query;
+            if (isset($vnp_HashSecret)) {
+            // $vnpSecureHash = md5($vnp_HashSecret . $hashdata);
+                $vnpSecureHash = hash('sha256', $vnp_HashSecret . $hashdata);
+                $vnp_Url .= 'vnp_SecureHashType=SHA256&vnp_SecureHash=' . $vnpSecureHash;
+            }
+           
 
             $ddh = new Dondathang();
             $ddh->ddh_ngaylap = Carbon::now('Asia/Ho_Chi_Minh');
@@ -854,23 +858,19 @@ class FrontendController extends Controller
             $dataMail['khachhang'] = $khachhang->toArray();
 
             $ddh->htvc_id = $request->htvc_id;
+
+            $vanchuyen = hinhthucvanchuyen::find($request->htvc_id);
+
             $ddh->httt_id = $request->httt_id;
             $ddh->px_id = $request->px_id;
 
-            // $px = phuongxa::where('px_id', '=', $request->px_id)->first();
-            // $px_ten = $px
-            // $qh = quanhuyen::where('qh_id', '=', $px->qh_id);
-            // $tp = tinhthanhpho::where('tinhtp_id', '=', $qh->tinhtp_id);
-
             $ddh->save();
-            $dataMail['dondathang'] = $ddh->toArray();
-            // $dataMail['px_ten'][] = $px->px_ten;
-            //$dataMail['tinhthanhpho'][] = $tp->tinhtp_ten;
-            //Cart::destroy();       
-    
+            $dataMail['dondathang'] = $ddh->toArray();       
+
             $content = Cart::content();
             $content1 = Cart::content();
-    
+
+            $tongtien = 0;
             if (count($content) > 0) {
                 foreach ($content as $key => $item) {
                     $ctdh = new Chitietdonhang();
@@ -879,37 +879,33 @@ class FrontendController extends Controller
                         
                     $size = size::where('size_ten', '=', $item->options->size)->first();
                     $ctdh->size_id = $size->size_id;
-    
+
                     $color = mau::where('m_ten', '=', $item->options->color)->first();
                     $ctdh->m_id = $color->m_id;
-    
+
                     $ctdh->ctdh_soluong = $item->qty;
                     $ctdh->ctdh_dongia = $item->price;
                     $ctdh->save();
                     $dataMail['dondathang']['chitiet'][] = $ctdh->toArray();
                     $dataMail['sp_ten'][] = $item->name;
-                    
-                    //$dataMail['dondathang']['giohang'][] = $item;
                 }
             }
-            
-            // dd($aaa);
             Mail::to($khachhang->kh_email)
                 ->send(new OrderMailer($dataMail));
-    
+
             if (count($content1) > 0) {
                 foreach ($content1 as $key => $item1) {
                     $id = $item1->id;
                     $qty = $item1->qty;
-    
+
                     $size = size::where('size_ten', '=', $item1->options->size)->first();
                     $size_id = $size->size_id;
-    
+
                     $color = mau::where('m_ten', '=', $item1->options->color)->first();
                     $m_id = $color->m_id;
-    
+
                     $product = DB::table('chitietsanpham')->where('sp_id',$id)->where('m_id', $m_id)->where('size_id', $size_id)->get();
-    
+
                     foreach ($product as $key => $value) {
                         $value = $value->ctsp_soluong-$qty;
             
@@ -919,12 +915,9 @@ class FrontendController extends Controller
                         DB::table('chitietsanpham')->where('sp_id', $id)->where('m_id', $m_id)->where('size_id', $size_id)->update($data);  
                     }
                 }
-            }
-    
-            Cart::destroy();
-            
-        }
-        catch(ValidationException $e) {
+            }  
+        
+        }catch(ValidationException $e) {
             return response()->json(array(
                 'code'  => 500,
                 'message' => $e,
@@ -934,15 +927,29 @@ class FrontendController extends Controller
         catch(Exception $e) {
             throw $e;
         }
+
         // return response()->json(array(
         //     'code'  => 200,
         //     'message' => 'Tạo đơn hàng thành công!',
         //     'redirectUrl' => route('frontend.orderFinish')
         // ));
-
-        // return redirect($vnp_Url);
-       
+        Cart::destroy();
+        return redirect($vnp_Url);
     }
+
+    public function dathang(Request $request){
+        $httt = $request->httt_id;
+
+        if($httt == 1){
+            return $this->thanhtoankhinhanhang($request);
+        }
+        else{
+            return $this->thanhtoanvnpay($request);
+        }
+    }  
+
+    
+    
 
     public function dathang_thanhcong(Request $request){
         return view('frontend.pages.giohang.kq_thanhtoan');
@@ -980,6 +987,7 @@ class FrontendController extends Controller
             $request->session()->put('kh_email', $khachhang->kh_email);
             $request->session()->put('kh_sdt', $khachhang->kh_sdt);
             $request->session()->put('kh_trangthai', $khachhang->kh_trangthai);
+            $request->session()->put('kh_hinhdaidien', $khachhang->kh_hinhdaidien);
             // $request->session()->put('kh_diaChi', $khachhang->kh_diaChi);
             // $request->session()->put('kh_dienThoai', $khachhang->kh_dienThoai);
             return redirect()->route('frontend.giohang');
@@ -1000,6 +1008,7 @@ class FrontendController extends Controller
             'kh_email' => 'required|email|unique:khachhang,kh_email',
             // 'kh_diaChi' => 'required',
             'kh_sdt' => 'required|digits:10',
+            'kh_hinhdaidien' => 'file|image|mimes:jpeg,png,gif,webp|max:2048',
         ],[
             'kh_taikhoan.required' => "Tên tài khoản của khách hàng không được để trống",
             'kh_matkhau.required' => "Mật khẩu của khách hàng không được để trống", 
@@ -1020,7 +1029,18 @@ class FrontendController extends Controller
         $kh->kh_hoten = $request->kh_hoten;
         $kh->kh_email = $request->kh_email;
         $kh->kh_sdt = $request->kh_sdt;
-        $kh->kh_trangthai = 1; // Chưa kích hoạt
+        $kh->kh_trangthai = 1; // kích hoạt
+
+        if($request->hasFile('kh_hinhdaidien')){
+            
+            $file = $request->kh_hinhdaidien;
+    
+            // Lưu tên hình vào column ha_ten
+            $kh->kh_hinhdaidien = $file->getClientOriginalName();
+            
+            // Chép file vào thư mục "photos"
+            $fileSaved = $file->storeAs('public/photos', $kh->kh_hinhdaidien);
+        }
 
         $kh->save();
         
@@ -1050,6 +1070,9 @@ class FrontendController extends Controller
             if($request->session()->exists('kh_trangthai')){
                 $request->session()->forget('kh_trangthai');
             }
+            if($request->session()->exists('kh_hinhdaidien')){
+                $request->session()->forget('kh_hinhdaidien');
+            }
             return redirect()->route('frontend.home');
         }
         catch (Exception $ex){
@@ -1064,12 +1087,7 @@ class FrontendController extends Controller
         //dd($search);
         $timkiem = DB::select(
             ' SELECT *
-            FROM 
-                (SELECT g1.*
-                FROM gia g1 
-                LEFT JOIN gia g2 ON (g1.sp_id = g2.sp_id AND g1.id_gia < g2.id_gia)
-                WHERE g2.id_gia IS NULL) AS abc
-            right JOIN sanpham sp ON abc.sp_id = sp.sp_id
+            FROM sanpham sp
             left JOIN khuyenmai km ON km.km_id = sp.km_id
             JOIN chitietsanpham ctsp ON sp.sp_id = ctsp.sp_id
             JOIN hinhanh ha ON ha.ha_id = ctsp.ha_id
@@ -1081,5 +1099,39 @@ class FrontendController extends Controller
 
         return view('frontend.pages.sanpham.sanpham')
                 ->with('ds_sp', $timkiem);
+    }
+
+    public function send_comment(Request $request){
+        $sp_id = $request->sp_id;
+        $kh_id = $request->kh_id;
+        $comment_content = $request->comment_content;
+
+        $comment = new danhgia();
+        $comment->dg_noidung = $comment_content;
+        $comment->dg_ngaydanhgia = Carbon::now('Asia/Ho_Chi_Minh');
+        $comment->sp_id = $sp_id;
+        $comment->kh_id = $kh_id;
+        $comment->dg_trangthai = 0;
+        $comment->save();
+    }
+
+    public function load_comment(Request $request){
+
+        $sp_id = $request->sp_id;
+        $comment = danhgia::where('sp_id', '=', $sp_id)->where('dg_trangthai', '=', 1)->get();
+        $output = '';
+        foreach($comment as $key => $comm){
+            $output.='<div class="blog__comment__item__pic">
+                        <img src="'.url('storage/photos/' . $comm->khachhang->kh_hinhdaidien).'" alt="" width="90px" height="90px">
+                    </div>
+                    <div class="blog__comment__item__text">
+                        <h6> '.$comm->khachhang->kh_taikhoan.' </h6>
+                        <p>'.$comm->dg_noidung.'</p>
+                        <ul>
+                            <li><i class="fa fa-clock-o"></i> '.$comm->dg_ngaydanhgia.'</li>
+                        </ul>
+                    </div><br><hr>';
+        }
+        echo $output;
     }
 }

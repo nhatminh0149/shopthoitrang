@@ -20,6 +20,7 @@ class CreateKhachhangTable extends Migration
             $table->string('kh_hoten', 255);
             $table->string('kh_email', 255);
             $table->string('kh_sdt', 10);
+            $table->string('kh_hinhdaidien', 255);
             $table->integer('kh_trangthai')->comment('0: Vô hiệu hóa, 1: Kích hoạt');
 
             $table->unique(['kh_email']);
