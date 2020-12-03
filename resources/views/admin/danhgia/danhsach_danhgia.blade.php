@@ -267,45 +267,56 @@
                                 </thead>
 
                                 <tbody>
-                                    @foreach ($ds_danhgia as $key => $ds_danhgia)
-                                    <form action="" method="post">
-                                    {{ csrf_field() }}
-                                        <?php
-                                                $dg_ngaydanhgia=date("d/m/Y H:i:s", strtotime($ds_danhgia->dg_ngaydanhgia));
-                                        ?>
-                                        <tr>
-                                            <td>{{ $ds_danhgia->dg_id }}</td>
-                                            <td>{{ $ds_danhgia->khachhang->kh_taikhoan }}</td>
-                                            <td>{{ $ds_danhgia->sanpham->sp_ten }}</td>
-                                            <td>{{ $ds_danhgia->dg_noidung }}
-                                                @if (($ds_danhgia->dg_trangthai) == 1)
-                                                    <br><textarea class="reply_comment{{$ds_danhgia->dg_id}}" cols="15" rows="3" style="resize: none;"></textarea><br>
-                                                    <button class="btn btn-outline-default btn-sm btn-reply-comment" id="{{ $ds_danhgia->sp_id }}" data-dg_id="{{ $ds_danhgia->dg_id }}" data-kh_id="{{ $ds_danhgia->kh_id }}">Trả lời bình luận</button>
-                                                @endif
-                                            </td>
-                                            <td>{{ $dg_ngaydanhgia }}</td>
-                                            <td style="text-align: center;">
-                                                @if (($ds_danhgia->dg_trangthai) == 1)
-                                                    <div class="badge badge-primary">
-                                                        {{ 'Đã duyệt' }}
-                                                    </div>
-                                                @else 
-                                                    <div class="badge badge-danger">
-                                                        <a style="color: white;" href="{{ route('admin.danhgia.active', ['dg_id' => $ds_danhgia->dg_id]) }}">{{ 'Chưa duyệt' }}</a>
-                                                    </div>
-                                                @endif
-                                            </td>
-                                    </form>    
-                                            <td class="text-primary">
+                                    @foreach ($ds_danhgia as $key => $ds_danhgia_1)
+                                    <?php
+                                            $dg_ngaydanhgia=date("d/m/Y H:i:s", strtotime($ds_danhgia_1->dg_ngaydanhgia));
+                                    ?>
+                                    <tr>
+                                        <td>{{ $ds_danhgia_1->dg_id }}</td>
+                                        <td>{{ $ds_danhgia_1->khachhang->kh_taikhoan }}</td>
+                                        <td>{{ $ds_danhgia_1->sanpham->sp_ten }}</td>
+                                        <td>{{ $ds_danhgia_1->dg_noidung }}
+                                            <style type="text/css">
+                                                ul.list_rep li{
+                                                    list-style-type: decimal;
+                                                    color: blue;
+                                                    margin: 0px 0px 0px -15px;
+                                                }
+                                            </style>
+                                            <ul class="list_rep">
+                                                @foreach ($ds_danhgia as $key => $comm_reply)
+                                                    @if ($comm_reply->dg_parent_comment == $ds_danhgia_1->dg_id)
+                                                        <li>Trả lời: {{ $comm_reply->dg_noidung }}</li>
+                                                    @endif
+                                                @endforeach
+                                            </ul>
+                                            @if (($ds_danhgia_1->dg_trangthai) == 1)
+                                                <br><textarea class="reply_comment{{$ds_danhgia_1->dg_id}}" cols="15" rows="3" style="resize: none;"></textarea><br>
+                                                <button type="button" class="btn btn-outline-default btn-sm btn-reply-comment" data-sp_id="{{ $ds_danhgia_1->sp_id }}" data-dg_id="{{ $ds_danhgia_1->dg_id }}" data-kh_id="{{ $ds_danhgia_1->kh_id }}">Trả lời bình luận</button>
+                                            @endif
+                                        </td>
+                                        <td>{{ $dg_ngaydanhgia }}</td>
+                                        <td style="text-align: center;">
+                                            @if (($ds_danhgia_1->dg_trangthai) == 1)
+                                                <div class="badge badge-primary">
+                                                    {{ 'Đã duyệt' }}
+                                                </div>
+                                            @else 
+                                                <div class="badge badge-danger">
+                                                    <a style="color: white;" href="{{ route('admin.danhgia.active', ['dg_id' => $ds_danhgia_1->dg_id]) }}">{{ 'Chưa duyệt' }}</a>
+                                                </div>
+                                            @endif
+                                        </td>
+                                    
+                                        <td class="text-primary">
                                             <a href="">
                                                 <button type="button" class="btn btn-outline-info"><i class="fa fa-pencil" aria-hidden="true" title="Trả lời bình luận"></i></button>
                                             </a>
                                             <a href="" onclick="return confirm('Bạn có muốn xóa bình luận này không?')">
                                                 <button type="button" class="btn btn-outline-danger"><i class="fa fa-trash-o" aria-hidden="true" title="Xóa bình luận"></i></button>
                                             </a>
-                                            </td>
-                                        </tr>
-                                    
+                                        </td>
+                                    </tr>
                                     @endforeach
                                 </tbody>
                             </table>
@@ -328,7 +339,7 @@
                
                 var dg_id = $(this).data('dg_id');
                 var dg_noidung = $('.reply_comment'+dg_id).val();
-                var sp_id = $(this).attr('id')
+                var sp_id = $(this).data('sp_id')
                 var kh_id = $(this).data('kh_id')
 
                 //alert(dg_id);
@@ -336,7 +347,7 @@
                 //alert(sp_id);
                // alert(kh_id);
                 $.ajax({
-                    url: '{{url('/reply-comment')}}',
+                    url: '{{url('/admin/reply-comment')}}',
                     method: 'POST',
                     headers:{
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -348,6 +359,7 @@
                         kh_id: kh_id
                     },
                     success:function(data){
+                        $('.reply_comment'+dg_id).val('');
                         $('#notify_comment').html('<br><br><p class="text text-success">Trả lời bình luận thành công!</p>');
                     },
                 });

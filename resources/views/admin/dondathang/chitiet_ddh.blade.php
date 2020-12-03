@@ -327,7 +327,7 @@
                                     @foreach($ds_ddh3 as $ds_ddh3)
                                     <tr>
                                         <td colspan="6" class="text-right" style="font-weight: bold;">Tổng tiền:</td>
-                                        <td style="font-weight: bold;">{{ number_format($ds_ddh3->TongTienDonHang, 0, ',' , ',') }}</td>
+                                        <td style="font-weight: bold;">{{ number_format($ds_ddh3->TongTienDonHang, 0, ',' , ',') }} đ</td>
                                      </tr>
                                     @endforeach                                 
                                 </tfoot>

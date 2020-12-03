@@ -1,49 +1,4 @@
-<!-- <style>
-        .flex-container {
-            display: flex;
-        }
-        .search-icon{
-            background: black;
-            height: 40px;
-            border-radius: 50px;
-            padding: 10px;
-            border: 1px solid #e2e5e9;
-        }
-        .search-icon .search-btn{
-            color: black;
-            float: right;
-            width: 100px;
-            height: 28px;
-            border-radius: 50px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-decoration: none;
-            margin-top: -5px;
-            background: black;
-            color: whitesmoke;
-        }
-        .search-icon:hover > .search-txt{
-            width: 200px;
-            padding: 0 5px;
-        }
-        .search-icon:hover > .search-btn{
-            background: white;
-            color: black;
-        }
-        .search-icon .search-txt{
-            border: none;
-            background: none;
-            outline: none;
-            float: left;
-            color: whitesmoke;
-            font-size: 16px;
-            transition: 0.4s;
-            width: 0px;
-            transition: 0.4s;
-            margin-top: -3px;
-        }
-    </style> -->
+
 <!-- Header Section Begin -->
     <header class="header">
         <div class="container-fluid">
@@ -81,19 +36,19 @@
                             @endif
                         </div>
                         <ul class="header__right__widget">
-                            <li>
-                                <!-- <form action="">
+                            <!-- <li>
+                                <form action="">
                                     <div class="flex-container search-icon">
                                         <input class="flex-c-m search-txt" type="text" name="search-product" placeholder="Tên sản phẩm">
                                         <input class="flex-c-m search-btn" type="submit" value="Tìm kiếm">
                                     </div>
-                                </form> -->
+                                </form>
                                 <span class="icon_search search-switch"></span>
-                            </li>
-                            <li><a href="#"><span class="icon_heart_alt"></span>
+                            </li> -->
+                            <!-- <li><a href="#"><span class="icon_heart_alt"></span>
                                     <div class="tip">2</div>
                                 </a>
-                            </li>
+                            </li> -->
                             <li><a href="{{ route('frontend.giohang') }}"><span class="icon_cart_alt"></span>
                                     <div class="tip">{{ Cart::count() }}</div>
                                 </a>

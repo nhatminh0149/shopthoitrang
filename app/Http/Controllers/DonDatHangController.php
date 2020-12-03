@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
+use Barryvdh\DomPDF\Facade as PDF;
 use Auth;
 use App\admin;
 use App\user;
@@ -100,6 +101,47 @@ class DonDatHangController extends Controller
         $ddh->save();
         Session::flash('alert-success', 'Xử lý đơn hàng thành công');
         return redirect()->back();
+    }
+
+    public function pdf_ddh($ddh_id){
+        $ddh = dondathang::find($ddh_id);
+
+        $ds_ddh1 = DB::select(
+            'SELECT *
+            FROM dondathang ddh
+            JOIN khachhang kh ON ddh.kh_id = kh.kh_id
+            JOIN hinhthucvanchuyen htvc ON htvc.htvc_id = ddh.htvc_id
+            JOIN hinhthucthanhtoan httt ON httt.httt_id = ddh.httt_id
+            JOIN phuongxa px ON ddh.px_id = px.px_id
+            JOIN quanhuyen qh ON px.qh_id = qh.qh_id
+            JOIN tinhthanhpho ttp ON qh.tinhtp_id = ttp.tinhtp_id
+            LEFT JOIN admins ad ON ad.id = ddh.id
+            WHERE ddh.ddh_id = '.$ddh_id.' ');
+
+        $ds_ddh2 = DB::select(
+            'SELECT *
+            from chitietdonhang ctdh
+            LEFT JOIN sanpham sp ON sp.sp_id = ctdh.sp_id
+            LEFT JOIN mau m ON m.m_id = ctdh.m_id
+            LEFT JOIN size s ON s.size_id = ctdh.size_id
+            WHERE ctdh.ddh_id = '.$ddh_id.' ');
+
+        $ds_ddh3 = DB::select(
+            'SELECT SUM(aaa.ctdh_soluong * aaa.ctdh_dongia) AS TongTienDonHang
+            FROM (
+                SELECT ctdh.ctdh_soluong, ctdh.ctdh_dongia
+                FROM dondathang ddh
+                JOIN chitietdonhang ctdh ON ddh.ddh_id = ctdh.ddh_id
+                WHERE ddh.ddh_id = '.$ddh_id.' ) AS aaa');
+
+        $data = [
+            'ddh' => $ddh,
+            'ds_ddh1' => $ds_ddh1,
+            'ds_ddh2' => $ds_ddh2,
+            'ds_ddh3' => $ds_ddh3,
+        ];
+        $pdf = PDF::loadView('admin.dondathang.pdf_ddh',$data);
+        return $pdf->stream();
     }
 
 

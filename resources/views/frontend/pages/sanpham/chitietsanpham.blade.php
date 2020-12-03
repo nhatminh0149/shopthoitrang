@@ -43,7 +43,8 @@ A S H I O N
                         @foreach($hinhanh as $hinhanh)
                         <div class="col-12 product-image-thumbs">
                             <div class="product-image-thumb" id="ha{{ $hinhanh->m_id }}-mau"><img
-                                    src="{{ asset('storage/photos/' . $hinhanh->ha_ten) }}" alt="Product Image"></div>
+                                src="{{ asset('storage/photos/' . $hinhanh->ha_ten) }}" alt="Product Image">
+                            </div>
                         </div>
 
                         <!-- <a class="pt" href="#{{ $hinhanh->ha_id }}" id="ha{{ $hinhanh->m_id }}-mau">
@@ -93,14 +94,14 @@ A S H I O N
                     {{ csrf_field() }}
                     <div class="product__details__text">
                         <h3>{{ $ctsp[0]->sp_ten }} <span>Loại sản phẩm: {{ $ctsp[0]->lsp_ten }}</span></h3>
-                        <div class="rating">
+                        <!-- <div class="rating">
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
                             <span>( 138 reviews )</span>
-                        </div>
+                        </div> -->
                         <div class="product__details__price">
                             @if($ctsp[0]->km_giatriphantram == 0)
                             {{ number_format($ctsp[0]->giaban,0, ',' , ',') }} đ
@@ -215,17 +216,15 @@ A S H I O N
                                 <span class="icon_cart_alt"></span>
                                 Thêm vào giỏ hàng
                             </button>
-                            <ul>
-                                <li><a href="#"><span class="icon_heart_alt"></span></a></li>
-                            </ul>
+                           
 
                         </div>
                         <div class="flash-message">
                             @foreach (['danger', 'warning', 'success', 'info', 'dark'] as $msg)
-                            @if(Session::has('alert-' . $msg))
-                            <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }} <a href="#"
-                                    class="close" data-dismiss="alert" aria-label="close">&times;</a></p>
-                            @endif
+                                @if(Session::has('alert-' . $msg))
+                                <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }} <a href="#"
+                                        class="close" data-dismiss="alert" aria-label="close">&times;</a></p>
+                                @endif
                             @endforeach
                         </div>
                     </div>
@@ -245,32 +244,6 @@ A S H I O N
                         </li>
                     </ul>
                     <div class="tab-content">
-                        <!-- <div class="tab-pane " id="tabs-1" role="tabpanel">
-                            <h6>Description</h6>
-                            <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut loret fugit, sed
-                                quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt loret.
-                                Neque porro lorem quisquam est, qui dolorem ipsum quia dolor si. Nemo enim ipsam
-                                voluptatem quia voluptas sit aspernatur aut odit aut loret fugit, sed quia ipsu
-                                consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Nulla
-                                consequat massa quis enim.</p>
-                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget
-                                dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes,
-                                nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium
-                                quis, sem.</p>
-                        </div> -->
-                        <!-- <div class="tab-pane" id="tabs-2" role="tabpanel">
-                            <h6>Specification</h6>
-                            <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut loret fugit, sed
-                                quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt loret.
-                                Neque porro lorem quisquam est, qui dolorem ipsum quia dolor si. Nemo enim ipsam
-                                voluptatem quia voluptas sit aspernatur aut odit aut loret fugit, sed quia ipsu
-                                consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Nulla
-                                consequat massa quis enim.</p>
-                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget
-                                dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes,
-                                nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium
-                                quis, sem.</p>
-                        </div> -->
                         <div class="tab-pane active" id="tabs-3" role="tabpanel">
                             
                             <div class="blog__details__comment">
@@ -321,103 +294,60 @@ A S H I O N
         <div class="row">
             <div class="col-lg-12 text-center">
                 <div class="related__title">
-                    <h5>RELATED PRODUCTS</h5>
+                    <h5>SẢN PHẨM LIÊN QUAN</h5>
                 </div>
             </div>
+
+            @foreach($sanphamlienquan as $sanphamlienquan)
             <div class="col-lg-3 col-md-4 col-sm-6">
-                <div class="product__item">
-                    <div class="product__item__pic set-bg" data-setbg="img/product/related/rp-1.jpg">
-                        <div class="label new">New</div>
+                @if($sanphamlienquan->km_giatriphantram == 0)
+                <div class="product__item" style="border: solid 1px whitesmoke;">
+                    <div class="product__item__pic set-bg" data-setbg="{{ asset('storage/photos/' . $sanphamlienquan->ha_ten) }}">
                         <ul class="product__hover">
-                            <li><a href="img/product/related/rp-1.jpg" class="image-popup"><span
+                            <li><a href="{{ asset('storage/photos/' . $sanphamlienquan->ha_ten) }}" class="image-popup"><span
                                         class="arrow_expand"></span></a></li>
                             <li><a href="#"><span class="icon_heart_alt"></span></a></li>
-                            <li><a href="#"><span class="icon_bag_alt"></span></a></li>
+                            <li><a href="{{ route('frontend.sanpham.xemchitiet', ['sp_id' => $sanphamlienquan->sp_id]) }}"><span class="icon_search"></span></a></li>
                         </ul>
                     </div>
                     <div class="product__item__text">
-                        <h6><a href="#">Buttons tweed blazer</a></h6>
-                        <div class="rating">
+                        <h6><a href="{{ route('frontend.sanpham.xemchitiet', ['sp_id' => $sanphamlienquan->sp_id]) }}">{{ $sanphamlienquan->sp_ten }}</a></h6>
+                        <!-- <div class="rating">
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
-                        </div>
-                        <div class="product__price">$ 59.0</div>
+                        </div> -->
+                        <div class="product__price mt-1">{{ number_format($sanphamlienquan->sp_giaban, 0, ',' , ',') }} đ</div>
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6">
-                <div class="product__item">
-                    <div class="product__item__pic set-bg" data-setbg="img/product/related/rp-2.jpg">
+                @else
+                <div class="product__item sale" style="border: solid 1px whitesmoke;">
+                    <div class="product__item__pic set-bg" data-setbg="{{ asset('storage/photos/' . $sanphamlienquan->ha_ten) }}">
+                        <div class="label">Sale</div>
                         <ul class="product__hover">
-                            <li><a href="img/product/related/rp-2.jpg" class="image-popup"><span
+                            <li><a href="{{ asset('storage/photos/' . $sanphamlienquan->ha_ten) }}" class="image-popup"><span
                                         class="arrow_expand"></span></a></li>
                             <li><a href="#"><span class="icon_heart_alt"></span></a></li>
-                            <li><a href="#"><span class="icon_bag_alt"></span></a></li>
+                            <li><a href="{{ route('frontend.sanpham.xemchitiet', ['sp_id' => $sanphamlienquan->sp_id]) }}"><span class="icon_search"></span></a></li>
                         </ul>
                     </div>
                     <div class="product__item__text">
-                        <h6><a href="#">Flowy striped skirt</a></h6>
-                        <div class="rating">
+                        <h6><a href="#">{{ $sanphamlienquan->sp_ten }}</a></h6>
+                        <!-- <div class="rating">
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
-                        </div>
-                        <div class="product__price">$ 49.0</div>
+                        </div> -->
+                        <div class="product__price mt-1">{{ number_format($sanphamlienquan->sp_giaban - ($sanphamlienquan->sp_giaban * $sanphamlienquan->km_giatriphantram/100),0, ',' , ',') }} đ&nbsp;<span>{{ number_format($sanphamlienquan->sp_giaban, 0, ',' , ',') }} đ</div>
                     </div>
                 </div>
+                @endif
             </div>
-            <div class="col-lg-3 col-md-4 col-sm-6">
-                <div class="product__item">
-                    <div class="product__item__pic set-bg" data-setbg="img/product/related/rp-3.jpg">
-                        <div class="label stockout">out of stock</div>
-                        <ul class="product__hover">
-                            <li><a href="img/product/related/rp-3.jpg" class="image-popup"><span
-                                        class="arrow_expand"></span></a></li>
-                            <li><a href="#"><span class="icon_heart_alt"></span></a></li>
-                            <li><a href="#"><span class="icon_bag_alt"></span></a></li>
-                        </ul>
-                    </div>
-                    <div class="product__item__text">
-                        <h6><a href="#">Cotton T-Shirt</a></h6>
-                        <div class="rating">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                        </div>
-                        <div class="product__price">$ 59.0</div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6">
-                <div class="product__item">
-                    <div class="product__item__pic set-bg" data-setbg="img/product/related/rp-4.jpg">
-                        <ul class="product__hover">
-                            <li><a href="img/product/related/rp-4.jpg" class="image-popup"><span
-                                        class="arrow_expand"></span></a></li>
-                            <li><a href="#"><span class="icon_heart_alt"></span></a></li>
-                            <li><a href="#"><span class="icon_bag_alt"></span></a></li>
-                        </ul>
-                    </div>
-                    <div class="product__item__text">
-                        <h6><a href="#">Slim striped pocket shirt</a></h6>
-                        <div class="rating">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                        </div>
-                        <div class="product__price">$ 59.0</div>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
 </section>
@@ -538,7 +468,7 @@ A S H I O N
                     //load_comment();
                     $('#notify_comment').html('<br><br><p class="text text-success">Thêm bình luận thành công!. <br>Bình luận của bạn đang được chờ duyệt. </p>');
                     load_comment();
-                    $('#notify_comment').fadeOut(9000); //mất chữ "thêm vào bình luận thành công" sau 2s
+                    $('#notify_comment').fadeOut(9000); //mất chữ "thêm vào bình luận thành công" sau 9s
                     $('.comment_content').val('');
                 },
             });

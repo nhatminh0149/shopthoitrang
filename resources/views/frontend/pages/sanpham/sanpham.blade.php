@@ -8,129 +8,65 @@ A S H I O N
 
 {{-- Thay thế nội dung vào Placeholder `custom-css` của view `frontend.layouts.master` --}}
 @section('custom-css')
-<style>
-    /* .discount__content form {
-        position: relative;
-        width: 250px;
-        display: inline-block;
-    }
+    <style>
+        #search-form {
+            width: 100%;
+            margin: 0 auto;
+            position: relative;
+        }
+        #search-form input {
+            width: 100%;
+            font-size: 14px;
+            padding: 0px 10px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            height: 45px;
+        }
 
-    .discount__content form input {
-        height: 40px;
-        width: 100%;
-        border: 1px solid #ccc;
-        border-radius: 10px;
-        padding-left: 10px;
-        padding-right: 115px;
-        font-size: 14px;
-        color: #444444;
-    }
+        #search-form button {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            background-color: transparent;
+            outline: none;
+            border: none;
+            width: 3rem;
+            text-align: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #333;
+        }
 
-    .discount__content form input::-webkit-input-placeholder {
-        color: #ccc;
-    }
+        @media (max-width: 1200px) {
+            #search-form { 
+                width: 50%; 
+            }
+        }
+        @media (max-width: 768px) {
+            #search-form { 
+                width: 100%; 
+            }
+            .info { 
+                font-size: 0.5rem; 
+            }
+        }
+    </style>
 
-    .discount__content form input::-moz-placeholder {
-        color: #444444;
-    }
+    <style>
+        .bor10{
+            width: 272px;margin-left: 0px;margin-right: 0px;
+            padding-right: 10px;padding-left: 10px;
+        }
+    </style> 
 
-    .discount__content form input:-ms-input-placeholder {
-        color: #444444;
-    }
-
-    .discount__content form input::-ms-input-placeholder {
-        color: #444444;
-    }
-
-    .discount__content form input::placeholder {
-        color: #444444;
-    }
-
-    .discount__content form button {
-        position: absolute;
-    } 
-    .site-btn {
-        font-size: 12px;
-        color: #ffffff;
-        background: #ca1515;
-        font-weight: 300;
-        border: none;
-        display: inline-block;
-        padding: 5px 10px;
-        border-radius: 10px;
-        height: 32px;
-    }
-
-    .site-btn:hover {
-        font-size: 12px;
-        color: #ffffff;
-        background: #0a0a0a;
-        font-weight: 300;
-        border: none;
-        display: inline-block;
-        padding: 5px 10px;
-        border-radius: 10px;
-        height: 32px;
-    } */
-
-    /* @import url('https://fonts.googleapis.com/css?family=Montserrat'); */
-
-/* * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-body {
-  font-family: 'Montserrat', sans-serif;
-  background-color: #025677;
-  color: #fff;
-} */
-/* .container {
-  padding: 30px 50px;
-} */
-#search-form {
-  width: 100%;
-  margin: 0 auto;
-  position: relative;
-}
-#search-form input {
-  width: 100%;
-  font-size: 14px;
-  padding: 0px 10px;
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  height: 45px;
-}
-
-#search-form button {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  background-color: transparent;
-  outline: none;
-  border: none;
-  width: 3rem;
-  text-align: center;
-  font-size: 1.5rem;
-  cursor: pointer;
-  color: #333;
-}
-/* .info {
-  margin-top: 0.5rem;
-  text-align: center;
-  font-size: 0.75rem;
-} */
-
-@media (max-width: 1200px) {
-  #search-form { width: 50%; }
-}
-@media (max-width: 768px) {
-  /* .container { padding: 30px 35px; } */
-  #search-form { width: 100%; }
-  .info { font-size: 0.5rem; }
-}
-</style>
+    <style>
+        #loading {
+            text-align: center; */
+            background: url('loader.gif') no-repeat center;
+            height: 150px; */
+        }
+    </style>
 @endsection
 
 {{-- Thay thế nội dung vào Placeholder `main-content` của view `frontend.layouts.master` --}}
@@ -163,13 +99,13 @@ body {
                         </div>
                         <div class="discount__content">
                             <!-- <form action="{{ route('frontend.timkiemsp') }}" method="post">
-                            {{ csrf_field() }}
-                                <input type="text" name ="search" id="search" placeholder="Tên sản phẩm...">
-                                <button type="submit" class="site-btn">Tìm kiếm</button>
-                            </form> -->
+                                        {{ csrf_field() }}
+                                            <input type="text" name ="search" id="search" placeholder="Tên sản phẩm...">
+                                            <button type="submit" class="site-btn">Tìm kiếm</button>
+                                        </form> -->
 
                             <form action="{{ route('frontend.timkiemsp') }}" method="get" id="search-form">
-                               
+
                                 <input name="q" type="text" placeholder="Tên sản phẩm..." autocomplete="off" autofocus>
                                 <!-- <button type="button"><i class="fas fa-microphone"></i></button> -->
                             </form>
@@ -186,7 +122,7 @@ body {
                             <div class="accordion" id="accordionExample">
                                 <div class="card">
                                     <div class="card-heading active">
-                                        <a data-toggle="collapse" data-target="#collapseOne" >Đồ nam</a>
+                                        <a data-toggle="collapse" data-target="#collapseOne">Đồ nam</a>
                                     </div>
                                     <div id="collapseOne" class="collapse" data-parent="#accordionExample">
                                         <div class="card-body">
@@ -232,138 +168,65 @@ body {
                     </div>
 
                     <div class="sidebar__sizes">
+
                         <div class="section-title">
-                            <h4>LỌC GIÁ</h4>
+                            <h4>Giá bán</h4>
                         </div>
-                        <a href="{{ route('frontend.duoi250') }}" style="color: black;">- Dưới 250,000 đ</a><br>
-                        <a href="{{ route('frontend.g2535') }}" style="color: black;">- 250,000 ₫ - 350,000 ₫</a><br>
-                        <a href="{{ route('frontend.g3550') }}" style="color: black;">- 350,000 ₫ - 500,000 ₫</a><br>
-                        <a href="{{ route('frontend.tren500') }}" style="color: black;">- 500,000 đ trở lên</a><br>        
+                        <input type="hidden" id="hidden_minimum_price" value="50000" />
+                        <input type="hidden" id="hidden_maximum_price" value="2000000" />
+                        <b id="price_show">50,000 - 1,000,000 đ</b> <br>
+                        <div id="price_range" style="width: 250px; height: 5px; margin-top: 10px;"></div>
+
                     </div>
 
-                    <div class="sidebar__sizes">
-                        <div class="section-title">
-                            <h4>Lọc size</h4>
-                        </div>
-                        <div class="size__list">
-                        <a href="" style="color: black;">S</a><br>
-                        <a href="" style="color: black;">M</a><br>
-                        <a href="" style="color: black;">L</a><br>     
-                            <!-- <label for="s">
-                                S
-                                <input type="checkbox" id="s">
-                                <span class="checkmark"></span>
-                            </label>
-                            <label for="m">
-                                M
-                                <input type="checkbox" id="m">
-                                <span class="checkmark"></span>
-                            </label>
-                            <label for="l">
-                                L
-                                <input type="checkbox" id="l">
-                                <span class="checkmark"></span>
-                            </label> -->
-                        </div>
-                    </div>
+                    <br>
+
+                    <hr>
+
                     <div class="sidebar__color">
                         <div class="section-title">
                             <h4>Lọc màu</h4>
                         </div>
-                        <div class="size__list color__list">
-                            <label for="black">
-                                Đen
-                                <input type="checkbox" id="black">
-                                <span class="checkmark"></span>
-                            </label>
-                            <label for="whites">
-                                Trắng
-                                <input type="checkbox" id="whites">
-                                <span class="checkmark"></span>
-                            </label>
-                            <label for="blues">
-                                Xanh
-                                <input type="checkbox" id="blues">
-                                <span class="checkmark"></span>
-                            </label>
-                            <label for="reds">
-                                Đỏ
-                                <input type="checkbox" id="reds">
-                                <span class="checkmark"></span>
-                            </label>
-                            <label for="yellows">
-                                Vàng
-                                <input type="checkbox" id="yellows">
-                                <span class="checkmark"></span>
-                            </label>
+                        <div style="height: 180px; display:inline">
+                            @foreach($danhsachmau as $mau)
+                            <div class="list-inline-item checkbox" style="width: 110px;margin-right: 0px;">
+                                <label style="padding-bottom: 10px;width:142px;font-size:0.8rem;">
+                                    <input type="checkbox" style="display:inline" class="common_selector mau"
+                                        value="{{ $mau->m_id}}"> {{ $mau->m_ten }}
+                                    <!-- <img src="{{ asset('storage/photos/mau/' . $mau->m_hinh) }}" class="rounded-circle" 
+                                    style="border-color: #060606;height: 15px;width: 15px;" >  -->
+                                </label>
+                            </div>
+                            @endforeach
                         </div>
                     </div>
+
+                    <hr>
+
+                    <div class="sidebar__color">
+                        <div class="section-title">
+                            <h4>Lọc size</h4>
+                        </div>
+                        <div style="height: 180px; display:inline">
+                            @foreach($danhsachsize as $size)
+                            <div class="list-inline-item checkbox" style="width: 110px;margin-right: 0px;">
+                                <label style="padding-bottom: 10px;width:142px;font-size:0.8rem;">
+                                    <input type="checkbox" style="display:inline" class="common_selector size"
+                                        value="{{ $size->size_id}}"> {{ $size->size_ten }}
+                                    <!-- <img src="{{ asset('storage/photos/mau/' . $mau->m_hinh) }}" class="rounded-circle" 
+                                    style="border-color: #060606;height: 15px;width: 15px;" >  -->
+                                </label>
+                            </div>
+                            @endforeach
+                        </div>
+                    </div>
+
                 </div>
             </div>
-            <div class="col-lg-9 col-md-9">
-                <div class="row">
-                    
-                    @foreach($ds_sp as $dssp)
-                    <div class="col-lg-4 col-md-6"> 
-                        @if($dssp->km_giatriphantram == 0)
-                        <div class="product__item" style="border: solid 1px whitesmoke;">
-                            <div class="product__item__pic set-bg" data-setbg="{{ asset('storage/photos/' . $dssp->ha_ten) }}">
-                                <ul class="product__hover">
-                                    <li><a href="{{ asset('storage/photos/' . $dssp->ha_ten) }}" class="image-popup"><span class="arrow_expand"></span></a></li>
-                                    <li><a href="#"><span class="icon_heart_alt"></span></a></li>
-                                    <li><a href="{{ route('frontend.sanpham.xemchitiet', ['sp_id' => $dssp->sp_id]) }}"><span class="icon_search"></span></a></li>
-                                </ul>
-                            </div>
-                            <div class="product__item__text">
-                                <h6><a href="{{ route('frontend.sanpham.xemchitiet', ['sp_id' => $dssp->sp_id]) }}">{{ $dssp->sp_ten }}</a></h6>
-                                <!-- <div class="rating">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                </div> -->
-                                <div class="product__price mt-1">{{ number_format($dssp->sp_giaban, 0, ',' , ',') }} đ</div>
-                            </div>
-                        </div>
-                        @else
-                        <div class="product__item sale" style="border: solid 1px whitesmoke;">
-                            <div class="product__item__pic set-bg" data-setbg="{{ asset('storage/photos/' . $dssp->ha_ten) }}">
-                                <div class="label">Sale</div>
-                                <ul class="product__hover">
-                                    <li><a href="{{ asset('storage/photos/' . $dssp->ha_ten) }}" class="image-popup"><span class="arrow_expand"></span></a></li>
-                                    <li><a href="#"><span class="icon_heart_alt"></span></a></li>
-                                    <li><a href="{{ route('frontend.sanpham.xemchitiet', ['sp_id' => $dssp->sp_id]) }}"><span class="icon_search"></span></a></li>
-                                </ul>
-                            </div>
-                            <div class="product__item__text">
-                                <h6><a href="{{ route('frontend.sanpham.xemchitiet', ['sp_id' => $dssp->sp_id]) }}">{{ $dssp->sp_ten }}</a></h6>
-                                <!-- <div class="rating">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                </div> -->
-                                <div class="product__price mt-1">{{ number_format($dssp->sp_giaban - ($dssp->sp_giaban * $dssp->km_giatriphantram/100),0, ',' , ',') }} đ&nbsp;<span>{{ number_format($dssp->sp_giaban, 0, ',' , ',') }} đ</span></div>
-                            </div>
-                        </div>
-                        @endif
-                    </div>
-                    @endforeach
-                    
 
-                    <div class="col-lg-12 text-center">
-                        <div class="pagination__option">
-                           
-                            <!-- <a href="#">1</a>
-                            <a href="#">2</a>
-                            <a href="#">3</a>
-                            <a href="#"><i class="fa fa-angle-right"></i></a> -->
-                        </div>
-                    </div>
-                </div>
-                
+            <div class="col-lg-9 col-md-9">
+                <div class="row filter_data">
+                </div> 
             </div>
         </div>
     </div>
@@ -458,5 +321,72 @@ else {
 }
 
 
+</script>
+
+<script>
+$(document).ready(function(){
+
+    filter_data();
+
+    function filter_data()
+    {
+        $('.filter_data').html('<div id="loading" style="" ></div>');
+        //var action = 'fetch_data';
+        var minimum_price = $('#hidden_minimum_price').val();
+        var maximum_price = $('#hidden_maximum_price').val();
+        //alert(maximum_price)
+        //var loai = get_filter('loai');
+        var mau = get_filter('mau');
+        var size = get_filter('size');
+        // var q = get_filter('q');
+        //var _token = $('input[name="_token"]').val();
+        //alert(mau);
+
+        $.ajaxSetup({
+            headers: {
+              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+          });        
+        $.ajax({
+            url: "{{url('/sanpham')}}",
+            method:"POST",
+
+            //data:{action:action, minimum_price:minimum_price, maximum_price:maximum_price, brand:brand, ram:ram, storage:storage},
+            data:{minimum_price:minimum_price, maximum_price:maximum_price, mau:mau, size:size},
+            success:function(data){
+                $('.filter_data').html(data);
+            }
+        });
+    }
+
+    function get_filter(class_name)
+    {
+        var filter = [];
+        $('.'+class_name+':checked').each(function(){
+            filter.push($(this).val());
+        });
+        return filter;
+    }
+
+    $('.common_selector').click(function(){
+        filter_data();
+    });
+
+    $('#price_range').slider({
+        range:true,
+        min:50000,
+        max:1000000,
+        values:[50000, 1000000],
+        step:50000,
+        stop:function(event, ui)
+        {
+            $('#price_show').html(ui.values[0] + ' - ' + ui.values[1]);
+            $('#hidden_minimum_price').val(ui.values[0]);
+            $('#hidden_maximum_price').val(ui.values[1]);
+            filter_data();
+        }
+    });
+
+});
 </script>
 @endsection

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
+use Carbon\Carbon;
 use App\sanpham;
 use App\khachhang;
 use App\danhgia;
@@ -22,6 +23,7 @@ class DanhgiaController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(){
+        //$ds_danhgia = danhgia::where('dg_parent_comment', 0)->orderBy('dg_trangthai', 'ASC')->get();
         $ds_danhgia = danhgia::orderBy('dg_trangthai', 'ASC')->get();
         // $ds_danhgia = DB::table('danhgia')
         //             ->select('*')
@@ -46,6 +48,18 @@ class DanhgiaController extends Controller
         $comment->dg_trangthai = 1;
         $comment->dg_parent_comment = $data['dg_id'];
         $comment->save();
+    }
+
+
+    public function active($dg_id){
+        $dg = danhgia::find($dg_id);
+        $dg->dg_trangthai = 1;
+        // if(isset(Auth::user()->name)){
+        //     $ddh->id=Auth::user()->id;
+        // }
+        $dg->save();
+        Session::flash('alert-success', 'Duyệt bình luận thành công');
+        return redirect()->back();
     }
 
     /**

@@ -39,8 +39,7 @@ use Auth;
 use Mail;
 use App\Mail\OrderMailer;
 session_start();
-class FrontendController extends Controller
-{
+class FrontendController extends Controller{
         /**
      * Action hiển thị view Trang chủ
      * GET /
@@ -89,31 +88,7 @@ class FrontendController extends Controller
                 ->with('loc_hinh2', $loc_hinh2);
     }
 
-    /**
-     * Action hiển thị danh sách Sản phẩm
-     */
-    public function sanpham(Request $request){
-        $ds_sp = DB::select(
-            'SELECT sp.sp_id ,sp.sp_ten, ha.ha_ten, sp.sp_giaban, km.km_giatriphantram
-            FROM sanpham sp
-            left JOIN khuyenmai km ON km.km_id = sp.km_id
-            JOIN chitietsanpham ctsp ON sp.sp_id = ctsp.sp_id
-            JOIN hinhanh ha ON ha.ha_id = ctsp.ha_id
-            WHERE sp.sp_trangthai = 1
-            GROUP BY sp.sp_ten ');
-        // $ds_sp = DB::table('sanpham')
-        //     ->select('sanpham.sp_ten', 'hinhanh.ha_ten', 'sanpham.sp_giaban', 'sanpham.sp_id', 'khuyenmai.km_giatriphantram')
-        //     ->join('chitietsanpham', 'chitietsanpham.sp_id', '=', 'sanpham.sp_id')
-        //     ->join('hinhanh', 'hinhanh.ha_id', '=', 'chitietsanpham.ha_id')
-        //     ->leftjoin('khuyenmai', 'khuyenmai.km_id', '=', 'sanpham.km_id')
-        //     ->where('sanpham.sp_trangthai', '=', '1')
-        //     ->groupBy('sanpham.sp_ten')
-        //     ->paginate(9);
-        //dd($ds_sp);
-        // Hiển thị view `frontend.index` với dữ liệu truyền vào
-        return view('frontend.pages.sanpham.sanpham')
-                ->with('ds_sp', $ds_sp);
-    }
+  
 
     //Lọc sản phẩm theo đồ nam
     public function sanpham_donam(Request $request){
@@ -139,8 +114,14 @@ class FrontendController extends Controller
             WHERE sp.sp_trangthai = 1 AND dm.dm_id = 1
             GROUP BY sp.sp_ten ');
         //dd($ds_donam);
+        $danhsachloai = loaisanpham::where('lsp_trangthai', '=', 1)->get();
+        $danhsachmau = mau::all(); 
+        $danhsachsize = size::all();
         return view('frontend.pages.sanpham.donam') 
-            ->with('ds_donam', $ds_donam);         
+            ->with('ds_donam', $ds_donam)      
+            ->with('danhsachloai', $danhsachloai)        
+            ->with('danhsachmau', $danhsachmau)        
+            ->with('danhsachsize', $danhsachsize);         
     }
 
     //Lọc sản phẩm theo đồ nam -> áo thun nam
@@ -156,8 +137,14 @@ class FrontendController extends Controller
             GROUP BY sp.sp_ten 
             '
         );
+        $danhsachloai = loaisanpham::where('lsp_trangthai', '=', 1)->get();
+        $danhsachmau = mau::all(); 
+        $danhsachsize = size::all();
         return view('frontend.pages.sanpham.donam_aothunnam')
-                ->with('ds_aothunnam', $ds_aothunnam); 
+                ->with('ds_aothunnam', $ds_aothunnam)
+                ->with('danhsachloai', $danhsachloai)        
+                ->with('danhsachmau', $danhsachmau)        
+                ->with('danhsachsize', $danhsachsize);  
                 
     }
 
@@ -173,8 +160,14 @@ class FrontendController extends Controller
             WHERE sp.sp_trangthai = 1 AND lsp.lsp_id = 2
             GROUP BY sp.sp_ten 
             ');
+         $danhsachloai = loaisanpham::where('lsp_trangthai', '=', 1)->get();
+         $danhsachmau = mau::all(); 
+         $danhsachsize = size::all();
         return view('frontend.pages.sanpham.donam_aosominam')
-                ->with('ds_aosominam', $ds_aosominam); 
+                ->with('ds_aosominam', $ds_aosominam)
+                ->with('danhsachloai', $danhsachloai)        
+                ->with('danhsachmau', $danhsachmau)        
+                ->with('danhsachsize', $danhsachsize); 
                 
     }
 
@@ -191,8 +184,14 @@ class FrontendController extends Controller
             GROUP BY sp.sp_ten 
             '
         );
+        $danhsachloai = loaisanpham::where('lsp_trangthai', '=', 1)->get();
+        $danhsachmau = mau::all(); 
+        $danhsachsize = size::all();
         return view('frontend.pages.sanpham.donam_quanjeannam')
-                ->with('ds_quanjeannam', $ds_quanjeannam); 
+                ->with('ds_quanjeannam', $ds_quanjeannam)
+                ->with('danhsachloai', $danhsachloai)        
+                ->with('danhsachmau', $danhsachmau)        
+                ->with('danhsachsize', $danhsachsize); 
                 
     }
 
@@ -209,8 +208,14 @@ class FrontendController extends Controller
             GROUP BY sp.sp_ten 
             '
         );
+        $danhsachloai = loaisanpham::where('lsp_trangthai', '=', 1)->get();
+        $danhsachmau = mau::all(); 
+        $danhsachsize = size::all();
         return view('frontend.pages.sanpham.donam_quankakinam')
-                ->with('ds_quankakinam', $ds_quankakinam); 
+                ->with('ds_quankakinam', $ds_quankakinam)
+                ->with('danhsachloai', $danhsachloai)        
+                ->with('danhsachmau', $danhsachmau)        
+                ->with('danhsachsize', $danhsachsize); 
                 
     }
 
@@ -238,8 +243,14 @@ class FrontendController extends Controller
             WHERE sp.sp_trangthai = 1 AND dm.dm_id = 2
             GROUP BY sp.sp_ten ');
         //dd($ds_donam);
+        $danhsachloai = loaisanpham::where('lsp_trangthai', '=', 1)->get();
+        $danhsachmau = mau::all(); 
+        $danhsachsize = size::all();
         return view('frontend.pages.sanpham.donu') 
-            ->with('ds_donu', $ds_donu);         
+            ->with('ds_donu', $ds_donu)
+            ->with('danhsachloai', $danhsachloai)        
+            ->with('danhsachmau', $danhsachmau)        
+            ->with('danhsachsize', $danhsachsize);           
     }
 
     //Lọc sản phẩm theo đồ nữ -> áo thun nữ
@@ -255,8 +266,14 @@ class FrontendController extends Controller
             GROUP BY sp.sp_ten 
             '
         );
+        $danhsachloai = loaisanpham::where('lsp_trangthai', '=', 1)->get();
+        $danhsachmau = mau::all(); 
+        $danhsachsize = size::all();
         return view('frontend.pages.sanpham.donu_aothunnu')
-                ->with('ds_aothunnu', $ds_aothunnu); 
+                ->with('ds_aothunnu', $ds_aothunnu)
+                ->with('danhsachloai', $danhsachloai)        
+                ->with('danhsachmau', $danhsachmau)        
+                ->with('danhsachsize', $danhsachsize); 
                 
     }
 
@@ -273,8 +290,14 @@ class FrontendController extends Controller
             GROUP BY sp.sp_ten 
             '
         );
+        $danhsachloai = loaisanpham::where('lsp_trangthai', '=', 1)->get();
+        $danhsachmau = mau::all(); 
+        $danhsachsize = size::all();
         return view('frontend.pages.sanpham.donu_aosominu')
-                ->with('ds_aosominu', $ds_aosominu); 
+                ->with('ds_aosominu', $ds_aosominu)
+                ->with('danhsachloai', $danhsachloai)        
+                ->with('danhsachmau', $danhsachmau)        
+                ->with('danhsachsize', $danhsachsize);
                 
     }
 
@@ -291,8 +314,14 @@ class FrontendController extends Controller
             GROUP BY sp.sp_ten 
             '
         );
+        $danhsachloai = loaisanpham::where('lsp_trangthai', '=', 1)->get();
+        $danhsachmau = mau::all(); 
+        $danhsachsize = size::all();
         return view('frontend.pages.sanpham.donu_quanshortnu')
-                ->with('ds_quanshortnu', $ds_quanshortnu); 
+                ->with('ds_quanshortnu', $ds_quanshortnu)
+                ->with('danhsachloai', $danhsachloai)        
+                ->with('danhsachmau', $danhsachmau)        
+                ->with('danhsachsize', $danhsachsize);
                 
     }
 
@@ -309,8 +338,14 @@ class FrontendController extends Controller
             GROUP BY sp.sp_ten 
             '
         );
+        $danhsachloai = loaisanpham::where('lsp_trangthai', '=', 1)->get();
+        $danhsachmau = mau::all(); 
+        $danhsachsize = size::all();
         return view('frontend.pages.sanpham.donu_quanjeannu')
-                ->with('ds_quanjeannu', $ds_quanjeannu); 
+                ->with('ds_quanjeannu', $ds_quanjeannu)
+                ->with('danhsachloai', $danhsachloai)        
+                ->with('danhsachmau', $danhsachmau)        
+                ->with('danhsachsize', $danhsachsize); 
                 
     }
 
@@ -338,8 +373,14 @@ class FrontendController extends Controller
             WHERE sp.sp_trangthai = 1 AND dm.dm_id = 3
             GROUP BY sp.sp_ten ');
         //dd($ds_donam);
+        $danhsachloai = loaisanpham::where('lsp_trangthai', '=', 1)->get();
+        $danhsachmau = mau::all(); 
+        $danhsachsize = size::all();
         return view('frontend.pages.sanpham.dodoi') 
-            ->with('ds_dodoi', $ds_dodoi);         
+            ->with('ds_dodoi', $ds_dodoi)
+            ->with('danhsachloai', $danhsachloai)        
+            ->with('danhsachmau', $danhsachmau)        
+            ->with('danhsachsize', $danhsachsize);          
     }
 
     //Lọc sản phẩm theo đồ đôi -> áo thun đôi
@@ -355,8 +396,14 @@ class FrontendController extends Controller
             GROUP BY sp.sp_ten 
             '
         );
+        $danhsachloai = loaisanpham::where('lsp_trangthai', '=', 1)->get();
+        $danhsachmau = mau::all(); 
+        $danhsachsize = size::all();
         return view('frontend.pages.sanpham.dodoi_aothundoi')
-                ->with('ds_aothundoi', $ds_aothundoi); 
+                ->with('ds_aothundoi', $ds_aothundoi)
+                ->with('danhsachloai', $danhsachloai)        
+                ->with('danhsachmau', $danhsachmau)        
+                ->with('danhsachsize', $danhsachsize); 
                 
     }
 
@@ -373,8 +420,14 @@ class FrontendController extends Controller
             GROUP BY sp.sp_ten 
             '
         );
+        $danhsachloai = loaisanpham::where('lsp_trangthai', '=', 1)->get();
+        $danhsachmau = mau::all(); 
+        $danhsachsize = size::all();
         return view('frontend.pages.sanpham.dodoi_aokhoacdoi')
-                ->with('ds_aokhoacdoi', $ds_aokhoacdoi); 
+                ->with('ds_aokhoacdoi', $ds_aokhoacdoi)
+                ->with('danhsachloai', $danhsachloai)        
+                ->with('danhsachmau', $danhsachmau)        
+                ->with('danhsachsize', $danhsachsize); 
                 
     }
 
@@ -424,13 +477,34 @@ class FrontendController extends Controller
             LEFT JOIN hinhanh ha ON ctsp.ha_id = ha.ha_id
             WHERE ctsp.sp_id = '.$sp_id.'
             GROUP BY ctsp.ha_id');
-        //dd( $hinhanh);
+
+        $lsp = sanpham::find($sp_id);
+        $lsp_id = $lsp->lsp_id;
+        // $sanpham = DB::table('sanpham')
+        // ->join('chitietsanpham')        
+        // ->where('lsp_id', '=', $lsp_id)->limit(4)->get();
+        $sanphamlienquan = DB::select(
+            'SELECT sp.sp_id, sp.sp_ten, ha.ha_ten, sp.sp_giaban, km.km_giatriphantram
+            FROM danhmuc dm
+            JOIN loaisanpham lsp ON dm.dm_id = lsp.dm_id
+            JOIN sanpham sp ON lsp.lsp_id = sp.lsp_id
+            JOIN chitietsanpham ctsp ON ctsp.sp_id = sp.sp_id
+            JOIN hinhanh ha ON ha.ha_id = ctsp.ha_id
+            LEFT JOIN khuyenmai km ON km.km_id = sp.km_id
+            WHERE lsp.lsp_id = '.$lsp_id.' AND lsp.lsp_trangthai = 1 AND sp.sp_trangthai = 1
+            GROUP BY sp.sp_ten
+            LIMIT 4
+            
+            ');
+        //dd( $sanphamlienquan);
+
        return view('frontend.pages.sanpham.chitietsanpham')
                 ->with('ctsp', $ctsp)
                 ->with('mau', $mau)
                 ->with('size', $size)
                 ->with('hinhanh', $hinhanh)
-                ->with('hinhanh1', $hinhanh1);
+                ->with('hinhanh1', $hinhanh1)
+                ->with('sanphamlienquan', $sanphamlienquan);
     }
 
     //Lọc giá dưới 250,000 đ
@@ -1097,7 +1171,7 @@ class FrontendController extends Controller
             '
         ); 
 
-        return view('frontend.pages.sanpham.sanpham')
+        return view('frontend.pages.sanpham.sanpham_timkiem')
                 ->with('ds_sp', $timkiem);
     }
 
@@ -1112,13 +1186,16 @@ class FrontendController extends Controller
         $comment->sp_id = $sp_id;
         $comment->kh_id = $kh_id;
         $comment->dg_trangthai = 0;
+        $comment->dg_parent_comment = 0;
         $comment->save();
     }
 
     public function load_comment(Request $request){
 
         $sp_id = $request->sp_id;
-        $comment = danhgia::where('sp_id', '=', $sp_id)->where('dg_trangthai', '=', 1)->get();
+        $comment = danhgia::where('sp_id', '=', $sp_id)->where('dg_trangthai', '=', 1)->where('dg_parent_comment', '=', 0)->get();
+        $rep_comment = danhgia::where('sp_id', '=', $sp_id)->where('dg_trangthai', '=', 1)->where('dg_parent_comment','>',0)->get();
+
         $output = '';
         foreach($comment as $key => $comm){
             $output.='<div class="blog__comment__item__pic">
@@ -1130,8 +1207,213 @@ class FrontendController extends Controller
                         <ul>
                             <li><i class="fa fa-clock-o"></i> '.$comm->dg_ngaydanhgia.'</li>
                         </ul>
-                    </div><br><hr>';
+                    </div><br>';
+
+                    foreach($rep_comment as $key => $rep_comm){
+                        if($rep_comm->dg_parent_comment == $comm->dg_id){
+                            $output .=' <div class="row style_comment">
+
+                            <div class="blog__comment__item blog__comment__item--reply">
+                                <div class="blog__comment__item__pic">
+                                    <img src="'.url('img/logo/logoshop.jpg').'" alt="" width="90px" height="90px">
+                                </div>
+                                <div class="blog__comment__item__text">
+                                    <h6>ToToShop</h6>
+                                    <p>'.$rep_comm->dg_noidung.'</p>
+                                    <ul>
+                                        <li><i class="fa fa-clock-o"></i> '.$rep_comm->dg_ngaydanhgia.' </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <hr>';
+                        }
+                    }
+                    //dd($comment);
         }
         echo $output;
+    }
+
+    // public function insert_rating(Request $request)
+    // {
+    //     $data = $request->all();
+
+    //     $rating = new danhgiasao();            
+    //     $rating->sp_id = $data['sp_id'];            
+    //     $rating->dgs_rating = $data['index'];            
+    //     $rating->save();
+    //     echo 'done';         
+    // }
+    
+    // public function sanpham_pro(Request $request){ 
+    //     $danhsachloai = loaisanpham::where('lsp_trangthai', '=', 1)->get();
+    //     $danhsachmau = mau::all(); 
+    //     $danhsachsize = size::all(); 
+    //     //dd($ds_loai);  
+    //     return view('frontend.pages.sanpham.sanpham_pro')
+    //         ->with('danhsachloai', $danhsachloai)
+    //         ->with('danhsachmau', $danhsachmau)
+    //         ->with('danhsachsize', $danhsachsize);
+    // }
+
+    public function filter(Request $request){
+        //lọc màu và loại sản phẩm OK
+        $query="
+            SELECT *
+            FROM sanpham sp
+            JOIN chitietsanpham ctsp ON sp.sp_id = ctsp.sp_id
+            JOIN hinhanh ha ON ha.ha_id = ctsp.ha_id
+            left JOIN khuyenmai km ON km.km_id = sp.km_id
+            WHERE sp.sp_trangthai = 1
+        ";
+
+        //$lsp_id = $request->loai;
+        $m_id = $request->mau;
+        $size_id = $request->size;
+        $minimum_price = $request->minimum_price;
+        $maximum_price = $request->maximum_price;
+
+        //dd($minimum_price);
+
+        if($m_id & $size_id & !empty($minimum_price) & !empty($maximum_price)){
+           // $lsp = implode(",", $lsp_id);
+           // $query .= " and sp.lsp_id IN( ".$lsp." ) ";
+
+            $m = implode(",", $m_id);
+            $query .= " and ctsp.m_id IN( ".$m." ) ";
+
+            $s = implode(",", $size_id);
+            $query .= " and ctsp.size_id IN( ".$s." ) ";
+            
+            $query .= "
+                and sp.sp_giaban BETWEEN '".$minimum_price."' AND '".$maximum_price."'
+            ";
+        }
+        else{
+            if(!empty($minimum_price) & !empty($maximum_price)){   
+                //$lsp = implode(",", $lsp_id);
+                
+                //$query .= " where sp.lsp_id IN( ".$lsp." )  ";
+                $query .= "
+                    and sp.sp_giaban BETWEEN '".$minimum_price."' AND '".$maximum_price."'
+                ";
+            }
+            // if($m_id & $size_id){
+            //     $m = implode(",", $m_id);
+            //     $query .= " and ctsp.m_id IN( ".$m." ) ";
+            //     $s = implode(",", $size_id);
+            //     $query .= " and ctsp.size_id IN( ".$s." ) ";
+                
+            // }
+            // if($size_id & !empty($minimum_price) & !empty($maximum_price)){
+            //     $s = implode(",", $size_id);
+
+            //     $query .= "  ctsp.size_id IN( ".$s." ) ";
+            //     $query .= "
+            //         and sp.sp_giaban BETWEEN '".$minimum_price."' AND '".$maximum_price."'
+            //     ";
+            // }
+        }
+
+        $query .= " group by  sp.sp_ten";
+
+        $result = DB::select($query);
+        //dd($query);
+        $total_row = count($result);
+    
+        $output = '';
+
+        if($total_row > 0){
+            foreach($result as $row){
+                // foreach (json_decode($row->hinh_daidien) as $picture) {
+                //     $hinhanh=$picture;
+                //     break;
+                // }
+                // $mau=DB::table('mau_sanpham')
+                //     ->join('sanpham','mau_sanpham.sp_id','=','sanpham.sp_id')
+                //     ->join('mausac','mausac.m_id','=','mau_sanpham.m_id')
+                //     ->where('sanpham.sp_id', $row->sp_id)->get();
+                // dd($mau);
+                //$rating=DB::table('danhgiasao')->where('sp_id',$row->sp_id )->avg('dgs_rating');
+                //$rating=round($rating);
+                
+                    $output .= '
+                        <div class="col-lg-4 col-md-6"> ';
+                        if($row->km_giatriphantram == 0){
+                            $output .= '
+                                <div class="product__item" style="border: solid 1px whitesmoke;">
+                                    <div class="product__item__pic set-bg" data-setbg="'.url('storage/photos/' . $row->ha_ten).'" style="background-image: url('.url('storage/photos/' . $row->ha_ten).');">
+                                        <ul class="product__hover">
+                                            <li><a href="'.url('storage/photos/' . $row->ha_ten).'" class="image-popup"><span class="arrow_expand"></span></a></li>
+                                            <li><a href="'.url('sanpham' . $row->sp_id).'"><span class="icon_search"></span></a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="product__item__text">
+                                        <h6><a href="'.url('sanpham' . $row->sp_id).'">'. $row->sp_ten .'</a></h6>
+                                        <div class="product__price mt-1"> '.number_format($row->sp_giaban, 0, '', ',').' đ</div>
+                                    </div>
+                                </div>';
+                        }
+                        else{
+                            $output .= '
+                                <div class="product__item sale" style="border: solid 1px whitesmoke;">
+                                    <div class="product__item__pic set-bg" data-setbg="'.url('storage/photos/' . $row->ha_ten).'" style="background-image: url('.url('storage/photos/' . $row->ha_ten).');">
+                                        <div class="label">Sale</div>
+                                        <ul class="product__hover">
+                                            <li><a href="'.url('storage/photos/' . $row->ha_ten).'" class="image-popup"><span class="arrow_expand"></span></a></li>
+                                            <li><a href="'.url('sanpham' . $row->sp_id).'"><span class="icon_search"></span></a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="product__item__text">
+                                        <h6><a href="'.url('sanpham' . $row->sp_id).'">'. $row->sp_ten .'</a></h6>
+                                        <div class="product__price mt-1"> '.number_format($row->sp_giaban - ($row->sp_giaban * $row->km_giatriphantram/100), 0, '', ',').' đ&nbsp;<span>'.number_format($row->sp_giaban, 0, ',' , ',').' đ</span></div>
+                                    </div>
+                                </div>';
+                        }  
+                    $output .= '
+                        </div>';
+            }
+        }
+        else{
+            $output = '<p class="alert alert-danger">Không tìm thấy</p>  ';
+        }
+        echo $output;
+    }
+
+      /**
+     * Action hiển thị danh sách Sản phẩm
+     */
+    // public function sanpham(Request $request){
+    //     $ds_sp = DB::select(
+    //         'SELECT sp.sp_id ,sp.sp_ten, ha.ha_ten, sp.sp_giaban, km.km_giatriphantram
+    //         FROM sanpham sp
+    //         left JOIN khuyenmai km ON km.km_id = sp.km_id
+    //         JOIN chitietsanpham ctsp ON sp.sp_id = ctsp.sp_id
+    //         JOIN hinhanh ha ON ha.ha_id = ctsp.ha_id
+    //         WHERE sp.sp_trangthai = 1
+    //         GROUP BY sp.sp_ten ');
+    //     // $ds_sp = DB::table('sanpham')
+    //     //     ->select('sanpham.sp_ten', 'hinhanh.ha_ten', 'sanpham.sp_giaban', 'sanpham.sp_id', 'khuyenmai.km_giatriphantram')
+    //     //     ->join('chitietsanpham', 'chitietsanpham.sp_id', '=', 'sanpham.sp_id')
+    //     //     ->join('hinhanh', 'hinhanh.ha_id', '=', 'chitietsanpham.ha_id')
+    //     //     ->leftjoin('khuyenmai', 'khuyenmai.km_id', '=', 'sanpham.km_id')
+    //     //     ->where('sanpham.sp_trangthai', '=', '1')
+    //     //     ->groupBy('sanpham.sp_ten')
+    //     //     ->paginate(9);
+    //     //dd($ds_sp);
+    //     // Hiển thị view `frontend.index` với dữ liệu truyền vào
+    //     return view('frontend.pages.sanpham.sanpham')
+    //             ->with('ds_sp', $ds_sp);
+    // }
+
+
+    public function sanpham(Request $request){
+        $danhsachloai = loaisanpham::where('lsp_trangthai', '=', 1)->get();
+        $danhsachmau = mau::all(); 
+        $danhsachsize = size::all(); 
+        //dd($ds_loai);  
+        return view('frontend.pages.sanpham.sanpham')
+            ->with('danhsachloai', $danhsachloai)
+            ->with('danhsachmau', $danhsachmau)
+            ->with('danhsachsize', $danhsachsize);
     }
 }

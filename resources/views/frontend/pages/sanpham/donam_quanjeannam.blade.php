@@ -9,75 +9,44 @@ A S H I O N
 {{-- Thay thế nội dung vào Placeholder `custom-css` của view `frontend.layouts.master` --}}
 @section('custom-css')
 <style>
-    .discount__content form {
-        position: relative;
-        width: 250px;
-        display: inline-block;
-    }
-
-    .discount__content form input {
-        /* height: 52px; */
-        height: 40px;
+    #search-form {
         width: 100%;
-        /* border: 1px solid #444444; */
+        margin: 0 auto;
+        position: relative;
+    }
+    #search-form input {
+        width: 100%;
+        font-size: 14px;
+        padding: 0px 10px;
         border: 1px solid #ccc;
         border-radius: 10px;
-        padding-left: 10px;
-        padding-right: 115px;
-        font-size: 14px;
-        color: #444444;
+        height: 45px;
     }
 
-    .discount__content form input::-webkit-input-placeholder {
-        /* color: #444444; */
-        color: #ccc;
-    }
-
-    .discount__content form input::-moz-placeholder {
-        color: #444444;
-    }
-
-    .discount__content form input:-ms-input-placeholder {
-        color: #444444;
-    }
-
-    .discount__content form input::-ms-input-placeholder {
-        color: #444444;
-    }
-
-    .discount__content form input::placeholder {
-        color: #444444;
-    }
-
-    .discount__content form button {
+    #search-form button {
         position: absolute;
-        /* right: 4px;
-        top: 4px; */
-    } 
-    .site-btn {
-        font-size: 12px;
-        color: #ffffff;
-        background: #ca1515;
-        font-weight: 300;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        background-color: transparent;
+        outline: none;
         border: none;
-        /* text-transform: uppercase; */
-        display: inline-block;
-        padding: 5px 10px;
-        border-radius: 10px;
-        height: 32px;
+        width: 3rem;
+        text-align: center;
+        font-size: 1.5rem;
+        cursor: pointer;
+        color: #333;
     }
 
-    .site-btn:hover {
-        font-size: 12px;
-        color: #ffffff;
-        background: #0a0a0a;
-        font-weight: 300;
-        border: none;
-        /* text-transform: uppercase; */
-        display: inline-block;
-        padding: 5px 10px;
-        border-radius: 10px;
-        height: 32px;
+    @media (max-width: 1200px) {
+        #search-form { 
+            width: 50%; 
+        }
+    }
+    @media (max-width: 768px) {
+    /* .container { padding: 30px 35px; } */
+    #search-form { width: 100%; }
+    .info { font-size: 0.5rem; }
     }
 </style>
 @endsection
@@ -103,141 +72,9 @@ A S H I O N
 <section class="shop spad">
     <div class="container">
         <div class="row">
-            <div class="col-lg-3 col-md-3">
-                <div class="shop__sidebar">
-
-                    <div class="sidebar__sizes">
-                        <div class="section-title">
-                            <h4>TÌM KIẾM SẢN PHẨM</h4>
-                        </div>
-                        <div class="discount__content">
-                            <form action="{{ route('frontend.timkiemsp') }}" method="post">
-                            {{ csrf_field() }}
-                                <input type="text" name ="search" id="search" placeholder="Tên sản phẩm...">
-                                <button type="submit" class="site-btn">Tìm kiếm</button>
-                            </form>
-                        </div>
-                    </div>
-
-                    <div class="sidebar__categories">
-                        <div class="section-title">
-                            <h4>Danh mục</h4>
-                        </div>
-                        <div class="categories__accordion">
-                            <div class="accordion" id="accordionExample">
-                                <div class="card">
-                                    <div class="card-heading active">
-                                        <a data-toggle="collapse" data-target="#collapseOne" >Đồ nam</a>
-                                    </div>
-                                    <div id="collapseOne" class="collapse show" data-parent="#accordionExample">
-                                        <div class="card-body">
-                                            <ul>
-                                                <li><a href="{{ route('frontend.aothunnam') }}">Áo Thun Nam</a></li>
-                                                <li><a href="{{ route('frontend.aosominam') }}">Áo Sơ Mi Nam</a></li>
-                                                <li><a href="{{ route('frontend.quanjeannam') }}">Quần Jean Nam</a></li>
-                                                <li><a href="{{ route('frontend.quankakinam') }}">Quần Kaki Nam</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card">
-                                    <div class="card-heading">
-                                        <a data-toggle="collapse" data-target="#collapseTwo">Đồ nữ</a>
-                                    </div>
-                                    <div id="collapseTwo" class="collapse" data-parent="#accordionExample">
-                                        <div class="card-body">
-                                            <ul>
-                                                <li><a href="{{ route('frontend.aothunnu') }}">Áo Thun Nữ</a></li>
-                                                <li><a href="{{ route('frontend.aosominu') }}">Áo Sơ Mi Nữ</a></li>
-                                                <li><a href="{{ route('frontend.quanshortnu') }}">Quần Short Nữ</a></li>
-                                                <li><a href="{{ route('frontend.quanjeannu') }}">Quần Jean Nữ</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card">
-                                    <div class="card-heading">
-                                        <a data-toggle="collapse" data-target="#collapseThree">Đồ đôi</a>
-                                    </div>
-                                    <div id="collapseThree" class="collapse" data-parent="#accordionExample">
-                                        <div class="card-body">
-                                            <ul>
-                                                <li><a href="{{ route('frontend.aothundoi') }}">Áo Thun Đôi</a></li>
-                                                <li><a href="{{ route('frontend.aokhoacdoi') }}">Áo Khoác Đôi</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="sidebar__sizes">
-                        <div class="section-title">
-                            <h4>LỌC GIÁ</h4>
-                        </div>
-                        <a href="{{ route('frontend.duoi250') }}" style="color: black;">- Dưới 250,000 đ</a><br>
-                        <a href="{{ route('frontend.g2535') }}" style="color: black;">- 250,000 ₫ - 350,000 ₫</a><br>
-                        <a href="{{ route('frontend.g3550') }}" style="color: black;">- 350,000 ₫ - 500,000 ₫</a><br>
-                        <a href="{{ route('frontend.tren500') }}" style="color: black;">- 500,000 đ trở lên</a><br>        
-                    </div>
-
-                    <div class="sidebar__sizes">
-                        <div class="section-title">
-                            <h4>Lọc size</h4>
-                        </div>
-                        <div class="size__list">
-                            <label for="s">
-                                S
-                                <input type="checkbox" id="s">
-                                <span class="checkmark"></span>
-                            </label>
-                            <label for="m">
-                                M
-                                <input type="checkbox" id="m">
-                                <span class="checkmark"></span>
-                            </label>
-                            <label for="l">
-                                L
-                                <input type="checkbox" id="l">
-                                <span class="checkmark"></span>
-                            </label>
-                        </div>
-                    </div>
-                    <div class="sidebar__color">
-                        <div class="section-title">
-                            <h4>Lọc màu</h4>
-                        </div>
-                        <div class="size__list color__list">
-                            <label for="black">
-                                Đen
-                                <input type="checkbox" id="black">
-                                <span class="checkmark"></span>
-                            </label>
-                            <label for="whites">
-                                Trắng
-                                <input type="checkbox" id="whites">
-                                <span class="checkmark"></span>
-                            </label>
-                            <label for="blues">
-                                Xanh
-                                <input type="checkbox" id="blues">
-                                <span class="checkmark"></span>
-                            </label>
-                            <label for="reds">
-                                Đỏ
-                                <input type="checkbox" id="reds">
-                                <span class="checkmark"></span>
-                            </label>
-                            <label for="yellows">
-                                Vàng
-                                <input type="checkbox" id="yellows">
-                                <span class="checkmark"></span>
-                            </label>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            
+            @include('frontend.layouts.partials.navbar_sp')
+            
             <div class="col-lg-9 col-md-9">
                 <div class="row">
                     
@@ -249,7 +86,7 @@ A S H I O N
                                 <ul class="product__hover">
                                     <li><a href="{{ asset('storage/photos/' . $ds_quanjeannam->ha_ten) }}" class="image-popup"><span
                                                 class="arrow_expand"></span></a></li>
-                                    <li><a href="#"><span class="icon_heart_alt"></span></a></li>
+                                   
                                     <li><a href="{{ route('frontend.sanpham.xemchitiet', ['sp_id' => $ds_quanjeannam->sp_id]) }}"><span class="icon_search"></span></a></li>
                                 </ul>
                             </div>
@@ -272,7 +109,7 @@ A S H I O N
                                 <ul class="product__hover">
                                     <li><a href="{{ asset('storage/photos/' . $ds_quanjeannam->ha_ten) }}" class="image-popup"><span
                                                 class="arrow_expand"></span></a></li>
-                                    <li><a href="#"><span class="icon_heart_alt"></span></a></li>
+                                   
                                     <li><a href="{{ route('frontend.sanpham.xemchitiet', ['sp_id' => $ds_quanjeannam->sp_id]) }}"><span class="icon_search"></span></a></li>
                                 </ul>
                             </div>
@@ -312,4 +149,157 @@ A S H I O N
 
 {{-- Thay thế nội dung vào Placeholder `custom-scripts` của view `frontend.layouts.master` --}}
 @section('custom-scripts')
+<script>
+    const searchForm = document.querySelector("#search-form");
+    const searchFormInput = searchForm.querySelector("input"); // <=> document.querySelector("#search-form input");
+    const info = document.querySelector(".info");
+
+    // The speech recognition interface lives on the browser’s window object
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition; // if none exists -> undefined
+
+    if(SpeechRecognition) {
+    console.log("Your Browser supports speech Recognition");
+    
+    const recognition = new SpeechRecognition();
+    recognition.continuous = true;
+    // recognition.lang = "en-US";
+
+    searchForm.insertAdjacentHTML("beforeend", '<button type="button"><i class="fa fa-microphone"></i></button>');
+    searchFormInput.style.paddingRight = "100px";
+
+    const micBtn = searchForm.querySelector("button");
+    const micIcon = micBtn.firstElementChild;
+
+    micBtn.addEventListener("click", micBtnClick);
+    function micBtnClick() {
+        if(micIcon.classList.contains("fa-microphone")) { // Start Voice Recognition
+        recognition.start(); // First time you have to allow access to mic!
+        }
+        else {
+        recognition.stop();
+        }
+    }
+
+    recognition.addEventListener("start", startSpeechRecognition); // <=> recognition.onstart = function() {...}
+    function startSpeechRecognition() {
+        micIcon.classList.remove("fa-microphone");
+        micIcon.classList.add("fa-microphone-slash");
+        searchFormInput.focus();
+        console.log("Voice activated, SPEAK");
+    }
+
+    recognition.addEventListener("end", endSpeechRecognition); // <=> recognition.onend = function() {...}
+    function endSpeechRecognition() {
+        micIcon.classList.remove("fa-microphone-slash");
+        micIcon.classList.add("fa-microphone");
+        searchFormInput.focus();
+        console.log("Speech recognition service disconnected");
+    }
+
+    recognition.addEventListener("result", resultOfSpeechRecognition); // <=> recognition.onresult = function(event) {...} - Fires when you stop talking
+    function resultOfSpeechRecognition(event) {
+        const current = event.resultIndex;
+        const transcript = event.results[current][0].transcript;
+        
+        if(transcript.toLowerCase().trim()==="stop recording") {
+        recognition.stop();
+        }
+        else if(!searchFormInput.value) {
+        searchFormInput.value = transcript;
+        }
+        else {
+        if(transcript.toLowerCase().trim()==="go") {
+            searchForm.submit();
+        }
+        else if(transcript.toLowerCase().trim()==="reset input") {
+            searchFormInput.value = "";
+        }
+        else {
+            searchFormInput.value = transcript;
+        }
+        }
+        // searchFormInput.value = transcript;
+        // searchFormInput.focus();
+        // setTimeout(() => {
+        //   searchForm.submit();
+        // }, 500);
+    }
+    
+    info.textContent = '';
+    
+    }
+    else {
+    console.log("Your Browser does not support speech Recognition");
+    info.textContent = "Your Browser does not support Speech Recognition";
+    }
+
+
+</script>
+
+<script>
+$(document).ready(function(){
+
+    filter_data();
+
+    function filter_data()
+    {
+        $('.filter_data').html('<div id="loading" style="" ></div>');
+        //var action = 'fetch_data';
+        var minimum_price = $('#hidden_minimum_price').val();
+        var maximum_price = $('#hidden_maximum_price').val();
+        //alert(maximum_price)
+        //var loai = get_filter('loai');
+        var mau = get_filter('mau');
+        var size = get_filter('size');
+        // var q = get_filter('q');
+        //var _token = $('input[name="_token"]').val();
+        //alert(mau);
+
+        $.ajaxSetup({
+            headers: {
+              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+          });        
+        $.ajax({
+            url: "{{url('/sanpham')}}",
+            method:"POST",
+
+            //data:{action:action, minimum_price:minimum_price, maximum_price:maximum_price, brand:brand, ram:ram, storage:storage},
+            data:{minimum_price:minimum_price, maximum_price:maximum_price, mau:mau, size:size},
+            success:function(data){
+                $('.filter_data').html(data);
+            }
+        });
+    }
+
+    function get_filter(class_name)
+    {
+        var filter = [];
+        $('.'+class_name+':checked').each(function(){
+            filter.push($(this).val());
+        });
+        return filter;
+    }
+
+    $('.common_selector').click(function(){
+        filter_data();
+    });
+
+    $('#price_range').slider({
+        range:true,
+        min:50000,
+        max:1000000,
+        values:[50000, 1000000],
+        step:50000,
+        stop:function(event, ui)
+        {
+            $('#price_show').html(ui.values[0] + ' - ' + ui.values[1]);
+            $('#hidden_minimum_price').val(ui.values[0]);
+            $('#hidden_maximum_price').val(ui.values[1]);
+            filter_data();
+        }
+    });
+
+});
+</script>
 @endsection

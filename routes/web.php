@@ -155,6 +155,7 @@ Route::prefix('admin')->group(function()
 	Route::get('/ddh', 'DonDatHangController@index')->name('admin.ddh');
 	Route::get('/chitietdonhang/{ddh_id}','DonDatHangController@chitietdonhang')->name('admin.ddh.chitiet');
 	Route::get('/ddh_active/{ddh_id}', 'DonDatHangController@active')->name('admin.ddh.active');
+	Route::get('/ddh_pdf/{ddh_id}', 'DonDatHangController@pdf_ddh')->name('admin.ddh.pdf');
 
 	//QUẢN LÝ BÌNH LUẬN - ĐÁNH GIÁ
 	Route::get('/danhgia', 'DanhGiaController@index')->name('admin.danhgia');
@@ -176,6 +177,8 @@ Route::prefix('admin')->group(function()
 
 	//Trang sản phẩm
 	Route::get('/sanpham', 'FrontendController@sanpham')->name('frontend.sanpham');
+	//Route::get('/filter', 'FrontendController@sanpham_pro')->name('frontend.sanpham_pro');
+	Route::post('/sanpham','FrontendController@filter');
 
 	//Trang chi tiết sản phẩm
 	Route::get('/sanpham{sp_id}', 'FrontendController@chitietsanpham')->name('frontend.sanpham.xemchitiet');
