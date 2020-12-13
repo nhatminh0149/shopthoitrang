@@ -41,4 +41,7 @@ class SanPham extends Model
     public function danhgia(){
         return $this->hasMany('App\danhgia', 'sp_id', 'sp_id');
     }
+    public function hinhanh_xoay(){
+        return $this->hasMany('App\hinhanh_xoay', 'sp_id', 'sp_id');
+    }
 }

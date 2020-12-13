@@ -52,13 +52,35 @@ A S H I O N
                     </div>
                     <div class="contact__form">
                         <h5>GỬI LỜI NHẮN</h5>
-                        <form action="#">
-                            <input type="text" placeholder="Tên khách hàng">
-                            <input type="text" placeholder="Email khách hàng">
-                            <textarea placeholder="Lời nhắn"></textarea>
-                            <button type="submit" class="site-btn">Gửi lời nhắn</button>
-                        </form>
+                        @if(Session::has('kh_id'))
+                            <form action="{{ route('frontend.post_lienhe') }}" method="post"> 
+                            {{ csrf_field() }}
+                                <input type="text" name="kh_taikhoan" value="{{ Session::get('kh_taikhoan') }}" placeholder="Tài khoản khách hàng" readonly>
+                                <input type="text" name="kh_email" value="{{ Session::get('kh_email') }}" placeholder="Email khách hàng" readonly>
+                                <textarea name="message" placeholder="Lời nhắn"></textarea>
+                                <button type="submit" class="site-btn">Gửi lời nhắn</button>
+                            </form>
+                        @else
+                            <form action="{{ route('frontend.post_lienhe') }}" method="post">
+                            {{ csrf_field() }}
+                                <!-- <p style="color: red;"><i>*Quý khách vui lòng đăng nhập trước khi gửi liên hệ</i></p> -->
+                                <!-- <input type="text" name="kh_taikhoan" placeholder="Tên khách hàng"> -->
+                                <input type="text" name="kh_email" placeholder="Email khách hàng">
+                                <textarea name="message" placeholder="Lời nhắn"></textarea>
+                                <button type="submit" class="site-btn">Gửi lời nhắn</button>
+                            </form>
+                        @endif
                     </div>
+                    <br>
+                    <div class="flash-message">
+                        @foreach (['danger', 'warning', 'success', 'info', 'dark'] as $msg)
+                            @if(Session::has('alert-' . $msg))
+                            <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }} <a href="#"
+                                    class="close" data-dismiss="alert" aria-label="close">&times;</a></p>
+                            @endif
+                        @endforeach
+                    </div>
+
                 </div>
             </div>
             <div class="col-lg-6 col-md-6">

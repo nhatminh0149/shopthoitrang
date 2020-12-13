@@ -8,12 +8,16 @@ A S H I O N
 
 {{-- Thay thế nội dung vào Placeholder `custom-css` của view `frontend.layouts.master` --}}
 @section('custom-css')
+<style>
+
+
+</style>
 @endsection
 
 {{-- Thay thế nội dung vào Placeholder `main-content` của view `frontend.layouts.master` --}}
 @section('content')
 <!-- Categories Section Begin -->
-<section class="categories">
+<!-- <section class="categories">
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-6 p-0">
@@ -73,8 +77,70 @@ A S H I O N
             </div>
         </div>
     </div>
-</section>
+</section> -->
 <!-- Categories Section End -->
+<!-- Banner Section Begin -->
+<!-- <section class="banner set-bg" data-setbg="{{ asset('img/banner/banner0.jpg') }}" height="450px;">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-7 col-lg-8 m-auto">
+                <div class="banner__slider owl-carousel">
+                    <div class="banner__item">
+                        <div class="banner__text">
+                            <span>The ToTo Collection</span>
+                            <h1>The Project Jacket</h1>
+                            <a href="{{ route('frontend.sanpham') }}">Shop now</a>
+                        </div>
+                    </div>
+                    <div class="banner__item">
+                        <div class="banner__text">
+                            <span>The ToTo Collection</span>
+                            <h1>The Project Jacket</h1>
+                            <a href="{{ route('frontend.sanpham') }}">Shop now</a>
+                        </div>
+                    </div>
+                    <div class="banner__item">
+                        <div class="banner__text">
+                            <span>The ToTo Collection</span>
+                            <h1>The Project Jacket</h1>
+                            <a href="{{ route('frontend.sanpham') }}">Shop now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section> -->
+<!-- Banner Section End -->
+
+<!-- Banner Section -->
+<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img class="d-block w-100" src="{{ asset('img/banner/banner11.jpg') }}" alt="First slide" style="width: 100%; height: 620px;">
+        </div>
+        <div class="carousel-item">
+            <img class="d-block w-100" src="{{ asset('img/banner/banner9.jpg') }}" alt="Second slide" style="width: 100%; height: 620px;">
+        </div>
+        <div class="carousel-item">
+            <img class="d-block w-100" src="{{ asset('img/banner/banner13.jpg') }}" alt="Third slide" style="width: 100%; height: 620px;">
+        </div>
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev" >
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div>
+<!-- Banner Section End -->
 
 <!-- Product Section Begin -->
 <section class="product spad">
@@ -107,11 +173,14 @@ A S H I O N
                             <li><a href="{{ asset('storage/photos/' . $loc_hinh1->ha_ten) }}" class="image-popup"><span
                                         class="arrow_expand"></span></a></li>
                             <li><a href="#"><span class="icon_heart_alt"></span></a></li>
-                            <li><a href="{{ route('frontend.sanpham.xemchitiet', ['sp_id' => $loc_hinh1->sp_id]) }}"><span class="icon_search"></span></a></li>
+                            <li><a href="{{ route('frontend.sanpham.xemchitiet', ['sp_id' => $loc_hinh1->sp_id]) }}"><span
+                                        class="icon_search"></span></a></li>
                         </ul>
                     </div>
                     <div class="product__item__text">
-                        <h6><a href="#">{{ $loc_hinh1->sp_ten }}</a></h6>
+                        <h6><a
+                                href="{{ route('frontend.sanpham.xemchitiet', ['sp_id' => $loc_hinh1->sp_id]) }}">{{ $loc_hinh1->sp_ten }}</a>
+                        </h6>
                         <!-- <div class="rating">
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
@@ -131,11 +200,14 @@ A S H I O N
                             <li><a href="{{ asset('storage/photos/' . $loc_hinh1->ha_ten) }}" class="image-popup"><span
                                         class="arrow_expand"></span></a></li>
                             <li><a href="#"><span class="icon_heart_alt"></span></a></li>
-                            <li><a href="{{ route('frontend.sanpham.xemchitiet', ['sp_id' => $loc_hinh1->sp_id]) }}"><span class="icon_search"></span></a></li>
+                            <li><a href="{{ route('frontend.sanpham.xemchitiet', ['sp_id' => $loc_hinh1->sp_id]) }}"><span
+                                        class="icon_search"></span></a></li>
                         </ul>
                     </div>
                     <div class="product__item__text">
-                        <h6><a href="#">{{ $loc_hinh1->sp_ten }}</a></h6>
+                        <h6><a
+                                href="{{ route('frontend.sanpham.xemchitiet', ['sp_id' => $loc_hinh1->sp_id]) }}">{{ $loc_hinh1->sp_ten }}</a>
+                        </h6>
                         <!-- <div class="rating">
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
@@ -143,7 +215,9 @@ A S H I O N
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
                         </div> -->
-                        <div class="product__price mt-1">{{ number_format($loc_hinh1->giaban - ($loc_hinh1->giaban * $loc_hinh1->km_giatriphantram/100),0, ',' , ',') }} đ&nbsp;<span>{{ number_format($loc_hinh1->giaban, 0, ',' , ',') }} đ</span></div>
+                        <div class="product__price mt-1">
+                            {{ number_format($loc_hinh1->giaban - ($loc_hinh1->giaban * $loc_hinh1->km_giatriphantram/100),0, ',' , ',') }}
+                            đ&nbsp;<span>{{ number_format($loc_hinh1->giaban, 0, ',' , ',') }} đ</span></div>
                     </div>
                 </div>
                 @endif
@@ -160,11 +234,14 @@ A S H I O N
                             <li><a href="{{ asset('storage/photos/' . $loc_hinh->ha_ten) }}" class="image-popup"><span
                                         class="arrow_expand"></span></a></li>
                             <li><a href="#"><span class="icon_heart_alt"></span></a></li>
-                            <li><a href="{{ route('frontend.sanpham.xemchitiet', ['sp_id' => $loc_hinh->sp_id]) }}"><span class="icon_search"></span></a></li>
+                            <li><a href="{{ route('frontend.sanpham.xemchitiet', ['sp_id' => $loc_hinh->sp_id]) }}"><span
+                                        class="icon_search"></span></a></li>
                         </ul>
                     </div>
                     <div class="product__item__text">
-                        <h6><a href="#">{{ $loc_hinh->sp_ten }}</a></h6>
+                        <h6><a
+                                href="{{ route('frontend.sanpham.xemchitiet', ['sp_id' => $loc_hinh->sp_id]) }}">{{ $loc_hinh->sp_ten }}</a>
+                        </h6>
                         <!-- <div class="rating">
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
@@ -184,11 +261,14 @@ A S H I O N
                             <li><a href="{{ asset('storage/photos/' . $loc_hinh->ha_ten) }}" class="image-popup"><span
                                         class="arrow_expand"></span></a></li>
                             <li><a href="#"><span class="icon_heart_alt"></span></a></li>
-                            <li><a href="{{ route('frontend.sanpham.xemchitiet', ['sp_id' => $loc_hinh->sp_id]) }}"><span class="icon_search"></span></a></li>
+                            <li><a href="{{ route('frontend.sanpham.xemchitiet', ['sp_id' => $loc_hinh->sp_id]) }}"><span
+                                        class="icon_search"></span></a></li>
                         </ul>
                     </div>
                     <div class="product__item__text">
-                        <h6><a href="#">{{ $loc_hinh->sp_ten }}</a></h6>
+                        <h6><a
+                                href="{{ route('frontend.sanpham.xemchitiet', ['sp_id' => $loc_hinh->sp_id]) }}">{{ $loc_hinh->sp_ten }}</a>
+                        </h6>
                         <!-- <div class="rating">
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
@@ -196,7 +276,9 @@ A S H I O N
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
                         </div> -->
-                        <div class="product__price mt-1">{{ number_format($loc_hinh->giaban - ($loc_hinh->giaban * $loc_hinh->km_giatriphantram/100),0, ',' , ',') }} đ&nbsp;<span>{{ number_format($loc_hinh->giaban, 0, ',' , ',') }} đ</span></div>
+                        <div class="product__price mt-1">
+                            {{ number_format($loc_hinh->giaban - ($loc_hinh->giaban * $loc_hinh->km_giatriphantram/100),0, ',' , ',') }}
+                            đ&nbsp;<span>{{ number_format($loc_hinh->giaban, 0, ',' , ',') }} đ</span></div>
                     </div>
                 </div>
                 @endif
@@ -205,7 +287,7 @@ A S H I O N
 
             @foreach($loc_hinh2 as $loc_hinh2)
             <div class="col-lg-3 col-md-4 col-sm-6 mix couple">
-                @if($loc_hinh2->km_giatriphantram == 0) 
+                @if($loc_hinh2->km_giatriphantram == 0)
                 <div class="product__item" style="border: solid 1px whitesmoke;">
                     <div class="product__item__pic set-bg"
                         data-setbg="{{ asset('storage/photos/' . $loc_hinh2->ha_ten) }}">
@@ -216,11 +298,14 @@ A S H I O N
                                 </a>
                             </li>
                             <li><a href="#"><span class="icon_heart_alt"></span></a></li>
-                            <li><a href="{{ route('frontend.sanpham.xemchitiet', ['sp_id' => $loc_hinh2->sp_id]) }}"><span class="icon_search"></span></a></li>
+                            <li><a href="{{ route('frontend.sanpham.xemchitiet', ['sp_id' => $loc_hinh2->sp_id]) }}"><span
+                                        class="icon_search"></span></a></li>
                         </ul>
                     </div>
                     <div class="product__item__text">
-                        <h6><a href="#">{{ $loc_hinh2->sp_ten }}</a></h6>
+                        <h6><a
+                                href="{{ route('frontend.sanpham.xemchitiet', ['sp_id' => $loc_hinh2->sp_id]) }}">{{ $loc_hinh2->sp_ten }}</a>
+                        </h6>
                         <!-- <div class="rating">
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
@@ -243,11 +328,14 @@ A S H I O N
                                 </a>
                             </li>
                             <li><a href="#"><span class="icon_heart_alt"></span></a></li>
-                            <li><a href="{{ route('frontend.sanpham.xemchitiet', ['sp_id' => $loc_hinh2->sp_id]) }}"><span class="icon_search"></span></a></li>
+                            <li><a href="{{ route('frontend.sanpham.xemchitiet', ['sp_id' => $loc_hinh2->sp_id]) }}"><span
+                                        class="icon_search"></span></a></li>
                         </ul>
                     </div>
                     <div class="product__item__text">
-                        <h6><a href="#">{{ $loc_hinh2->sp_ten }}</a></h6>
+                        <h6><a
+                                href="{{ route('frontend.sanpham.xemchitiet', ['sp_id' => $loc_hinh2->sp_id]) }}">{{ $loc_hinh2->sp_ten }}</a>
+                        </h6>
                         <!-- <div class="rating">
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
@@ -255,7 +343,9 @@ A S H I O N
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
                         </div> -->
-                        <div class="product__price mt-1">{{ number_format($loc_hinh2->giaban - ($loc_hinh2->giaban * $loc_hinh2->km_giatriphantram/100),0, ',' , ',') }} đ&nbsp;<span>{{ number_format($loc_hinh2->giaban, 0, ',' , ',') }} đ</span></div>
+                        <div class="product__price mt-1">
+                            {{ number_format($loc_hinh2->giaban - ($loc_hinh2->giaban * $loc_hinh2->km_giatriphantram/100),0, ',' , ',') }}
+                            đ&nbsp;<span>{{ number_format($loc_hinh2->giaban, 0, ',' , ',') }} đ</span></div>
                     </div>
                 </div>
                 @endif
@@ -266,228 +356,20 @@ A S H I O N
 </section>
 <!-- Product Section End -->
 
-<!-- Banner Section Begin -->
-<section class="banner set-bg" data-setbg="{{ asset('ashion/img/banner/banner-1.jpg') }}">
-    <div class="container">
-        <div class="row">
-            <div class="col-xl-7 col-lg-8 m-auto">
-                <div class="banner__slider owl-carousel">
-                    <div class="banner__item">
-                        <div class="banner__text">
-                            <span>The Chloe Collection</span>
-                            <h1>The Project Jacket</h1>
-                            <a href="#">Shop now</a>
-                        </div>
-                    </div>
-                    <div class="banner__item">
-                        <div class="banner__text">
-                            <span>The Chloe Collection</span>
-                            <h1>The Project Jacket</h1>
-                            <a href="#">Shop now</a>
-                        </div>
-                    </div>
-                    <div class="banner__item">
-                        <div class="banner__text">
-                            <span>The Chloe Collection</span>
-                            <h1>The Project Jacket</h1>
-                            <a href="#">Shop now</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- Banner Section End -->
-
-<!-- Trend Section Begin -->
-<section class="trend spad">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-4 col-md-4 col-sm-6">
-                <div class="trend__content">
-                    <div class="section-title">
-                        <h4>Hot Trend</h4>
-                    </div>
-                    <div class="trend__item">
-                        <div class="trend__item__pic">
-                            <img src="{{ asset('ashion/img/trend/ht-1.jpg') }}" alt="">
-                        </div>
-                        <div class="trend__item__text">
-                            <h6>Chain bucket bag</h6>
-                            <div class="rating">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                            </div>
-                            <div class="product__price">$ 59.0</div>
-                        </div>
-                    </div>
-                    <div class="trend__item">
-                        <div class="trend__item__pic">
-                            <img src="{{ asset('ashion/img/trend/ht-2.jpg') }}" alt="">
-                        </div>
-                        <div class="trend__item__text">
-                            <h6>Pendant earrings</h6>
-                            <div class="rating">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                            </div>
-                            <div class="product__price">$ 59.0</div>
-                        </div>
-                    </div>
-                    <div class="trend__item">
-                        <div class="trend__item__pic">
-                            <img src="{{ asset('ashion/img/trend/ht-3.jpg') }}" alt="">
-                        </div>
-                        <div class="trend__item__text">
-                            <h6>Cotton T-Shirt</h6>
-                            <div class="rating">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                            </div>
-                            <div class="product__price">$ 59.0</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-4 col-sm-6">
-                <div class="trend__content">
-                    <div class="section-title">
-                        <h4>Best seller</h4>
-                    </div>
-                    <div class="trend__item">
-                        <div class="trend__item__pic">
-                            <img src="{{ asset('ashion/img/trend/bs-1.jpg') }}" alt="">
-                        </div>
-                        <div class="trend__item__text">
-                            <h6>Cotton T-Shirt</h6>
-                            <div class="rating">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                            </div>
-                            <div class="product__price">$ 59.0</div>
-                        </div>
-                    </div>
-                    <div class="trend__item">
-                        <div class="trend__item__pic">
-                            <img src="{{ asset('ashion/img/trend/bs-2.jpg') }}" alt="">
-                        </div>
-                        <div class="trend__item__text">
-                            <h6>Zip-pockets pebbled tote <br />briefcase</h6>
-                            <div class="rating">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                            </div>
-                            <div class="product__price">$ 59.0</div>
-                        </div>
-                    </div>
-                    <div class="trend__item">
-                        <div class="trend__item__pic">
-                            <img src="{{ asset('ashion/img/trend/bs-3.jpg') }}" alt="">
-                        </div>
-                        <div class="trend__item__text">
-                            <h6>Round leather bag</h6>
-                            <div class="rating">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                            </div>
-                            <div class="product__price">$ 59.0</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-4 col-sm-6">
-                <div class="trend__content">
-                    <div class="section-title">
-                        <h4>Feature</h4>
-                    </div>
-                    <div class="trend__item">
-                        <div class="trend__item__pic">
-                            <img src="{{ asset('ashion/img/trend/f-1.jpg') }}" alt="">
-                        </div>
-                        <div class="trend__item__text">
-                            <h6>Bow wrap skirt</h6>
-                            <div class="rating">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                            </div>
-                            <div class="product__price">$ 59.0</div>
-                        </div>
-                    </div>
-                    <div class="trend__item">
-                        <div class="trend__item__pic">
-                            <img src="{{ asset('ashion/img/trend/f-2.jpg') }}" alt="">
-                        </div>
-                        <div class="trend__item__text">
-                            <h6>Metallic earrings</h6>
-                            <div class="rating">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                            </div>
-                            <div class="product__price">$ 59.0</div>
-                        </div>
-                    </div>
-                    <div class="trend__item">
-                        <div class="trend__item__pic">
-                            <img src="{{ asset('ashion/img/trend/f-3.jpg') }}" alt="">
-                        </div>
-                        <div class="trend__item__text">
-                            <h6>Flap cross-body bag</h6>
-                            <div class="rating">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                            </div>
-                            <div class="product__price">$ 59.0</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- Trend Section End -->
-
 <!-- Discount Section Begin -->
 <section class="discount">
     <div class="container">
         <div class="row">
             <div class="col-lg-6 p-0">
                 <div class="discount__pic">
-                    <img src="{{ asset('ashion/img/discount.jpg') }}" alt="">
+                    <img src="{{ asset('img/lookbook/lookbook5.jpg') }}" alt="lookbook5" width="360px" height="240px">
                 </div>
             </div>
             <div class="col-lg-6 p-0">
                 <div class="discount__text">
                     <div class="discount__text__title">
                         <span>Discount</span>
-                        <h2>Summer 2019</h2>
+                        <h2>Spring 2020</h2>
                         <h5><span>Sale</span> 50%</h5>
                     </div>
                     <div class="discount__countdown" id="countdown-time">
@@ -508,7 +390,7 @@ A S H I O N
                             <p>Sec</p>
                         </div>
                     </div>
-                    <a href="#">Shop now</a>
+                    <a href="{{ route('frontend.sanpham') }}">Shop now</a>
                 </div>
             </div>
         </div>
@@ -516,8 +398,116 @@ A S H I O N
 </section>
 <!-- Discount Section End -->
 
+<!-- Trend Section Begin -->
+<section class="trend spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-4 col-sm-6">
+                <div class="trend__content">
+                    <div class="section-title">
+                        <h4>Hot Trend</h4>
+                    </div>
+                    <div class="trend__item">
+                        <div class="trend__item__pic">
+                            <img src="{{ asset('ashion/img/trend/ht-1.jpg') }}" alt="">
+                        </div>
+                        <div class="trend__item__text">
+                            <h6>Chain bucket bag</h6>
+
+                            <div class="product__price">$ 59.0</div>
+                        </div>
+                    </div>
+                    <div class="trend__item">
+                        <div class="trend__item__pic">
+                            <img src="{{ asset('ashion/img/trend/ht-2.jpg') }}" alt="">
+                        </div>
+                        <div class="trend__item__text">
+                            <h6>Pendant earrings</h6>
+
+                            <div class="product__price">$ 59.0</div>
+                        </div>
+                    </div>
+                    <div class="trend__item">
+                        <div class="trend__item__pic">
+                            <img src="{{ asset('ashion/img/trend/ht-3.jpg') }}" alt="">
+                        </div>
+                        <div class="trend__item__text">
+                            <h6>Cotton T-Shirt</h6>
+
+                            <div class="product__price">$ 59.0</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-6">
+                <div class="trend__content">
+                    <div class="section-title">
+                        <h4>Best seller</h4>
+                    </div>
+                    @foreach($best_seller as $best_seller)
+                    <div class="trend__item">
+                        <div class="trend__item__pic" style="border: solid 1px #ccc;">
+                            <img src="{{ asset('storage/photos/' . $best_seller->ha_ten) }}" alt="" width="70px;"
+                                height="90px;">
+                        </div>
+                        <div class="trend__item__text">
+                            <h6>{{ $best_seller->sp_ten }}</h6>
+
+                            <div class="product__price">
+                                {{ number_format($best_seller->sp_giaban - ($best_seller->sp_giaban * $best_seller->km_giatriphantram/100),0, ',' , ',') }}
+                                đ</div>
+                        </div>
+                    </div>
+                    @endforeach
+
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-6">
+                <div class="trend__content">
+                    <div class="section-title">
+                        <h4>Feature</h4>
+                    </div>
+                    <div class="trend__item">
+                        <div class="trend__item__pic">
+                            <img src="{{ asset('ashion/img/trend/f-1.jpg') }}" alt="">
+                        </div>
+                        <div class="trend__item__text">
+                            <h6>Bow wrap skirt</h6>
+
+                            <div class="product__price">$ 59.0</div>
+                        </div>
+                    </div>
+                    <div class="trend__item">
+                        <div class="trend__item__pic">
+                            <img src="{{ asset('ashion/img/trend/f-2.jpg') }}" alt="">
+                        </div>
+                        <div class="trend__item__text">
+                            <h6>Metallic earrings</h6>
+
+                            <div class="product__price">$ 59.0</div>
+                        </div>
+                    </div>
+                    <div class="trend__item">
+                        <div class="trend__item__pic">
+                            <img src="{{ asset('ashion/img/trend/f-3.jpg') }}" alt="">
+                        </div>
+                        <div class="trend__item__text">
+                            <h6>Flap cross-body bag</h6>
+
+                            <div class="product__price">$ 59.0</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Trend Section End -->
+
+
+
 <!-- Services Section Begin -->
-<section class="services spad">
+<!-- <section class="services spad">
     <div class="container">
         <div class="row">
             <div class="col-lg-3 col-md-4 col-sm-6">
@@ -550,7 +540,7 @@ A S H I O N
             </div>
         </div>
     </div>
-</section>
+</section> -->
 <!-- Services Section End -->
 
 @endsection

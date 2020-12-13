@@ -38,6 +38,7 @@ use Cart;
 use Auth;
 use Mail;
 use App\Mail\OrderMailer;
+use App\Mail\ContactMailer;
 session_start();
 class FrontendController extends Controller{
         /**
@@ -82,10 +83,20 @@ class FrontendController extends Controller{
             WHERE lsp.lsp_id = 10 AND dm.dm_trangthai = 1 AND lsp.lsp_trangthai = 1 AND sp.sp_trangthai = 1
             GROUP BY sp.sp_ten
             LIMIT 4 ');
+        
+        $best_seller = DB::select(
+            'SELECT *
+            FROM sanpham sp
+            JOIN khuyenmai km ON km.km_id = sp.km_id
+            JOIN hinhanh ha ON sp.sp_id = ha.sp_id
+            GROUP BY sp.sp_ten
+            LIMIT 3
+        ');
         return view('frontend.index')
                 ->with('loc_hinh', $loc_hinh)
                 ->with('loc_hinh1', $loc_hinh1)
-                ->with('loc_hinh2', $loc_hinh2);
+                ->with('loc_hinh2', $loc_hinh2)
+                ->with('best_seller', $best_seller);
     }
 
   
@@ -580,9 +591,14 @@ class FrontendController extends Controller{
     }
 
     /** * Action hiển thị view Liên hệ * GET /lienhe */ 
-    public function lienhe()
-    {
+    public function lienhe(){
         return view('frontend.pages.lienhe.lienhe');
+    }
+    public function post_lienhe(Request $request){
+        $input = $request->all();
+        Mail::to('tranlenhatminh97@gmail.com')->send(new ContactMailer($input));
+        Session::flash('alert-success', 'Bạn đã gửi lời nhắn đến ToToShop thành công');
+        return redirect()->route('frontend.lienhe'); 
     }
 
     public function themvaogiohang(Request $request) {
@@ -1147,7 +1163,7 @@ class FrontendController extends Controller{
             if($request->session()->exists('kh_hinhdaidien')){
                 $request->session()->forget('kh_hinhdaidien');
             }
-            return redirect()->route('frontend.home');
+            return redirect()->route('frontend.dangnhap');
         }
         catch (Exception $ex){
             return response(['error'=>true, 'message'=>$ex->getMessage()], 200);
@@ -1258,15 +1274,18 @@ class FrontendController extends Controller{
     public function filter(Request $request){
         //lọc màu và loại sản phẩm OK
         $query="
-            SELECT *
+        SELECT aaa.sp_id, aaa.sp_ten, aaa.lsp_id, aaa.m_id, aaa.size_id, aaa.sp_giaban, aaa.km_giatriphantram, aaa.ctsp_soluong, aaa.ha_ten, aaa.km_ngayapdung, aaa.km_ngayketthuc
+        FROM (
+            SELECT sp.*, ctsp.m_id, ctsp.size_id, km.km_giatriphantram, ctsp.ctsp_soluong, ha.ha_ten, km.km_ngayapdung, km.km_ngayketthuc
             FROM sanpham sp
             JOIN chitietsanpham ctsp ON sp.sp_id = ctsp.sp_id
             JOIN hinhanh ha ON ha.ha_id = ctsp.ha_id
             left JOIN khuyenmai km ON km.km_id = sp.km_id
-            WHERE sp.sp_trangthai = 1
+            GROUP BY sp.sp_ten) AS aaa
+        WHERE aaa.sp_trangthai = 1
         ";
 
-        //$lsp_id = $request->loai;
+        $lsp_id = $request->loai;
         $m_id = $request->mau;
         $size_id = $request->size;
         $minimum_price = $request->minimum_price;
@@ -1274,36 +1293,67 @@ class FrontendController extends Controller{
 
         //dd($minimum_price);
 
-        if($m_id & $size_id & !empty($minimum_price) & !empty($maximum_price)){
-           // $lsp = implode(",", $lsp_id);
-           // $query .= " and sp.lsp_id IN( ".$lsp." ) ";
+        if($lsp_id & $m_id & $size_id & !empty($minimum_price) & !empty($maximum_price)){
+            $lsp = implode(",", $lsp_id);
+            $query .= " and aaa.lsp_id IN( ".$lsp." ) ";
 
             $m = implode(",", $m_id);
-            $query .= " and ctsp.m_id IN( ".$m." ) ";
+            $query .= " and aaa.m_id IN( ".$m." ) ";
 
             $s = implode(",", $size_id);
-            $query .= " and ctsp.size_id IN( ".$s." ) ";
+            $query .= " and aaa.size_id IN( ".$s." ) ";
             
             $query .= "
-                and sp.sp_giaban BETWEEN '".$minimum_price."' AND '".$maximum_price."'
+                and aaa.sp_giaban BETWEEN '".$minimum_price."' AND '".$maximum_price."'
             ";
         }
         else{
+            if($m_id & $size_id & !empty($minimum_price) & !empty($maximum_price)){   
+                $m = implode(",", $m_id);
+                $query .= " and aaa.m_id IN( ".$m." ) ";
+
+                $s = implode(",", $size_id);
+                $query .= " and aaa.size_id IN( ".$s." ) ";
+
+                $query .= "
+                    and aaa.sp_giaban BETWEEN '".$minimum_price."' AND '".$maximum_price."'
+                ";
+            }
             if(!empty($minimum_price) & !empty($maximum_price)){   
                 //$lsp = implode(",", $lsp_id);
                 
                 //$query .= " where sp.lsp_id IN( ".$lsp." )  ";
                 $query .= "
-                    and sp.sp_giaban BETWEEN '".$minimum_price."' AND '".$maximum_price."'
+                    and aaa.sp_giaban BETWEEN '".$minimum_price."' AND '".$maximum_price."'
                 ";
             }
-            // if($m_id & $size_id){
-            //     $m = implode(",", $m_id);
-            //     $query .= " and ctsp.m_id IN( ".$m." ) ";
-            //     $s = implode(",", $size_id);
-            //     $query .= " and ctsp.size_id IN( ".$s." ) ";
+            if($lsp_id & !empty($minimum_price) & !empty($maximum_price)){   
+                $lsp = implode(",", $lsp_id);
+                $query .= " and aaa.lsp_id IN( ".$lsp." ) "; 
                 
-            // }
+                $query .= "
+                    and aaa.sp_giaban BETWEEN '".$minimum_price."' AND '".$maximum_price."'
+                ";
+            }
+            if($m_id & $size_id){
+                $m = implode(",", $m_id);
+                $query .= " and aaa.m_id IN( ".$m." ) ";
+                $s = implode(",", $size_id);
+                $query .= " and aaa.size_id IN( ".$s." ) ";            
+            }
+            if($m_id){
+                $m = implode(",", $m_id);
+                $query .= " and aaa.m_id IN( ".$m." ) ";            
+            }
+            if($size_id){
+                $s = implode(",", $size_id);
+                $query .= " and aaa.size_id IN( ".$s." ) ";            
+            }
+            if($lsp_id){
+                $lsp = implode(",", $lsp_id);
+                $query .= " and aaa.lsp_id IN( ".$lsp." ) ";          
+            }
+
             // if($size_id & !empty($minimum_price) & !empty($maximum_price)){
             //     $s = implode(",", $size_id);
 
@@ -1314,7 +1364,7 @@ class FrontendController extends Controller{
             // }
         }
 
-        $query .= " group by  sp.sp_ten";
+        //$query .= " group by  sp.sp_ten";
 
         $result = DB::select($query);
         //dd($query);
@@ -1415,5 +1465,75 @@ class FrontendController extends Controller{
             ->with('danhsachloai', $danhsachloai)
             ->with('danhsachmau', $danhsachmau)
             ->with('danhsachsize', $danhsachsize);
+    }
+
+
+    public function hinhanh_xoay(Request $request){
+        $hinhanh=DB::table('hinhanh_xoay')->where('hinhanh_xoay.sp_id',$request->sp_id)->get();
+        if(!$hinhanh->isEmpty()){
+            foreach ($hinhanh as $key => $value) {
+                $hinhanh_ten=$value->haxoay_ten;
+            }
+            $hinhanh_ten1=strrpos( $hinhanh_ten, "-" );
+            $hinhanh_ten2=substr($hinhanh_ten,0,$hinhanh_ten1+1);
+            $output='';
+            $output.="    <style>             .cloudimage-360 .cloudimage-360-prev, .cloudimage-360 .cloudimage-360-next {
+                padding: 8px;
+                background: rgba(255, 255, 255, 0.5);
+                border: none;
+                border-radius: 4px;
+                }
+                .cloudimage-360 .cloudimage-360-prev:focus, .cloudimage-360 .cloudimage-360-next:focus {
+                outline: none;
+                }
+                .cloudimage-360 .cloudimage-360-prev {
+                display: none;
+                position: absolute;
+                z-index: 100;
+                top: calc(50% - 15px);
+                left: 20px;
+                }
+                .cloudimage-360 .cloudimage-360-next {
+                display: none;
+                position: absolute;
+                z-index: 100;
+                top: calc(50% - 15px);
+                right: 20px;
+                }
+                .cloudimage-360 .cloudimage-360-prev:before, .cloudimage-360 .cloudimage-360-next:before {
+                content: '';
+                display: block;
+                width: 30px;
+                height: 30px;
+                background: 50% 50% / cover no-repeat;
+                }
+                .cloudimage-360 .cloudimage-360-prev:before {
+                background-image: url('https://cdn.scaleflex.it/plugins/js-cloudimage-360-view/assets/img/arrow-left.svg');
+                }
+                .cloudimage-360 .cloudimage-360-next:before {
+                background-image: url('https://cdn.scaleflex.it/plugins/js-cloudimage-360-view/assets/img/arrow-right.svg');
+                }
+                .cloudimage-360 .cloudimage-360-prev.not-active, .cloudimage-360 .cloudimage-360-next.not-active {
+                opacity: 0.4;
+                cursor: default;
+                }</style>";
+            $output.='<div  
+                           class="cloudimage-360"
+                           data-folder="storage/photos/"
+                           data-filename="'.$hinhanh_ten2.'{index}.jpg"
+                           data-amount="36"
+                           data-box-shadow="inset 0 0 100px #222"
+                           data-bottom-circle="true"
+                           data-autoplay="true"
+                           data-magnifier="2"
+                          data-full-screen ="true"
+                        >     <button class="cloudimage-360-prev"></button>
+                    <button class="cloudimage-360-next"></button></div>
+                       ';
+            echo $output;
+        }
+        else {
+            echo "<h3 style='color:red;'>Sản phẩm chưa có ảnh 360</h3>";
+        }         
     }
 }

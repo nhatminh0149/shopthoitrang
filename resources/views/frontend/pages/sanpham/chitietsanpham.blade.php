@@ -37,7 +37,7 @@ A S H I O N
     <div class="container">
         <div class="row">
 
-            <div class="col-lg-6">
+            <div class="col-lg-6" id="image">
                 <div class="product__details__pic">
                     <div class="product__details__pic__left product__thumb nice-scroll">
                         @foreach($hinhanh as $hinhanh)
@@ -216,8 +216,6 @@ A S H I O N
                                 <span class="icon_cart_alt"></span>
                                 Thêm vào giỏ hàng
                             </button>
-                           
-
                         </div>
                         <div class="flash-message">
                             @foreach (['danger', 'warning', 'success', 'info', 'dark'] as $msg)
@@ -227,8 +225,14 @@ A S H I O N
                                 @endif
                             @endforeach
                         </div>
+
+                        
+
                     </div>
                 </form>
+
+                <p><b>Hình xoay 360: </b></p>         
+                    <input style=" width: 120px; height: 100px;" type="image" src="{{ asset('img/360image1.png') }}" alt="Submit" width="100%" height="100%" id="360image"/>
             </div>
             <div class="col-lg-12">
                 <div class="product__details__tab">
@@ -247,17 +251,18 @@ A S H I O N
                         <div class="tab-pane active" id="tabs-3" role="tabpanel">
                             
                             <div class="blog__details__comment">
+                                <h5>Bình luận</h5>
                                 <div class="blog__comment__item">
                                     <form action="">
                                     {{ csrf_field() }}
-                                        <input type="hidden" name="sp_id" class="sp_id" value="{{ $ctsp[0]->sp_id }}">
+                                        <input type="hidden" name="sp_id" class="sp_id" value="{{ $ctsp[0]->sp_id }}" id="hinh360">
                                         <div id="comment_show"> </div>
                                     </form>
                                 </div>
                             </div>
                         
                             
-                            <form action="#" style="text-align: center; margin: 20px auto; width: 500px; min-height: 400px; border: 1px solid #ccc; padding: 30px;">
+                            <!-- <form action="#" style="text-align: center; margin: 20px auto; width: 500px; min-height: 400px; border: 1px solid #ccc; padding: 30px;">
                             {{ csrf_field() }}
                                 @if(Session::has('kh_email'))
                                     <h4>Viết đánh giá bình luận của bạn</h4><br>
@@ -284,6 +289,30 @@ A S H I O N
                                         <textarea name="comment" class="" id="" cols="46" rows="5"></textarea>
                                     <br><br>
                                 @endif
+                            </form> -->
+
+                            <form action="#" >
+                            {{ csrf_field() }}
+                                @if(Session::has('kh_email'))
+                                    <div class="blog__comment__item__pic">
+                                        <img src="{{ asset('storage/photos/' .Session::get('kh_hinhdaidien')) }}" alt="" width="90px" height="90px">
+                                    </div>
+                                    <div class="blog__comment__item__text">
+                                        <h6>{{ Session::get('kh_taikhoan') }}</h6>
+                                        <input type="hidden" name="kh_id" id="kh_id" class="kh_id" value="{{ Session::get('kh_id') }}" >
+                                        <textarea name="comment" class="form-control comment_content" id="" placeholder="Nội dung bình luận..." style="width: 250px; height: 70px;"></textarea>
+                                    </div><br>
+                                    <button type="button" class="btn btn-danger btn-sm send-comment" style="margin-left: 115px;">Gửi bình luận</button>
+                                    <div id="notify_comment"></div>
+                                @else
+                                    <div class="blog__comment__item__pic">
+                                        <img src="{{ asset('img/user-image-default.jpg') }}" alt="" width="90px" height="90px">
+                                    </div>
+                                    <div class="blog__comment__item__text">
+                                        <h6>Chưa có tài khoản</h6>
+                                        <textarea class="form-control" id="" placeholder="Vui lòng đăng nhập trước khi bình luận!" style="width: 250px; height: 70px;"></textarea>
+                                    </div><br>
+                                @endif
                             </form>
 
                         </div>
@@ -306,7 +335,7 @@ A S H I O N
                         <ul class="product__hover">
                             <li><a href="{{ asset('storage/photos/' . $sanphamlienquan->ha_ten) }}" class="image-popup"><span
                                         class="arrow_expand"></span></a></li>
-                            <li><a href="#"><span class="icon_heart_alt"></span></a></li>
+                            
                             <li><a href="{{ route('frontend.sanpham.xemchitiet', ['sp_id' => $sanphamlienquan->sp_id]) }}"><span class="icon_search"></span></a></li>
                         </ul>
                     </div>
@@ -329,7 +358,7 @@ A S H I O N
                         <ul class="product__hover">
                             <li><a href="{{ asset('storage/photos/' . $sanphamlienquan->ha_ten) }}" class="image-popup"><span
                                         class="arrow_expand"></span></a></li>
-                            <li><a href="#"><span class="icon_heart_alt"></span></a></li>
+                            
                             <li><a href="{{ route('frontend.sanpham.xemchitiet', ['sp_id' => $sanphamlienquan->sp_id]) }}"><span class="icon_search"></span></a></li>
                         </ul>
                     </div>
@@ -356,6 +385,10 @@ A S H I O N
 
 {{-- Thay thế nội dung vào Placeholder `custom-scripts` của view `frontend.layouts.master` --}}
 @section('custom-scripts')
+<script>window.CI360 = { notInitOnLoad: true }</script>
+<script src="https://cdn.scaleflex.it/plugins/js-cloudimage-360-view/2/js-cloudimage-360-view.min.js"></script>
+<script>window.CI360.init();</script>
+
 <!-- <script src="{{ asset('ashion/js/aaa.js') }}"></script>
 <script src="{{ asset('ashion/js/bbb.bundle.min.js') }}"></script>
 <script src="{{ asset('ashion/js/ccc.min.js') }}"></script> -->
@@ -474,6 +507,24 @@ A S H I O N
             });
         });
 
+    });
+</script>
+
+<script type="text/javascript">
+    $(document).on('click','#360image',function () {
+        var sp_id=$('#hinh360').val();
+        $.ajax({
+            type:'get',
+            url:'{!!URL::to('hinhanh-xoay')!!}',
+            data:{'sp_id':sp_id},
+        
+            success:function(data){
+                $('#image').html(data);
+                window.CI360.init();
+            },
+            error:function(){
+            }
+        });
     });
 </script>
 @endsection

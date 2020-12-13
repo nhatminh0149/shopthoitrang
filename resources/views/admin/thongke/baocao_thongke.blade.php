@@ -73,25 +73,7 @@
             <div class="content">
                 <div class="container-fluid">
                     <div class="row">
-                        <div class="col-lg-3 col-md-6 col-sm-6">
-                            <div class="card card-stats">
-                                <div class="card-header card-header-warning card-header-icon">
-                                    <div class="card-icon">
-                                        <i class="material-icons">content_copy</i>
-                                    </div>
-                                    <p class="card-category">Nhà cung cấp</p>
-                                    <h3 class="card-title">{{ $nhacungcap_count }}
-                                        <!-- <small>GB</small> -->
-                                    </h3>
-                                </div>
-                                <div class="card-footer">
-                                    <div class="stats">
-                                        <i class="material-icons text-danger">warning</i>
-                                        <a href="#pablo">Get More Space...</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        
                         <div class="col-lg-3 col-md-6 col-sm-6">
                             <div class="card card-stats">
                                 <div class="card-header card-header-success card-header-icon">
@@ -103,7 +85,7 @@
                                 </div>
                                 <div class="card-footer">
                                     <div class="stats">
-                                        <i class="material-icons">date_range</i> Last 24 Hours
+                                        <i class="material-icons">update</i> Just Updated
                                     </div>
                                 </div>
                             </div>
@@ -112,14 +94,32 @@
                             <div class="card card-stats">
                                 <div class="card-header card-header-danger card-header-icon">
                                     <div class="card-icon">
-                                        <i class="material-icons">info_outline</i>
+                                        <i class="material-icons">redeem</i>
                                     </div>
                                     <p class="card-category">Sản phẩm</p>
                                     <h3 class="card-title">{{ $sanpham_count }}</h3>
                                 </div>
                                 <div class="card-footer">
                                     <div class="stats">
-                                        <i class="material-icons">local_offer</i> Tracked from Github
+                                        <i class="material-icons">update</i> Just Updated
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 col-sm-6">
+                            <div class="card card-stats">
+                                <div class="card-header card-header-warning card-header-icon">
+                                    <div class="card-icon">
+                                        <i class="material-icons">person_add_alt_1</i>
+                                    </div>
+                                    <p class="card-category">Khách hàng</p>
+                                    <h3 class="card-title">{{ $khachhang_count }}
+                                        <!-- <small>GB</small> -->
+                                    </h3>
+                                </div>
+                                <div class="card-footer">
+                                    <div class="stats">
+                                        <i class="material-icons">update</i> Just Updated
                                     </div>
                                 </div>
                             </div>
@@ -128,10 +128,12 @@
                             <div class="card card-stats">
                                 <div class="card-header card-header-info card-header-icon">
                                     <div class="card-icon">
-                                        <i class="fa fa-twitter"></i>
+                                        <i class="material-icons">content_copy</i>
                                     </div>
-                                    <p class="card-category">Followers</p>
-                                    <h3 class="card-title">+245</h3>
+                                    <p class="card-category">Đơn đặt hàng</p>
+                                    <h3 class="card-title">{{ $dondathang_count }}
+                                        <!-- <small>GB</small> -->
+                                    </h3>
                                 </div>
                                 <div class="card-footer">
                                     <div class="stats">
@@ -144,50 +146,153 @@
 
                     <!-- BIẾN ĐỘNG GIÁ -->
                     <h4 style="text-align: center;">BIẾN ĐỘNG GIÁ SẢN PHẨM THEO THỜI GIAN</h4>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <form autocomplete="off">
-                                    {{ csrf_field() }}
-                                    <div class="form-group">
-                                        <label for="sp_id">Chọn sản phẩm</label>
-                                        
-                                        <?php $sp = DB::table('gia')
-                                                    ->join('sanpham','sanpham.sp_id','=','gia.sp_id')
-                                                    ->groupBy('gia.sp_id')
-                                                    ->distinct('gia.sp_id')->get();
-                                        ?>
-                                        <select id="sp_id" name="sp_id" class="form-control">
-                                        @foreach($sp as $sp)
-                                            <option id="sp_id" name="sp_id" value="{{ $sp->sp_id }}">
-                                                    {{ $sp->sp_ten }}  
-                                            </option>
-                                        @endforeach
-                                    </select>
-                                        
-                                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <form autocomplete="off">
+                                {{ csrf_field() }}
+                                <div class="form-group">
+                                    <label for="sp_id">Chọn sản phẩm</label>
                                     
-                                    <input type="button" id="btn-biendonggia" class="btn btn-primary btn-sm" value="Thống kê">
-                                </form>
+                                    <?php $sp = DB::table('gia')
+                                                ->join('sanpham','sanpham.sp_id','=','gia.sp_id')
+                                                ->groupBy('gia.sp_id')
+                                                ->distinct('gia.sp_id')->get();
+                                    ?>
+                                    <select id="sp_id" name="sp_id" class="form-control">
+                                    @foreach($sp as $sp)
+                                        <option id="sp_id" name="sp_id" value="{{ $sp->sp_id }}">
+                                                {{ $sp->sp_ten }}  
+                                        </option>
+                                    @endforeach
+                                </select>
+                                    
+                                </div>
+                                
+                                <input type="button" id="btn-biendonggia" class="btn btn-primary btn-sm" value="Xem biến động">
+                            </form>
 
+                            <div class="col-md-12">
+                                <div id="chart1" style="height: 250px;"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h4 style="text-align: center;">TỔNG DOANH THU THEO THÁNG TRONG NĂM</h4>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <form method="get" action="#" enctype="multipart/form-data">
+                                {{ csrf_field() }}
+                                <div class="form-group">
+                                    <label for="nam">Chọn năm</label>
+                                    <input type="number" class="form-control" id="nam" name="nam" min="2019">
+                                </div>
+                                <button type="submit" class="btn btn-primary btn-sm" id="btnLapBaoCao">Thống kê dữ liệu</button>
+                            </form>
+                        </div>
+                        <div class="col-md-12">
+                            <canvas id="chartOfobjChart" style="height: 250px;"></canvas>
+                        </div>
+                    </div>
+
+                    <br><br>
+                    <div class="row">
+                        <div class="col-md-6">  
+                            <h4 style="text-align: center;">THỐNG KÊ SẢN PHẨM TỒN KHO</h4>
+                            <div class="row">
                                 <div class="col-md-12">
-                                    <div id="chart1" style="height: 250px;"></div>
+                                    <form id="dynamic_form" role="form" method="post"> 
+                                    {{ csrf_field() }}
+                                        <div class="position-center">
+                                            <div class="form-group">
+                                                <label for="exampleInputPassword1">Sản phẩm:</label>
+                                                    <select name="sp_id_1" class="form-control input-sm m-bot15" id="sp_id_1">
+                                                        @foreach($sp1 as $key => $sp1)
+                                                            <option value="{{ $sp1->sp_id }}">{{ $sp1->sp_ten }}</option>
+                                                        @endforeach  
+                                                    </select>
+                                            </div>
+                                        
+                                            <input  type="button" name="save" id="save" class="btn btn-primary btn-sm" value="Thống kê" />
+
+                                        </div>
+                                        <br>
+                                        <div class="table-wrapper-scroll-y my-custom-scrollbar">
+                                            <style>
+                                                .my-custom-scrollbar {
+                                                    position: relative;
+                                                    height: 200px;
+                                                    overflow: auto;
+                                                }
+                                                .table-wrapper-scroll-y {
+                                                    display: block;
+                                                }
+                                            </style>
+                                            <table class="table table-bordered table-striped" id="table" style="font-size: 13px;">
+                                
+                                            </table>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>
 
+                        <div class="col-md-6">
+                            <h4 style="text-align: center;">THỐNG KÊ NGƯỠNG BÁO ĐỘNG CỦA SẢN PHẨM</h4>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <form id="dynamic_form_1" role="form" method="post"> 
+                                    {{ csrf_field() }}
+                                        <div class="position-center">
+                                            <div class="form-group">
+                                                <label for="nguong">Chọn ngưỡng:</label>
+                                                <input type="number" class="form-control" id="nguong" name="nguong" max="20">
+                                            </div>
+                                        
+                                            <input  type="button" name="save_nguong" id="save_nguong" class="btn btn-primary btn-sm" value="Thống kê" />
+
+                                        </div>
+                                        <br>
+                                        <div class="table-wrapper-scroll-y my-custom-scrollbar">
+                                            <style>
+                                                .my-custom-scrollbar {
+                                                    position: relative;
+                                                    height: 200px;
+                                                    overflow: auto;
+                                                }
+                                                .table-wrapper-scroll-y {
+                                                    display: block;
+                                                }
+                                            </style>
+                                            <table class="table table-bordered table-striped" id="table1" style="font-size: 13px;">
+                                
+                                            </table>
+                                        </div>
+                                    </form>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
                    
+
                     
-                </div>
             </div>
             @include('layouts.admin.footer')
         </div>
     </div>
 </body>
 @endsection
+
+@section('custom-scripts')
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
 
+<!-- Các script dành cho thư viện Numeraljs -->
+<script src="{{ asset('vendor/numeraljs/numeral.min.js') }}"></script>
+
+<!-- Các script dành cho thư viện ChartJS -->
+<script src="{{ asset('vendor/Chart.js/Chart.min.js') }}"></script>
 
 <!-- Biến động giá -->
 <script>
@@ -214,14 +319,174 @@ $(document).ready(function() {
         var _token = $('input[name="_token"]').val();
 
         $.ajax({
-            url: '{{ route('admin.doanhthu.biendong_gia') }}',
+            url: '{{ route("admin.doanhthu.biendong_gia") }}',
             method:"POST",
             dataType:"JSON",
             data:{sp_id:sp_id,_token:_token},
             success: function(data){
                 chart1.setData(data);
             }
-    })
+        })
     });
 })
 </script>
+
+<script>
+    // Đăng ký tiền tệ VNĐ
+    numeral.register('locale', 'vi', {
+        delimiters: {
+            thousands: ',',
+            decimal: '.'
+        },
+        abbreviations: {
+            thousand: 'k',
+            million: 'm',
+            billion: 'b',
+            trillion: 't'
+        },
+        ordinal: function(number) {
+            return number === 1 ? 'một' : 'không';
+        },
+        currency: {
+            symbol: 'đ'
+        }
+    });
+
+    // Sử dụng locate vi (Việt nam)
+    numeral.locale('vi');
+</script>
+
+<!-- Biểu đồ cho tổng doanh thu -->
+<script>
+    $(document).ready(function() {
+        var objChart;
+        var $chartOfobjChart = document.getElementById("chartOfobjChart").getContext("2d");
+
+        $("#btnLapBaoCao").click(function(e) {
+            e.preventDefault();
+            $.ajax({
+                url: '{{ route('admin.doanhthu.doanhthu_nam') }}',
+                type: "GET",
+                data: {
+                    nam: $('#nam').val(),
+                },
+                success: function(response) {
+                    var myLabels = [];
+                    var myData = [];
+                    $(response.data).each(function() {
+                        myLabels.push((this.thoiGian));
+                        myData.push(this.tongThanhTien);
+                    });
+                    myData.push(0); // creates a '0' index on the graph
+
+                    if (typeof $objChart !== "undefined") {
+                        $objChart.destroy();
+                    }
+
+                    $objChart = new Chart($chartOfobjChart, {
+                        // The type of chart we want to create
+                        type: "bar",
+
+                        data: {
+                            labels: myLabels,
+                            datasets: [{
+                                data: myData,
+                                borderColor: "#9c27b0",
+                                backgroundColor: "#9c27b0",
+                                borderWidth: 1
+                            }]
+                        },
+
+                        // Configuration options go here
+                        options: {
+                            legend: {
+                                display: false
+                            },
+                            title: {
+                                display: true,
+                                // text: "Báo cáo đơn hàng"
+                                text: "Tổng doanh thu"
+                            },
+                            scales: {
+                                xAxes: [{
+                                    barPercentage: 0.3,
+                                    scaleLabel: {
+                                        display: true,
+                                        // labelString: 'Ngày nhận đơn hàng'
+                                        labelString: 'Tháng'
+                                    }
+                                }],
+                                yAxes: [{
+                                    ticks: {
+                                        callback: function(value) {
+                                            return numeral(value).format('0,0 $')
+                                        }
+                                    },
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: 'Tổng thành tiền'
+                                    }
+                                }]
+                            },
+                            tooltips: {
+                                callbacks: {
+                                    label: function(tooltipItem, data) {
+                                        return numeral(tooltipItem.value).format('0,0 $')
+                                    }
+                                }
+                            },
+                            responsive: true,
+                            maintainAspectRatio: false,
+                        }
+                    });
+                }
+            });
+        });
+    });
+
+</script>
+
+<script type="text/javascript">
+    $('#save').on('click', function(event){
+        event.preventDefault();
+        var a= $('#dynamic_form').serialize();
+    
+        //console.log(a);
+        $.ajax({
+            type:'post',
+            url: '{{ route("admin.doanhthu.post_baocaotonkho") }}',
+            data:$('#dynamic_form').serialize(),
+            success:function(data){
+                $("#table").html(data);
+            },
+            error:function(){
+
+            }
+        });
+        
+    });
+  
+</script>
+
+<script type="text/javascript">
+    $('#save_nguong').on('click', function(event){
+        event.preventDefault();
+        var a= $('#dynamic_form_1').serialize();
+    
+        //console.log(a);
+        $.ajax({
+            type:'post',
+            url: '{{ route("admin.doanhthu.post_nguongbaodong") }}',
+            data:$('#dynamic_form_1').serialize(),
+            success:function(data){
+                $("#table1").html(data);
+            },
+            error:function(){
+
+            }
+        });
+        
+    });
+  
+</script>
+@endsection

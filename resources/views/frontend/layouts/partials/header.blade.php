@@ -1,4 +1,3 @@
-
 <!-- Header Section Begin -->
     <header class="header">
         <div class="container-fluid">
@@ -13,11 +12,11 @@
                         <ul>
                             <li class="{{ Request::is('/') ? 'active' : '' }}"><a href="{{ route('frontend.home') }}">TRANG CHỦ</a></li>
                             <li class="{{ Request::is('sanpham') ? 'active' : '' }}"><a href="{{ route('frontend.sanpham') }}">SẢN PHẨM</a>
-                                <ul class="dropdown">
+                                <!-- <ul class="dropdown">
                                     <li><a href="{{ route('frontend.donam') }}">ĐỒ NAM</a></li>
                                     <li><a href="{{ route('frontend.donu') }}">ĐỒ NỮ</a></li>
                                     <li><a href="{{ route('frontend.dodoi') }}">ĐỒ ĐÔI</a></li>
-                                </ul>
+                                </ul> -->
                             </li>
                             <li><a href="./contact.html">GIỚI THIỆU</a></li>
                             <li class="{{ Request::is('lienhe') ? 'active' : '' }}"><a href="{{ route('frontend.lienhe') }}">LIÊN HỆ</a></li>

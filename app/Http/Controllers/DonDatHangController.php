@@ -127,12 +127,13 @@ class DonDatHangController extends Controller
             WHERE ctdh.ddh_id = '.$ddh_id.' ');
 
         $ds_ddh3 = DB::select(
-            'SELECT SUM(aaa.ctdh_soluong * aaa.ctdh_dongia) AS TongTienDonHang
+            'SELECT SUM(aaa.ctdh_soluong * aaa.ctdh_dongia) AS TongTienDonHang, htvc.htvc_chiphi
             FROM (
-                SELECT ctdh.ctdh_soluong, ctdh.ctdh_dongia
+                SELECT ctdh.ctdh_soluong, ctdh.ctdh_dongia, ddh.htvc_id
                 FROM dondathang ddh
                 JOIN chitietdonhang ctdh ON ddh.ddh_id = ctdh.ddh_id
-                WHERE ddh.ddh_id = '.$ddh_id.' ) AS aaa');
+                WHERE ddh.ddh_id = '.$ddh_id.' ) AS aaa
+            JOIN hinhthucvanchuyen htvc ON htvc.htvc_id = aaa.htvc_id');
 
         $data = [
             'ddh' => $ddh,

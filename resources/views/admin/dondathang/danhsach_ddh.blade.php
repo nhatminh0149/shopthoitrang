@@ -285,7 +285,7 @@
                                             <a href="{{ route('admin.ddh.chitiet', ['ddh_id' => $ds_ddh->ddh_id]) }}">
                                                 <i class="fa fa-eye text-primary text-active" title="Xem chi tiết đơn hàng"></i>
                                             </a>
-                                            <a href="">
+                                            <a href="{{ route('admin.ddh.pdf', ['ddh_id' => $ds_ddh->ddh_id]) }}">
                                                 <i class="fa fa-print text-success text-active" title="In đơn hàng"></i>
                                             </a>
                                         </td>

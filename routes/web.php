@@ -30,7 +30,8 @@ Route::prefix('admin')->group(function()
 	Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');
 	Route::post('/login', 'Auth\AdminLoginController@login')->name('admin.login.submit');
 	Route::get('/logout', 'Auth\AdminLoginController@logout')->name('admin.logout');
-	Route::get('/', 'AdminController@index')->name('admin.dashboard');
+	// Route::get('/', 'AdminController@index')->name('admin.dashboard');
+	Route::get('/', 'ThongKeController@doanhthu')->name('admin.dashboard');
 	
 	
 	//QUẢN LÝ USERS (KHÁCH HÀNG)
@@ -138,6 +139,7 @@ Route::prefix('admin')->group(function()
 	Route::get('/sanpham_theoloaisanpham','PhieuNhapKhoController@sanpham_theoloaisanpham');
 	Route::get('/size_ctpn','PhieuNhapKhoController@size');
 	Route::post('/dynamic-field/insert', 'PhieuNhapKhoController@insert')->name('admin.dynamic-field.insert');
+	Route::get('/pnk_pdf/{pnk_id}', 'PhieuNhapKhoController@pdf_pnk')->name('admin.pnk.pdf');
 
 	//QUẢN LÝ HÌNH ẢNH SẢN PHẨM
 	Route::get('/hinhanh', 'HinhAnhController@index')->name('admin.hinhanh');
@@ -162,11 +164,23 @@ Route::prefix('admin')->group(function()
 	Route::get('/danhgia_active/{dg_id}', 'DanhGiaController@active')->name('admin.danhgia.active');
 	Route::post('/reply-comment','DanhGiaController@reply_comment');
 
-	//BIẾN ĐỘNG GIÁ
-	Route::get('/doanhthu', 'ThongKeController@doanhthu')->name('admin.doanhthu');
-	Route::post('/doanhthu/biendong_gia', 'ThongKeController@biendong_gia')->name('admin.doanhthu.biendong_gia');
-	//Route::get('/biendong_gia', 'ThongKeController@biendong_gia')->name('admin.biendong_gia');
-	//Route::resource('/biendong_gia', 'ThongKeController');
+	//TRANG THỐNG KÊ
+		
+		//THỐNG KÊ SỐ LƯỢNG CÁC MỤC QUẢN LÝ
+		Route::get('/doanhthu', 'ThongKeController@doanhthu')->name('admin.doanhthu');
+
+		//BIẾN ĐỘNG GIÁ
+		Route::post('/doanhthu/biendong_gia', 'ThongKeController@biendong_gia')->name('admin.doanhthu.biendong_gia');
+		
+		//DOANG THU THEO NĂM ĐÃ CHỌN
+		Route::get('/doanhthu/doanhthu_nam', 'ThongKeController@doanhthu_nam')->name('admin.doanhthu.doanhthu_nam');
+
+		//SẢN PHẨM TỒN KHO
+		// Route::get('/doanhthu/baocaotonkho','ThongKeController@baocaotonkho');
+		Route::post('/doanhthu/baocaotonkho','ThongKeController@post_baocaotonkho')->name('admin.doanhthu.post_baocaotonkho');
+		
+		//NGƯỠNG BÁO ĐỘNG CỦA SẢN PHẨM
+		Route::post('/doanhthu/nguongbaodong','ThongKeController@post_nguongbaodong')->name('admin.doanhthu.post_nguongbaodong');
 
 });
 
@@ -205,6 +219,9 @@ Route::prefix('admin')->group(function()
 	//Tìm kiếm sản phẩm
 	Route::get('/timkiemsp', 'FrontendController@timkiemsp')->name('frontend.timkiemsp');
 
+	//Xoay sản phẩm
+	Route::get('/hinhanh-xoay','FrontendController@hinhanh_xoay');
+
 	//Đánh giá sản phẩm
 	Route::post('/load-comment','FrontendController@load_comment');
 	Route::post('/send-comment','FrontendController@send_comment');
@@ -220,6 +237,7 @@ Route::prefix('admin')->group(function()
 
 	//Trang liên hệ
 	Route::get('/lienhe', 'FrontendController@lienhe')->name('frontend.lienhe');
+	Route::post('/lienhe', 'FrontendController@post_lienhe')->name('frontend.post_lienhe');
 
 	//Trang giỏ hàng
 	Route::post('/themvaogiohang','FrontendController@themvaogiohang')->name('frontend.themvaogiohang');

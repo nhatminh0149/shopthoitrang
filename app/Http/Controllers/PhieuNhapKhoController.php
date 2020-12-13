@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
+use Barryvdh\DomPDF\Facade as PDF;
 use Carbon\Carbon;
 use App\phieunhapkho;
 use App\chitietphieunhap;
@@ -282,6 +283,44 @@ class PhieuNhapKhoController extends Controller
                 //'success' => $size_id[0]
             ]);
         }
+    }
+
+    public function pdf_pnk($pnk_id){
+        $ds_pnk = phieunhapkho::find($pnk_id);
+
+        $ds_pnk1 = DB::select(
+            'SELECT *
+            FROM phieunhapkho pnk
+            JOIN admins ad ON ad.id = pnk.id
+            JOIN nhacungcap ncc on ncc.ncc_id = pnk.ncc_id
+            JOIN kho k ON k.kho_id = pnk.kho_id
+            WHERE pnk.pnk_id = '.$pnk_id.' ');
+
+        $ds_pnk2 = DB::select(
+            'SELECT ctpn.pnk_id, sp.sp_ten, m.m_ten, s.size_ten ,ctpn.ctpn_soluong, ctpn.ctpn_gianhap, (ctpn.ctpn_soluong * ctpn.ctpn_gianhap) AS ThanhTien
+            from chitietphieunhap ctpn
+            LEFT JOIN sanpham sp ON sp.sp_id = ctpn.sp_id
+            LEFT JOIN mau m ON m.m_id = ctpn.m_id
+            LEFT JOIN size s ON s.size_id = ctpn.size_id
+            WHERE ctpn.pnk_id = '.$pnk_id.' ');
+
+        $ds_pnk3 = DB::select(
+            'SELECT SUM(aaa.ctpn_soluong * aaa.ctpn_gianhap) AS TongTienPhieuNhap
+            FROM (
+                SELECT ctpn.ctpn_soluong, ctpn.ctpn_gianhap
+                FROM phieunhapkho pnk
+                JOIN chitietphieunhap ctpn ON pnk.pnk_id = ctpn.pnk_id
+                WHERE pnk.pnk_id = '.$pnk_id.' ) AS aaa');
+        
+
+        $data = [
+            'ds_pnk' => $ds_pnk,
+            'ds_pnk1' => $ds_pnk1,
+            'ds_pnk2' => $ds_pnk2,
+            'ds_pnk3' => $ds_pnk3,
+        ];
+        $pdf = PDF::loadView('admin.phieunhapkho.pdf_pnk',$data);
+        return $pdf->stream();
     }
 
 }

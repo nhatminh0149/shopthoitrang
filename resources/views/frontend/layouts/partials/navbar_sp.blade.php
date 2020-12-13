@@ -22,7 +22,7 @@
             </div>
         </div>
 
-        <div class="sidebar__categories">
+        <!-- <div class="sidebar__categories">
             <div class="section-title">
                 <h4>Danh mục</h4>
             </div>
@@ -73,6 +73,22 @@
                     </div>
                 </div>
             </div>
+        </div> -->
+
+        <div class="sidebar__color">
+            <div class="section-title">
+                <h4>Danh mục</h4>
+            </div>
+            <div style="height: 180px; display:inline">
+                @foreach($danhsachloai as $loai)
+                <div class="list-inline-item checkbox" style="width: 120px; margin-right: 0px;">
+                    <label style="padding-bottom: 10px; width:142px; font-size:0.8rem;">
+                        <input type="checkbox" style="display:inline" class="common_selector loai"
+                            value="{{ $loai->lsp_id}}"> {{ $loai->lsp_ten }}
+                    </label>
+                </div>
+                @endforeach
+            </div>
         </div>
 
         <div class="sidebar__sizes">
@@ -98,7 +114,7 @@
             <div style="height: 180px; display:inline">
                 @foreach($danhsachmau as $mau)
                 <div class="list-inline-item checkbox" style="width: 110px;margin-right: 0px;">
-                    <label style="padding-bottom: 10px;width:142px;font-size:0.8rem;">
+                    <label style="padding-bottom: 10px; width:142px; font-size:0.8rem;">
                         <input type="checkbox" style="display:inline" class="common_selector mau"
                             value="{{ $mau->m_id}}"> {{ $mau->m_ten }}
                         <!-- <img src="{{ asset('storage/photos/mau/' . $mau->m_hinh) }}" class="rounded-circle" 

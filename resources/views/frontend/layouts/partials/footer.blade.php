@@ -62,11 +62,11 @@
                 <div class="col-lg-4 col-md-6 col-sm-7">
                     <div class="footer__about">
                         <div class="footer__logo">
-                            <a href="{{ route('frontend.home') }}"><img src="{{ asset('ashion/img/logo.png') }}" alt=""></a>
+                            <a href="{{ route('frontend.home') }}"><img src="{{ asset('img/logo/logoshop3.jpg') }}" alt=""></a>
                         </div>
                         <p><i class="fa fa-home mr-3"></i>Số 412 Lê Văn Sỹ. Phường 14, Quận 3, TPHCM.</p>
-                        <p> <i class="fa fa-phone mr-3"></i>0916990092</p>
-                        <p><i class="fa fa-envelope mr-3"></i>sale.online@ashionshop.vn</p>
+                        <p> <i class="fa fa-phone mr-3"></i>1900 633 501 - 1 | 1900 633 501 - 2</p>
+                        <p><i class="fa fa-envelope mr-3"></i>sale.online@totoshop.vn</p>
                         <!-- <div class="footer__payment">
                             <a href="#"><img src="{{ asset('ashion/img/payment/payment-1.png') }}" alt=""></a>
                             <a href="#"><img src="{{ asset('ashion/img/payment/payment-2.png') }}" alt=""></a>
@@ -124,7 +124,7 @@
                 <div class="col-lg-12">
                     <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                     <div class="footer__copyright__text">
-                        <p>Copyright &copy; <script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Ashionshop</a></p>
+                        <p>Copyright &copy; <script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">ToToShop</a></p>
                     </div>
                     <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                 </div>

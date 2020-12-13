@@ -10,8 +10,7 @@ class HinhAnhTableSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
-    {
+    public function run(){
         $list=[
             [
                 'ha_id'       => '1',
@@ -451,12 +450,12 @@ class HinhAnhTableSeeder extends Seeder
             [
                 'ha_id'       => '87',
                 'sp_id'       => '43',
-                'ha_ten'      => 'khoacdoiC5_vang.jpg'
+                'ha_ten'      => 'khoacdoiC7_den.jpg'
             ],
             [
                 'ha_id'       => '88',
                 'sp_id'       => '43',
-                'ha_ten'      => 'khoacdoiC5_xanh.jpg'
+                'ha_ten'      => 'khoacdoiC7_trang.jpg'
             ],
            
         ];

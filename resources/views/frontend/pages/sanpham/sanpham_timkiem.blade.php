@@ -178,7 +178,7 @@ body {
                         </div>
                     </div>
 
-                    <div class="sidebar__categories">
+                    <!-- <div class="sidebar__categories">
                         <div class="section-title">
                             <h4>Danh mục</h4>
                         </div>
@@ -229,7 +229,7 @@ body {
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
             <div class="col-lg-9 col-md-9">

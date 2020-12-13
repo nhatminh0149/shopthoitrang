@@ -39,6 +39,7 @@ class DatabaseSeeder extends Seeder
         	DonDatHangTableSeeder::class,
         	ChiTietDonHangTableSeeder::class,
         	DanhGiaTableSeeder::class,
+        	HinhAnh_XoayTableSeeder::class,
         ]);
 
     }

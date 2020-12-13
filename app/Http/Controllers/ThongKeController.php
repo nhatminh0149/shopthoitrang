@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 use DB;
 use App\gia;
 use App\nhacungcap;
 use App\loaisanpham;
 use App\sanpham;
+use App\khachhang;
+use App\dondathang;
 
 class ThongKeController extends Controller
 {
@@ -15,12 +18,15 @@ class ThongKeController extends Controller
         $this->middleware('auth:admin');
     }
 
-    public function doanhthu()
-    {
+    public function doanhthu(){
         $nhacungcap_count = NhaCungCap::count();
         $loaisanpham_count = LoaiSanPham::count();
         $sanpham_count = Sanpham::count();
-        return view('admin.thongke.baocao_thongke', compact('nhacungcap_count', 'loaisanpham_count', 'sanpham_count'));
+        $khachhang_count = Khachhang::count();
+        $dondathang_count = DonDatHang::count();
+        $sp1 = sanpham::where('sp_trangthai', 1)->get();
+        //dd($sp);
+        return view('admin.thongke.baocao_thongke', compact('nhacungcap_count', 'loaisanpham_count', 'sanpham_count', 'khachhang_count', 'dondathang_count', 'sp1'));
     }
 
     public function biendong_gia(Request $request)
@@ -41,6 +47,112 @@ class ThongKeController extends Controller
         }
         echo $data = json_encode($chart_data);
 
+    }
+
+    public function doanhthu_nam(Request $request){
+        $parameter = [
+            'nam' => $request->nam,
+        ];
+        // dd($parameter);
+        $data = DB::select('
+            SELECT month(ddh.ddh_ngaylap) AS thoiGian, SUM(htvc.htvc_chiphi + ctdh.ctdh_soluong * ctdh.ctdh_dongia) as tongThanhTien
+            FROM dondathang ddh
+            JOIN hinhthucvanchuyen htvc ON htvc.htvc_id = ddh.htvc_id
+            JOIN chitietdonhang ctdh ON ddh.ddh_id = ctdh.ddh_id
+            WHERE year(ddh.ddh_ngaylap) = :nam
+            GROUP BY month(ddh.ddh_ngaylap)
+        ', $parameter);
+
+        return response()->json(array(
+            'code'  => 200,
+            'data' => $data,
+        ));
+    }
+
+    // public function baocaotonkho(){
+    //     $lsp = loaisanpham::where('lsp_trangthai', 1)->get();
+    //     //dd($lsp);
+    //     return view('admin.thongke.baocao_thongke')
+    //         ->with('lsp',$lsp);
+    // }
+    public function post_baocaotonkho(Request $request){
+
+        //$current_day = Carbon::now('Asia/Ho_Chi_Minh');
+        
+        //$date=date("Y-m-d", strtotime($current_day));
+     
+        $data= DB::table('sanpham')
+                ->select('*')
+                ->join('chitietsanpham', 'chitietsanpham.sp_id', '=', 'sanpham.sp_id')
+                ->leftjoin('mau', 'mau.m_id', '=', 'chitietsanpham.m_id')
+                ->leftjoin('size', 'size.size_id', '=', 'chitietsanpham.size_id')
+                ->where('sanpham.sp_id',$request->sp_id_1)
+                ->get();
+        $output='';
+        $output.='
+                <thead>
+                    <tr>
+                        <th style="padding: 5px 8px;">Mã SP</th>
+                        <th style="padding: 5px 8px;">Tên SP</th>
+                        <th style="padding: 5px 8px;">Màu</th>
+                        <th style="padding: 5px 8px;">Size</th>
+                        <th style="padding: 5px 8px;">Số lượng tồn</th>
+                        <th style="padding: 5px 8px;">Giá bán</th>
+                    </tr>
+                </thead>
+                <tbody>';
+                    foreach ($data as $key => $value) {
+                        $output.='
+                            <tr>
+                                <td style="padding: 5px 8px;">'.$value->sp_id .'</td>
+                                <td style="padding: 5px 8px;">'.$value->sp_ten.'</td>
+                                <td style="padding: 5px 8px;">'.$value->m_ten.'</td>
+                                <td style="padding: 5px 8px;">'.$value->size_ten.'</td>
+                                <td style="padding: 5px 8px;">'.$value->ctsp_soluong.'</td>
+                                <td style="padding: 5px 8px;">'.number_format($value->sp_giaban,0,',',',').' đ</td>
+                            </tr>';    
+                    }
+        $output.= "</tbody>";
+        return $output; 
+    }
+
+    public function post_nguongbaodong(Request $request){
+
+        //$current_day = Carbon::now('Asia/Ho_Chi_Minh');
+        
+        //$date=date("Y-m-d", strtotime($current_day));
+     
+        $data= DB::table('sanpham')
+                ->select('*')
+                ->join('chitietsanpham', 'chitietsanpham.sp_id', '=', 'sanpham.sp_id')
+                ->leftjoin('mau', 'mau.m_id', '=', 'chitietsanpham.m_id')
+                ->leftjoin('size', 'size.size_id', '=', 'chitietsanpham.size_id')
+                ->where('chitietsanpham.ctsp_soluong', '<=', $request->nguong)
+                ->get();
+        $output='';
+        $output.='
+                <thead>
+                    <tr>
+                        <th style="padding: 5px 8px;">Mã SP</th>
+                        <th style="padding: 5px 8px;">Tên SP</th>
+                        <th style="padding: 5px 8px;">Màu</th>
+                        <th style="padding: 5px 8px;">Size</th>
+                        <th style="padding: 5px 8px;">Số lượng</th>
+                    </tr>
+                </thead>
+                <tbody>';
+                    foreach ($data as $key => $value) {
+                        $output.='
+                            <tr>
+                                <td style="padding: 5px 8px;">'.$value->sp_id .'</td>
+                                <td style="padding: 5px 8px;">'.$value->sp_ten.'</td>
+                                <td style="padding: 5px 8px;">'.$value->m_ten.'</td>
+                                <td style="padding: 5px 8px;">'.$value->size_ten.'</td>
+                                <td style="padding: 5px 8px;">'.$value->ctsp_soluong.'</td>
+                            </tr>';    
+                    }
+        $output.= "</tbody>";
+        return $output; 
     }
 
     /**

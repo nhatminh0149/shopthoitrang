@@ -832,6 +832,7 @@ return array(
     'Hamcrest\\Util' => $vendorDir . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Util.php',
     'Hamcrest\\Xml\\HasXPath' => $vendorDir . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Xml/HasXPath.php',
     'HinhAnhTableSeeder' => $baseDir . '/database/seeds/HinhAnhTableSeeder.php',
+    'HinhAnh_XoayTableSeeder' => $baseDir . '/database/seeds/HinhAnh_XoayTableSeeder.php',
     'HinhThucThanhToanTableSeeder' => $baseDir . '/database/seeds/HinhThucThanhToanTableSeeder.php',
     'HinhThucVanChuyenTableSeeder' => $baseDir . '/database/seeds/HinhThucVanChuyenTableSeeder.php',
     'Illuminate\\Auth\\Access\\AuthorizationException' => $vendorDir . '/laravel/framework/src/Illuminate/Auth/Access/AuthorizationException.php',

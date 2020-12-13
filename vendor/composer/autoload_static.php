@@ -1175,6 +1175,7 @@ class ComposerStaticInit25e0dd03bcc45f47c7fd532151bb6285
         'Hamcrest\\Util' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Util.php',
         'Hamcrest\\Xml\\HasXPath' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Xml/HasXPath.php',
         'HinhAnhTableSeeder' => __DIR__ . '/../..' . '/database/seeds/HinhAnhTableSeeder.php',
+        'HinhAnh_XoayTableSeeder' => __DIR__ . '/../..' . '/database/seeds/HinhAnh_XoayTableSeeder.php',
         'HinhThucThanhToanTableSeeder' => __DIR__ . '/../..' . '/database/seeds/HinhThucThanhToanTableSeeder.php',
         'HinhThucVanChuyenTableSeeder' => __DIR__ . '/../..' . '/database/seeds/HinhThucVanChuyenTableSeeder.php',
         'Illuminate\\Auth\\Access\\AuthorizationException' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Auth/Access/AuthorizationException.php',

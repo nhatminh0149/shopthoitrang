@@ -655,7 +655,7 @@ class SanPhamTableSeeder extends Seeder
                 'sp_mota'           => 'Áo khoác đôi C4 với gam màu đơn tươi sáng, kèm logo đơn giản, giúp các cặp đôi trẻ trung, năng động khi cùng nhau diện xuống phố.',    
                 // 'sp_ngaytaomoi'     => '2020-10-06',    
                 // 'sp_ngaycapnhat'    => '2020-10-06',    
-                'sp_giaban'         => '600000', 
+                'sp_giaban'         => '800000', 
                 'sp_trangthai'      => '1',    
                 'lsp_id'            => '10',    
                 'km_id'             => NULL,    

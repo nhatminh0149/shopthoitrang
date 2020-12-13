@@ -31,7 +31,7 @@ class ContactMailer extends Mailable
      */
     public function build()
     {
-        $email = $this->data['email'];
+        $email = $this->data['kh_email'];
         return $this->from(env('MAIL_FROM_ADDRESS', 'tranlenhatminh97@gmail.com'), env('MAIL_FROM_NAME', 'ToToShop'))
             ->replyTo($email)
             ->subject("Có khách $email vừa liên hệ")

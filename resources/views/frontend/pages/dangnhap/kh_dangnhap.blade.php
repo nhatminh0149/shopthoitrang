@@ -54,6 +54,7 @@ A S H I O N
                 <div class="form-group">
                     <label for="kh_matkhau">Mật khẩu: </label>
                     <input type="password" class="form-control" id="kh_matkhau" name="kh_matkhau" value="{{ old('kh_matkhau') }}">
+                    <img src="{{ asset('img/eyes/eye4.png') }}" alt="" width="20px" height="23px" style="float: right; cursor: pointer; margin-top: -30px; margin-right: 10px; color: #ccc;" onclick="show()">
                     @if($errors->has("kh_matkhau"))
                         <div class="a" style="color: red; font-style: italic; font-size: 14px;">
                             {{$errors->first("kh_matkhau")}}
@@ -78,4 +79,16 @@ A S H I O N
 
 {{-- Thay thế nội dung vào Placeholder `custom-scripts` của view `frontend.layouts.master` --}}
 @section('custom-scripts')
+<script type="text/javascript">
+    isBool = true;
+    function show(){
+        if(isBool){
+            document.getElementById("kh_matkhau").setAttribute('type','text');
+            isBool = false;
+        }else{
+            document.getElementById("kh_matkhau").setAttribute('type','password');
+            isBool = true;
+        }
+    }
+</script>
 @endsection

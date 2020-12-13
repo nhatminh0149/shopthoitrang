@@ -15,12 +15,12 @@ class KhachHangTableSeeder extends Seeder
         $list=[
             [
                 'kh_id'        => '1',
-                'kh_taikhoan'       => 'Phúc Lê',
-                'kh_matkhau'    => md5('letanphuc'),       
-                'kh_hoten'    => 'Lê Tấn Phúc',       
-                'kh_email'    => 'Phucxautrai114@gmail.com',       
-                'kh_sdt'    => '0916112233', 
-                'kh_hinhdaidien'  => 'phucle.jpg',
+                'kh_taikhoan'       => 'Minh Minh',
+                'kh_matkhau'    => md5('minhminh'),       
+                'kh_hoten'    => 'Trần Lê Nhật Minh',       
+                'kh_email'    => 'tranlenhatminh97@gmail.com',       
+                'kh_sdt'    => '0916990092', 
+                'kh_hinhdaidien'  => 'minhminh.jpg',
                 'kh_trangthai'    => '1',       
             ],
             [

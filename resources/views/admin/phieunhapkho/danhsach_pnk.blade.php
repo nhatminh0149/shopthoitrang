@@ -274,9 +274,12 @@
                                         <td>{{ $ds_pnk->kho->kho_ten }}</td>
                                         <td style="width: 310px;">{{ $ds_pnk->nhacungcap->ncc_ten }}</td>
                                         <td class="text-center">{{ $pnk_ngaynhapkho }}</td>
-                                        <td class="text-primary text-center">
+                                        <td class="text-primary text-center" style="font-size: 16px;">
                                             <a href="{{ route('admin.pnk.chitiet', ['pnk_id' => $ds_pnk->pnk_id]) }}">
                                                 <i class="fa fa-eye text-primary text-active" title="Xem chi tiết phiếu nhập kho"></i>
+                                            </a>
+                                            <a href="{{ route('admin.pnk.pdf', ['pnk_id' => $ds_pnk->pnk_id]) }}">
+                                                <i class="fa fa-print text-success text-active" title="In phiếu nhập kho"></i>
                                             </a>
                                         </td>
                                     </tr>
