@@ -27,7 +27,7 @@ class SanPhamTableSeeder extends Seeder
                 'sp_giaban'         => '200000',    
                 'sp_trangthai'      => '1',    
                 'lsp_id'            => '1',    
-                'km_id'             => '1',    
+                'km_id'             => '2',    
                 'kho_id'            => '1',    
             ],
             [
@@ -147,7 +147,7 @@ class SanPhamTableSeeder extends Seeder
                 'sp_giaban'         => '350000',    
                 'sp_trangthai'      => '1',    
                 'lsp_id'            => '3',    
-                'km_id'             => NULL,    
+                'km_id'             => '2',    
                 'kho_id'            => '1',    
             ],
             [
@@ -237,7 +237,7 @@ class SanPhamTableSeeder extends Seeder
                 'sp_giaban'         => '200000',    
                 'sp_trangthai'      => '1',    
                 'lsp_id'            => '5',    
-                'km_id'             => NULL,    
+                'km_id'             => '3',    
                 'kho_id'            => '2',    
             ],
             [
@@ -357,7 +357,7 @@ class SanPhamTableSeeder extends Seeder
                 'sp_giaban'         => '230000',    
                 'sp_trangthai'      => '1',    
                 'lsp_id'            => '6',    
-                'km_id'             => NULL,    
+                'km_id'             => '3',    
                 'kho_id'            => '2',    
             ],
             [
@@ -417,7 +417,7 @@ class SanPhamTableSeeder extends Seeder
                 'sp_giaban'         => '300000',    
                 'sp_trangthai'      => '1',    
                 'lsp_id'            => '7',    
-                'km_id'             => NULL,    
+                'km_id'             => '2',    
                 'kho_id'            => '2',    
             ],
             [
@@ -462,7 +462,7 @@ class SanPhamTableSeeder extends Seeder
                 'sp_giaban'         => '350000',    
                 'sp_trangthai'      => '1',    
                 'lsp_id'            => '8',    
-                'km_id'             => NULL,    
+                'km_id'             => '2',    
                 'kho_id'            => '2',    
             ],
             [
@@ -598,7 +598,7 @@ class SanPhamTableSeeder extends Seeder
                 'sp_giaban'         => '500000',    
                 'sp_trangthai'      => '1',    
                 'lsp_id'            => '10',    
-                'km_id'             => '1',    
+                'km_id'             => '2',    
                 'kho_id'            => '3',    
             ],
             [
@@ -658,7 +658,7 @@ class SanPhamTableSeeder extends Seeder
                 'sp_giaban'         => '800000', 
                 'sp_trangthai'      => '1',    
                 'lsp_id'            => '10',    
-                'km_id'             => NULL,    
+                'km_id'             => '3',    
                 'kho_id'            => '3',    
             ],
         ];

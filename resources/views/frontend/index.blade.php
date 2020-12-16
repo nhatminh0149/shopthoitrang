@@ -161,68 +161,12 @@ A S H I O N
             </div>
         </div>
 
-        <div class="row property__gallery">
+        <?php
+            //Lấy ngày hiện tại của hệ thống
+            $today = date("Y-m-d");
+        ?>
 
-            @foreach($loc_hinh1 as $loc_hinh1)
-            <div class="col-lg-3 col-md-4 col-sm-6 mix women">
-                @if($loc_hinh1->km_giatriphantram == 0)
-                <div class="product__item" style="border: solid 1px whitesmoke;">
-                    <div class="product__item__pic set-bg"
-                        data-setbg="{{ asset('storage/photos/' . $loc_hinh1->ha_ten) }}">
-                        <ul class="product__hover">
-                            <li><a href="{{ asset('storage/photos/' . $loc_hinh1->ha_ten) }}" class="image-popup"><span
-                                        class="arrow_expand"></span></a></li>
-                            <li><a href="#"><span class="icon_heart_alt"></span></a></li>
-                            <li><a href="{{ route('frontend.sanpham.xemchitiet', ['sp_id' => $loc_hinh1->sp_id]) }}"><span
-                                        class="icon_search"></span></a></li>
-                        </ul>
-                    </div>
-                    <div class="product__item__text">
-                        <h6><a
-                                href="{{ route('frontend.sanpham.xemchitiet', ['sp_id' => $loc_hinh1->sp_id]) }}">{{ $loc_hinh1->sp_ten }}</a>
-                        </h6>
-                        <!-- <div class="rating">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                        </div> -->
-                        <div class="product__price mt-1">{{ number_format($loc_hinh1->giaban, 0, ',' , ',') }} đ</div>
-                    </div>
-                </div>
-                @else
-                <div class="product__item sale" style="border: solid 1px whitesmoke;">
-                    <div class="product__item__pic set-bg"
-                        data-setbg="{{ asset('storage/photos/' . $loc_hinh1->ha_ten) }}">
-                        <div class="label">Sale</div>
-                        <ul class="product__hover">
-                            <li><a href="{{ asset('storage/photos/' . $loc_hinh1->ha_ten) }}" class="image-popup"><span
-                                        class="arrow_expand"></span></a></li>
-                            <li><a href="#"><span class="icon_heart_alt"></span></a></li>
-                            <li><a href="{{ route('frontend.sanpham.xemchitiet', ['sp_id' => $loc_hinh1->sp_id]) }}"><span
-                                        class="icon_search"></span></a></li>
-                        </ul>
-                    </div>
-                    <div class="product__item__text">
-                        <h6><a
-                                href="{{ route('frontend.sanpham.xemchitiet', ['sp_id' => $loc_hinh1->sp_id]) }}">{{ $loc_hinh1->sp_ten }}</a>
-                        </h6>
-                        <!-- <div class="rating">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                        </div> -->
-                        <div class="product__price mt-1">
-                            {{ number_format($loc_hinh1->giaban - ($loc_hinh1->giaban * $loc_hinh1->km_giatriphantram/100),0, ',' , ',') }}
-                            đ&nbsp;<span>{{ number_format($loc_hinh1->giaban, 0, ',' , ',') }} đ</span></div>
-                    </div>
-                </div>
-                @endif
-            </div>
-            @endforeach
+        <div class="row property__gallery">
 
             @foreach($loc_hinh as $loc_hinh)
             <div class="col-lg-3 col-md-4 col-sm-6 mix men">
@@ -233,7 +177,7 @@ A S H I O N
                         <ul class="product__hover">
                             <li><a href="{{ asset('storage/photos/' . $loc_hinh->ha_ten) }}" class="image-popup"><span
                                         class="arrow_expand"></span></a></li>
-                            <li><a href="#"><span class="icon_heart_alt"></span></a></li>
+                           
                             <li><a href="{{ route('frontend.sanpham.xemchitiet', ['sp_id' => $loc_hinh->sp_id]) }}"><span
                                         class="icon_search"></span></a></li>
                         </ul>
@@ -242,17 +186,48 @@ A S H I O N
                         <h6><a
                                 href="{{ route('frontend.sanpham.xemchitiet', ['sp_id' => $loc_hinh->sp_id]) }}">{{ $loc_hinh->sp_ten }}</a>
                         </h6>
-                        <!-- <div class="rating">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                        </div> -->
-                        <div class="product__price mt-1">{{ number_format($loc_hinh->giaban, 0, ',' , ',') }} đ</div>
+                        <div class="product__price mt-1">{{ number_format($loc_hinh->sp_giaban, 0, ',' , ',') }} đ</div>
                     </div>
                 </div>
-                @else
+                @elseif($loc_hinh->km_giatriphantram != 0 && $loc_hinh->km_ngayketthuc < $today)
+                <div class="product__item" style="border: solid 1px whitesmoke;">
+                    <div class="product__item__pic set-bg"
+                        data-setbg="{{ asset('storage/photos/' . $loc_hinh->ha_ten) }}">
+                        <ul class="product__hover">
+                            <li><a href="{{ asset('storage/photos/' . $loc_hinh->ha_ten) }}" class="image-popup"><span
+                                        class="arrow_expand"></span></a></li>
+                           
+                            <li><a href="{{ route('frontend.sanpham.xemchitiet', ['sp_id' => $loc_hinh->sp_id]) }}"><span
+                                        class="icon_search"></span></a></li>
+                        </ul>
+                    </div>
+                    <div class="product__item__text">
+                        <h6><a
+                                href="{{ route('frontend.sanpham.xemchitiet', ['sp_id' => $loc_hinh->sp_id]) }}">{{ $loc_hinh->sp_ten }}</a>
+                        </h6>
+                        <div class="product__price mt-1">{{ number_format($loc_hinh->sp_giaban, 0, ',' , ',') }} đ</div>
+                    </div>
+                </div>
+                @elseif($loc_hinh->km_giatriphantram != 0 && $loc_hinh->km_ngayapdung > $today)
+                <div class="product__item" style="border: solid 1px whitesmoke;">
+                    <div class="product__item__pic set-bg"
+                        data-setbg="{{ asset('storage/photos/' . $loc_hinh->ha_ten) }}">
+                        <ul class="product__hover">
+                            <li><a href="{{ asset('storage/photos/' . $loc_hinh->ha_ten) }}" class="image-popup"><span
+                                        class="arrow_expand"></span></a></li>
+                           
+                            <li><a href="{{ route('frontend.sanpham.xemchitiet', ['sp_id' => $loc_hinh->sp_id]) }}"><span
+                                        class="icon_search"></span></a></li>
+                        </ul>
+                    </div>
+                    <div class="product__item__text">
+                        <h6><a
+                                href="{{ route('frontend.sanpham.xemchitiet', ['sp_id' => $loc_hinh->sp_id]) }}">{{ $loc_hinh->sp_ten }}</a>
+                        </h6>
+                        <div class="product__price mt-1">{{ number_format($loc_hinh->sp_giaban, 0, ',' , ',') }} đ</div>
+                    </div>
+                </div>
+                @elseif($loc_hinh->km_giatriphantram != 0  && $loc_hinh->km_ngayapdung <= $today && $loc_hinh->km_ngayketthuc >= $today)
                 <div class="product__item sale" style="border: solid 1px whitesmoke;">
                     <div class="product__item__pic set-bg"
                         data-setbg="{{ asset('storage/photos/' . $loc_hinh->ha_ten) }}">
@@ -260,7 +235,7 @@ A S H I O N
                         <ul class="product__hover">
                             <li><a href="{{ asset('storage/photos/' . $loc_hinh->ha_ten) }}" class="image-popup"><span
                                         class="arrow_expand"></span></a></li>
-                            <li><a href="#"><span class="icon_heart_alt"></span></a></li>
+                           
                             <li><a href="{{ route('frontend.sanpham.xemchitiet', ['sp_id' => $loc_hinh->sp_id]) }}"><span
                                         class="icon_search"></span></a></li>
                         </ul>
@@ -269,16 +244,98 @@ A S H I O N
                         <h6><a
                                 href="{{ route('frontend.sanpham.xemchitiet', ['sp_id' => $loc_hinh->sp_id]) }}">{{ $loc_hinh->sp_ten }}</a>
                         </h6>
-                        <!-- <div class="rating">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                        </div> -->
                         <div class="product__price mt-1">
-                            {{ number_format($loc_hinh->giaban - ($loc_hinh->giaban * $loc_hinh->km_giatriphantram/100),0, ',' , ',') }}
-                            đ&nbsp;<span>{{ number_format($loc_hinh->giaban, 0, ',' , ',') }} đ</span></div>
+                            {{ number_format($loc_hinh->sp_giaban - ($loc_hinh->sp_giaban * $loc_hinh->km_giatriphantram/100),0, ',' , ',') }}
+                            đ&nbsp;<span>{{ number_format($loc_hinh->sp_giaban, 0, ',' , ',') }} đ</span></div>
+                    </div>
+                </div>
+                @endif
+            </div>
+            @endforeach
+
+            @foreach($loc_hinh1 as $loc_hinh1)
+            <div class="col-lg-3 col-md-4 col-sm-6 mix women">
+                @if($loc_hinh1->km_giatriphantram == 0)
+                <div class="product__item" style="border: solid 1px whitesmoke;">
+                    <div class="product__item__pic set-bg"
+                        data-setbg="{{ asset('storage/photos/' . $loc_hinh1->ha_ten) }}">
+                        <ul class="product__hover">
+                            <li><a href="{{ asset('storage/photos/' . $loc_hinh1->ha_ten) }}" class="image-popup"><span
+                                        class="arrow_expand"></span></a></li>
+                           
+                            <li><a href="{{ route('frontend.sanpham.xemchitiet', ['sp_id' => $loc_hinh1->sp_id]) }}"><span
+                                        class="icon_search"></span></a></li>
+                        </ul>
+                    </div>
+                    <div class="product__item__text">
+                        <h6><a
+                                href="{{ route('frontend.sanpham.xemchitiet', ['sp_id' => $loc_hinh1->sp_id]) }}">{{ $loc_hinh1->sp_ten }}</a>
+                        </h6>
+                      
+                        <div class="product__price mt-1">{{ number_format($loc_hinh1->sp_giaban, 0, ',' , ',') }} đ</div>
+                    </div>
+                </div>
+                @elseif($loc_hinh1->km_giatriphantram != 0 && $loc_hinh1->km_ngayketthuc < $today)
+                <div class="product__item" style="border: solid 1px whitesmoke;">
+                    <div class="product__item__pic set-bg"
+                        data-setbg="{{ asset('storage/photos/' . $loc_hinh1->ha_ten) }}">
+                        <ul class="product__hover">
+                            <li><a href="{{ asset('storage/photos/' . $loc_hinh1->ha_ten) }}" class="image-popup"><span
+                                        class="arrow_expand"></span></a></li>
+                           
+                            <li><a href="{{ route('frontend.sanpham.xemchitiet', ['sp_id' => $loc_hinh1->sp_id]) }}"><span
+                                        class="icon_search"></span></a></li>
+                        </ul>
+                    </div>
+                    <div class="product__item__text">
+                        <h6><a
+                                href="{{ route('frontend.sanpham.xemchitiet', ['sp_id' => $loc_hinh1->sp_id]) }}">{{ $loc_hinh1->sp_ten }}</a>
+                        </h6>
+                      
+                        <div class="product__price mt-1">{{ number_format($loc_hinh1->sp_giaban, 0, ',' , ',') }} đ</div>
+                    </div>
+                </div>
+                @elseif($loc_hinh1->km_giatriphantram != 0 && $loc_hinh1->km_ngayapdung > $today)
+                <div class="product__item" style="border: solid 1px whitesmoke;">
+                    <div class="product__item__pic set-bg"
+                        data-setbg="{{ asset('storage/photos/' . $loc_hinh1->ha_ten) }}">
+                        <ul class="product__hover">
+                            <li><a href="{{ asset('storage/photos/' . $loc_hinh1->ha_ten) }}" class="image-popup"><span
+                                        class="arrow_expand"></span></a></li>
+                           
+                            <li><a href="{{ route('frontend.sanpham.xemchitiet', ['sp_id' => $loc_hinh1->sp_id]) }}"><span
+                                        class="icon_search"></span></a></li>
+                        </ul>
+                    </div>
+                    <div class="product__item__text">
+                        <h6><a
+                                href="{{ route('frontend.sanpham.xemchitiet', ['sp_id' => $loc_hinh1->sp_id]) }}">{{ $loc_hinh1->sp_ten }}</a>
+                        </h6>
+                      
+                        <div class="product__price mt-1">{{ number_format($loc_hinh1->sp_giaban, 0, ',' , ',') }} đ</div>
+                    </div>
+                </div>
+                @elseif($loc_hinh1->km_giatriphantram != 0  && $loc_hinh1->km_ngayapdung <= $today && $loc_hinh1->km_ngayketthuc >= $today)
+                <div class="product__item sale" style="border: solid 1px whitesmoke;">
+                    <div class="product__item__pic set-bg"
+                        data-setbg="{{ asset('storage/photos/' . $loc_hinh1->ha_ten) }}">
+                        <div class="label">Sale</div>
+                        <ul class="product__hover">
+                            <li><a href="{{ asset('storage/photos/' . $loc_hinh1->ha_ten) }}" class="image-popup"><span
+                                        class="arrow_expand"></span></a></li>
+                           
+                            <li><a href="{{ route('frontend.sanpham.xemchitiet', ['sp_id' => $loc_hinh1->sp_id]) }}"><span
+                                        class="icon_search"></span></a></li>
+                        </ul>
+                    </div>
+                    <div class="product__item__text">
+                        <h6><a
+                                href="{{ route('frontend.sanpham.xemchitiet', ['sp_id' => $loc_hinh1->sp_id]) }}">{{ $loc_hinh1->sp_ten }}</a>
+                        </h6>
+                        
+                        <div class="product__price mt-1">
+                            {{ number_format($loc_hinh1->sp_giaban - ($loc_hinh1->sp_giaban * $loc_hinh1->km_giatriphantram/100),0, ',' , ',') }}
+                            đ&nbsp;<span>{{ number_format($loc_hinh1->sp_giaban, 0, ',' , ',') }} đ</span></div>
                     </div>
                 </div>
                 @endif
@@ -297,7 +354,6 @@ A S H I O N
                                     <span class="arrow_expand"></span>
                                 </a>
                             </li>
-                            <li><a href="#"><span class="icon_heart_alt"></span></a></li>
                             <li><a href="{{ route('frontend.sanpham.xemchitiet', ['sp_id' => $loc_hinh2->sp_id]) }}"><span
                                         class="icon_search"></span></a></li>
                         </ul>
@@ -306,17 +362,52 @@ A S H I O N
                         <h6><a
                                 href="{{ route('frontend.sanpham.xemchitiet', ['sp_id' => $loc_hinh2->sp_id]) }}">{{ $loc_hinh2->sp_ten }}</a>
                         </h6>
-                        <!-- <div class="rating">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                        </div> -->
-                        <div class="product__price mt-1">{{ number_format($loc_hinh2->giaban, 0, ',' , ',') }} đ</div>
+                        <div class="product__price mt-1">{{ number_format($loc_hinh2->sp_giaban, 0, ',' , ',') }} đ</div>
                     </div>
                 </div>
-                @else
+                @elseif($loc_hinh2->km_giatriphantram != 0 && $loc_hinh2->km_ngayketthuc < $today)
+                <div class="product__item" style="border: solid 1px whitesmoke;">
+                    <div class="product__item__pic set-bg"
+                        data-setbg="{{ asset('storage/photos/' . $loc_hinh2->ha_ten) }}">
+                        <ul class="product__hover">
+                            <li>
+                                <a href="{{ asset('storage/photos/' . $loc_hinh->ha_ten) }}" class="image-popup">
+                                    <span class="arrow_expand"></span>
+                                </a>
+                            </li>
+                            <li><a href="{{ route('frontend.sanpham.xemchitiet', ['sp_id' => $loc_hinh2->sp_id]) }}"><span
+                                        class="icon_search"></span></a></li>
+                        </ul>
+                    </div>
+                    <div class="product__item__text">
+                        <h6><a
+                                href="{{ route('frontend.sanpham.xemchitiet', ['sp_id' => $loc_hinh2->sp_id]) }}">{{ $loc_hinh2->sp_ten }}</a>
+                        </h6>
+                        <div class="product__price mt-1">{{ number_format($loc_hinh2->sp_giaban, 0, ',' , ',') }} đ</div>
+                    </div>
+                </div>
+                @elseif($loc_hinh2->km_giatriphantram != 0 && $loc_hinh2->km_ngayapdung > $today)
+                <div class="product__item" style="border: solid 1px whitesmoke;">
+                    <div class="product__item__pic set-bg"
+                        data-setbg="{{ asset('storage/photos/' . $loc_hinh2->ha_ten) }}">
+                        <ul class="product__hover">
+                            <li>
+                                <a href="{{ asset('storage/photos/' . $loc_hinh->ha_ten) }}" class="image-popup">
+                                    <span class="arrow_expand"></span>
+                                </a>
+                            </li>
+                            <li><a href="{{ route('frontend.sanpham.xemchitiet', ['sp_id' => $loc_hinh2->sp_id]) }}"><span
+                                        class="icon_search"></span></a></li>
+                        </ul>
+                    </div>
+                    <div class="product__item__text">
+                        <h6><a
+                                href="{{ route('frontend.sanpham.xemchitiet', ['sp_id' => $loc_hinh2->sp_id]) }}">{{ $loc_hinh2->sp_ten }}</a>
+                        </h6>
+                        <div class="product__price mt-1">{{ number_format($loc_hinh2->sp_giaban, 0, ',' , ',') }} đ</div>
+                    </div>
+                </div>
+                @elseif($loc_hinh2->km_giatriphantram != 0  && $loc_hinh2->km_ngayapdung <= $today && $loc_hinh2->km_ngayketthuc >= $today)
                 <div class="product__item sale" style="border: solid 1px whitesmoke;">
                     <div class="product__item__pic set-bg"
                         data-setbg="{{ asset('storage/photos/' . $loc_hinh2->ha_ten) }}">
@@ -327,7 +418,6 @@ A S H I O N
                                     <span class="arrow_expand"></span>
                                 </a>
                             </li>
-                            <li><a href="#"><span class="icon_heart_alt"></span></a></li>
                             <li><a href="{{ route('frontend.sanpham.xemchitiet', ['sp_id' => $loc_hinh2->sp_id]) }}"><span
                                         class="icon_search"></span></a></li>
                         </ul>
@@ -336,16 +426,9 @@ A S H I O N
                         <h6><a
                                 href="{{ route('frontend.sanpham.xemchitiet', ['sp_id' => $loc_hinh2->sp_id]) }}">{{ $loc_hinh2->sp_ten }}</a>
                         </h6>
-                        <!-- <div class="rating">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                        </div> -->
                         <div class="product__price mt-1">
-                            {{ number_format($loc_hinh2->giaban - ($loc_hinh2->giaban * $loc_hinh2->km_giatriphantram/100),0, ',' , ',') }}
-                            đ&nbsp;<span>{{ number_format($loc_hinh2->giaban, 0, ',' , ',') }} đ</span></div>
+                            {{ number_format($loc_hinh2->sp_giaban - ($loc_hinh2->sp_giaban * $loc_hinh2->km_giatriphantram/100),0, ',' , ',') }}
+                            đ&nbsp;<span>{{ number_format($loc_hinh2->sp_giaban, 0, ',' , ',') }} đ</span></div>
                     </div>
                 </div>
                 @endif
@@ -398,107 +481,34 @@ A S H I O N
 </section>
 <!-- Discount Section End -->
 
-<!-- Trend Section Begin -->
+
 <section class="trend spad">
     <div class="container">
         <div class="row">
-            <div class="col-lg-4 col-md-4 col-sm-6">
-                <div class="trend__content">
-                    <div class="section-title">
-                        <h4>Hot Trend</h4>
-                    </div>
-                    <div class="trend__item">
-                        <div class="trend__item__pic">
-                            <img src="{{ asset('ashion/img/trend/ht-1.jpg') }}" alt="">
+            <div class="col-lg-12 text-center">
+                <div class="related__title">
+                    <h5>SẢN PHẨM KHUYẾN MÃI</h5>
+                </div>
+            </div>
+            @foreach($best_seller as $best_seller)
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="product__item sale" style="border: solid 1px whitesmoke;">
+                        <div class="product__item__pic set-bg" data-setbg="{{ asset('storage/photos/' . $best_seller->ha_ten) }}">
+                            <div class="label">Sale</div>
+                            <ul class="product__hover">
+                                <li><a href="{{ asset('storage/photos/' . $best_seller->ha_ten) }}" class="image-popup"><span
+                                            class="arrow_expand"></span></a></li>
+                                
+                                <li><a href="{{ route('frontend.sanpham.xemchitiet', ['sp_id' => $best_seller->sp_id]) }}"><span class="icon_search"></span></a></li>
+                            </ul>
                         </div>
-                        <div class="trend__item__text">
-                            <h6>Chain bucket bag</h6>
-
-                            <div class="product__price">$ 59.0</div>
-                        </div>
-                    </div>
-                    <div class="trend__item">
-                        <div class="trend__item__pic">
-                            <img src="{{ asset('ashion/img/trend/ht-2.jpg') }}" alt="">
-                        </div>
-                        <div class="trend__item__text">
-                            <h6>Pendant earrings</h6>
-
-                            <div class="product__price">$ 59.0</div>
-                        </div>
-                    </div>
-                    <div class="trend__item">
-                        <div class="trend__item__pic">
-                            <img src="{{ asset('ashion/img/trend/ht-3.jpg') }}" alt="">
-                        </div>
-                        <div class="trend__item__text">
-                            <h6>Cotton T-Shirt</h6>
-
-                            <div class="product__price">$ 59.0</div>
+                        <div class="product__item__text">
+                            <h6><a href="{{ route('frontend.sanpham.xemchitiet', ['sp_id' => $best_seller->sp_id]) }}">{{ $best_seller->sp_ten }}</a></h6>
+                            <div class="product__price mt-1">{{ number_format($best_seller->sp_giaban - ($best_seller->sp_giaban * $best_seller->km_giatriphantram/100),0, ',' , ',') }} đ&nbsp;<span>{{ number_format($best_seller->sp_giaban, 0, ',' , ',') }} đ</div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-4 col-md-4 col-sm-6">
-                <div class="trend__content">
-                    <div class="section-title">
-                        <h4>Best seller</h4>
-                    </div>
-                    @foreach($best_seller as $best_seller)
-                    <div class="trend__item">
-                        <div class="trend__item__pic" style="border: solid 1px #ccc;">
-                            <img src="{{ asset('storage/photos/' . $best_seller->ha_ten) }}" alt="" width="70px;"
-                                height="90px;">
-                        </div>
-                        <div class="trend__item__text">
-                            <h6>{{ $best_seller->sp_ten }}</h6>
-
-                            <div class="product__price">
-                                {{ number_format($best_seller->sp_giaban - ($best_seller->sp_giaban * $best_seller->km_giatriphantram/100),0, ',' , ',') }}
-                                đ</div>
-                        </div>
-                    </div>
-                    @endforeach
-
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-4 col-sm-6">
-                <div class="trend__content">
-                    <div class="section-title">
-                        <h4>Feature</h4>
-                    </div>
-                    <div class="trend__item">
-                        <div class="trend__item__pic">
-                            <img src="{{ asset('ashion/img/trend/f-1.jpg') }}" alt="">
-                        </div>
-                        <div class="trend__item__text">
-                            <h6>Bow wrap skirt</h6>
-
-                            <div class="product__price">$ 59.0</div>
-                        </div>
-                    </div>
-                    <div class="trend__item">
-                        <div class="trend__item__pic">
-                            <img src="{{ asset('ashion/img/trend/f-2.jpg') }}" alt="">
-                        </div>
-                        <div class="trend__item__text">
-                            <h6>Metallic earrings</h6>
-
-                            <div class="product__price">$ 59.0</div>
-                        </div>
-                    </div>
-                    <div class="trend__item">
-                        <div class="trend__item__pic">
-                            <img src="{{ asset('ashion/img/trend/f-3.jpg') }}" alt="">
-                        </div>
-                        <div class="trend__item__text">
-                            <h6>Flap cross-body bag</h6>
-
-                            <div class="product__price">$ 59.0</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
 </section>

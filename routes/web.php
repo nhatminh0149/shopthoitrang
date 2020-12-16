@@ -163,6 +163,7 @@ Route::prefix('admin')->group(function()
 	Route::get('/danhgia', 'DanhGiaController@index')->name('admin.danhgia');
 	Route::get('/danhgia_active/{dg_id}', 'DanhGiaController@active')->name('admin.danhgia.active');
 	Route::post('/reply-comment','DanhGiaController@reply_comment');
+	Route::get('/danhgia_delete/{dg_id}', 'DanhGiaController@destroy')->name('admin.danhgia.destroy');
 
 	//TRANG THỐNG KÊ
 		
@@ -239,6 +240,9 @@ Route::prefix('admin')->group(function()
 	Route::get('/lienhe', 'FrontendController@lienhe')->name('frontend.lienhe');
 	Route::post('/lienhe', 'FrontendController@post_lienhe')->name('frontend.post_lienhe');
 
+	//Trang giới thiệu
+	Route::get('/gioithieu', 'FrontendController@gioithieu')->name('frontend.gioithieu');
+
 	//Trang giỏ hàng
 	Route::post('/themvaogiohang','FrontendController@themvaogiohang')->name('frontend.themvaogiohang');
 	Route::get('/giohang','FrontendController@giohang')->name('frontend.giohang');
@@ -258,5 +262,9 @@ Route::prefix('admin')->group(function()
 	Route::get('/dangky', 'FrontendController@getDangky')->name('frontend.dangky');
 	Route::post('/dangky', 'FrontendController@postDangky')->name('frontend.dangky');
 
+	//Khách hàng sửa thông tin tài khoản
+	Route::get('/edit_taikhoan{kh_id}', 'FrontendController@edit_taikhoan')->name('frontend.edit_taikhoan');
+	Route::post('/update_taikhoan{kh_id}', 'FrontendController@update_taikhoan')->name('frontend.update_taikhoan');
+	
 	//Thực hiện Đăng xuất
 	Route::get('/dangxuat', 'FrontendController@postDangxuat')->name('frontend.dangxuat');

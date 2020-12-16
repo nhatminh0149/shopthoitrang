@@ -15,7 +15,7 @@
                     <div class="navbar-wrapper">
                         <a class="navbar-brand" href="#pablo">QUẢN LÝ BÌNH LUẬN - ĐÁNH GIÁ</a>
                     </div>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+                    <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="sr-only">Toggle navigation</span>
                         <span class="navbar-toggler-icon icon-bar"></span>
                         <span class="navbar-toggler-icon icon-bar"></span>
@@ -65,7 +65,7 @@
                                 </a>
                             </li>
                         </ul>
-                    </div>
+                    </div> -->
                 </div>
             </nav>
             <!-- End Navbar -->
@@ -250,9 +250,9 @@
                                     @endforeach
                                 </div>
 
-                                <a href="{{ route('admin.danhmuc.create') }}">
+                                <!-- <a href="{{ route('admin.danhmuc.create') }}">
                                     <button type="button" class="btn btn-outline-primary">Thêm mới</button>
-                                </a>
+                                </a> -->
 
                                 <div id="notify_comment"></div>
 
@@ -263,7 +263,7 @@
                                     <th>Nội dung</th>
                                     <th>Ngày đánh giá</th>
                                     <th>Trạng thái</th>
-                                    <th>Hành động</th>
+                                    <!-- <th>Hành động</th> -->
                                 </thead>
 
                                 <tbody>
@@ -309,10 +309,10 @@
                                         </td>
                                     
                                         <td class="text-primary">
-                                            <a href="">
+                                            <!-- <a href="">
                                                 <button type="button" class="btn btn-outline-info"><i class="fa fa-pencil" aria-hidden="true" title="Trả lời bình luận"></i></button>
-                                            </a>
-                                            <a href="" onclick="return confirm('Bạn có muốn xóa bình luận này không?')">
+                                            </a> -->
+                                            <a href="{{ route('admin.danhgia.destroy', ['dg_id' => $ds_danhgia_1->dg_id]) }}" onclick="return confirm('Bạn có muốn xóa bình luận này không?')">
                                                 <button type="button" class="btn btn-outline-danger"><i class="fa fa-trash-o" aria-hidden="true" title="Xóa bình luận"></i></button>
                                             </a>
                                         </td>

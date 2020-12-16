@@ -21,12 +21,22 @@ class ThongKeController extends Controller
     public function doanhthu(){
         $nhacungcap_count = NhaCungCap::count();
         $loaisanpham_count = LoaiSanPham::count();
+        $lsp_count_nam = LoaiSanPham::where('dm_id', '=', 1)->count();
+        $lsp_count_nu = LoaiSanPham::where('dm_id', '=', 2)->count();
+        $lsp_count_couple = LoaiSanPham::where('dm_id', '=', 3)->count();
         $sanpham_count = Sanpham::count();
+        $sp_count_cokm = Sanpham::where('km_id', '<>', NULL)->count();
+        $sp_count_kokm = Sanpham::where('km_id', '=', NULL)->count();
         $khachhang_count = Khachhang::count();
+        $khachhang_count_hd = Khachhang::where('kh_trangthai', '=', 1)->count();
+        $khachhang_count_kohd = Khachhang::where('kh_trangthai', '=', 0)->count();
         $dondathang_count = DonDatHang::count();
+        $dondathang_count_duyet = DonDatHang::where('ddh_trangthai', '=', 1)->count();
+        $dondathang_count_chuaduyet = DonDatHang::where('ddh_trangthai', '=', 0)->count();
         $sp1 = sanpham::where('sp_trangthai', 1)->get();
-        //dd($sp);
-        return view('admin.thongke.baocao_thongke', compact('nhacungcap_count', 'loaisanpham_count', 'sanpham_count', 'khachhang_count', 'dondathang_count', 'sp1'));
+       
+        //dd($sp_count_kokm);
+        return view('admin.thongke.baocao_thongke', compact('nhacungcap_count', 'loaisanpham_count', 'lsp_count_nam', 'lsp_count_nu', 'lsp_count_couple', 'sanpham_count', 'sp_count_cokm', 'sp_count_kokm', 'khachhang_count', 'khachhang_count_hd', 'khachhang_count_kohd','dondathang_count', 'dondathang_count_duyet', 'dondathang_count_chuaduyet', 'sp1'));
     }
 
     public function biendong_gia(Request $request)

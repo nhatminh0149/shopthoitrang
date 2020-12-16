@@ -2,6 +2,8 @@
             <div class="logo">
                 <a href="{{ route('admin.doanhthu') }}" class="simple-text logo-normal">
                     <!-- Multiauth -->
+                    <img src="{{ asset('img/logo/logoshop3.jpg') }}" alt="">
+                    <hr>
                     @if(isset(Auth::user()->name))
                         Hi! {{Auth::user()->name}}
                     @endif
@@ -184,15 +186,15 @@
 
                                 <li class="nav-item {{ Request::is('admin/ddh*') ? 'active' : '' }}">
                                     <a class="nav-link" href="{{ route('admin.ddh') }}">
-                                        <i class="material-icons">phone_in_talk</i>
+                                        <i class="material-icons">content_paste</i>
                                         <p>Quản lý đơn đặt hàng</p>
                                     </a>
                                 </li>
 
                                 <li class="nav-item {{ Request::is('admin/danhgia*') ? 'active' : '' }}">
                                     <a class="nav-link" href="{{ route('admin.danhgia') }}">
-                                        <i class="material-icons">phone_in_talk</i>
-                                        <p>Quản lý đánh giá</p>
+                                        <i class="material-icons">create</i>
+                                        <p>Quản lý bình luận</p>
                                     </a>
                                 </li>
 
@@ -246,6 +248,13 @@
                                     </a>
                                 </li>
 
+                                <li class="nav-item {{ Request::is('admin/pnk*') ? 'active' : '' }}">
+                                    <a class="nav-link" href="{{ route('admin.pnk') }}">
+                                        <i class="material-icons">receipt</i>
+                                        <p>Phiếu nhập kho</p>
+                                    </a>
+                                </li>
+
                                 <li class="nav-item {{ Request::is('admin/ncc*') ? 'active' : '' }}">
                                     <a class="nav-link" href="{{ route('admin.ncc') }}">
                                         <i class="material-icons">view_module</i>
@@ -271,6 +280,20 @@
                                     <a class="nav-link" href="{{ route('admin.kho') }}">
                                         <i class="material-icons">redeem</i>
                                         <p>Quản lý sản phẩm</p>
+                                    </a>
+                                </li> 
+
+                                <li class="nav-item {{ Request::is('admin/hinhanh*') ? 'active' : '' }}">
+                                    <a class="nav-link" href="{{ route('admin.hinhanh') }}">
+                                        <i class="material-icons">photo_library</i>
+                                        <p>Qlý hình ảnh SP</p>
+                                    </a>
+                                </li> 
+
+                                <li class="nav-item {{ Request::is('admin/ctsp*') ? 'active' : '' }}">
+                                    <a class="nav-link" href="{{ route('admin.ctsp') }}">
+                                        <i class="material-icons">gradient</i>
+                                        <p>Chi tiết sản phẩm</p>
                                     </a>
                                 </li> 
 
@@ -336,6 +359,13 @@
                                     <a class="nav-link" href="{{ route('admin.ddh') }}">
                                         <i class="material-icons">phone_in_talk</i>
                                         <p>Quản lý đơn đặt hàng</p>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item {{ Request::is('admin/danhgia*') ? 'active' : '' }}">
+                                    <a class="nav-link" href="{{ route('admin.danhgia') }}">
+                                        <i class="material-icons">create</i>
+                                        <p>Quản lý bình luận</p>
                                     </a>
                                 </li>
 

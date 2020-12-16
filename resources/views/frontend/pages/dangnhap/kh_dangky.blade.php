@@ -35,92 +35,94 @@ A S H I O N
 <!-- Register Section Begin -->
 <div class="container">
     <div class="content mt-5">
-        <h3><center>ĐĂNG KÝ</center></h3>
-        <form action="{{ route('frontend.dangky') }}" enctype="multipart/form-data" method="post" style="margin: 20px auto; width: 450px; border: 1px solid #ccc; padding: 30px;">
-            {{ csrf_field() }}
-            
-            @if(Session::has('thanhcong'))
-                <div class= "alert alert-success">{{ Session::get('thanhcong') }}</div>        
-            @endif
-
-            <div class="form-group">
-                <label for="kh_taikhoan">Tài khoản</label>
-                <input type="text" class="form-control" id="kh_taikhoan" name="kh_taikhoan" value="{{ old('kh_taikhoan') }}">
-                <!-- "old" để lấy ra input cũ từ view, Nếu không tìm thấy input cũ thì sẽ trả về null. -->
-                @if($errors->has("kh_taikhoan"))
-                    <div class="a" style="color: red; font-style: italic; font-size: 14px;">
-                        {{$errors->first("kh_taikhoan")}}
-                    </div>                 
+        <div class="contact__form">
+            <h5 style="font-size: 25px;"><center>ĐĂNG KÝ</center></h5>
+            <form action="{{ route('frontend.dangky') }}" enctype="multipart/form-data" method="post" style="margin: 20px auto; width: 450px; border: 1px solid #ccc; padding: 30px; border-radius: 10px;">
+                {{ csrf_field() }}
+                
+                @if(Session::has('thanhcong'))
+                    <div class= "alert alert-success">{{ Session::get('thanhcong') }}</div>        
                 @endif
-            </div>
 
-            <div class="form-group">
-                <label for="kh_matkhau">Mật khẩu</label>
-                <input type="password" class="form-control" id="kh_matkhau" name="kh_matkhau" value="{{ old('kh_matkhau') }}">
-                @if($errors->has("kh_matkhau"))
-                    <div class="a" style="color: red; font-style: italic; font-size: 14px;">
-                        {{$errors->first("kh_matkhau")}}
-                    </div>                 
-                @endif
-            </div>
-
-            <div class="form-group">
-                <label for="re_kh_matkhau">Nhập lại mật khẩu</label>
-                <input type="password" class="form-control" id="re_kh_matkhau" name="re_kh_matkhau" value="{{ old('re_kh_matkhau') }}">
-                @if($errors->has("re_kh_matkhau"))
-                    <div class="a" style="color: red; font-style: italic; font-size: 14px;">
-                        {{$errors->first("re_kh_matkhau")}}
-                    </div>                 
-                @endif
-            </div>
-
-            <div class="form-group">
-                <label for="kh_hoten">Họ tên</label>
-                <input type="text" class="form-control" id="kh_hoten" name="kh_hoten" value="{{ old('kh_hoten') }}">
-                @if($errors->has("kh_hoten"))
-                    <div class="a" style="color: red; font-style: italic; font-size: 14px;">
-                        {{$errors->first("kh_hoten")}}
-                    </div>                 
-                @endif
-            </div>
-
-            <div class="form-group">
-                <label for="kh_email">Email</label>
-                <input type="text" class="form-control" id="kh_email" name="kh_email" value="{{ old('kh_email') }}">
-                @if($errors->has("kh_email"))
-                    <div class="a" style="color: red; font-style: italic; font-size: 14px;">
-                        {{$errors->first("kh_email")}}
-                    </div>                 
-                @endif
-            </div>
-
-            <div class="form-group">
-                <label for="kh_sdt">Số điện thoại</label>
-                <input type="text" class="form-control" id="kh_sdt" name="kh_sdt" value="{{ old('kh_sdt') }}">
-                @if($errors->has("kh_sdt"))
-                    <div class="a" style="color: red; font-style: italic; font-size: 14px;">
-                        {{$errors->first("kh_sdt")}}
-                    </div>                 
-                @endif
-            </div>
-
-            <div class="form-group">
-                <label for="kh_hinhdaidien">Hình đại diện của khách hàng:</label>
-                <div class="file-loading"> 
-                    <input id="kh_hinhdaidien" type="file" name="kh_hinhdaidien">
+                <div class="form-group">
+                    <label for="kh_taikhoan">Tài khoản:</label>
+                    <input type="text" class="form-control" id="kh_taikhoan" name="kh_taikhoan" value="{{ old('kh_taikhoan') }}">
+                    <!-- "old" để lấy ra input cũ từ view, Nếu không tìm thấy input cũ thì sẽ trả về null. -->
+                    @if($errors->has("kh_taikhoan"))
+                        <div class="a" style="color: red; font-style: italic; font-size: 14px;">
+                            {{$errors->first("kh_taikhoan")}}
+                        </div>                 
+                    @endif
                 </div>
-                @if($errors->has("kh_hinhdaidien"))
-                    <div class="a" style="color: red; font-style: italic; font-size: 14px;">
-                        {{$errors->first("kh_hinhdaidien")}}
-                    </div>                 
-                @endif
-            </div>
-            
-            <input type="hidden" class="form-control" id="kh_trangthai" name="kh_trangthai" value="1">
-            
-            <br>
-            <button type="submit" class="btn btn-outline-danger">Đăng ký</button>&nbsp;&nbsp;
-        </form>
+
+                <div class="form-group">
+                    <label for="kh_matkhau">Mật khẩu:</label>
+                    <input type="password" class="form-control" id="kh_matkhau" name="kh_matkhau" value="{{ old('kh_matkhau') }}">
+                    @if($errors->has("kh_matkhau"))
+                        <div class="a" style="color: red; font-style: italic; font-size: 14px;">
+                            {{$errors->first("kh_matkhau")}}
+                        </div>                 
+                    @endif
+                </div>
+
+                <div class="form-group">
+                    <label for="re_kh_matkhau">Nhập lại mật khẩu:</label>
+                    <input type="password" class="form-control" id="re_kh_matkhau" name="re_kh_matkhau" value="{{ old('re_kh_matkhau') }}">
+                    @if($errors->has("re_kh_matkhau"))
+                        <div class="a" style="color: red; font-style: italic; font-size: 14px;">
+                            {{$errors->first("re_kh_matkhau")}}
+                        </div>                 
+                    @endif
+                </div>
+
+                <div class="form-group">
+                    <label for="kh_hoten">Họ tên:</label>
+                    <input type="text" class="form-control" id="kh_hoten" name="kh_hoten" value="{{ old('kh_hoten') }}">
+                    @if($errors->has("kh_hoten"))
+                        <div class="a" style="color: red; font-style: italic; font-size: 14px;">
+                            {{$errors->first("kh_hoten")}}
+                        </div>                 
+                    @endif
+                </div>
+
+                <div class="form-group">
+                    <label for="kh_email">Email:</label>
+                    <input type="text" class="form-control" id="kh_email" name="kh_email" value="{{ old('kh_email') }}">
+                    @if($errors->has("kh_email"))
+                        <div class="a" style="color: red; font-style: italic; font-size: 14px;">
+                            {{$errors->first("kh_email")}}
+                        </div>                 
+                    @endif
+                </div>
+
+                <div class="form-group">
+                    <label for="kh_sdt">Số điện thoại:</label>
+                    <input type="text" class="form-control" id="kh_sdt" name="kh_sdt" value="{{ old('kh_sdt') }}">
+                    @if($errors->has("kh_sdt"))
+                        <div class="a" style="color: red; font-style: italic; font-size: 14px;">
+                            {{$errors->first("kh_sdt")}}
+                        </div>                 
+                    @endif
+                </div>
+
+                <div class="form-group">
+                    <label for="kh_hinhdaidien">Hình đại diện của khách hàng:</label>
+                    <div class="file-loading"> 
+                        <input id="kh_hinhdaidien" type="file" name="kh_hinhdaidien">
+                    </div>
+                    @if($errors->has("kh_hinhdaidien"))
+                        <div class="a" style="color: red; font-style: italic; font-size: 14px;">
+                            {{$errors->first("kh_hinhdaidien")}}
+                        </div>                 
+                    @endif
+                </div>
+                
+                <input type="hidden" class="form-control" id="kh_trangthai" name="kh_trangthai" value="1">
+                
+                <br>
+                <button type="submit" class="site-btn" style="margin-left: 130px;">Đăng ký</button>&nbsp;&nbsp;
+            </form>
+        </div>
     </div>
 </div>
 <br><br>
@@ -144,7 +146,7 @@ A S H I O N
                 theme: 'fas',
                 showUpload: false,
                 showCaption: false,
-                browseClass: "btn btn-outline-primary btn-md",
+                browseClass: "btn btn-outline-dark btn-sm",
                 fileType: "any",
                 previewFileIcon: "<i class='glyphicon glyphicon-king'></i>",
                 overwriteInitial: false

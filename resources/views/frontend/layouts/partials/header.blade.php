@@ -1,3 +1,13 @@
+<!-- <script>
+    $(window).scroll(function(){
+        var scroll = $(window).scrollTop();
+        if(scroll < 300){
+            $('.fixed-top').css('background', 'transparent');
+        } else{
+            $('.fixed-top').css('background', 'rgba(23, 162, 184, 0.9)');
+        }
+    });
+</script> -->
 <!-- Header Section Begin -->
     <header class="header">
         <div class="container-fluid">
@@ -18,7 +28,7 @@
                                     <li><a href="{{ route('frontend.dodoi') }}">ĐỒ ĐÔI</a></li>
                                 </ul> -->
                             </li>
-                            <li><a href="./contact.html">GIỚI THIỆU</a></li>
+                            <li><a href="{{ route('frontend.gioithieu') }}">GIỚI THIỆU</a></li>
                             <li class="{{ Request::is('lienhe') ? 'active' : '' }}"><a href="{{ route('frontend.lienhe') }}">LIÊN HỆ</a></li>
                         </ul>
                     </nav>
@@ -27,7 +37,10 @@
                     <div class="header__right">
                         <div class="header__right__auth" style="margin-left: -60px;">
                             @if(Session::has('kh_email'))
-                                <a href="">{{ Session::get('kh_hoten') }}</a>
+                            <?php
+                                $khachhang = Session::get('kh_id');
+                            ?>
+                                <a href="{{ route('frontend.edit_taikhoan', ['kh_id' => $khachhang]) }}">{{ Session::get('kh_hoten') }}</a>
                                 <a href="{{ route('frontend.dangxuat') }}">Đăng xuất</a>
                             @else
                                 <a href="{{ route('frontend.dangnhap') }}">Đăng nhập</a>
@@ -60,5 +73,6 @@
                 <i class="fa fa-bars"></i>
             </div>
         </div>
+
     </header>
 <!-- Header Section End -->

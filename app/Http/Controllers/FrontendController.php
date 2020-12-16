@@ -46,51 +46,54 @@ class FrontendController extends Controller{
      * GET /
      */
     public function index(Request $request){
+        
+        //sp đồ nữ bán chạy
         $loc_hinh = DB::select(
-            'SELECT sp.sp_id, sp.sp_ten, ha.ha_ten, g.giaban, km.km_giatriphantram
-            FROM danhmuc dm
-            JOIN loaisanpham lsp ON dm.dm_id = lsp.dm_id
-            JOIN sanpham sp ON lsp.lsp_id = sp.lsp_id
-            JOIN chitietsanpham ctsp ON ctsp.sp_id = sp.sp_id
-            JOIN hinhanh ha ON ha.ha_id = ctsp.ha_id
-            JOIN gia g ON sp.sp_id = g.sp_id
-            LEFT JOIN khuyenmai km ON km.km_id = sp.km_id
-            WHERE lsp.lsp_id = 1 AND dm.dm_trangthai = 1 AND lsp.lsp_trangthai = 1 AND sp.sp_trangthai = 1
-            GROUP BY sp.sp_ten
+            'SELECT *
+            from sanpham sp
+            JOIN loaisanpham lsp ON lsp.lsp_id = sp.lsp_id
+            join chitietdonhang ctdh on sp.sp_id = ctdh.sp_id
+            JOIN dondathang ddh ON ctdh.ddh_id = ddh.ddh_id
+            JOIN hinhanh ha ON ctdh.sp_id = ha.sp_id
+            left JOIN khuyenmai km ON sp.km_id = km.km_id
+            WHERE lsp.dm_id = 1
+            group by ctdh.sp_id, sp.sp_ten
             LIMIT 4');
         
+        //sp đồ nữ bán chạy
         $loc_hinh1 = DB::select(
-            'SELECT sp.sp_id, sp.sp_ten, ha.ha_ten, g.giaban, km.km_giatriphantram
-            FROM danhmuc dm
-            JOIN loaisanpham lsp ON dm.dm_id = lsp.dm_id
-            JOIN sanpham sp ON lsp.lsp_id = sp.lsp_id
-            JOIN chitietsanpham ctsp ON ctsp.sp_id = sp.sp_id
-            JOIN hinhanh ha ON ha.ha_id = ctsp.ha_id
-            JOIN gia g ON sp.sp_id = g.sp_id
-            LEFT JOIN khuyenmai km ON km.km_id = sp.km_id
-            WHERE lsp.lsp_id = 5 AND dm.dm_trangthai = 1 AND lsp.lsp_trangthai = 1 AND sp.sp_trangthai = 1
-            GROUP BY sp.sp_ten
+            'SELECT *
+            from sanpham sp
+            JOIN loaisanpham lsp ON lsp.lsp_id = sp.lsp_id
+            join chitietdonhang ctdh on sp.sp_id = ctdh.sp_id
+            JOIN dondathang ddh ON ctdh.ddh_id = ddh.ddh_id
+            JOIN hinhanh ha ON ctdh.sp_id = ha.sp_id
+            left JOIN khuyenmai km ON sp.km_id = km.km_id
+            WHERE lsp.dm_id = 2
+            group by ctdh.sp_id, sp.sp_ten
             LIMIT 4 ');
+
+        //sp đồ đôi bán chạy
         $loc_hinh2 = DB::select(
-            'SELECT sp.sp_id, sp.sp_ten, ha.ha_ten, g.giaban, km.km_giatriphantram
-            FROM danhmuc dm
-            JOIN loaisanpham lsp ON dm.dm_id = lsp.dm_id
-            JOIN sanpham sp ON lsp.lsp_id = sp.lsp_id
-            JOIN chitietsanpham ctsp ON ctsp.sp_id = sp.sp_id
-            JOIN hinhanh ha ON ha.ha_id = ctsp.ha_id
-            JOIN gia g ON sp.sp_id = g.sp_id
-            LEFT JOIN khuyenmai km ON km.km_id = sp.km_id
-            WHERE lsp.lsp_id = 10 AND dm.dm_trangthai = 1 AND lsp.lsp_trangthai = 1 AND sp.sp_trangthai = 1
-            GROUP BY sp.sp_ten
-            LIMIT 4 ');
+            'SELECT *
+            from sanpham sp
+            JOIN loaisanpham lsp ON lsp.lsp_id = sp.lsp_id
+            join chitietdonhang ctdh on sp.sp_id = ctdh.sp_id
+            JOIN dondathang ddh ON ctdh.ddh_id = ddh.ddh_id
+            JOIN hinhanh ha ON ctdh.sp_id = ha.sp_id
+            left JOIN khuyenmai km ON sp.km_id = km.km_id
+            WHERE lsp.dm_id = 3
+            group by ctdh.sp_id, sp.sp_ten
+            LIMIT 4');
         
         $best_seller = DB::select(
             'SELECT *
             FROM sanpham sp
             JOIN khuyenmai km ON km.km_id = sp.km_id
             JOIN hinhanh ha ON sp.sp_id = ha.sp_id
+            WHERE km.km_ngayapdung <= 	CURRENT_TIMESTAMP() AND km.km_ngayketthuc >= CURRENT_TIMESTAMP()
             GROUP BY sp.sp_ten
-            LIMIT 3
+            LIMIT 4
         ');
         return view('frontend.index')
                 ->with('loc_hinh', $loc_hinh)
@@ -446,7 +449,7 @@ class FrontendController extends Controller{
     public function chitietsanpham($sp_id){
         
         $ctsp = DB::select(
-           'SELECT sp.sp_id, sp.sp_ten, sp.sp_mota, g.giaban, lsp.lsp_ten, km.km_giatriphantram, s.size_id ,s.size_ten, m.m_id, ha.ha_ten, g.id_gia
+           'SELECT sp.sp_id, sp.sp_ten, sp.sp_mota, g.giaban, lsp.lsp_ten, km.km_giatriphantram, s.size_id ,s.size_ten, m.m_id, ha.ha_ten, g.id_gia, km.km_ngayapdung ,km.km_ngayketthuc
            FROM sanpham sp 
            JOIN chitietsanpham ctsp ON sp.sp_id = ctsp.sp_id
            JOIN hinhanh ha ON ha.ha_id = ctsp.ha_id
@@ -495,7 +498,7 @@ class FrontendController extends Controller{
         // ->join('chitietsanpham')        
         // ->where('lsp_id', '=', $lsp_id)->limit(4)->get();
         $sanphamlienquan = DB::select(
-            'SELECT sp.sp_id, sp.sp_ten, ha.ha_ten, sp.sp_giaban, km.km_giatriphantram
+            'SELECT sp.sp_id, sp.sp_ten, ha.ha_ten, sp.sp_giaban, km.km_giatriphantram, km.km_ngayapdung ,km.km_ngayketthuc
             FROM danhmuc dm
             JOIN loaisanpham lsp ON dm.dm_id = lsp.dm_id
             JOIN sanpham sp ON lsp.lsp_id = sp.lsp_id
@@ -601,6 +604,11 @@ class FrontendController extends Controller{
         return redirect()->route('frontend.lienhe'); 
     }
 
+    /** * Action hiển thị view Giới thiệu * GET /gioithieu */ 
+    public function gioithieu(){
+        return view('frontend.pages.lienhe.gioithieu');
+    }
+
     public function themvaogiohang(Request $request) {
         $this->validate($request, [
             'color__radio' => 'required',
@@ -635,6 +643,7 @@ class FrontendController extends Controller{
     
         //$cart = Cart::content();
         //dd($cart);
+        $today = date("Y-m-d");
 
         if($qty <= $image->ctsp_soluong){
             $data['id'] = $sp_id;
@@ -643,7 +652,14 @@ class FrontendController extends Controller{
             if($sp->km_id == null){
                 $data['price']= $gia->giaban;
             }
-            else{
+            //Lưu ý chỗ này: $km->ngayapdung đang tính theo >= $today
+            elseif($km->km_ngayapdung > $today){
+                $data['price']= $gia->giaban;
+            }
+            elseif($km->km_ngayketthuc < $today){
+                $data['price']= $gia->giaban;
+            }
+            elseif($sp->km_id != null){
                 $data['price'] = $gia->giaban - ($gia->giaban * $km->km_giatriphantram/100);
             }
             $data['options']['color'] = $mau->m_ten;
@@ -1054,6 +1070,12 @@ class FrontendController extends Controller{
     {
         return view('frontend.pages.dangnhap.kh_dangky');
     }
+    public function edit_taikhoan($kh_id)
+    {
+        $khachhang = khachhang::where("kh_id",  $kh_id)->first();
+        return view('frontend.pages.dangnhap.kh_capnhattaikhoan')
+            ->with('khachhang', $khachhang);
+    }
 
     public function postDangnhap(Request $request)
     {
@@ -1080,7 +1102,7 @@ class FrontendController extends Controller{
             $request->session()->put('kh_hinhdaidien', $khachhang->kh_hinhdaidien);
             // $request->session()->put('kh_diaChi', $khachhang->kh_diaChi);
             // $request->session()->put('kh_dienThoai', $khachhang->kh_dienThoai);
-            return redirect()->route('frontend.giohang');
+            return redirect()->route('frontend.home');
         }
         else{
             return redirect()->back()->with( ['flag' => 'danger', 'message' => "Đăng nhập không thành công"] );  
@@ -1135,6 +1157,59 @@ class FrontendController extends Controller{
         $kh->save();
         
         return redirect()->back()->with('thanhcong', "Quý khách tạo tài khoản thành công!");
+    }
+
+    public function update_taikhoan(Request $request, $kh_id)
+    {
+        $this->validate($request, [
+            'kh_taikhoan' => 'required',
+            'kh_matkhau' => 'required|min:6',
+            're_kh_matkhau' => 'same:kh_matkhau',
+            'kh_hoten' => 'required',
+            'kh_email' => 'required|email|unique:khachhang,kh_email',
+            'kh_sdt' => 'required|digits:10',
+            'kh_hinhdaidien' => 'file|image|mimes:jpeg,png,gif,webp|max:2048',
+        ],[
+            'kh_taikhoan.required' => "Tài khoản khách hàng không được để trống",
+            'kh_matkhau.required' => "Mật khẩu khách hàng không được để trống",
+            'kh_matkhau.min' => "Mật khẩu khách hàng ít nhất 6 kí tự",
+            're_kh_matkhau.same' => "Mật khẩu không giống nhau. Vui lòng nhập lại",
+            'kh_hoten.required' => "Họ tên khách hàng không được để trống",
+            'kh_email.required' => "Email khách hàng không được để trống",
+            'kh_email.email' => "Email không đúng định dạng",
+            'kh_email.unique' => "Email này đã tồn tại",
+            'kh_sdt.required' => "SĐT của khách hàng không được để trống",
+            'kh_sdt.digits' => "SĐT của khách hàng phải là số 10 kí tự ",
+            'kh_hinhdaidien' => "Chọn lại hình",
+        ]);
+
+        $kh = khachhang::where('kh_id', $kh_id)->first();
+        $kh->kh_id = $request->kh_id;
+        $kh->kh_taikhoan = $request->kh_taikhoan;
+        $kh->kh_matkhau = md5($request->kh_matkhau);
+        $kh->kh_hoten = $request->kh_hoten;
+        $kh->kh_email = $request->kh_email;
+        $kh->kh_sdt = $request->kh_sdt;
+        $kh->kh_trangthai = $request->kh_trangthai;
+
+        if($request->hasFile('kh_hinhdaidien')){
+
+            // Xóa hình cũ để tránh rác
+            Storage::delete('public/photos/' . $kh->kh_hinhdaidien);
+
+            // Upload hình mới
+            $file = $request->kh_hinhdaidien;
+    
+            // Lưu tên hình vào column ha_ten
+            $kh->kh_hinhdaidien = $file->getClientOriginalName();
+            
+            // Chép file vào thư mục "photos"
+            $fileSaved = $file->storeAs('public/photos', $kh->kh_hinhdaidien);
+        }
+
+        $kh->save();
+        
+        return redirect()->back()->with('thanhcong', "Quý khách cập nhật tài khoản thành công! Hãy đăng xuất và đăng nhập lại bằng tài khoản mới");
     }
 
     public function postDangxuat(Request $request){
@@ -1372,6 +1447,8 @@ class FrontendController extends Controller{
     
         $output = '';
 
+        $today = date("Y-m-d");
+
         if($total_row > 0){
             foreach($result as $row){
                 // foreach (json_decode($row->hinh_daidien) as $picture) {
@@ -1403,7 +1480,37 @@ class FrontendController extends Controller{
                                     </div>
                                 </div>';
                         }
-                        else{
+                        elseif($row->km_giatriphantram != 0 && $row->km_ngayketthuc < $today){
+                            $output .= '
+                                <div class="product__item" style="border: solid 1px whitesmoke;">
+                                    <div class="product__item__pic set-bg" data-setbg="'.url('storage/photos/' . $row->ha_ten).'" style="background-image: url('.url('storage/photos/' . $row->ha_ten).');">
+                                        <ul class="product__hover">
+                                            <li><a href="'.url('storage/photos/' . $row->ha_ten).'" class="image-popup"><span class="arrow_expand"></span></a></li>
+                                            <li><a href="'.url('sanpham' . $row->sp_id).'"><span class="icon_search"></span></a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="product__item__text">
+                                        <h6><a href="'.url('sanpham' . $row->sp_id).'">'. $row->sp_ten .'</a></h6>
+                                        <div class="product__price mt-1"> '.number_format($row->sp_giaban, 0, '', ',').' đ</div>
+                                    </div>
+                                </div>';
+                        }  
+                        elseif($row->km_giatriphantram != 0 && $row->km_ngayapdung > $today){
+                            $output .= '
+                                <div class="product__item" style="border: solid 1px whitesmoke;">
+                                    <div class="product__item__pic set-bg" data-setbg="'.url('storage/photos/' . $row->ha_ten).'" style="background-image: url('.url('storage/photos/' . $row->ha_ten).');">
+                                        <ul class="product__hover">
+                                            <li><a href="'.url('storage/photos/' . $row->ha_ten).'" class="image-popup"><span class="arrow_expand"></span></a></li>
+                                            <li><a href="'.url('sanpham' . $row->sp_id).'"><span class="icon_search"></span></a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="product__item__text">
+                                        <h6><a href="'.url('sanpham' . $row->sp_id).'">'. $row->sp_ten .'</a></h6>
+                                        <div class="product__price mt-1"> '.number_format($row->sp_giaban, 0, '', ',').' đ</div>
+                                    </div>
+                                </div>';
+                        }  
+                        elseif($row->km_giatriphantram != 0  && $row->km_ngayapdung <= $today && $row->km_ngayketthuc >= $today){
                             $output .= '
                                 <div class="product__item sale" style="border: solid 1px whitesmoke;">
                                     <div class="product__item__pic set-bg" data-setbg="'.url('storage/photos/' . $row->ha_ten).'" style="background-image: url('.url('storage/photos/' . $row->ha_ten).');">

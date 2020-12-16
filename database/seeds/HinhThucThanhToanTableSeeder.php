@@ -20,7 +20,7 @@ class HinhThucThanhToanTableSeeder extends Seeder
             ],
             [
                 'httt_id'        => '2',
-                'httt_ten'       => 'Thanh toán Paypal',
+                'httt_ten'       => 'Thanh toán VNPAY',
                 'httt_trangthai'  => '1',    
             ],
         ];

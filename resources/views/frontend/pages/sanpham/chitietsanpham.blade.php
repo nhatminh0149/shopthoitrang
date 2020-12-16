@@ -102,10 +102,18 @@ A S H I O N
                             <i class="fa fa-star"></i>
                             <span>( 138 reviews )</span>
                         </div> -->
+                        <?php
+                            //Lấy ngày hiện tại của hệ thống
+                            $today = date("Y-m-d");
+                        ?>
                         <div class="product__details__price">
                             @if($ctsp[0]->km_giatriphantram == 0)
                             {{ number_format($ctsp[0]->giaban,0, ',' , ',') }} đ
-                            @else
+                            @elseif($ctsp[0]->km_giatriphantram != 0 && $ctsp[0]->km_ngayketthuc < $today)
+                            {{ number_format($ctsp[0]->giaban,0, ',' , ',') }} đ
+                            @elseif($ctsp[0]->km_giatriphantram != 0 && $ctsp[0]->km_ngayapdung > $today)
+                            {{ number_format($ctsp[0]->giaban,0, ',' , ',') }} đ
+                            @elseif($ctsp[0]->km_giatriphantram != 0 && $ctsp[0]->km_ngayapdung <= $today && $ctsp[0]->km_ngayketthuc >= $today)
                             {{ number_format($ctsp[0]->giaban - ($ctsp[0]->giaban * $ctsp[0]->km_giatriphantram/100),0, ',' , ',') }}đ
                             <span>{{ number_format($ctsp[0]->giaban,0, ',' , ',') }} đ</span>
                             @endif
@@ -326,8 +334,9 @@ A S H I O N
                     <h5>SẢN PHẨM LIÊN QUAN</h5>
                 </div>
             </div>
-
+           
             @foreach($sanphamlienquan as $sanphamlienquan)
+            
             <div class="col-lg-3 col-md-4 col-sm-6">
                 @if($sanphamlienquan->km_giatriphantram == 0)
                 <div class="product__item" style="border: solid 1px whitesmoke;">
@@ -341,17 +350,40 @@ A S H I O N
                     </div>
                     <div class="product__item__text">
                         <h6><a href="{{ route('frontend.sanpham.xemchitiet', ['sp_id' => $sanphamlienquan->sp_id]) }}">{{ $sanphamlienquan->sp_ten }}</a></h6>
-                        <!-- <div class="rating">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                        </div> -->
                         <div class="product__price mt-1">{{ number_format($sanphamlienquan->sp_giaban, 0, ',' , ',') }} đ</div>
                     </div>
                 </div>
-                @else
+                @elseif($sanphamlienquan->km_giatriphantram != 0 && $sanphamlienquan->km_ngayketthuc < $today)
+                <div class="product__item" style="border: solid 1px whitesmoke;">
+                    <div class="product__item__pic set-bg" data-setbg="{{ asset('storage/photos/' . $sanphamlienquan->ha_ten) }}">
+                        <ul class="product__hover">
+                            <li><a href="{{ asset('storage/photos/' . $sanphamlienquan->ha_ten) }}" class="image-popup"><span
+                                        class="arrow_expand"></span></a></li>
+                            
+                            <li><a href="{{ route('frontend.sanpham.xemchitiet', ['sp_id' => $sanphamlienquan->sp_id]) }}"><span class="icon_search"></span></a></li>
+                        </ul>
+                    </div>
+                    <div class="product__item__text">
+                        <h6><a href="{{ route('frontend.sanpham.xemchitiet', ['sp_id' => $sanphamlienquan->sp_id]) }}">{{ $sanphamlienquan->sp_ten }}</a></h6>
+                        <div class="product__price mt-1">{{ number_format($sanphamlienquan->sp_giaban, 0, ',' , ',') }} đ</div>
+                    </div>
+                </div>
+                @elseif($sanphamlienquan->km_giatriphantram != 0 && $sanphamlienquan->km_ngayapdung > $today)
+                <div class="product__item" style="border: solid 1px whitesmoke;">
+                    <div class="product__item__pic set-bg" data-setbg="{{ asset('storage/photos/' . $sanphamlienquan->ha_ten) }}">
+                        <ul class="product__hover">
+                            <li><a href="{{ asset('storage/photos/' . $sanphamlienquan->ha_ten) }}" class="image-popup"><span
+                                        class="arrow_expand"></span></a></li>
+                            
+                            <li><a href="{{ route('frontend.sanpham.xemchitiet', ['sp_id' => $sanphamlienquan->sp_id]) }}"><span class="icon_search"></span></a></li>
+                        </ul>
+                    </div>
+                    <div class="product__item__text">
+                        <h6><a href="{{ route('frontend.sanpham.xemchitiet', ['sp_id' => $sanphamlienquan->sp_id]) }}">{{ $sanphamlienquan->sp_ten }}</a></h6>
+                        <div class="product__price mt-1">{{ number_format($sanphamlienquan->sp_giaban, 0, ',' , ',') }} đ</div>
+                    </div>
+                </div>
+                @elseif($sanphamlienquan->km_giatriphantram != 0  && $sanphamlienquan->km_ngayapdung <= $today && $sanphamlienquan->km_ngayketthuc >= $today)
                 <div class="product__item sale" style="border: solid 1px whitesmoke;">
                     <div class="product__item__pic set-bg" data-setbg="{{ asset('storage/photos/' . $sanphamlienquan->ha_ten) }}">
                         <div class="label">Sale</div>
@@ -363,14 +395,7 @@ A S H I O N
                         </ul>
                     </div>
                     <div class="product__item__text">
-                        <h6><a href="#">{{ $sanphamlienquan->sp_ten }}</a></h6>
-                        <!-- <div class="rating">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                        </div> -->
+                        <h6><a href="{{ route('frontend.sanpham.xemchitiet', ['sp_id' => $sanphamlienquan->sp_id]) }}">{{ $sanphamlienquan->sp_ten }}</a></h6>
                         <div class="product__price mt-1">{{ number_format($sanphamlienquan->sp_giaban - ($sanphamlienquan->sp_giaban * $sanphamlienquan->km_giatriphantram/100),0, ',' , ',') }} đ&nbsp;<span>{{ number_format($sanphamlienquan->sp_giaban, 0, ',' , ',') }} đ</div>
                     </div>
                 </div>

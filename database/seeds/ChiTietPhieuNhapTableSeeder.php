@@ -19,7 +19,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '1',
                 'm_id'              => '1', //mau den
                 'size_id'           => '1', //size S
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '100000',
             ],    
             [
@@ -27,7 +27,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '1',
                 'm_id'              => '2', //mau trang
                 'size_id'           => '1', 
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '100000',
             ],    
             [
@@ -35,7 +35,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '1',
                 'm_id'              => '1', 
                 'size_id'           => '2', // size M
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '100000',
             ],    
             [
@@ -43,7 +43,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '1',
                 'm_id'              => '2',
                 'size_id'           => '2',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '100000',
             ],    
             [
@@ -51,7 +51,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '1',
                 'm_id'              => '1',
                 'size_id'           => '3', //size L
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '100000',
             ],    
             [
@@ -59,7 +59,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '1',
                 'm_id'              => '2',
                 'size_id'           => '3',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '100000',
             ],    
             [
@@ -67,7 +67,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '2',
                 'm_id'              => '1',
                 'size_id'           => '1',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '100000',
             ],    
             [
@@ -75,7 +75,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '2',
                 'm_id'              => '5', //màu vàng
                 'size_id'           => '1',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '100000',
             ],    
             [
@@ -83,7 +83,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '2',
                 'm_id'              => '3', //màu xanh
                 'size_id'           => '1',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '100000',
             ],    
             [
@@ -91,7 +91,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '2',
                 'm_id'              => '1', 
                 'size_id'           => '2',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '100000',
             ],    
             [
@@ -99,7 +99,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '2',
                 'm_id'              => '5', 
                 'size_id'           => '2',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '100000',
             ],    
             [
@@ -107,7 +107,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '2',
                 'm_id'              => '3', 
                 'size_id'           => '2',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '100000',
             ],    
             [
@@ -115,7 +115,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '2',
                 'm_id'              => '1', 
                 'size_id'           => '3',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '100000',
             ],    
             [
@@ -123,7 +123,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '2',
                 'm_id'              => '5', 
                 'size_id'           => '3',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '100000',
             ],    
             [
@@ -131,7 +131,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '2',
                 'm_id'              => '3', 
                 'size_id'           => '3',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '100000',
             ],    
             [
@@ -139,7 +139,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '3',
                 'm_id'              => '1', 
                 'size_id'           => '1',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '150000',
             ],    
             [
@@ -147,7 +147,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '3',
                 'm_id'              => '1', 
                 'size_id'           => '2',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '150000',
             ],    
             [
@@ -155,7 +155,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '3',
                 'm_id'              => '1', 
                 'size_id'           => '3',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '150000',
             ],    
             [
@@ -163,7 +163,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '3',
                 'm_id'              => '2', 
                 'size_id'           => '1',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '150000',
             ],       
             [
@@ -171,7 +171,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '3',
                 'm_id'              => '2', 
                 'size_id'           => '2',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '150000',
             ],    
             [
@@ -179,7 +179,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '3',
                 'm_id'              => '2', 
                 'size_id'           => '3',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '150000',
             ],    
             [
@@ -187,7 +187,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '3',
                 'm_id'              => '3', 
                 'size_id'           => '1',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '150000',
             ],    
             [
@@ -195,7 +195,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '3',
                 'm_id'              => '3', 
                 'size_id'           => '2',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '150000',
             ],    
             [
@@ -203,7 +203,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '3',
                 'm_id'              => '3', 
                 'size_id'           => '3',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '150000',
             ],  
 
@@ -213,7 +213,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '4',
                 'm_id'              => '1', 
                 'size_id'           => '1',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '100000',
             ],    
             [
@@ -221,7 +221,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '4',
                 'm_id'              => '1', 
                 'size_id'           => '2',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '100000',
             ],    
             [
@@ -229,7 +229,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '4',
                 'm_id'              => '1', 
                 'size_id'           => '3',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '100000',
             ],    
             [
@@ -237,7 +237,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '4',
                 'm_id'              => '2', 
                 'size_id'           => '1',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '100000',
             ],    
             [
@@ -245,7 +245,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '4',
                 'm_id'              => '2', 
                 'size_id'           => '2',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '100000',
             ],    
             [
@@ -253,7 +253,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '4',
                 'm_id'              => '2', 
                 'size_id'           => '3',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '100000',
             ],    
             [
@@ -261,7 +261,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '5',
                 'm_id'              => '2', 
                 'size_id'           => '1',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '150000',
             ],    
             [
@@ -269,7 +269,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '5',
                 'm_id'              => '2', 
                 'size_id'           => '2',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '150000',
             ],    
             [
@@ -277,7 +277,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '5',
                 'm_id'              => '2', 
                 'size_id'           => '3',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '150000',
             ],    
             [
@@ -285,7 +285,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '5',
                 'm_id'              => '3', 
                 'size_id'           => '1',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '150000',
             ],    
             [
@@ -293,7 +293,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '5',
                 'm_id'              => '3', 
                 'size_id'           => '2',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '150000',
             ],    
             [
@@ -301,7 +301,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '5',
                 'm_id'              => '3', 
                 'size_id'           => '3',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '150000',
             ],    
 
@@ -311,7 +311,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '6',
                 'm_id'              => '1', 
                 'size_id'           => '1',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '180000',
             ],
             [
@@ -319,7 +319,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '6',
                 'm_id'              => '1', 
                 'size_id'           => '2',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '180000',
             ],
             [
@@ -327,7 +327,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '6',
                 'm_id'              => '1', 
                 'size_id'           => '3',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '180000',
             ],
             [
@@ -335,7 +335,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '6',
                 'm_id'              => '2', 
                 'size_id'           => '1',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '180000',
             ],
             [
@@ -343,7 +343,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '6',
                 'm_id'              => '2', 
                 'size_id'           => '2',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '180000',
             ],
             [
@@ -351,7 +351,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '6',
                 'm_id'              => '2', 
                 'size_id'           => '3',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '180000',
             ],
             [
@@ -359,7 +359,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '7',
                 'm_id'              => '2', 
                 'size_id'           => '1',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '200000',
             ],
             [
@@ -367,7 +367,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '7',
                 'm_id'              => '2', 
                 'size_id'           => '2',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '200000',
             ],
             [
@@ -375,7 +375,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '7',
                 'm_id'              => '2', 
                 'size_id'           => '3',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '200000',
             ],
             [
@@ -383,7 +383,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '7',
                 'm_id'              => '5', 
                 'size_id'           => '1',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '200000',
             ],
             [
@@ -391,7 +391,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '7',
                 'm_id'              => '5', 
                 'size_id'           => '2',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '200000',
             ],
             [
@@ -399,7 +399,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '7',
                 'm_id'              => '5', 
                 'size_id'           => '3',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '200000',
             ],
             [
@@ -407,7 +407,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '7',
                 'm_id'              => '3', 
                 'size_id'           => '3',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '200000',
             ],
             [
@@ -415,7 +415,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '8',
                 'm_id'              => '1', 
                 'size_id'           => '1',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '170000',
             ],
             [
@@ -423,7 +423,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '8',
                 'm_id'              => '1', 
                 'size_id'           => '2',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '170000',
             ],
             [
@@ -431,7 +431,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '8',
                 'm_id'              => '1', 
                 'size_id'           => '3',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '170000',
             ],
             [
@@ -439,7 +439,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '8',
                 'm_id'              => '5', 
                 'size_id'           => '1',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '170000',
             ],
             [
@@ -447,7 +447,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '8',
                 'm_id'              => '5', 
                 'size_id'           => '2',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '170000',
             ],
             [
@@ -455,7 +455,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '8',
                 'm_id'              => '5', 
                 'size_id'           => '3',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '170000',
             ],
             [
@@ -463,7 +463,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '8',
                 'm_id'              => '3', 
                 'size_id'           => '1',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '170000',
             ],
             [
@@ -471,7 +471,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '8',
                 'm_id'              => '3', 
                 'size_id'           => '2',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '170000',
             ],
             [
@@ -479,7 +479,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '8',
                 'm_id'              => '3', 
                 'size_id'           => '3',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '170000',
             ],
 
@@ -489,7 +489,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '9',
                 'm_id'              => '1', 
                 'size_id'           => '1',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '250000',
             ],
             [
@@ -497,7 +497,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '9',
                 'm_id'              => '1', 
                 'size_id'           => '2',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '250000',
             ],
             [
@@ -505,7 +505,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '9',
                 'm_id'              => '1', 
                 'size_id'           => '3',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '250000',
             ],
             [
@@ -513,7 +513,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '10',
                 'm_id'              => '2', 
                 'size_id'           => '1',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '250000',
             ],
             [
@@ -521,7 +521,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '10',
                 'm_id'              => '2', 
                 'size_id'           => '2',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '250000',
             ],
             [
@@ -529,7 +529,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '10',
                 'm_id'              => '2', 
                 'size_id'           => '3',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '250000',
             ],
             [
@@ -537,7 +537,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '11',
                 'm_id'              => '1', 
                 'size_id'           => '1',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '250000',
             ],
             [
@@ -545,7 +545,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '11',
                 'm_id'              => '1', 
                 'size_id'           => '2',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '250000',
             ],
             [
@@ -553,7 +553,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '11',
                 'm_id'              => '1', 
                 'size_id'           => '3',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '250000',
             ],
             [
@@ -561,7 +561,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '12',
                 'm_id'              => '2', 
                 'size_id'           => '1',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '215000',
             ],
             [
@@ -569,7 +569,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '12',
                 'm_id'              => '2', 
                 'size_id'           => '2',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '215000',
             ],
             [
@@ -577,7 +577,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '12',
                 'm_id'              => '2', 
                 'size_id'           => '3',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '215000',
             ],
             [
@@ -585,7 +585,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '13',
                 'm_id'              => '1', 
                 'size_id'           => '1',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '215000',
             ],
             [
@@ -593,7 +593,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '13',
                 'm_id'              => '1', 
                 'size_id'           => '2',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '215000',
             ],
             [
@@ -601,7 +601,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '13',
                 'm_id'              => '1', 
                 'size_id'           => '3',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '215000',
             ],
             [
@@ -609,7 +609,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '14',
                 'm_id'              => '3', 
                 'size_id'           => '1',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '215000',
             ],
             [
@@ -617,7 +617,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '14',
                 'm_id'              => '3', 
                 'size_id'           => '2',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '215000',
             ],
             [
@@ -625,7 +625,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '14',
                 'm_id'              => '3', 
                 'size_id'           => '3',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '215000',
             ],
 
@@ -635,7 +635,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '15',
                 'm_id'              => '2', 
                 'size_id'           => '1',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '100000',
             ],
             [
@@ -643,7 +643,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '15',
                 'm_id'              => '2', 
                 'size_id'           => '2',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '100000',
             ],
             [
@@ -651,7 +651,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '15',
                 'm_id'              => '2', 
                 'size_id'           => '3',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '100000',
             ],
             [
@@ -659,7 +659,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '15',
                 'm_id'              => '5', 
                 'size_id'           => '1',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '100000',
             ],
             [
@@ -667,7 +667,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '15',
                 'm_id'              => '5', 
                 'size_id'           => '2',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '100000',
             ],
             [
@@ -675,7 +675,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '15',
                 'm_id'              => '5', 
                 'size_id'           => '3',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '100000',
             ],
             [
@@ -683,7 +683,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '16',
                 'm_id'              => '1', 
                 'size_id'           => '1',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '100000',
             ],
             [
@@ -691,7 +691,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '16',
                 'm_id'              => '1', 
                 'size_id'           => '2',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '100000',
             ],
             [
@@ -699,7 +699,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '16',
                 'm_id'              => '1', 
                 'size_id'           => '3',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '100000',
             ],
             [
@@ -707,7 +707,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '16',
                 'm_id'              => '2', 
                 'size_id'           => '1',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '100000',
             ],
             [
@@ -715,7 +715,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '16',
                 'm_id'              => '2', 
                 'size_id'           => '2',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '100000',
             ],
             [
@@ -723,7 +723,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '16',
                 'm_id'              => '2', 
                 'size_id'           => '3',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '100000',
             ],
             [
@@ -731,7 +731,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '17',
                 'm_id'              => '2', 
                 'size_id'           => '1',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '80000',
             ],
             [
@@ -739,7 +739,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '17',
                 'm_id'              => '2', 
                 'size_id'           => '2',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '80000',
             ],
             [
@@ -747,7 +747,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '17',
                 'm_id'              => '2', 
                 'size_id'           => '3',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '80000',
             ],
             [
@@ -755,7 +755,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '17',
                 'm_id'              => '5', 
                 'size_id'           => '1',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '80000',
             ],
             [
@@ -763,7 +763,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '17',
                 'm_id'              => '5', 
                 'size_id'           => '2',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '80000',
             ],
             [
@@ -771,7 +771,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '17',
                 'm_id'              => '5', 
                 'size_id'           => '3',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '80000',
             ],
             [
@@ -779,7 +779,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '18',
                 'm_id'              => '4', 
                 'size_id'           => '1',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '100000',
             ],
             [
@@ -787,7 +787,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '18',
                 'm_id'              => '4', 
                 'size_id'           => '2',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '100000',
             ],
             [
@@ -795,7 +795,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '18',
                 'm_id'              => '4', 
                 'size_id'           => '3',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '100000',
             ],
             [
@@ -803,7 +803,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '18',
                 'm_id'              => '3', 
                 'size_id'           => '1',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '100000',
             ],
             [
@@ -811,7 +811,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '18',
                 'm_id'              => '3', 
                 'size_id'           => '2',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '100000',
             ],
             [
@@ -819,7 +819,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '18',
                 'm_id'              => '3', 
                 'size_id'           => '3',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '100000',
             ],
             [
@@ -827,7 +827,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '19',
                 'm_id'              => '1', 
                 'size_id'           => '1',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '100000',
             ],
             [
@@ -835,7 +835,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '19',
                 'm_id'              => '1', 
                 'size_id'           => '2',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '100000',
             ],
             [
@@ -843,7 +843,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '19',
                 'm_id'              => '1', 
                 'size_id'           => '3',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '100000',
             ],
             [
@@ -851,7 +851,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '19',
                 'm_id'              => '2', 
                 'size_id'           => '1',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '100000',
             ],
             [
@@ -859,7 +859,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '19',
                 'm_id'              => '2', 
                 'size_id'           => '2',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '100000',
             ],
             [
@@ -867,7 +867,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '19',
                 'm_id'              => '2', 
                 'size_id'           => '3',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '100000',
             ],
             [
@@ -875,7 +875,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '19',
                 'm_id'              => '5', 
                 'size_id'           => '1',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '100000',
             ],
             [
@@ -883,7 +883,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '19',
                 'm_id'              => '5', 
                 'size_id'           => '2',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '100000',
             ],
             [
@@ -891,7 +891,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '19',
                 'm_id'              => '5', 
                 'size_id'           => '3',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '100000',
             ],
 
@@ -901,7 +901,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '20',
                 'm_id'              => '2', 
                 'size_id'           => '1',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '130000',
             ],
             [
@@ -909,7 +909,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '20',
                 'm_id'              => '2', 
                 'size_id'           => '2',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '130000',
             ],
             [
@@ -917,7 +917,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '20',
                 'm_id'              => '2', 
                 'size_id'           => '3',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '130000',
             ],
             [
@@ -925,7 +925,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '20',
                 'm_id'              => '3', 
                 'size_id'           => '1',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '130000',
             ],
             [
@@ -933,7 +933,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '20',
                 'm_id'              => '3', 
                 'size_id'           => '2',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '130000',
             ],
             [
@@ -941,7 +941,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '20',
                 'm_id'              => '3', 
                 'size_id'           => '3',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '130000',
             ],
             [
@@ -949,7 +949,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '21',
                 'm_id'              => '2', 
                 'size_id'           => '1',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '130000',
             ],
             [
@@ -957,7 +957,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '21',
                 'm_id'              => '2', 
                 'size_id'           => '2',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '130000',
             ],
             [
@@ -965,7 +965,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '21',
                 'm_id'              => '2', 
                 'size_id'           => '3',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '130000',
             ],
             [
@@ -973,7 +973,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '21',
                 'm_id'              => '3', 
                 'size_id'           => '1',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '130000',
             ],
             [
@@ -981,7 +981,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '21',
                 'm_id'              => '3', 
                 'size_id'           => '2',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '130000',
             ],
             [
@@ -989,7 +989,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '21',
                 'm_id'              => '3', 
                 'size_id'           => '3',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '130000',
             ],
             [
@@ -997,7 +997,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '22',
                 'm_id'              => '1', 
                 'size_id'           => '1',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '130000',
             ],
             [
@@ -1005,7 +1005,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '22',
                 'm_id'              => '1', 
                 'size_id'           => '2',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '130000',
             ],
             [
@@ -1013,7 +1013,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '22',
                 'm_id'              => '1', 
                 'size_id'           => '3',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '130000',
             ],
             [
@@ -1021,7 +1021,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '22',
                 'm_id'              => '4', 
                 'size_id'           => '1',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '130000',
             ],
             [
@@ -1029,7 +1029,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '22',
                 'm_id'              => '4', 
                 'size_id'           => '2',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '130000',
             ],
             [
@@ -1037,7 +1037,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '22',
                 'm_id'              => '4', 
                 'size_id'           => '3',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '130000',
             ],
             [
@@ -1045,7 +1045,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '23',
                 'm_id'              => '4', 
                 'size_id'           => '1',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '130000',
             ],
             [
@@ -1053,7 +1053,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '23',
                 'm_id'              => '4', 
                 'size_id'           => '2',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '130000',
             ],
             [
@@ -1061,7 +1061,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '23',
                 'm_id'              => '4', 
                 'size_id'           => '3',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '130000',
             ],
             [
@@ -1069,7 +1069,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '23',
                 'm_id'              => '3', 
                 'size_id'           => '1',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '130000',
             ],
             [
@@ -1077,7 +1077,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '23',
                 'm_id'              => '3', 
                 'size_id'           => '2',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '130000',
             ],
             [
@@ -1085,7 +1085,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '23',
                 'm_id'              => '3', 
                 'size_id'           => '3',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '130000',
             ],
             [
@@ -1093,7 +1093,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '24',
                 'm_id'              => '1', 
                 'size_id'           => '1',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '120000',
             ],
             [
@@ -1101,7 +1101,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '24',
                 'm_id'              => '1', 
                 'size_id'           => '2',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '120000',
             ],
             [
@@ -1109,7 +1109,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '24',
                 'm_id'              => '1', 
                 'size_id'           => '3',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '120000',
             ],
             [
@@ -1117,7 +1117,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '24',
                 'm_id'              => '2', 
                 'size_id'           => '1',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '120000',
             ],
             [
@@ -1125,7 +1125,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '24',
                 'm_id'              => '2', 
                 'size_id'           => '2',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '120000',
             ],
             [
@@ -1133,7 +1133,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '24',
                 'm_id'              => '2', 
                 'size_id'           => '3',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '120000',
             ],
 
@@ -1143,7 +1143,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '25',
                 'm_id'              => '1', 
                 'size_id'           => '1',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '200000',
             ],
             [
@@ -1151,7 +1151,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '25',
                 'm_id'              => '1', 
                 'size_id'           => '2',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '200000',
             ],
             [
@@ -1159,7 +1159,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '25',
                 'm_id'              => '1', 
                 'size_id'           => '3',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '200000',
             ],
             [
@@ -1167,7 +1167,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '25',
                 'm_id'              => '3', 
                 'size_id'           => '1',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '200000',
             ],
             [
@@ -1175,7 +1175,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '25',
                 'm_id'              => '3', 
                 'size_id'           => '2',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '200000',
             ],
             [
@@ -1183,7 +1183,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '25',
                 'm_id'              => '3', 
                 'size_id'           => '3',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '200000',
             ],
             [
@@ -1191,7 +1191,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '26',
                 'm_id'              => '3', 
                 'size_id'           => '1',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '200000',
             ],
             [
@@ -1199,7 +1199,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '26',
                 'm_id'              => '3', 
                 'size_id'           => '2',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '200000',
             ],
             [
@@ -1207,7 +1207,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '26',
                 'm_id'              => '3', 
                 'size_id'           => '3',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '200000',
             ],
             [
@@ -1215,7 +1215,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '27',
                 'm_id'              => '1', 
                 'size_id'           => '1',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '200000',
             ],
             [
@@ -1223,7 +1223,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '27',
                 'm_id'              => '1', 
                 'size_id'           => '2',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '200000',
             ],
             [
@@ -1231,7 +1231,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '27',
                 'm_id'              => '1', 
                 'size_id'           => '3',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '200000',
             ],
             [
@@ -1239,7 +1239,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '27',
                 'm_id'              => '3', 
                 'size_id'           => '1',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '200000',
             ],
             [
@@ -1247,7 +1247,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '27',
                 'm_id'              => '3', 
                 'size_id'           => '2',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '200000',
             ],
             [
@@ -1255,7 +1255,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '27',
                 'm_id'              => '3', 
                 'size_id'           => '3',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '200000',
             ],
             [
@@ -1263,7 +1263,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '28',
                 'm_id'              => '1', 
                 'size_id'           => '1',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '200000',
             ],
             [
@@ -1271,7 +1271,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '28',
                 'm_id'              => '1', 
                 'size_id'           => '2',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '200000',
             ],
             [
@@ -1279,7 +1279,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '28',
                 'm_id'              => '1', 
                 'size_id'           => '3',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '200000',
             ],
             [
@@ -1287,7 +1287,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '28',
                 'm_id'              => '2', 
                 'size_id'           => '1',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '200000',
             ],
             [
@@ -1295,7 +1295,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '28',
                 'm_id'              => '2', 
                 'size_id'           => '2',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '200000',
             ],
             [
@@ -1303,7 +1303,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '28',
                 'm_id'              => '2', 
                 'size_id'           => '3',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '200000',
             ],
             [
@@ -1311,7 +1311,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '29',
                 'm_id'              => '1', 
                 'size_id'           => '1',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '200000',
             ],
             [
@@ -1319,7 +1319,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '29',
                 'm_id'              => '1', 
                 'size_id'           => '2',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '200000',
             ],
             [
@@ -1327,7 +1327,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '29',
                 'm_id'              => '1', 
                 'size_id'           => '3',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '200000',
             ],
             [
@@ -1335,7 +1335,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '29',
                 'm_id'              => '3', 
                 'size_id'           => '1',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '200000',
             ],
             [
@@ -1343,7 +1343,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '29',
                 'm_id'              => '3', 
                 'size_id'           => '2',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '200000',
             ],
             [
@@ -1351,7 +1351,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '29',
                 'm_id'              => '3', 
                 'size_id'           => '3',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '200000',
             ],
             [
@@ -1359,7 +1359,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '30',
                 'm_id'              => '1', 
                 'size_id'           => '1',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '250000',
             ],
             [
@@ -1367,7 +1367,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '30',
                 'm_id'              => '1', 
                 'size_id'           => '2',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '250000',
             ],
             [
@@ -1375,7 +1375,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '30',
                 'm_id'              => '1', 
                 'size_id'           => '3',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '250000',
             ],
             [
@@ -1383,7 +1383,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '30',
                 'm_id'              => '3', 
                 'size_id'           => '1',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '250000',
             ],
             [
@@ -1391,7 +1391,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '30',
                 'm_id'              => '3', 
                 'size_id'           => '2',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '250000',
             ],
             [
@@ -1399,7 +1399,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '30',
                 'm_id'              => '3', 
                 'size_id'           => '3',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '250000',
             ],
             [
@@ -1407,7 +1407,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '31',
                 'm_id'              => '2', 
                 'size_id'           => '1',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '250000',
             ],
             [
@@ -1415,7 +1415,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '31',
                 'm_id'              => '2', 
                 'size_id'           => '2',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '250000',
             ],
             [
@@ -1423,7 +1423,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '31',
                 'm_id'              => '2', 
                 'size_id'           => '3',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '250000',
             ],
             [
@@ -1431,7 +1431,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '31',
                 'm_id'              => '3', 
                 'size_id'           => '1',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '250000',
             ],
             [
@@ -1439,7 +1439,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '31',
                 'm_id'              => '3', 
                 'size_id'           => '2',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '250000',
             ],
             [
@@ -1447,7 +1447,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '31',
                 'm_id'              => '3', 
                 'size_id'           => '3',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '250000',
             ],
             [
@@ -1455,7 +1455,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '32',
                 'm_id'              => '1', 
                 'size_id'           => '1',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '250000',
             ],
             [
@@ -1463,7 +1463,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '32',
                 'm_id'              => '1', 
                 'size_id'           => '2',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '250000',
             ],
             [
@@ -1471,7 +1471,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '32',
                 'm_id'              => '1', 
                 'size_id'           => '3',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '250000',
             ],
             [
@@ -1479,7 +1479,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '32',
                 'm_id'              => '3', 
                 'size_id'           => '1',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '250000',
             ],
             [
@@ -1487,7 +1487,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '32',
                 'm_id'              => '3', 
                 'size_id'           => '2',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '250000',
             ],
             [
@@ -1495,7 +1495,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '32',
                 'm_id'              => '3', 
                 'size_id'           => '3',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '250000',
             ],
             [
@@ -1503,7 +1503,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '33',
                 'm_id'              => '1', 
                 'size_id'           => '1',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '250000',
             ],
             [
@@ -1511,7 +1511,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '33',
                 'm_id'              => '1', 
                 'size_id'           => '2',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '250000',
             ],
             [
@@ -1519,7 +1519,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '33',
                 'm_id'              => '1', 
                 'size_id'           => '3',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '250000',
             ],
             [
@@ -1527,7 +1527,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '33',
                 'm_id'              => '3', 
                 'size_id'           => '1',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '250000',
             ],
             [
@@ -1535,7 +1535,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '33',
                 'm_id'              => '3', 
                 'size_id'           => '2',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '250000',
             ],
             [
@@ -1543,7 +1543,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '33',
                 'm_id'              => '3', 
                 'size_id'           => '3',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '250000',
             ],
 
@@ -1553,7 +1553,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '34',
                 'm_id'              => '1', 
                 'size_id'           => '1',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '150000',
             ],
             [
@@ -1561,7 +1561,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '34',
                 'm_id'              => '1', 
                 'size_id'           => '2',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '150000',
             ],
             [
@@ -1569,7 +1569,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '34',
                 'm_id'              => '1', 
                 'size_id'           => '3',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '150000',
             ],
             [
@@ -1577,7 +1577,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '34',
                 'm_id'              => '2', 
                 'size_id'           => '1',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '150000',
             ],
             [
@@ -1585,7 +1585,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '34',
                 'm_id'              => '2', 
                 'size_id'           => '2',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '150000',
             ],
             [
@@ -1593,7 +1593,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '34',
                 'm_id'              => '2', 
                 'size_id'           => '3',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '150000',
             ],
             [
@@ -1601,7 +1601,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '34',
                 'm_id'              => '5', 
                 'size_id'           => '1',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '150000',
             ],
             [
@@ -1609,7 +1609,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '34',
                 'm_id'              => '5', 
                 'size_id'           => '2',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '150000',
             ],
             [
@@ -1617,7 +1617,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '34',
                 'm_id'              => '5', 
                 'size_id'           => '3',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '150000',
             ],
             [
@@ -1625,7 +1625,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '35',
                 'm_id'              => '1', 
                 'size_id'           => '1',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '150000',
             ],
             [
@@ -1633,7 +1633,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '35',
                 'm_id'              => '1', 
                 'size_id'           => '2',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '150000',
             ],
             [
@@ -1641,7 +1641,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '35',
                 'm_id'              => '1', 
                 'size_id'           => '3',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '150000',
             ],
             [
@@ -1649,7 +1649,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '35',
                 'm_id'              => '2', 
                 'size_id'           => '1',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '150000',
             ],
             [
@@ -1657,7 +1657,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '35',
                 'm_id'              => '2', 
                 'size_id'           => '2',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '150000',
             ],
             [
@@ -1665,7 +1665,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '35',
                 'm_id'              => '2', 
                 'size_id'           => '3',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '150000',
             ],
             [
@@ -1673,7 +1673,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '36',
                 'm_id'              => '1', 
                 'size_id'           => '1',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '150000',
             ],
             [
@@ -1681,7 +1681,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '36',
                 'm_id'              => '1', 
                 'size_id'           => '2',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '150000',
             ],
             [
@@ -1689,7 +1689,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '36',
                 'm_id'              => '1', 
                 'size_id'           => '3',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '150000',
             ],
             [
@@ -1697,7 +1697,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '36',
                 'm_id'              => '5', 
                 'size_id'           => '1',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '150000',
             ],
             [
@@ -1705,7 +1705,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '36',
                 'm_id'              => '5', 
                 'size_id'           => '2',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '150000',
             ],
             [
@@ -1713,7 +1713,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '36',
                 'm_id'              => '5', 
                 'size_id'           => '3',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '150000',
             ],
             [
@@ -1721,7 +1721,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '36',
                 'm_id'              => '3', 
                 'size_id'           => '1',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '150000',
             ],
             [
@@ -1729,7 +1729,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '36',
                 'm_id'              => '3', 
                 'size_id'           => '2',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '150000',
             ],
             [
@@ -1737,7 +1737,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '36',
                 'm_id'              => '3', 
                 'size_id'           => '3',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '150000',
             ],
             [
@@ -1745,7 +1745,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '37',
                 'm_id'              => '1', 
                 'size_id'           => '1',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '180000',
             ],
             [
@@ -1753,7 +1753,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '37',
                 'm_id'              => '1', 
                 'size_id'           => '2',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '180000',
             ],
             [
@@ -1761,7 +1761,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '37',
                 'm_id'              => '1', 
                 'size_id'           => '3',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '180000',
             ],
             [
@@ -1769,7 +1769,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '37',
                 'm_id'              => '4', 
                 'size_id'           => '1',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '180000',
             ],
             [
@@ -1777,7 +1777,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '37',
                 'm_id'              => '4', 
                 'size_id'           => '2',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '180000',
             ],
             [
@@ -1785,7 +1785,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '37',
                 'm_id'              => '4', 
                 'size_id'           => '3',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '180000',
             ],
             [
@@ -1793,7 +1793,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '37',
                 'm_id'              => '3', 
                 'size_id'           => '1',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '180000',
             ],
             [
@@ -1801,7 +1801,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '37',
                 'm_id'              => '3', 
                 'size_id'           => '2',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '180000',
             ],
             [
@@ -1809,7 +1809,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '37',
                 'm_id'              => '3', 
                 'size_id'           => '3',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '180000',
             ],
             [
@@ -1817,7 +1817,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '38',
                 'm_id'              => '5', 
                 'size_id'           => '1',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '180000',
             ],
             [
@@ -1825,7 +1825,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '38',
                 'm_id'              => '5', 
                 'size_id'           => '2',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '180000',
             ],
             [
@@ -1833,7 +1833,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '38',
                 'm_id'              => '5', 
                 'size_id'           => '3',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '180000',
             ],
             [
@@ -1841,7 +1841,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '38',
                 'm_id'              => '3', 
                 'size_id'           => '1',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '180000',
             ],
             [
@@ -1849,7 +1849,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '38',
                 'm_id'              => '3', 
                 'size_id'           => '2',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '180000',
             ],
             [
@@ -1857,7 +1857,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '38',
                 'm_id'              => '3', 
                 'size_id'           => '3',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '180000',
             ],
 
@@ -1867,7 +1867,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '39',
                 'm_id'              => '1', 
                 'size_id'           => '1',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '300000',
             ],
             [
@@ -1875,7 +1875,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '39',
                 'm_id'              => '1', 
                 'size_id'           => '2',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '300000',
             ],
             [
@@ -1883,7 +1883,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '39',
                 'm_id'              => '1', 
                 'size_id'           => '3',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '300000',
             ],
             [
@@ -1891,7 +1891,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '39',
                 'm_id'              => '2', 
                 'size_id'           => '1',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '300000',
             ],
             [
@@ -1899,7 +1899,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '39',
                 'm_id'              => '2', 
                 'size_id'           => '2',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '300000',
             ],
             [
@@ -1907,7 +1907,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '39',
                 'm_id'              => '2', 
                 'size_id'           => '3',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '300000',
             ],
             [
@@ -1915,7 +1915,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '40',
                 'm_id'              => '1', 
                 'size_id'           => '1',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '400000',
             ],
             [
@@ -1923,7 +1923,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '40',
                 'm_id'              => '1', 
                 'size_id'           => '2',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '400000',
             ],
             [
@@ -1931,7 +1931,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '40',
                 'm_id'              => '1', 
                 'size_id'           => '3',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '400000',
             ],
             [
@@ -1939,7 +1939,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '40',
                 'm_id'              => '5', 
                 'size_id'           => '1',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '400000',
             ],
             [
@@ -1947,7 +1947,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '40',
                 'm_id'              => '5', 
                 'size_id'           => '2',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '400000',
             ],
             [
@@ -1955,7 +1955,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '40',
                 'm_id'              => '5', 
                 'size_id'           => '3',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '400000',
             ],
             [
@@ -1963,7 +1963,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '40',
                 'm_id'              => '3', 
                 'size_id'           => '1',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '400000',
             ],
             [
@@ -1971,7 +1971,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '40',
                 'm_id'              => '3', 
                 'size_id'           => '2',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '400000',
             ],
             [
@@ -1979,7 +1979,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '40',
                 'm_id'              => '3', 
                 'size_id'           => '3',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '400000',
             ],
             [
@@ -1987,7 +1987,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '41',
                 'm_id'              => '2', 
                 'size_id'           => '1',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '300000',
             ],
             [
@@ -1995,7 +1995,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '41',
                 'm_id'              => '2', 
                 'size_id'           => '2',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '300000',
             ],
             [
@@ -2003,7 +2003,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '41',
                 'm_id'              => '2', 
                 'size_id'           => '3',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '300000',
             ],
             [
@@ -2011,7 +2011,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '41',
                 'm_id'              => '3', 
                 'size_id'           => '1',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '300000',
             ],
             [
@@ -2019,7 +2019,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '41',
                 'm_id'              => '3', 
                 'size_id'           => '2',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '300000',
             ],
             [
@@ -2027,7 +2027,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '41',
                 'm_id'              => '3', 
                 'size_id'           => '3',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '300000',
             ],
             
@@ -2036,7 +2036,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '42',
                 'm_id'              => '5', 
                 'size_id'           => '1',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '400000',
             ],
             [
@@ -2044,7 +2044,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '42',
                 'm_id'              => '5', 
                 'size_id'           => '2',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '400000',
             ],
             [
@@ -2052,7 +2052,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '42',
                 'm_id'              => '5', 
                 'size_id'           => '3',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '400000',
             ],
             [
@@ -2060,7 +2060,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '42',
                 'm_id'              => '1', 
                 'size_id'           => '1',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '400000',
             ],
             [
@@ -2068,7 +2068,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '42',
                 'm_id'              => '1', 
                 'size_id'           => '2',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '400000',
             ],
             [
@@ -2076,7 +2076,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '42',
                 'm_id'              => '1', 
                 'size_id'           => '3',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '400000',
             ],
             [
@@ -2084,7 +2084,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '43',
                 'm_id'              => '1', 
                 'size_id'           => '1',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '300000',
             ],
             [
@@ -2092,7 +2092,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '43',
                 'm_id'              => '1', 
                 'size_id'           => '2',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '300000',
             ],
             [
@@ -2100,7 +2100,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '43',
                 'm_id'              => '1', 
                 'size_id'           => '3',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '300000',
             ],
             [
@@ -2108,7 +2108,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '43',
                 'm_id'              => '2', 
                 'size_id'           => '1',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '300000',
             ],
             [
@@ -2116,7 +2116,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '43',
                 'm_id'              => '2', 
                 'size_id'           => '2',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '300000',
             ],
             [
@@ -2124,7 +2124,7 @@ class ChiTietPhieuNhapTableSeeder extends Seeder
                 'sp_id'             => '43',
                 'm_id'              => '2', 
                 'size_id'           => '3',
-                'ctpn_soluong'      => '10',
+                'ctpn_soluong'      => '30',
                 'ctpn_gianhap'      => '300000',
             ],
         ];

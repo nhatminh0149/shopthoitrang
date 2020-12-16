@@ -3,50 +3,50 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-2 col-md-4 col-sm-4 p-0">
-                <div class="instagram__item set-bg" data-setbg="{{ asset('ashion/img/instagram/insta-1.jpg') }}">
+                <div class="instagram__item set-bg" data-setbg="{{ asset('img/lookbook/lookbook6.jpg') }}">
                     <div class="instagram__text">
                         <i class="fa fa-instagram"></i>
-                        <a href="#">@ ashion_shop</a>
+                        <a href="{{ route('frontend.sanpham') }}">@ toto_shop</a>
                     </div>
                 </div>
             </div>
             <div class="col-lg-2 col-md-4 col-sm-4 p-0">
-                <div class="instagram__item set-bg" data-setbg="{{ asset('ashion/img/instagram/insta-2.jpg') }}">
+                <div class="instagram__item set-bg" data-setbg="{{ asset('img/lookbook/lookbook7.jpg') }}">
                     <div class="instagram__text">
                         <i class="fa fa-instagram"></i>
-                        <a href="#">@ ashion_shop</a>
+                        <a href="{{ route('frontend.sanpham') }}">@ toto_shop</a>
                     </div>
                 </div>
             </div>
             <div class="col-lg-2 col-md-4 col-sm-4 p-0">
-                <div class="instagram__item set-bg" data-setbg="{{ asset('ashion/img/instagram/insta-3.jpg') }}">
+                <div class="instagram__item set-bg" data-setbg="{{ asset('img/lookbook/lookbook8.jpg') }}">
                     <div class="instagram__text">
                         <i class="fa fa-instagram"></i>
-                        <a href="#">@ ashion_shop</a>
+                        <a href="{{ route('frontend.sanpham') }}">@ toto_shop</a>
                     </div>
                 </div>
             </div>
             <div class="col-lg-2 col-md-4 col-sm-4 p-0">
-                <div class="instagram__item set-bg" data-setbg="{{ asset('ashion/img/instagram/insta-4.jpg') }}">
+                <div class="instagram__item set-bg" data-setbg="{{ asset('img/lookbook/lookbook9.jpg') }}">
                     <div class="instagram__text">
                         <i class="fa fa-instagram"></i>
-                        <a href="#">@ ashion_shop</a>
+                        <a href="{{ route('frontend.sanpham') }}">@ toto_shop</a>
                     </div>
                 </div>
             </div>
             <div class="col-lg-2 col-md-4 col-sm-4 p-0">
-                <div class="instagram__item set-bg" data-setbg="{{ asset('ashion/img/instagram/insta-5.jpg') }}">
+                <div class="instagram__item set-bg" data-setbg="{{ asset('img/lookbook/lookbook10.jpg') }}">
                     <div class="instagram__text">
                         <i class="fa fa-instagram"></i>
-                        <a href="#">@ ashion_shop</a>
+                        <a href="{{ route('frontend.sanpham') }}">@ toto_shop</a>
                     </div>
                 </div>
             </div>
             <div class="col-lg-2 col-md-4 col-sm-4 p-0">
-                <div class="instagram__item set-bg" data-setbg="{{ asset('ashion/img/instagram/insta-6.jpg') }}">
+                <div class="instagram__item set-bg" data-setbg="{{ asset('img/lookbook/lookbook12.jpg') }}">
                     <div class="instagram__text">
                         <i class="fa fa-instagram"></i>
-                        <a href="#">@ ashion_shop</a>
+                        <a href="{{ route('frontend.sanpham') }}">@ toto_shop</a>
                     </div>
                 </div>
             </div>

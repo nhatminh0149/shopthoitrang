@@ -32,40 +32,42 @@ A S H I O N
 <section class="register">
     <div class="container" >
         <div class="content mt-5">
-            <h3><center>ĐĂNG NHẬP</center></h3>
-            <form action="{{ route('frontend.dangnhap') }}" method="post" style="margin: 20px auto; width: 400px; border: 1px solid #ccc; padding: 30px;">
-                {{ csrf_field() }}
-                
-                @if(Session::has('flag'))
-                <div class="alert alert-{{  Session::get('flag') }}"> {{ Session::get('message') }} </div>
-                @endif
-
-                <div class="form-group">
-                    <label for="kh_email">Email: </label>
-                    <input type="text" class="form-control" id="kh_email" name="kh_email" value="{{ old('kh_email') }}">
-                    <!-- "old" để lấy ra input cũ từ view, Nếu không tìm thấy input cũ thì sẽ trả về null. -->
-                    @if($errors->has("kh_email"))
-                        <div class="a" style="color: red; font-style: italic; font-size: 14px;">
-                            {{$errors->first("kh_email")}}
-                        </div>                 
+            <div class="contact__form">
+                <h5 style="font-size: 25px;"><center>ĐĂNG NHẬP</center></h5>
+                <form action="{{ route('frontend.dangnhap') }}" method="post" style="margin: 20px auto; width: 400px; border: 1px solid #ccc; padding: 30px; border-radius: 10px;">
+                    {{ csrf_field() }}
+                    
+                    @if(Session::has('flag'))
+                    <div class="alert alert-{{  Session::get('flag') }}"> {{ Session::get('message') }} </div>
                     @endif
-                </div>
 
-                <div class="form-group">
-                    <label for="kh_matkhau">Mật khẩu: </label>
-                    <input type="password" class="form-control" id="kh_matkhau" name="kh_matkhau" value="{{ old('kh_matkhau') }}">
-                    <img src="{{ asset('img/eyes/eye4.png') }}" alt="" width="20px" height="23px" style="float: right; cursor: pointer; margin-top: -30px; margin-right: 10px; color: #ccc;" onclick="show()">
-                    @if($errors->has("kh_matkhau"))
-                        <div class="a" style="color: red; font-style: italic; font-size: 14px;">
-                            {{$errors->first("kh_matkhau")}}
-                        </div>                 
-                    @endif
-                </div>
-                
-                <br>
-                <button type="submit" class="btn btn-outline-danger">Đăng nhập</button>&nbsp;&nbsp;
-                <a href="" class="btn btn-outline-success">Đăng ký</a>
-            </form>
+                    <div class="form-group" style="text-align: center;">
+                        <label for="kh_email" >Email</label>
+                        <input type="text" class="form-control" id="kh_email" name="kh_email" value="{{ old('kh_email') }}">
+                        <!-- "old" để lấy ra input cũ từ view, Nếu không tìm thấy input cũ thì sẽ trả về null. -->
+                        @if($errors->has("kh_email"))
+                            <div class="a" style="color: red; font-style: italic; font-size: 14px;">
+                                {{$errors->first("kh_email")}}
+                            </div>                 
+                        @endif
+                    </div>
+
+                    <div class="form-group" style="text-align: center;">
+                        <label for="kh_matkhau">Mật khẩu </label>
+                        <input type="password" class="form-control" id="kh_matkhau" name="kh_matkhau" value="{{ old('kh_matkhau') }}">
+                        <img src="{{ asset('img/eyes/eye4.png') }}" alt="" width="20px" height="23px" style="float: right; cursor: pointer; margin-top: -55px; margin-right: 10px; color: #ccc;" onclick="show()">
+                        @if($errors->has("kh_matkhau"))
+                            <div class="a" style="color: red; font-style: italic; font-size: 14px;">
+                                {{$errors->first("kh_matkhau")}}
+                            </div>                 
+                        @endif
+                    </div>
+                    
+                    <br>
+                    <button type="submit" class="site-btn">Đăng nhập</button>&nbsp;&nbsp;
+                    <a href="{{ route('frontend.dangky') }}" class="site-btn" style="float: right;">Đăng ký</a>
+                </form>
+            </div>
         </div>
     </div>
 </section>

@@ -43,6 +43,26 @@ class KhachHangTableSeeder extends Seeder
                 'kh_hinhdaidien'  => 'meomeo.jpg',      
                 'kh_trangthai'    => '1',       
             ],
+            [
+                'kh_id'        => '4',
+                'kh_taikhoan'       => 'Sơn Tùng',
+                'kh_matkhau'    => md5('sontung'),       
+                'kh_hoten'    => 'Nguyễn Thanh Tùng',       
+                'kh_email'    => 'sontung@gmail.com',       
+                'kh_sdt'    => '0916000999', 
+                'kh_hinhdaidien'  => 'sontung.jpg',      
+                'kh_trangthai'    => '0',       
+            ],
+            [
+                'kh_id'        => '5',
+                'kh_taikhoan'  => 'Hari Won',
+                'kh_matkhau'   => md5('hariwon'),       
+                'kh_hoten'    => 'Lưu Esther',       
+                'kh_email'    => 'hariwon@gmail.com',       
+                'kh_sdt'      => '0916000888', 
+                'kh_hinhdaidien'  => 'hariwon.jpg',      
+                'kh_trangthai'    => '0',       
+            ],
         ];
         DB::table('khachhang')->insert($list);
     }

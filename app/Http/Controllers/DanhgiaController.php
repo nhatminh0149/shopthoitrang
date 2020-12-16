@@ -123,8 +123,12 @@ class DanhgiaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($dg_id)
     {
-        //
+        $dg = danhgia::find($dg_id);
+        $dg->delete();
+
+        Session::flash('alert-danger', 'Xóa bình luận thành công');
+        return redirect()->route('admin.danhgia');
     }
 }

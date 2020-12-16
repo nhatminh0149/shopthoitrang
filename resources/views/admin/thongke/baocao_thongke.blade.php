@@ -14,16 +14,16 @@
             <nav class="navbar navbar-expand-lg navbar-transparent  navbar-absolute fixed-top">
                 <div class="container-fluid">
                     <div class="navbar-wrapper">
-                        <a class="navbar-brand" href="#pablo">Admin Dashboard</a>
+                        <a class="navbar-brand" href="#pablo">DASHBOARD</a>
                     </div>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+                    <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="sr-only">Toggle navigation</span>
                         <span class="navbar-toggler-icon icon-bar"></span>
                         <span class="navbar-toggler-icon icon-bar"></span>
                         <span class="navbar-toggler-icon icon-bar"></span>
-                    </button>
+                    </button> -->
                     <div class="collapse navbar-collapse justify-content-end" id="navigation">
-                        <form class="navbar-form">
+                        <!-- <form class="navbar-form">
                             <div class="input-group no-border">
                                 <input type="text" value="" class="form-control" placeholder="Search...">
                                 <button type="submit" class="btn btn-white btn-round btn-just-icon">
@@ -31,8 +31,8 @@
                                     <div class="ripple-container"></div>
                                 </button>
                             </div>
-                        </form>
-                        <ul class="navbar-nav">
+                        </form> -->
+                        <!-- <ul class="navbar-nav">
                             <li class="nav-item">
                                 <a class="nav-link" href="#pablo">
                                     <i class="material-icons">dashboard</i>
@@ -65,7 +65,8 @@
                                     </p>
                                 </a>
                             </li>
-                        </ul>
+                        </ul> -->
+                       
                     </div>
                 </div>
             </nav>
@@ -85,7 +86,13 @@
                                 </div>
                                 <div class="card-footer">
                                     <div class="stats">
-                                        <i class="material-icons">update</i> Just Updated
+                                        <i class="fa fa-male" aria-hidden="true" style="margin-top: 4px;"></i>&nbsp;Nam: {{ $lsp_count_nam }}
+                                    </div>
+                                    <div class="stats">
+                                        <i class="fa fa-female" aria-hidden="true" style="margin-top: 4px;"></i>&nbsp;Nữ: {{ $lsp_count_nu }}
+                                    </div>
+                                    <div class="stats">
+                                        <i class="material-icons">people</i>Couple: {{ $lsp_count_couple }}
                                     </div>
                                 </div>
                             </div>
@@ -101,7 +108,10 @@
                                 </div>
                                 <div class="card-footer">
                                     <div class="stats">
-                                        <i class="material-icons">update</i> Just Updated
+                                        <i class="material-icons">check_box</i>Có k/mãi: {{ $sp_count_cokm }}
+                                    </div>
+                                    <div class="stats">
+                                        <i class="material-icons">check_box_outline_blank</i>Không k/mãi: {{ $sp_count_kokm }}
                                     </div>
                                 </div>
                             </div>
@@ -119,7 +129,10 @@
                                 </div>
                                 <div class="card-footer">
                                     <div class="stats">
-                                        <i class="material-icons">update</i> Just Updated
+                                        <i class="material-icons">check_box</i>Hoạt động: {{ $khachhang_count_hd }}
+                                    </div>
+                                    <div class="stats">
+                                        <i class="material-icons">check_box_outline_blank</i>Không h/động: {{ $khachhang_count_kohd }}
                                     </div>
                                 </div>
                             </div>
@@ -137,7 +150,10 @@
                                 </div>
                                 <div class="card-footer">
                                     <div class="stats">
-                                        <i class="material-icons">update</i> Just Updated
+                                        <i class="material-icons">check_box</i>Duyệt: {{ $dondathang_count_duyet }}
+                                    </div>
+                                    <div class="stats">
+                                        <i class="material-icons">check_box_outline_blank</i>Chưa duyệt: {{ $dondathang_count_chuaduyet }}
                                     </div>
                                 </div>
                             </div>
