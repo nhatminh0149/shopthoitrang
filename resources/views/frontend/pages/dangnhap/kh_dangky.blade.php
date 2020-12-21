@@ -37,7 +37,7 @@ A S H I O N
     <div class="content mt-5">
         <div class="contact__form">
             <h5 style="font-size: 25px;"><center>ĐĂNG KÝ</center></h5>
-            <form action="{{ route('frontend.dangky') }}" enctype="multipart/form-data" method="post" style="margin: 20px auto; width: 450px; border: 1px solid #ccc; padding: 30px; border-radius: 10px;">
+            <form action="{{ route('frontend.dangky') }}" enctype="multipart/form-data" method="post" style="margin: 20px auto; width: 450px; border: 1px solid #ccc; padding: 30px; border-radius: 10px; box-shadow: 0px 25px 42px rgba(0, 0, 0, 0.2);">
                 {{ csrf_field() }}
                 
                 @if(Session::has('thanhcong'))

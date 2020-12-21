@@ -202,16 +202,22 @@
                         </div>
                     </li>
 
+                    <li class="nav-item {{ Request::is('admin/nv*') ? 'active' : '' }}">
+                        <a class="nav-link" href="{{ route('admin.nv') }}">
+                            <i class="material-icons">supervisor_account</i>
+                            <p>QL nhân viên</p>
+                        </a>
+                    </li>
                     <li class="nav-item {{ Request::is('admin/htvc*') ? 'active' : '' }}">
                         <a class="nav-link" href="{{ route('admin.htvc') }}">
                             <i class="material-icons">local_shipping</i>
-                            <p>Hình thức vận chuyển</p>
+                            <p>QL hình thức vận chuyển</p>
                         </a>
                     </li>
                     <li class="nav-item {{ Request::is('admin/httt*') ? 'active' : '' }} ">
                         <a class="nav-link" href="{{ route('admin.httt') }}">
                             <i class="material-icons">local_atm</i>
-                            <p>Hình thức thanh toán</p>
+                            <p>QL hình thức thanh toán</p>
                         </a>
                     </li>
 
@@ -276,8 +282,8 @@
                                     </a>
                                 </li>
 
-                                <li class="nav-item ">
-                                    <a class="nav-link" href="{{ route('admin.kho') }}">
+                                <li class="nav-item {{ Request::is('admin/sp*') ? 'active' : '' }}">
+                                    <a class="nav-link" href="{{ route('admin.sp') }}">
                                         <i class="material-icons">redeem</i>
                                         <p>Quản lý sản phẩm</p>
                                     </a>

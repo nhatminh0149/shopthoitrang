@@ -43,6 +43,14 @@ Route::prefix('admin')->group(function()
 	Route::post('/users/{id_users}', 'AdminController@update')->name('admin.user.update');
 	Route::get('/users_delete/{id}', 'AdminController@destroy')->name('admin.user.destroy');
 
+	//QUẢN LÝ NHÂN VIÊN
+	Route::get('/nv', 'NhanVienController@index')->name('admin.nv');
+	Route::get('/nv_create', 'NhanVienController@create')->name('admin.nv.create');
+	Route::post('/nv_store', 'NhanVienController@store')->name('admin.nv.store');
+	Route::get('/nv_edit{id}', 'NhanVienController@edit')->name('admin.nv.edit');
+	Route::post('/nv_update/{id}', 'NhanVienController@update')->name('admin.nv.update');
+	Route::get('/nv_delete/{id}', 'NhanVienController@destroy')->name('admin.nv.destroy');
+
 	//QUẢN LÝ KHO
 	Route::get('/kho', 'KhoController@index')->name('admin.kho');
 	Route::get('/kho_create', 'KhoController@create')->name('admin.kho.create');
@@ -254,6 +262,10 @@ Route::prefix('admin')->group(function()
 	Route::post('/dathang','FrontendController@dathang')->name('frontend.dathang');
 	Route::get('/dathang_thanhcong','FrontendController@dathang_thanhcong')->name('frontend.orderFinish');
 	
+	//Lịch sử mua hàng
+	Route::get('/lichsu_muahang{kh_id}', 'FrontendController@lichsu_muahang')->name('frontend.lichsu_muahang');
+	Route::get('/chitiet_lichsu/{ddh_id}','FrontendController@chitiet_lichsu')->name('frontend.chitiet_lichsu');
+
 	//Khách hàng đăng nhập tài khoản
 	Route::get('/dangnhap', 'FrontendController@getDangnhap')->name('frontend.dangnhap');
 	Route::post('/dangnhap', 'FrontendController@postDangnhap')->name('frontend.dangnhap');
@@ -265,6 +277,6 @@ Route::prefix('admin')->group(function()
 	//Khách hàng sửa thông tin tài khoản
 	Route::get('/edit_taikhoan{kh_id}', 'FrontendController@edit_taikhoan')->name('frontend.edit_taikhoan');
 	Route::post('/update_taikhoan{kh_id}', 'FrontendController@update_taikhoan')->name('frontend.update_taikhoan');
-	
+
 	//Thực hiện Đăng xuất
 	Route::get('/dangxuat', 'FrontendController@postDangxuat')->name('frontend.dangxuat');

@@ -113,14 +113,49 @@
             </div>
             <div style="height: 180px; display:inline">
                 @foreach($danhsachmau as $mau)
-                <div class="list-inline-item checkbox" style="width: 110px;margin-right: 0px;">
+                <!-- <div class="list-inline-item checkbox" style="width: 110px;margin-right: 0px;">
                     <label style="padding-bottom: 10px; width:142px; font-size:0.8rem;">
                         <input type="checkbox" style="display:inline" class="common_selector mau"
                             value="{{ $mau->m_id}}"> {{ $mau->m_ten }}
-                        <!-- <img src="{{ asset('storage/photos/mau/' . $mau->m_hinh) }}" class="rounded-circle" 
-                        style="border-color: #060606;height: 15px;width: 15px;" >  -->
                     </label>
-                </div>
+                </div> -->
+                    @if($mau->m_ten == 'Đen')
+                        <label for="black" id="{{ $mau->m_id }}" >
+                            <input type="checkbox" style="display:inline" class="common_selector mau"
+                            value="{{ $mau->m_id}}">
+                            <button class="btn btn-dark"
+                                style="height: 23px; margin-bottom: 5px; margin-right: 10px; border-radius: 50%;"></button>
+                        </label>
+                    @elseif($mau->m_ten == 'Đỏ')
+                        <label for="red" id="{{ $mau->m_id }}">
+                            <input type="checkbox" style="display:inline" class="common_selector mau"
+                            value="{{ $mau->m_id}}">
+                            <button class="btn btn-danger"
+                                style="height: 23px; margin-bottom: 5px; margin-right: 10px; border-radius: 50%;" ></button>
+                        </label>
+                    @elseif($mau->m_ten == 'Trắng')
+                    <label for="white" id="{{ $mau->m_id }}">
+                        <input type="checkbox" style="display:inline" class="common_selector mau"
+                            value="{{ $mau->m_id}}">
+                        <button class="btn btn-default"
+                            style="height: 23px; margin-bottom: 5px; margin-right: 10px; border: solid 1px black; border-radius: 50%;"></button>
+                    </label>
+                    <br>
+                    @elseif($mau->m_ten == 'Vàng')
+                    <label for="yellow" id="{{ $mau->m_id }}">
+                        <input type="checkbox" style="display:inline" class="common_selector mau"
+                            value="{{ $mau->m_id}}">
+                        <button class="btn btn-warning"
+                            style="height: 23px; margin-bottom: 5px; margin-right: 10px; border-radius: 50%;"></button>
+                    </label>
+                    @elseif($mau->m_ten == 'Xanh')
+                    <label for="blue" id="{{ $mau->m_id }}">
+                        <input type="checkbox" style="display:inline" class="common_selector mau"
+                            value="{{ $mau->m_id}}">
+                        <button class="btn btn-primary"
+                            style="height: 23px; margin-bottom: 5px; margin-right: 10px; border-radius: 50%;"></button>
+                    </label>
+                    @endif
                 @endforeach
             </div>
         </div>

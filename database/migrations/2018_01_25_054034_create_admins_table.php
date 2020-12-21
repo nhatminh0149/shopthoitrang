@@ -21,6 +21,7 @@ class CreateAdminsTable extends Migration
             $table->rememberToken();
             $table->timestamps();
             $table->integer('quyen');
+            $table->integer('trangthai')->comment('0: Vô hiệu hóa, 1: Kích hoạt');
         });
     }
 

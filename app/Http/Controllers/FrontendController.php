@@ -1643,4 +1643,48 @@ class FrontendController extends Controller{
             echo "<h3 style='color:red;'>Sản phẩm chưa có ảnh 360</h3>";
         }         
     }
+
+    public function lichsu_muahang($kh_id){
+        $ds_ddh = dondathang::where('kh_id', $kh_id)->get();
+        return view('frontend.pages.giohang.lichsu_muahang')
+            ->with('ds_ddh', $ds_ddh);
+    } 
+    public function chitiet_lichsu($ddh_id){
+        $ds_ddh = dondathang::find($ddh_id);
+
+        $ds_ddh1 = DB::select(
+            'SELECT *
+            FROM dondathang ddh
+            JOIN khachhang kh ON ddh.kh_id = kh.kh_id
+            JOIN hinhthucvanchuyen htvc ON htvc.htvc_id = ddh.htvc_id
+            JOIN hinhthucthanhtoan httt ON httt.httt_id = ddh.httt_id
+            JOIN phuongxa px ON ddh.px_id = px.px_id
+            JOIN quanhuyen qh ON px.qh_id = qh.qh_id
+            JOIN tinhthanhpho ttp ON qh.tinhtp_id = ttp.tinhtp_id
+            LEFT JOIN admins ad ON ad.id = ddh.id
+            WHERE ddh.ddh_id = '.$ddh_id.' ');
+
+        $ds_ddh2 = DB::select(
+            'SELECT *
+            from chitietdonhang ctdh
+            LEFT JOIN sanpham sp ON sp.sp_id = ctdh.sp_id
+            LEFT JOIN mau m ON m.m_id = ctdh.m_id
+            LEFT JOIN size s ON s.size_id = ctdh.size_id
+            WHERE ctdh.ddh_id = '.$ddh_id.' ');
+
+        $ds_ddh3 = DB::select(
+            'SELECT SUM(aaa.ctdh_soluong * aaa.ctdh_dongia) AS TongTienDonHang
+            FROM (
+                SELECT ctdh.ctdh_soluong, ctdh.ctdh_dongia
+                FROM dondathang ddh
+                JOIN chitietdonhang ctdh ON ddh.ddh_id = ctdh.ddh_id
+                WHERE ddh.ddh_id = '.$ddh_id.' ) AS aaa');
+        
+
+        return view('frontend.pages.giohang.lichsu_muahang_chitiet')
+                ->with('ds_ddh', $ds_ddh)
+                ->with('ds_ddh1',  $ds_ddh1)
+                ->with('ds_ddh2',  $ds_ddh2)
+                ->with('ds_ddh3',  $ds_ddh3);
+    }
 }

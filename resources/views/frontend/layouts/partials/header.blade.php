@@ -35,12 +35,13 @@
                 </div>
                 <div class="col-lg-3">
                     <div class="header__right">
-                        <div class="header__right__auth" style="margin-left: -60px;">
+                        <div class="header__right__auth" style="margin-left: -100px;">
                             @if(Session::has('kh_email'))
                             <?php
                                 $khachhang = Session::get('kh_id');
                             ?>
                                 <a href="{{ route('frontend.edit_taikhoan', ['kh_id' => $khachhang]) }}">{{ Session::get('kh_hoten') }}</a>
+                                <a href="{{ route('frontend.lichsu_muahang', ['kh_id' => $khachhang]) }}">Lịch sử mua hàng</a>
                                 <a href="{{ route('frontend.dangxuat') }}">Đăng xuất</a>
                             @else
                                 <a href="{{ route('frontend.dangnhap') }}">Đăng nhập</a>

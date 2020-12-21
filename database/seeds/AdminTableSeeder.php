@@ -21,18 +21,21 @@ class AdminTableSeeder extends Seeder
     		'email' => 'admin@gmail.com',
     		'password' => bcrypt('password'),
     		'quyen' => 1,
+    		'trangthai' => 1,
     	]);
     	Admin::create([
     		'name' => 'Khai Minh',
     		'email' => 'nhanvienkho@gmail.com',
     		'password' => bcrypt('nhanvienkho'),
-    		'quyen' => 2,
+			'quyen' => 2,
+			'trangthai' => 1,
     	]);
     	Admin::create([
     		'name' => 'Nhật Minh',
     		'email' => 'nhanvienbanhang@gmail.com',
     		'password' => bcrypt('nhanvienbanhang'),
-    		'quyen' => 3,
+			'quyen' => 3,
+			'trangthai' => 1,
     	]);
         
     }

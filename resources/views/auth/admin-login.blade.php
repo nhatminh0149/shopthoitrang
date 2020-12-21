@@ -49,7 +49,7 @@
                         <div class="card-header card-header-primary text-center">
                             <h4 class="card-title"><strong>LOGIN</strong></h4>
                             <div class="social-line">
-                                <a href="#pablo" class="btn btn-just-icon btn-link btn-white">
+                                <!-- <a href="#pablo" class="btn btn-just-icon btn-link btn-white">
                                     <i class="fa fa-facebook-square"></i>
                                 </a>
                                 <a href="#pablo" class="btn btn-just-icon btn-link btn-white">
@@ -57,12 +57,13 @@
                                 </a>
                                 <a href="#pablo" class="btn btn-just-icon btn-link btn-white">
                                     <i class="fa fa-google-plus"></i>
-                                </a>
+                                </a> -->
                             </div>
                         </div>
 
                         <div class="card-body">
-                            <p class="card-description text-center">Or Sign in with  <strong>admin@material.com</strong>  and the password <strong>secret</strong> </p>
+                            <!-- <p class="card-description text-center">Or Sign in with  <strong>admin@material.com</strong>  and the password <strong>secret</strong> </p> -->
+                            <p class="card-description text-center">Hãy nhập Email và Password được cấp để <br> đăng nhập vào hệ thống</p>
                             <div class="bmd-form-group is-filled">
                                 <div class="input-group{{ $errors->has('email') ? ' has-error' : '' }}">
                                     <div class="input-group-prepend">
