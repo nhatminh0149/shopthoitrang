@@ -253,7 +253,7 @@
                         </div>
 
                         <div class="col-md-6">
-                            <h4 style="text-align: center;">THỐNG KÊ NGƯỠNG BÁO ĐỘNG CỦA SẢN PHẨM</h4>
+                            <h4 style="text-align: center;">THỐNG KÊ SẢN PHẨM THEO NGƯỠNG BÁO ĐỘNG</h4>
                             <div class="row">
                                 <div class="col-md-12">
                                     <form id="dynamic_form_1" role="form" method="post"> 

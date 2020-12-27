@@ -42,8 +42,8 @@ A S H I O N
                     <div class="product__details__pic__left product__thumb nice-scroll">
                         @foreach($hinhanh as $hinhanh)
                         <div class="col-12 product-image-thumbs">
-                            <div class="product-image-thumb" id="ha{{ $hinhanh->m_id }}-mau"><img
-                                src="{{ asset('storage/photos/' . $hinhanh->ha_ten) }}" alt="Product Image">
+                            <div class="product-image-thumb" id="ha{{ $hinhanh->m_id }}-mau">
+                                <img src="{{ asset('storage/photos/' . $hinhanh->ha_ten) }}" alt="Product Image">
                             </div>
                         </div>
 

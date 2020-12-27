@@ -1,7 +1,7 @@
 @extends('layouts.admin.master')
 
 @section('title')
-    Tạo màu sản phẩm
+    Tạo chi tiết sản phẩm
 @endsection
 
 @section('custom-css')
@@ -21,7 +21,7 @@
             <nav class="navbar navbar-expand-lg navbar-transparent  navbar-absolute fixed-top">
                 <div class="container-fluid">
                     <div class="navbar-wrapper">
-                        <a class="navbar-brand" href="#pablo">QUẢN LÝ MÀU SẢN PHẨM</a>
+                        <a class="navbar-brand" href="#pablo">QUẢN LÝ CHI TIẾT SẢN PHẨM</a>
                     </div>
                     <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="sr-only">Toggle navigation</span>
@@ -243,7 +243,7 @@
                 <div class="container-fluid">
                     <div class="card">
                         <div class="card-header card-header-primary">
-                            <h4 class="card-title ">THÊM MỚI MÀU SẢN PHẨM</h4>
+                            <h4 class="card-title ">THÊM MỚI CHI TIẾT SẢN PHẨM</h4>
                             <!-- <p class="card-category"> Here is a subtitle for this table</p> -->
                         </div>
 
