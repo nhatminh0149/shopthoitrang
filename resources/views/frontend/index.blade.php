@@ -148,7 +148,7 @@ A S H I O N
         <div class="row">
             <div class="col-lg-4 col-md-4">
                 <div class="section-title">
-                    <h4>Sản phẩm bán chạy</h4>
+                    <h4><marquee>Sản phẩm bán chạy</marquee></h4>
                 </div>
             </div>
             <div class="col-lg-8 col-md-8">

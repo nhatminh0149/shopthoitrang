@@ -57,7 +57,17 @@ A S H I O N
                             {{ csrf_field() }}
                                 <input type="text" name="kh_taikhoan" value="{{ Session::get('kh_taikhoan') }}" placeholder="Tài khoản khách hàng" readonly>
                                 <input type="text" name="kh_email" value="{{ Session::get('kh_email') }}" placeholder="Email khách hàng" readonly>
+                                    @if($errors->has("kh_email"))
+                                    <div class="a" style="color: red; font-style: italic; font-size: 14px;">
+                                        {{$errors->first("kh_email")}}
+                                    </div>
+                                    @endif
                                 <textarea name="message" placeholder="Lời nhắn"></textarea>
+                                    @if($errors->has("message"))
+                                    <div class="a" style="color: red; font-style: italic; font-size: 14px;">
+                                        {{$errors->first("message")}}
+                                    </div>
+                                    @endif
                                 <button type="submit" class="site-btn">Gửi lời nhắn</button>
                             </form>
                         @else
@@ -65,8 +75,18 @@ A S H I O N
                             {{ csrf_field() }}
                                 <!-- <p style="color: red;"><i>*Quý khách vui lòng đăng nhập trước khi gửi liên hệ</i></p> -->
                                 <!-- <input type="text" name="kh_taikhoan" placeholder="Tên khách hàng"> -->
-                                <input type="text" name="kh_email" placeholder="Email khách hàng">
-                                <textarea name="message" placeholder="Lời nhắn"></textarea>
+                                <input type="text" name="kh_email" placeholder="Email khách hàng" value="{{ old('kh_email') }}">
+                                    @if($errors->has("kh_email"))
+                                    <div class="a" style="color: red; font-style: italic; font-size: 14px; margin-top: -15px;">
+                                        {{$errors->first("kh_email")}}
+                                    </div>
+                                    @endif
+                                <textarea name="message" placeholder="Lời nhắn" value="{{ old('message') }}"></textarea>
+                                    @if($errors->has("message"))
+                                    <div class="a" style="color: red; font-style: italic; font-size: 14px; margin-top: -15px;">
+                                        {{$errors->first("message")}}
+                                    </div>
+                                    @endif
                                 <button type="submit" class="site-btn">Gửi lời nhắn</button>
                             </form>
                         @endif
@@ -87,7 +107,7 @@ A S H I O N
                 <div class="contact__map">
                     <iframe
                         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3928.823377586331!2d105.77734171428223!3d10.031429375245953!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31a0898ecfa45f37%3A0xf3c22c993cac6bda!2sTotoshop!5e0!3m2!1svi!2s!4v1587528395636!5m2!1svi!2s"
-                        height="700" style="border:0" allowfullscreen="">
+                        height="600" style="border:0" allowfullscreen="">
                     </iframe>
                 </div>
             </div>

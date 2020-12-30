@@ -142,7 +142,7 @@ A S H I O N
                 <div class="blog__sidebar">
                     <div class="blog__sidebar__item">
                         <div class="section-title">
-                            <h4>Bảng chọn size</h4>
+                            <h4>Tiêu chí</h4>
                         </div>
                         <ul>
                             <li><a href="#">Lắng nghe <span><i class="fa fa-check" aria-hidden="true"></i></span></a></li>

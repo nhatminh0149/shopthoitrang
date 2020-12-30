@@ -276,7 +276,7 @@
 
                         <div class="card-body table-responsive">
                             <table class="table" id="order-listing">
-                                <thead class=" text-primary"> 
+                                <thead class="text-primary"> 
                                     <th>STT</th>
                                     <th>Tên sản phẩm</th>
                                     <th>Màu</th>

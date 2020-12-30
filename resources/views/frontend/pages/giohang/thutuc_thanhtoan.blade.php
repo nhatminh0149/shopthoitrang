@@ -64,6 +64,11 @@ A S H I O N
                             <div class="checkout__form__input">
                                 <p>Địa chỉ giao hàng: <span>*</span></p>
                                 <input type="text" id="ddh_diachigiaohang" name="ddh_diachigiaohang" class="ddh_diachigiaohang" value="{{ old('ddh_diachigiaohang') }}">
+                                @if($errors->has("ddh_diachigiaohang"))
+                                <div class="a" style="color: red; font-style: italic; font-size: 14px;">
+                                    {{$errors->first("ddh_diachigiaohang")}}
+                                </div>
+                                @endif
                             </div>
                             <div class="checkout__form__input">
                                 <p>Tỉnh/Thành phố<span>*</span></p>
@@ -73,6 +78,11 @@ A S H I O N
                                         <option value="{{ $tinhtp->tinhtp_id }}">{{ $tinhtp->tinhtp_ten}}</option>
                                         @endforeach
                                 </select>
+                                @if($errors->has("tinhtp_id"))
+                                <div class="a" style="color: red; font-style: italic; font-size: 14px;">
+                                    {{$errors->first("tinhtp_id")}}
+                                </div>
+                                @endif
                             </div>
                             <br>
                             <div class="checkout__form__input">
@@ -81,6 +91,11 @@ A S H I O N
                                     value="{{ old('tinhtp_id') }}">
                                     <option value="">---Chọn quận huyện---</option>
                                 </select>
+                                @if($errors->has("qh_id"))
+                                <div class="a" style="color: red; font-style: italic; font-size: 14px;">
+                                    {{$errors->first("qh_id")}}
+                                </div>
+                                @endif
                             </div>
                             <br>
                             <div class="checkout__form__input">
@@ -88,6 +103,11 @@ A S H I O N
                                 <select name="px_id" id="px_id" class="form-control px_id" value="{{ old('px_id') }}">
                                     <option value="">---Chọn phường/xã---</option>
                                 </select>
+                                @if($errors->has("px_id"))
+                                <div class="a" style="color: red; font-style: italic; font-size: 14px;">
+                                    {{$errors->first("px_id")}}
+                                </div>
+                                @endif
                             </div>
                             <br>
                             <div class="checkout__form__input">
@@ -99,6 +119,11 @@ A S H I O N
                                     </option>
                                     @endforeach
                                 </select>
+                                @if($errors->has("httt_id"))
+                                <div class="a" style="color: red; font-style: italic; font-size: 14px;">
+                                    {{$errors->first("httt_id")}}
+                                </div>
+                                @endif
                             </div>
                             <br>
                             <div class="checkout__form__input">
@@ -110,6 +135,11 @@ A S H I O N
                                         ({{ number_format($hinhthucvanchuyen->htvc_chiphi, 0, ',' , ',') }})</option>
                                     @endforeach
                                 </select>
+                                @if($errors->has("htvc_id"))
+                                <div class="a" style="color: red; font-style: italic; font-size: 14px;">
+                                    {{$errors->first("htvc_id")}}
+                                </div>
+                                @endif
                             </div>
                         </div>
 

@@ -598,6 +598,14 @@ class FrontendController extends Controller{
         return view('frontend.pages.lienhe.lienhe');
     }
     public function post_lienhe(Request $request){
+        $this->validate($request, [
+            'kh_email'        => 'required',
+            'message'         => 'required|min:10',
+        ],[
+            'kh_email.required' => "Vui lòng nhập email",
+            'message.required'  => "Vui lòng nhập lời nhắn", 
+            'message.min'       => "Nhập lời nhắn ít nhất 10 kí tự", 
+        ]);
         $input = $request->all();
         Mail::to('tranlenhatminh97@gmail.com')->send(new ContactMailer($input));
         Session::flash('alert-success', 'Bạn đã gửi lời nhắn đến ToToShop thành công');
@@ -796,7 +804,8 @@ class FrontendController extends Controller{
         echo $output;
     }
 
-    public function thanhtoankhinhanhang($request){
+    public function thanhtoankhinhanhang(Request $request){
+
         $dataMail = [];
         try {
             $ddh = new Dondathang();
@@ -894,7 +903,8 @@ class FrontendController extends Controller{
         return redirect()->route('frontend.orderFinish');
     }
 
-    public function thanhtoanvnpay($request){
+    public function thanhtoanvnpay(Request $request){
+
         $dataMail = [];
 
         try {
@@ -1044,6 +1054,22 @@ class FrontendController extends Controller{
     }
 
     public function dathang(Request $request){
+        $this->validate($request, [
+            'ddh_diachigiaohang'    => 'required',
+            'tinhtp_id'             => 'required',
+            'qh_id'                 => 'required',
+            'px_id'                 => 'required',
+            'httt_id'               => 'required',
+            'htvc_id'               => 'required',
+        ],[
+            'ddh_diachigiaohang.required'   => "Vui lòng nhập địa chỉ giao hàng",
+            'tinhtp_id.required'            => "Vui lòng chọn tỉnh/thành phố", 
+            'qh_id.required'                => "Vui lòng chọn quận/huyện", 
+            'px_id.required'                => "Vui lòng chọn phường xã", 
+            'httt_id.required'              => "Vui lòng chọn hình thức thanh toán", 
+            'htvc_id.required'              => "Vui lòng chọn hình thức vận chuyển", 
+        ]);
+
         $httt = $request->httt_id;
 
         if($httt == 1){
