@@ -1589,16 +1589,340 @@ class FrontendController extends Controller{
     // }
 
 
-    public function sanpham(Request $request){
+    // public function sanpham(Request $request){
+    //     $danhsachloai = loaisanpham::where('lsp_trangthai', '=', 1)->get();
+    //     $danhsachmau = mau::all(); 
+    //     $danhsachsize = size::all(); 
+    //     //dd($ds_loai);  
+    //     return view('frontend.pages.sanpham.sanpham')
+    //         ->with('danhsachloai', $danhsachloai)
+    //         ->with('danhsachmau', $danhsachmau)
+    //         ->with('danhsachsize', $danhsachsize);
+    // }
+
+    // public function sanpham1(Request $request){
+    //     $danhsachloai = loaisanpham::where('lsp_trangthai', '=', 1)->get();
+    //     $danhsachmau = mau::all(); 
+    //     $danhsachsize = size::all(); 
+    //     //dd($ds_loai);  
+    //     return view('frontend.pages.sanpham.sanpham')
+    //         ->with('danhsachloai', $danhsachloai)
+    //         ->with('danhsachmau', $danhsachmau)
+    //         ->with('danhsachsize', $danhsachsize);
+    // }
+
+    public function sanpham1(Request $request) {
         $danhsachloai = loaisanpham::where('lsp_trangthai', '=', 1)->get();
         $danhsachmau = mau::all(); 
-        $danhsachsize = size::all(); 
-        //dd($ds_loai);  
-        return view('frontend.pages.sanpham.sanpham')
-            ->with('danhsachloai', $danhsachloai)
-            ->with('danhsachmau', $danhsachmau)
-            ->with('danhsachsize', $danhsachsize);
-    }
+        $danhsachsize = size::all();
+
+		// $max_page = 1;
+		// $limit = 2;
+		$page = $request->get('page') ?? 1;
+		// $total = 0;
+
+		// if ($request->session()->get('user_id')) {
+		// 	$you = $request->session()->get('user_id');
+		// }
+
+		$flag = 'success';
+		$message = 'Tìm sản phẩm thành công!';
+
+		$search = $request->get('q') ?? '';
+		$sanpham_ids = array();
+		if (strlen(trim($search))) {
+			$sanpham_search = DB::select(
+				'SELECT *
+                FROM sanpham sp
+                left JOIN khuyenmai km ON km.km_id = sp.km_id
+                JOIN chitietsanpham ctsp ON sp.sp_id = ctsp.sp_id
+                JOIN hinhanh ha ON ha.ha_id = ctsp.ha_id
+                JOIN loaisanpham lsp ON lsp.lsp_id = sp.lsp_id
+                WHERE sp.sp_trangthai = 1 AND sp.sp_ten LIKE "%'.$search.'%"
+                GROUP BY sp.sp_ten'
+            );
+           
+			if ($sanpham_search != null) {
+				foreach ($sanpham_search as $id) {
+					if (!in_array($id->sp_id, $sanpham_ids)) {
+						array_push($sanpham_ids, $id->sp_id);
+					}
+				}
+            }
+           
+			$sanpham = DB::table('sanpham')->whereIn('sanpham.sp_id', $sanpham_ids)->where('sp_trangthai','=',1)->join('chitietsanpham','sanpham.sp_id','=','chitietsanpham.sp_id')->join('hinhanh','hinhanh.ha_id','=','chitietsanpham.ha_id')->leftJoin('khuyenmai','sanpham.km_id','=','khuyenmai.km_id')->groupBy('sanpham.sp_id')->paginate(9);
+            //dd($sanpham);
+            // $total_recipes = DB::table('recipes')->whereIn('sp_id', $sanpham_ids)->where('recipe_status','=',1)->orWhere('recipe_status','=',2)
+			// 	->leftJoin('users','recipe_user_id','=','user_id')->get();
+				// $total = count($total_recipes);
+				// $limit = 2;
+				// $page = $request->get('page') ?? 1;
+				// $max_page = 1;
+				// $mod = fmod($total, $limit);
+				// if ($mod > 0) {
+				// 	$max_page = intdiv($total,$limit) + 1;
+				// } else {
+				// 	$max_page = $total/$limit;
+				// }
+
+            $filter_loai = $request->get('loai') ?? '';
+            $filter_color = $request->get('color') ?? '';
+            $filter_size = $request->get('size') ?? '';
+            $filter_price = $request->get('price') ?? '';
+
+			return view('frontend.pages.sanpham.sanpham')
+				->with('page', $page)
+				->with('flag', $flag)
+				->with('message', $message)
+				->with('danhsachloai', $danhsachloai)
+				->with('danhsachmau', $danhsachmau)
+				->with('danhsachsize', $danhsachsize)
+				->with('filter_search', $search)
+                ->with('sanpham', $sanpham)
+                ->with('filter_loai', $filter_loai)
+                ->with('filter_color', $filter_color)
+                ->with('filter_size', $filter_size)
+                ->with('filter_price', $filter_price);
+		} else {
+            $sanpham_1=null;
+            $sanpham_2=null;
+            $sanpham_3=null;
+
+            //code lọc size
+            $sanpham_4=null;
+
+			$filter_loai = $request->get('loai') ?? '';
+			if ($filter_loai) {
+				$sanpham_1 = array();
+				$sanpham_1 = DB::select('SELECT sp_id FROM sanpham sp WHERE sp.lsp_id IN ('.$filter_loai[0].')');
+				if ($sanpham_1 != null) {
+					// foreach ($sanpham_1 as $id) {
+					// 	if (!in_array($id->sp_id, $sanpham_ids)) {
+					// 		array_push($sanpham_ids, $id->sp_id);
+					// 	}
+					// }
+				}
+            }
+            
+			$filter_color = $request->get('color') ?? '';
+			if ($filter_color) {
+				$sanpham_2 = array();
+				$sanpham_2 = DB::select('SELECT * 
+                        FROM chitietsanpham ctsp
+                        WHERE ctsp.m_id IN ('.$filter_color[0].')
+                        GROUP BY ctsp.sp_id');
+				if ($sanpham_2 != null ) {
+					// foreach ($sanpham_2 as $id) {
+					// 	if (!in_array($id->sp_id, $sanpham_ids)) {
+					// 		array_push($sanpham_ids, $id->sp_id);
+					// 	}
+					// }
+				}
+            }
+            
+            $filter_size = $request->get('size') ?? '';
+           //dd($filter_size);
+			if ($filter_size) {
+                $sanpham_3 = array();
+                
+				$sanpham_3 = DB::select('SELECT * 
+                                FROM chitietsanpham ctsp
+                                WHERE ctsp.m_id IN ('.$filter_size[0].')
+                                GROUP BY ctsp.sp_id');
+               
+				if ($sanpham_3 != null) {
+					// foreach ($sanpham_3 as $id) {
+					// 	if (!in_array($id->sp_id, $sanpham_ids)) {
+					// 		array_push($sanpham_ids, $id->sp_id);
+					// 	}
+                    // }
+				}
+            }
+
+            // code lọc giá
+            $filter_price = $request->get('price') ?? '';
+            //dd($filter_price);
+			if ($filter_price) {
+                foreach($filter_price as $key => $value){
+                    if($value == 1){
+                        $sanpham_4 = array();
+				        $sanpham_4 = DB::select('SELECT sp.*, ctsp.m_id, ctsp.size_id, km.km_giatriphantram, ctsp.ctsp_soluong, ha.ha_ten, km.km_ngayapdung, km.km_ngayketthuc
+                                    FROM sanpham sp
+                                    JOIN chitietsanpham ctsp ON sp.sp_id = ctsp.sp_id
+                                    JOIN hinhanh ha ON ha.ha_id = ctsp.ha_id
+                                    left JOIN khuyenmai km ON km.km_id = sp.km_id
+                                    WHERE sp.sp_trangthai = 1 and sp.sp_giaban BETWEEN 0 AND 249999
+                                    GROUP BY sp.sp_id');
+                        //dd($sanpham_4);
+                        if ($sanpham_4!=null) {
+                            foreach ($sanpham_4 as $id_4) {
+                                array_push($sanpham_ids, $id_4->sp_id);
+                            }
+                        }
+                    }else if($value == 2){
+                        $sanpham_4 = array();
+				        $sanpham_4 = DB::select('SELECT sp.*, ctsp.m_id, ctsp.size_id, km.km_giatriphantram, ctsp.ctsp_soluong, ha.ha_ten, km.km_ngayapdung, km.km_ngayketthuc
+                                    FROM sanpham sp
+                                    JOIN chitietsanpham ctsp ON sp.sp_id = ctsp.sp_id
+                                    JOIN hinhanh ha ON ha.ha_id = ctsp.ha_id
+                                    left JOIN khuyenmai km ON km.km_id = sp.km_id
+                                    WHERE sp.sp_trangthai = 1 and sp.sp_giaban BETWEEN 250000 AND 350000
+                                    GROUP BY sp.sp_id');
+                        if ($sanpham_4!=null) {
+                            foreach ($sanpham_4 as $id_4) {
+                                array_push($sanpham_ids, $id_4->sp_id);
+                            }
+                        }
+                    }else if($value == 3){
+                        $sanpham_4 = array();
+				        $sanpham_4 = DB::select('SELECT sp.*, ctsp.m_id, ctsp.size_id, km.km_giatriphantram, ctsp.ctsp_soluong, ha.ha_ten, km.km_ngayapdung, km.km_ngayketthuc
+                                    FROM sanpham sp
+                                    JOIN chitietsanpham ctsp ON sp.sp_id = ctsp.sp_id
+                                    JOIN hinhanh ha ON ha.ha_id = ctsp.ha_id
+                                    left JOIN khuyenmai km ON km.km_id = sp.km_id
+                                    WHERE sp.sp_trangthai = 1 and sp.sp_giaban BETWEEN 350000 AND 500000
+                                    GROUP BY sp.sp_id');
+                        if ($sanpham_4!=null) {
+                            foreach ($sanpham_4 as $id_4) {
+                                array_push($sanpham_ids, $id_4->sp_id);
+                            }
+                        }
+                    }else if($value == 4){
+                        $sanpham_4 = array();
+				        $sanpham_4 = DB::select('SELECT sp.*, ctsp.m_id, ctsp.size_id, km.km_giatriphantram, ctsp.ctsp_soluong, ha.ha_ten, km.km_ngayapdung, km.km_ngayketthuc
+                                    FROM sanpham sp
+                                    JOIN chitietsanpham ctsp ON sp.sp_id = ctsp.sp_id
+                                    JOIN hinhanh ha ON ha.ha_id = ctsp.ha_id
+                                    left JOIN khuyenmai km ON km.km_id = sp.km_id
+                                    WHERE sp.sp_trangthai = 1 and sp.sp_giaban > 500000
+                                    GROUP BY sp.sp_id');
+                        if ($sanpham_4!=null) {
+                            foreach ($sanpham_4 as $id_4) {
+                                array_push($sanpham_ids, $id_4->sp_id);
+                            }
+                        }
+                    }else if($value == 1 || $value == 2){
+                        $sanpham_4 = array();
+				        $sanpham_4 = DB::select('SELECT sp.*, ctsp.m_id, ctsp.size_id, km.km_giatriphantram, ctsp.ctsp_soluong, ha.ha_ten, km.km_ngayapdung, km.km_ngayketthuc
+                                    FROM sanpham sp
+                                    JOIN chitietsanpham ctsp ON sp.sp_id = ctsp.sp_id
+                                    JOIN hinhanh ha ON ha.ha_id = ctsp.ha_id
+                                    left JOIN khuyenmai km ON km.km_id = sp.km_id
+                                    WHERE sp.sp_trangthai = 1 and sp.sp_giaban BETWEEN 0 AND 350000
+                                    GROUP BY sp.sp_id');
+                        if ($sanpham_4!=null) {
+                            foreach ($sanpham_4 as $id_4) {
+                                array_push($sanpham_ids, $id_4->sp_id);
+                            }
+                        }
+                    }
+                }
+                     
+            }
+
+            
+            
+
+
+            if ($sanpham_1!=null && $sanpham_2!=null && $sanpham_3!=null) {
+                foreach ($sanpham_1 as $id_1) {
+                    foreach ($sanpham_2 as $id_2) {
+                        foreach ($sanpham_3 as $id_3) {
+                            if ($id_1->sp_id == $id_2->sp_id && $id_1->sp_id == $id_3->sp_id) {
+                                array_push($sanpham_ids, $id_1->sp_id);
+                            }
+                        }
+                    }
+                }
+            } else if ($sanpham_2!=null && $sanpham_3!=null) {
+                foreach ($sanpham_2 as $id_2) {
+                    foreach ($sanpham_3 as $id_3) {
+                        if ($id_2->sp_id == $id_3->sp_id) {
+                            array_push($sanpham_ids, $id_2->sp_id);
+                        }
+                    }
+                }
+
+            } else if ($sanpham_1!=null && $sanpham_3!=null) {
+                foreach ($sanpham_1 as $id_1) {
+                    foreach ($sanpham_3 as $id_3) {
+                        if ($id_1->sp_id == $id_3->sp_id) {
+                            array_push($sanpham_ids, $id_1->sp_id);
+                        }
+                    }
+                }
+
+            } else if ($sanpham_1!=null) {
+                foreach ($sanpham_1 as $id_1) {
+                    array_push($sanpham_ids, $id_1->sp_id);
+                }
+
+            } else if ($sanpham_2!=null) {
+                foreach ($sanpham_2 as $id_2) {
+                    array_push($sanpham_ids, $id_2->sp_id);
+                }
+
+            } else if ($sanpham_3!=null) {
+                foreach ($sanpham_3 as $id_3) {
+                    array_push($sanpham_ids, $id_3->sp_id);
+                }
+            }else if ($sanpham_4!=null) {
+                foreach ($sanpham_4 as $id_4) {
+                    array_push($sanpham_ids, $id_4->sp_id);
+                }
+            }
+            // var_dump($sanpham_ids);
+            // die();
+			
+			
+			if ($filter_loai == '' && $filter_color == '' && $filter_size == '' && $filter_price == '') {
+				$sanpham = DB::table('sanpham')->where('sp_trangthai','=',1)->join('chitietsanpham','sanpham.sp_id','=','chitietsanpham.sp_id')->join('hinhanh','hinhanh.ha_id','=','chitietsanpham.ha_id')->leftJoin('khuyenmai','sanpham.km_id','=','khuyenmai.km_id')->groupBy('sanpham.sp_id')->paginate(9);
+				//dd($sanpham);
+				$page = $request->get('page') ?? 1;
+				
+
+				return view('frontend.pages.sanpham.sanpham')
+                    ->with('page', $page)
+                    ->with('flag', $flag)
+                    ->with('message', $message)
+                    ->with('danhsachloai', $danhsachloai)
+                    ->with('danhsachmau', $danhsachmau)
+                    ->with('danhsachsize', $danhsachsize)
+                    
+                    ->with('sanpham', $sanpham)
+					->with('filter_loai', $filter_loai)
+					->with('filter_color', $filter_color)
+					->with('filter_size', $filter_size)
+					->with('filter_price', $filter_price);
+					
+			} else if (count($sanpham_ids) == 0) {
+				$flag = 'danger';
+				$message = 'Không có kết quả nào hợp với yêu cầu bạn chọn!';
+				$sanpham = null;
+			} else {
+				$sanpham = DB::table('sanpham')->whereIn('sanpham.sp_id', $sanpham_ids)->join('chitietsanpham','chitietsanpham.sp_id','=','sanpham.sp_id')->join('hinhanh','hinhanh.ha_id','=','chitietsanpham.ha_id')->leftJoin('khuyenmai','khuyenmai.km_id','=','sanpham.km_id')->groupBy('sanpham.sp_id')->paginate(9);
+				
+				$page = $request->get('page') ?? 1;
+				
+			}
+			return view('frontend.pages.sanpham.sanpham')
+				
+				->with('page', $page)
+				
+				->with('flag', $flag)
+				->with('message', $message)
+				->with('danhsachloai', $danhsachloai)
+                ->with('danhsachmau', $danhsachmau)
+                ->with('danhsachsize', $danhsachsize)
+				
+				->with('filter_loai', $filter_loai)
+				->with('filter_color', $filter_color)
+				->with('filter_size', $filter_size)
+                ->with('filter_price', $filter_price)
+				->with('sanpham', $sanpham);
+		}
+	}
+
 
 
     public function hinhanh_xoay(Request $request){

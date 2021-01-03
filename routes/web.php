@@ -199,7 +199,8 @@ Route::prefix('admin')->group(function()
 	Route::get('/', 'FrontendController@index')->name('frontend.home');
 
 	//Trang sản phẩm
-	Route::get('/sanpham', 'FrontendController@sanpham')->name('frontend.sanpham');
+	// Route::get('/sanpham', 'FrontendController@sanpham')->name('frontend.sanpham');
+	Route::get('/sanpham', 'FrontendController@sanpham1')->name('frontend.sanpham');
 	//Route::get('/filter', 'FrontendController@sanpham_pro')->name('frontend.sanpham_pro');
 	Route::post('/sanpham','FrontendController@filter');
 
@@ -232,6 +233,7 @@ Route::prefix('admin')->group(function()
 	Route::get('/hinhanh-xoay','FrontendController@hinhanh_xoay');
 
 	//Đánh giá sản phẩm
+	Route::get('/load-comment','FrontendController@load_comment');
 	Route::post('/load-comment','FrontendController@load_comment');
 	Route::post('/send-comment','FrontendController@send_comment');
 

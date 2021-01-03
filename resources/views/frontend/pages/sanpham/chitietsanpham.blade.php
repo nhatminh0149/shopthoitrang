@@ -70,7 +70,7 @@ A S H I O N
                         <div class="product__details__pic__slider owl-carousel">
 
                             <img src="{{ asset('storage/photos/' . $hinhanh1[0]->ha_ten) }}"
-                                class="product-image product__big__img" alt="Product Image">
+                                class="product-image product__big__img" alt="Product Image" id="zoom_01" data-zoom-image="{{ asset('storage/photos/' . $hinhanh1[0]->ha_ten) }}">
 
                             <!-- @foreach($hinhanh1 as $ha)
                             <img data-hash="{{ $ha->ha_id }}" class="product__big__img"
@@ -552,4 +552,12 @@ A S H I O N
         });
     });
 </script>
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdn.rawgit.com/igorlino/elevatezoom-plus/1.1.6/src/jquery.ez-plus.js"></script>
+
+<script>
+   $("#zoom_01").ezPlus();
+</script>
+
 @endsection

@@ -204,10 +204,11 @@ class PhieuNhapKhoController extends Controller
     function insert(Request $request){
         if($request->ajax()){
             $rules = array(
-                'dm_id.*'=>'required',
-                'lsp_id.*'=>'required',
-                'sp_id.*'=>'required',
-                'ctpn_soluong.*'  => 'required'
+                'dm_id.*'       =>'required',
+                'lsp_id.*'      =>'required',
+                'sp_id.*'       =>'required',
+                'ctsp_soluong.*'=> 'required',
+                'ctpn_gianhap.*'=> 'required'
             );
             $messages = [];
             $dm_id = $request->dm_id;
@@ -216,7 +217,8 @@ class PhieuNhapKhoController extends Controller
                 $messages['dm_id.'.$key.'.required'] = 'Bạn chưa nhập dòng thứ '.($key + 1).' của cột Danh mục.';
                 $messages['lsp_id.'.$key.'.required'] = 'Bạn chưa nhập dòng thứ '.($key + 1).' của cột Loại sản phẩm.';
                 $messages['sp_id.'.$key.'.required'] = 'Bạn chưa nhập dòng thứ '.($key + 1).' của cột Tên sản phẩm.';
-                $messages['ctpn_soluong.'.$key.'.required'] = 'Bạn chưa nhập dòng thứ '.($key + 1).' của cột Số lượng.';
+                $messages['ctsp_soluong.'.$key.'.required'] = 'Bạn chưa nhập dòng thứ '.($key + 1).' của cột Số lượng.';
+                $messages['ctpn_gianhap.'.$key.'.required'] = 'Bạn chưa nhập dòng thứ '.($key + 1).' của cột Giá nhập.';
             }
             $error = Validator::make($request->all(), $rules,$messages);
             if($error->fails()){

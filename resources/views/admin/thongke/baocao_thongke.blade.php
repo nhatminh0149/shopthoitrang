@@ -16,12 +16,12 @@
                     <div class="navbar-wrapper">
                         <a class="navbar-brand" href="#pablo">DASHBOARD</a>
                     </div>
-                    <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="sr-only">Toggle navigation</span>
                         <span class="navbar-toggler-icon icon-bar"></span>
                         <span class="navbar-toggler-icon icon-bar"></span>
                         <span class="navbar-toggler-icon icon-bar"></span>
-                    </button> -->
+                    </button>
                     <div class="collapse navbar-collapse justify-content-end" id="navigation">
                         <!-- <form class="navbar-form">
                             <div class="input-group no-border">

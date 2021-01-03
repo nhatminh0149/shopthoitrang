@@ -8,7 +8,31 @@ A S H I O N
 
 {{-- Thay thế nội dung vào Placeholder `custom-css` của view `frontend.layouts.master` --}}
 @section('custom-css')
+<style>
+    .site-btn {
+	font-size: 10px;
+	color: #ffffff;
+	background: #ca1515;
+	font-weight: 600;
+	border: none;
+	text-transform: uppercase;
+	display: inline-block;
+	padding: 5px 10px;
+	border-radius: 50px;
+}
 
+.site-btn:hover {
+	font-size: 10px;
+	color: #ffffff;
+	background: #0a0a0a;
+	font-weight: 600;
+	border: none;
+	text-transform: uppercase;
+	display: inline-block;
+	padding: 5px 10px;
+	border-radius: 50px;
+}
+</style>
 @endsection
 
 {{-- Thay thế nội dung vào Placeholder `main-content` của view `frontend.layouts.master` --}}
@@ -38,11 +62,11 @@ A S H I O N
             ?> 
            <div class="col-md-3">
                 <div class="card" style="width: 12rem;">
-                    <img class="card-img-top" src="{{ asset('img/logo/giohang3.png') }}" alt="Card image cap" width="150px" height="150px" >
+                    <img class="card-img-top" src="{{ asset('img/logo/giohang4.png') }}" alt="Card image cap"  >
                     <div class="card-body">
                         <span class="card-title" style="font-size: 14px;">Mã đơn hàng: {{ $ds_ddh->ddh_id }} </span><br>
                         <span class="card-title" style="font-size: 14px;">Ngày đặt: {{ $ddh_ngaylap }} </span><br>
-                        <a href="{{ route('frontend.chitiet_lichsu', ['ddh_id' => $ds_ddh->ddh_id]) }}" class="btn btn-outline-danger btn-sm mt-2">Xem chi tiết</a>
+                        <center><a href="{{ route('frontend.chitiet_lichsu', ['ddh_id' => $ds_ddh->ddh_id]) }}" class="site-btn mt-2">Xem chi tiết</a> </center>
                     </div>
                 </div>
            </div>

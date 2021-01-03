@@ -39,9 +39,9 @@ class KhuyenMaiTableSeeder extends Seeder
                 'km_ten'            => 'Tết Dương Lịch',        
                 'km_mota'           => '',        
                 'km_giatriphantram' => '10',        
-                'km_ngaytao'        => '2020-12-25',        
-                'km_ngayapdung'     => '2020-12-27',        
-                'km_ngayketthuc'    => '2021-01-08', 
+                'km_ngaytao'        => '2020-12-27',        
+                'km_ngayapdung'     => '2021-01-01',        
+                'km_ngayketthuc'    => '2021-01-10', 
                 'km_trangthai'      => '1',        
             ],
         ];

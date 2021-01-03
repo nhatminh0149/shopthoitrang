@@ -248,6 +248,7 @@ Created: Colorib
 
         $('.product-image-thumb').removeClass('active');
         $("#ha"+id+"-mau").addClass('active');
+        
         $("#ha"+id+"-mau").click();
 
         // $('.owl-item').removeClass('active');
