@@ -652,7 +652,7 @@ class SanPhamTableSeeder extends Seeder
                   
                // 'sp_hinh'           => 'khoacdoiC5_xanh.jpg',    
                // 'sp_soluong'        => '0',    
-                'sp_mota'           => 'Áo khoác đôi C4 với gam màu đơn tươi sáng, kèm logo đơn giản, giúp các cặp đôi trẻ trung, năng động khi cùng nhau diện xuống phố.',    
+                'sp_mota'           => 'Áo khoác đôi C5 với gam màu đơn trông tươi trẻ và cá tính, giúp các cặp đôi trẻ trung, năng động khi cùng nhau diện xuống phố.',    
                 // 'sp_ngaytaomoi'     => '2020-10-06',    
                 // 'sp_ngaycapnhat'    => '2020-10-06',    
                 'sp_giaban'         => '800000', 

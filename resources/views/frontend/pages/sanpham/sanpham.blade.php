@@ -202,25 +202,25 @@ body {
                             <div class="list-inline-item checkbox" style="width: 180px; margin-right: 0px;">
                                 <label style="padding-bottom: 10px; width:182px; font-size:0.9rem;">
                                     <input type="checkbox" style="display:inline" class="common_selector price" name="price"
-                                        value="1"> - Dưới 250,000 đ
+                                        value="1" <?php if (isset($filter_price) && $filter_price != '') { $array = explode(',',$filter_price[0]); if (in_array(1, $array)) { echo "checked"; }} ?>> - Dưới 250,000 đ
                                 </label>
                             </div> 
                             <div class="list-inline-item checkbox" style="width: 180px; margin-right: 0px;">
                                 <label style="padding-bottom: 10px; width:182px; font-size:0.9rem;">
                                     <input type="checkbox" style="display:inline" class="common_selector price" name="price"
-                                        value="2"> - 250,000 ₫ - 350,000 ₫
+                                        value="2" <?php if (isset($filter_price) && $filter_price != '') { $array = explode(',',$filter_price[0]); if (in_array(2, $array)) { echo "checked"; }} ?>> - 250,000 ₫ - 350,000 ₫
                                 </label>
                             </div> 
                             <div class="list-inline-item checkbox" style="width: 180px; margin-right: 0px;">
                                 <label style="padding-bottom: 10px; width:182px; font-size:0.9rem;">
                                     <input type="checkbox" style="display:inline" class="common_selector price" name="price"
-                                        value="3"> - 350,000 ₫ - 500,000 ₫
+                                        value="3" <?php if (isset($filter_price) && $filter_price != '') { $array = explode(',',$filter_price[0]); if (in_array(3, $array)) { echo "checked"; }} ?>> - 350,000 ₫ - 500,000 ₫
                                 </label>
                             </div> 
                             <div class="list-inline-item checkbox" style="width: 180px; margin-right: 0px;">
                                 <label style="padding-bottom: 10px; width:182px; font-size:0.9rem;">
                                     <input type="checkbox" style="display:inline" class="common_selector price" name="price"
-                                        value="4"> - Trên 500,000 đ
+                                        value="4" <?php if (isset($filter_price) && $filter_price != '') { $array = explode(',',$filter_price[0]); if (in_array(4, $array)) { echo "checked"; }} ?>> - Trên 500,000 đ
                                 </label>
                             </div> 
                         </div>    
@@ -304,14 +304,16 @@ body {
             <div class="col-lg-9 col-md-9">
                 <div class="row">
                     
+                    
                     @foreach($sanpham as $dssp)
-                    <div class="col-lg-4 col-md-6"> 
+                    <div class="col-lg-4 col-md-6">
+                
                         @if($dssp->km_giatriphantram == 0)
                         <div class="product__item" style="border: solid 1px whitesmoke;">
                             <div class="product__item__pic set-bg" data-setbg="{{ asset('storage/photos/' . $dssp->ha_ten) }}">
                                 <ul class="product__hover">
                                     <li><a href="{{ asset('storage/photos/' . $dssp->ha_ten) }}" class="image-popup"><span class="arrow_expand"></span></a></li>
-                                   
+                                
                                     <li><a href="{{ route('frontend.sanpham.xemchitiet', ['sp_id' => $dssp->sp_id]) }}"><span class="icon_search"></span></a></li>
                                 </ul>
                             </div>
@@ -327,7 +329,7 @@ body {
                                 <div class="label">Sale</div>
                                 <ul class="product__hover">
                                     <li><a href="{{ asset('storage/photos/' . $dssp->ha_ten) }}" class="image-popup"><span class="arrow_expand"></span></a></li>
-                                   
+                                
                                     <li><a href="{{ route('frontend.sanpham.xemchitiet', ['sp_id' => $dssp->sp_id]) }}"><span class="icon_search"></span></a></li>
                                 </ul>
                             </div>
