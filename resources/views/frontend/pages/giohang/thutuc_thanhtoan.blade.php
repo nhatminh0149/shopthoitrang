@@ -201,7 +201,7 @@ A S H I O N
                                 <input type="hidden" name="tongcong_hidden" id="tongcong_hidden" class="tongcong_hidden" value="{{ \Cart::subtotal(0,'.','') }}">
                             </ul>
                         </div>
-
+                        <div class="mb-2" style="color: red; font-style: italic;">*Lưu ý: Quý khách mua hàng rồi, không được hủy</div>
                         <button type="submit" class="site-btn">Đặt hàng</button>
                         <!-- <input type="button" value="Đặt hàng" name="send_order" class="site-btn send_order"> -->
                     </div>

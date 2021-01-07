@@ -48,7 +48,7 @@ A S H I O N
                     </tr>
                     <tr> 
                         <th>Địa chỉ giao hàng:</th>
-                        <td>{{ $ds_ddh1->ddh_diachigiaohang }}</td>
+                        <td style="width: 35%;">{{ $ds_ddh1->ddh_diachigiaohang }}{{','}} {{ $ds_ddh1->px_ten }}{{','}} {{ $ds_ddh1->qh_ten }}{{','}} {{ $ds_ddh1->tinhtp_ten }}.</td>
                         <th>Số điện thoại:</th>
                         <td>{{ $ds_ddh1->kh_sdt }}</td>
                     </tr>
@@ -94,9 +94,17 @@ A S H I O N
                 <tfoot>
                     @foreach($ds_ddh3 as $ds_ddh3)
                     <tr>
-                        <td colspan="6" class="text-right" style="font-weight: bold;">Tổng tiền:</td>
-                        <td style="font-weight: bold;">{{ number_format($ds_ddh3->TongTienDonHang, 0, ',' , ',') }} đ</td>
-                        </tr>
+                        <th style="text-align: right;" colspan="6">Tổng tiền sản phẩm:</th>
+                        <th style="text-align: left;">{{ number_format($ds_ddh3->TongTienDonHang, 0, ',' , ',') }} đ</th>
+                    </tr>
+                    <tr>
+                        <th style="text-align: right;" colspan="6">Phí vận chuyển:</th>
+                        <th style="text-align: left;">{{ number_format($ds_ddh3->htvc_chiphi, 0, ',' , ',') }} đ</th>
+                    </tr>
+                    <tr>
+                        <th style="text-align: right;" colspan="6">Tổng tiền thanh toán:</th>
+                        <th style="text-align: left;">{{ number_format($ds_ddh3->TongTienDonHang + $ds_ddh3->htvc_chiphi, 0, ',' , ',') }} đ</th>
+                    </tr>
                     @endforeach                                 
                 </tfoot>
             </table>

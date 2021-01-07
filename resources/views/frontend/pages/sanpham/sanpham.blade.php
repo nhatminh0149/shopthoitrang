@@ -144,6 +144,24 @@ body {
                     <a href="{{ route('frontend.home') }}"><i class="fa fa-home"></i>Trang chủ</a>
                     <span>Sản phẩm</span>
                 </div>
+                <div class="blog__sidebar__tags" style="float: right;">
+                    <a href="#">
+                        <input type="checkbox" style="display:inline" class="common_selector price" name="price"
+                            value="1" <?php if (isset($filter_price) && $filter_price != '') { $array = explode(',',$filter_price[0]); if (in_array(1, $array)) { echo "checked"; }} ?>> - Dưới 250,000 đ
+                    </a>
+                    <a href="#">
+                        <input type="checkbox" style="display:inline" class="common_selector price" name="price"
+                            value="2" <?php if (isset($filter_price) && $filter_price != '') { $array = explode(',',$filter_price[0]); if (in_array(2, $array)) { echo "checked"; }} ?>> - 250,000 ₫ - 350,000 ₫</a>
+                    <a href="#">
+                        <input type="checkbox" style="display:inline" class="common_selector price" name="price"
+                            value="3" <?php if (isset($filter_price) && $filter_price != '') { $array = explode(',',$filter_price[0]); if (in_array(3, $array)) { echo "checked"; }} ?>> - 350,000 ₫ - 500,000 ₫
+                    </a>
+                    <a href="#">
+                        <input type="checkbox" style="display:inline" class="common_selector price" name="price"
+                            value="4" <?php if (isset($filter_price) && $filter_price != '') { $array = explode(',',$filter_price[0]); if (in_array(4, $array)) { echo "checked"; }} ?>> - Trên 500,000 đ
+                    </a>
+                    
+                </div>
             </div>
         </div>
     </div>
@@ -192,38 +210,6 @@ body {
                             </div>
                             @endforeach
                         </div>
-                    </div>
-
-                    <div class="sidebar__sizes">
-                        <div class="section-title">
-                            <h4>LỌC GIÁ</h4>
-                        </div>
-                        <div style="height: 180px; display:inline">
-                            <div class="list-inline-item checkbox" style="width: 180px; margin-right: 0px;">
-                                <label style="padding-bottom: 10px; width:182px; font-size:0.9rem;">
-                                    <input type="checkbox" style="display:inline" class="common_selector price" name="price"
-                                        value="1" <?php if (isset($filter_price) && $filter_price != '') { $array = explode(',',$filter_price[0]); if (in_array(1, $array)) { echo "checked"; }} ?>> - Dưới 250,000 đ
-                                </label>
-                            </div> 
-                            <div class="list-inline-item checkbox" style="width: 180px; margin-right: 0px;">
-                                <label style="padding-bottom: 10px; width:182px; font-size:0.9rem;">
-                                    <input type="checkbox" style="display:inline" class="common_selector price" name="price"
-                                        value="2" <?php if (isset($filter_price) && $filter_price != '') { $array = explode(',',$filter_price[0]); if (in_array(2, $array)) { echo "checked"; }} ?>> - 250,000 ₫ - 350,000 ₫
-                                </label>
-                            </div> 
-                            <div class="list-inline-item checkbox" style="width: 180px; margin-right: 0px;">
-                                <label style="padding-bottom: 10px; width:182px; font-size:0.9rem;">
-                                    <input type="checkbox" style="display:inline" class="common_selector price" name="price"
-                                        value="3" <?php if (isset($filter_price) && $filter_price != '') { $array = explode(',',$filter_price[0]); if (in_array(3, $array)) { echo "checked"; }} ?>> - 350,000 ₫ - 500,000 ₫
-                                </label>
-                            </div> 
-                            <div class="list-inline-item checkbox" style="width: 180px; margin-right: 0px;">
-                                <label style="padding-bottom: 10px; width:182px; font-size:0.9rem;">
-                                    <input type="checkbox" style="display:inline" class="common_selector price" name="price"
-                                        value="4" <?php if (isset($filter_price) && $filter_price != '') { $array = explode(',',$filter_price[0]); if (in_array(4, $array)) { echo "checked"; }} ?>> - Trên 500,000 đ
-                                </label>
-                            </div> 
-                        </div>    
                     </div>
 
                     <div class="sidebar__color">
@@ -303,11 +289,16 @@ body {
             </div>
             <div class="col-lg-9 col-md-9">
                 <div class="row">
+                    @if(empty($sanpham))
+                        @php
+                            echo 'Vui lòng thêm sản phẩm vào giỏ hàng';
+                        @endphp
+                    @else
                     
-                    
+                
                     @foreach($sanpham as $dssp)
                     <div class="col-lg-4 col-md-6">
-                
+                        
                         @if($dssp->km_giatriphantram == 0)
                         <div class="product__item" style="border: solid 1px whitesmoke;">
                             <div class="product__item__pic set-bg" data-setbg="{{ asset('storage/photos/' . $dssp->ha_ten) }}">
@@ -340,9 +331,12 @@ body {
                             </div>
                         </div>
                         @endif
+
                     </div>
+                    
                     @endforeach
                     
+                    @endif
 
                     <div class="col-lg-12 text-center">
                         <div class="pagination__option">
