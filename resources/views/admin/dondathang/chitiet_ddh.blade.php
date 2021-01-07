@@ -272,7 +272,7 @@
                                     </tr>
                                     <tr> 
                                         <th>Địa chỉ giao hàng:</th>
-                                        <td>{{ $ds_ddh1->ddh_diachigiaohang }}</td>
+                                        <td style="width: 30%;">{{ $ds_ddh1->ddh_diachigiaohang }}{{','}} {{ $ds_ddh1->px_ten }}{{','}} {{ $ds_ddh1->qh_ten }}{{','}} {{ $ds_ddh1->tinhtp_ten }}.</td>
                                         <th>Số điện thoại:</th>
                                         <td>{{ $ds_ddh1->kh_sdt }}</td>
                                     </tr>
@@ -326,8 +326,16 @@
                                 <tfoot>
                                     @foreach($ds_ddh3 as $ds_ddh3)
                                     <tr>
-                                        <td colspan="6" class="text-right" style="font-weight: bold;">Tổng tiền:</td>
+                                        <td colspan="6" class="text-right" style="font-weight: bold;">Tổng tiền sản phẩm:</td>
                                         <td style="font-weight: bold;">{{ number_format($ds_ddh3->TongTienDonHang, 0, ',' , ',') }} đ</td>
+                                     </tr>
+                                    <tr>
+                                        <td colspan="6" class="text-right" style="font-weight: bold;">Phí vận chuyển:</td>
+                                        <td style="font-weight: bold;">{{ number_format($ds_ddh3->htvc_chiphi, 0, ',' , ',') }} đ</td>
+                                     </tr>
+                                    <tr>
+                                        <td colspan="6" class="text-right" style="font-weight: bold;">Tổng tiền thanh toán:</td>
+                                        <td style="font-weight: bold;">{{ number_format($ds_ddh3->TongTienDonHang + $ds_ddh3->htvc_chiphi, 0, ',' , ',') }} đ</td>
                                      </tr>
                                     @endforeach                                 
                                 </tfoot>
